@@ -1,5 +1,14 @@
 # 900 Angular for Enterprise-Ready Web Applications
 
+![900-portada](https://github.com/adolfodelarosades/Angular/blob/main/temarios/900_Angular_for_Enterprise-Ready_Web_Applications/images/900-portada.png)
+
+by Doguhan Uluca<br>
+Publisher: Packt Publishing<br>
+Release Date: May 2020<br>
+ISBN: 9781838648800<br>
+Topic: Angular<br>
+Pages: 824<br>
+
 ### Descripción del libro
 
 **Segunda edición revisada y actualizada de la guía práctica más vendida para crear aplicaciones web listas para la empresa utilizando una plataforma Angular imperecedera**
