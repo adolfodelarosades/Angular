@@ -24,7 +24,6 @@
 * Further reading
 * Questions
 
-
 # 01. Introducción a Angular y sus Conceptos
 
 Al principio, estaba HTML, luego DHTML. Los tecnólogos inventaron nuevas tecnologías como Java, JavaScript, PHP y muchas otras para ofrecer experiencias interactivas a través del navegador. El santo grial de la programación fue escribir un programa una vez y ejecutarlo en todas partes. En un instante, nació la era de las aplicaciones **Single-Page Applications (SPAs)**. Los SPA engañaron al navegador haciéndole creer que un solo `index.html` podría albergar aplicaciones completas que contienen muchas páginas. ***Backbone.js***, ***Knockout.js*** y ***Angular.js*** iban y venían. Todos los que se tambaleaban por la complejidad no gestionada y el síndrome del marco de la semana de JavaScript buscaban un salvador. Luego vinieron ***React***, ***Angular*** y ***Vue***. Prometieron solucionar todos los problemas, generar componentes web universalmente reutilizables y facilitar el aprendizaje, desarrollo y escalado de aplicaciones web. ¡Y así lo hicieron! Algunos mejores que otros. La historia adolescente de la web nos ha enseñado un par de lecciones esenciales. Primero, el cambio es inevitable, y segundo, la felicidad del desarrollador es un bien preciado que puede hacer o deshacer empresas enteras.
@@ -41,7 +40,7 @@ Este primer capítulo está destinado a brindarle un trasfondo teórico e histó
 
 Cada capítulo del libro le presenta nuevos conceptos y refuerza las mejores prácticas mientras cubre las formas óptimas de trabajar con herramientas de código abierto y ampliamente utilizadas. En el camino, los recuadros de consejos e información cubren las bases para cerrar cualquier brecha de conocimiento que pueda tener sobre los conceptos básicos de desarrollo web y JavaScript moderno. A medida que revisa el contenido, preste atención a los pasos numerados o viñetas, ya que describen las acciones que debe realizar. Si omite una sección o un capítulo, es posible que se pierda cambios sutiles en la configuración o técnicas que pueden confundirlo más adelante.
 
-:blue_book: *Los ejemplos de código que se proporcionan en este libro se han desarrollado utilizando Angular 9, que está previsto que esté en soporte a largo plazo (LTS) hasta agosto de 2021. Es probable que esté leyendo este libro después de que las nuevas versiones hayan reemplazado a Angular 9. Sin embargo, no te preocupes. Este libro adopta el lema imperecedero de Angular de mantener siempre actualizada la versión de Angular con la última versión. Mantenerse actualizado es posible al ceñirse a los fundamentos de la plataforma y evitar bibliotecas de terceros innecesarias. Los proyectos de ejemplo para el libro se escribieron inicialmente para Angular 5 y se actualizaron con el tiempo sin grandes reescrituras siguiendo un programa de actualización de Angular proactivo e incremental. Anticipo que estos proyectos sobrevivirán con modificaciones menores durante los próximos años. Esta confiabilidad es un testimonio del excelente trabajo de compatibilidad realizado por el equipo de Angular*.
+> :blue_book: *Los ejemplos de código que se proporcionan en este libro se han desarrollado utilizando Angular 9, que está previsto que esté en soporte a largo plazo (LTS) hasta agosto de 2021. Es probable que esté leyendo este libro después de que las nuevas versiones hayan reemplazado a Angular 9. Sin embargo, no te preocupes. Este libro adopta el lema imperecedero de Angular de mantener siempre actualizada la versión de Angular con la última versión. Mantenerse actualizado es posible al ceñirse a los fundamentos de la plataforma y evitar bibliotecas de terceros innecesarias. Los proyectos de ejemplo para el libro se escribieron inicialmente para Angular 5 y se actualizaron con el tiempo sin grandes reescrituras siguiendo un programa de actualización de Angular proactivo e incremental. Anticipo que estos proyectos sobrevivirán con modificaciones menores durante los próximos años. Esta confiabilidad es un testimonio del excelente trabajo de compatibilidad realizado por el equipo de Angular*.
 
 El mundo de JavaScript, TypeScript y Angular cambia constantemente. Es normal que haya algunas diferencias entre los ejemplos de código del libro y el código que generan las herramientas que utiliza. Por esta razón, la mayoría de las mejores prácticas y elementos de configuración recomendados por este libro se aplican utilizando herramientas que creé, para que puedan actualizarse. A continuación se muestra una descripción general de alto nivel de la colección de bibliotecas, extensiones y proyectos de código abierto que respaldan el contenido del libro:
 
@@ -55,7 +54,7 @@ El diagrama anterior es para darle un vistazo rápido a algunas de las partes m�
 * Para los *capítulos 7 a 14*, Lemon Mart: https://github.com/duluca/lemon-mart
 * Para el *Capítulo 10*, Lemon Mart Server: https://github.com/duluca/lemon-mart-server
 
-:high_brightness: *Puede leer más sobre la actualización de Angular en el Apéndice C, Mantener Angular y Tools Evergreen. Puede encontrar este apéndice en línea en https://static.packt-cdn.com/downloads/9781838648800_Appendix_C_Keeping_Angular_and_Tools_Evergreen.pdf or at https://expertlysimple.io/stay-evergreen.*
+> :high_brightness: *Puede leer más sobre la actualización de Angular en el Apéndice C, Mantener Angular y Tools Evergreen. Puede encontrar este apéndice en línea en https://static.packt-cdn.com/downloads/9781838648800_Appendix_C_Keeping_Angular_and_Tools_Evergreen.pdf or at https://expertlysimple.io/stay-evergreen.*
 
 Echemos un vistazo a los últimos 20 años de historia del desarrollo web, para que pueda contextualizar cómo surgió y evolucionó Angular.
 
@@ -101,7 +100,7 @@ Desafortunadamente, muchos de los primeros esfuerzos de desarrollo que aprovecha
 
 Estos primeros esfuerzos de desarrollo también sufrieron de API web RESTful mal diseñadas. La mayoría de las API no versionaron sus URI, lo que dificulta la introducción de nuevas funcionalidades mientras se da soporte a los clientes existentes. Además, las API a menudo devuelven modelos de datos complicados que exponen sus modelos de datos relacionales internos a aplicaciones web. Esta falla de diseño crea un acoplamiento estrecho entre componentes/vistas aparentemente no relacionados escritos en HTML y modelos creados en SQL. Si no implementa capas adicionales de código para traducir o mapear la estructura de datos, entonces crea un acoplamiento no intencional y no controlado entre capas. Con el tiempo, lidiar con este tipo de acoplamiento se vuelve muy costoso muy rápidamente, en la mayoría de los casos necesita reescrituras significativas.
 
-:blue_book: *Hoy en día, usamos la capa API para aplanar el modelo de datos antes de enviarlo al cliente para evitar tales problemas. Las tecnologías más nuevas como GraphQL van un paso más allá al exponer un modelo de datos bien definido y permitir al consumidor consultar los datos exactos que necesita. Con GraphQL, el número de solicitudes HTTP y la cantidad de datos transferidos por el cable son óptimos sin que los desarrolladores tengan que crear muchas API especializadas.*
+> :blue_book: *Hoy en día, usamos la capa API para aplanar el modelo de datos antes de enviarlo al cliente para evitar tales problemas. Las tecnologías más nuevas como GraphQL van un paso más allá al exponer un modelo de datos bien definido y permitir al consumidor consultar los datos exactos que necesita. Con GraphQL, el número de solicitudes HTTP y la cantidad de datos transferidos por el cable son óptimos sin que los desarrolladores tengan que crear muchas API especializadas.*
 
 Backbone y AngularJS demostraron que era viable crear aplicaciones web que se ejecutaran de forma nativa en el navegador. Todos los marcos de SPA en ese momento se basaban en jQuery para la manipulación de DOM. Mientras tanto, los estándares web continuaron evolucionando y los navegadores permanentes que admiten nuevos estándares comenzaron a convertirse en algo común. Sin embargo, el cambio es constante, y la evolución de las tecnologías web hizo que fuera insostenible evolucionar con gracia esta primera generación de marcos de SPA.
 
@@ -139,9 +138,9 @@ Entonces, ¿por qué Google (Angular) y Microsoft (TypeScript y Visual Studio Co
 
 No veo ninguna intención nefasta aquí y doy la bienvenida a herramientas abiertas, maduras y de alta calidad que, si es necesario, puedo modificar y doblar a mi propia voluntad. No tener que pagar un contrato de soporte para una pieza de tecnología patentada es un bono de bienvenida.
 
-:blue_book: *Cuidado, buscar ayuda de Angular en la web puede ser complicado. Observará que a veces se hace referencia a Angular como Angular 2 o Angular 4. En ocasiones, tanto Angular como AngularJS se conocen como AngularJS. Esto es incorrecto. La documentación de Angular está en angular.io. Si aterriza en angularjs.org, estará leyendo sobre el marco heredado de AngularJS.*
+> :blue_book: *Cuidado, buscar ayuda de Angular en la web puede ser complicado. Observará que a veces se hace referencia a Angular como Angular 2 o Angular 4. En ocasiones, tanto Angular como AngularJS se conocen como AngularJS. Esto es incorrecto. La documentación de Angular está en angular.io. Si aterriza en angularjs.org, estará leyendo sobre el marco heredado de AngularJS.*
 
-:high_brightness: *Para obtener las últimas actualizaciones sobre los próximos lanzamientos de Angular, consulte el calendario de lanzamientos oficial en https://angular.io/guide/releases.*
+> :high_brightness: *Para obtener las últimas actualizaciones sobre los próximos lanzamientos de Angular, consulte el calendario de lanzamientos oficial en https://angular.io/guide/releases.*
 
 ### Filosofía de Angular
 
@@ -175,7 +174,7 @@ Para llevar esta idea al frente y al centro de los desarrolladores, varios coleg
 
 Esta extensión detecta su versión actual de Angular y la compara con las últimas y próximas versiones de Angular. Las versiones que están etiquetadas a continuación están destinadas a los primeros usuarios y para probar la compatibilidad de su código con una próxima versión de Angular. No utilice las siguientes versiones etiquetadas para implementaciones de producción.
 
-:high_brightness: *Encuentre más información, solicitudes de funciones e informes de errores sobre la extensión Angular Evergreen en https://AngularEvergreen.com.*
+> :high_brightness: *Encuentre más información, solicitudes de funciones e informes de errores sobre la extensión Angular Evergreen en https://AngularEvergreen.com.*
 
 Uno de los componentes críticos de Angular que permite que la plataforma permanezca siempre verde (evergreen) es **TypeScript**. TypeScript permite implementar nuevas funciones de manera eficiente al mismo tiempo que brinda soporte para navegadores más antiguos, de modo que su código pueda llegar a la audiencia más amplia posible.
 
@@ -187,7 +186,7 @@ Anders Hejlsberg es el creador de Turbo Pascal y C#, y es el arquitecto principa
 
 JavaScript es un lenguaje interpretado dinámicamente, donde el código que escribe es analizado y entendido por el navegador en tiempo de ejecución. Los lenguajes de tipado estático como Java o C# tienen un paso de compilación adicional, donde el compilador puede detectar errores de programación y lógica durante el tiempo de compilación. Es mucho más económico detectar y corregir errores en tiempo de compilación que en tiempo de ejecución. TypeScript aporta los beneficios de los lenguajes de tipado estático a JavaScript al introducir tipos y genéricos al lenguaje. Sin embargo, TypeScript no incluye un paso de compilación, sino un **paso de transpilación**. Un compilador crea código en lenguaje de máquina con C/C++ o lenguaje intermedio (IL) con Java o C#. ***Un transpilador, sin embargo, simplemente traduce el código de un dialecto a otro***. Entonces, cuando se crea, compila o transpila código TypeScript, el resultado es JavaScript puro.
 
-:blue_book: *El nombre oficial de JavaScript es ECMAScript. El conjunto de características y la sintaxis del lenguaje son mantenidos por el Comité Técnico 39 de ECMA o TC39 para abreviar.*
+> :blue_book: *El nombre oficial de JavaScript es ECMAScript. El conjunto de características y la sintaxis del lenguaje son mantenidos por el Comité Técnico 39 de ECMA o TC39 para abreviar.*
 
 La transpilación tiene otro beneficio significativo. La misma herramienta que convierte TypeScript a JavaScript se puede utilizar para reescribir JavaScript con una nueva sintaxis a una versión anterior que los navegadores más antiguos pueden analizar y ejecutar. Entre 1999 y 2009, el lenguaje JavaScript no vio ninguna característica nueva. ECMAScript abandonó la versión 4 debido a varias razones técnicas y políticas. Comenzando con la introducción de ES5 y luego ES2015 (también conocido como ES6), los proveedores de navegadores han tenido problemas para implementar nuevas funciones de JavaScript en sus navegadores. Como resultado, la adopción de estas nuevas funciones por parte de los usuarios se ha mantenido baja. Sin embargo, estas nuevas características significaron que los desarrolladores podían escribir código de manera más productiva. Esto creó una brecha conocida como la brecha de características de JavaScript, como lo demuestra el gráfico siguiente:
 
@@ -196,8 +195,6 @@ La transpilación tiene otro beneficio significativo. La misma herramienta que c
 La brecha de funciones de JavaScript es variable, ya que TC39 se ha comprometido a actualizar JavaScript cada año en el futuro. Como resultado, TypeScript representa el pasado, presente y futuro de JavaScript. Puede utilizar las funciones futuras de JavaScript hoy y seguir siendo capaz de orientar sus anuncios a los navegadores del pasado para maximizar la audiencia a la que puede llegar.
 
 Ahora, repasemos la arquitectura subyacente de Angular.
-
-
 
 ### Arquitectura angular básica
 
@@ -229,7 +226,7 @@ La programación reactiva es un subconjunto de la programación funcional. En la
 
 ***La programación reactiva agrega un giro a la programación funcional. Ya no se trata de lógica pura, sino de un flujo de datos asincrónico que transforma y moldea en cualquier forma que necesite con un conjunto de funciones componibles***. Entonces, cuando se suscribe a un evento en un flujo reactivo, entonces está cambiando su paradigma de codificación de la programación reactiva a la programación imperativa.
 
-:blue_book: *Más adelante en el libro, cuando implemente la aplicación LocalCast Weather, aprovechará la suscripción en acción en dos lugares, en los componentes CurrentWeather y CitySearch.*
+> :blue_book: *Más adelante en el libro, cuando implemente la aplicación LocalCast Weather, aprovechará la suscripción en acción en dos lugares, en los componentes CurrentWeather y CitySearch.*
 
 Considere el siguiente ejemplo, acertadamente expresado por Mike Pearson en su presentación
 
@@ -293,7 +290,7 @@ Como se mencionó anteriormente, en la sección Arquitectura básica Angular, lo
 
 El módulo root puede importar otros módulos y también declarar componentes y proporcionar servicios. A medida que su aplicación crece, necesita crear submódulos que contengan sus componentes y servicios. Organizar su aplicación de esta manera le permite implementar la carga diferida, lo que le permite controlar qué partes de su aplicación se envían al navegador y cuándo. A medida que agrega más funciones a su aplicación, importa módulos de otras bibliotecas, como Angular Material o NgRx. Implementa el enrutador para permitir experiencias de navegación enriquecidas entre sus componentes, lo que permite que su configuración de enrutamiento orquesta la creación de componentes.
 
-:high_brightness: *El Capítulo 7, Creación de una aplicación de primera línea de negocio de enrutador, presenta la arquitectura de enrutador primero, donde le animo a comenzar el desarrollo de su aplicación creando todas sus rutas con anticipación.*
+> :high_brightness: *El Capítulo 7, Creación de una aplicación de primera línea de negocio de enrutador, presenta la arquitectura de enrutador primero, donde le animo a comenzar el desarrollo de su aplicación creando todas sus rutas con anticipación.*
 
 En Angular, los servicios se proporcionan como singleton a un módulo de forma predeterminada. Te acostumbrarás rápidamente a este comportamiento. Sin embargo, debe tener en cuenta que si proporciona el mismo servicio en varios módulos, cada módulo tiene su propia instancia del servicio proporcionado. En el caso de un servicio de autenticación, donde deseamos tener solo una instancia en toda nuestra aplicación, debe tener cuidado de proporcionar solo esa instancia del servicio de autenticación en el nivel del módulo raíz. Cualquier servicio, componente o módulo proporcionado en el nivel raíz de su aplicación estará disponible en el módulo de funciones.
 
@@ -339,7 +336,6 @@ Sin embargo, más allá del diseño, existen casos de uso específicos para intr
 
 La biblioteca NgRx para Angular aprovecha el patrón Flux para permitir una gestión de estado sofisticada para sus aplicaciones. En el Capítulo 6, Formularios, Observables y Temas y en el Capítulo 12, Recetas - Maestro/Detalle, Tablas de datos y NgRx, proporciono implementaciones alternativas para varias características que usan NgRx para demostrar las diferencias en la implementación entre métodos más ligeros.
 
-
 #### The Flux pattern (EL PATRÓN DE FLUJO)
 
 Flux es la arquitectura de la aplicación que fue creada por Facebook para ayudar en la construcción de aplicaciones web del lado del cliente. El patrón Flux define una serie de componentes que administran una tienda que almacena el estado de su aplicación a través de distribuidores que trigger/handle(activan/manejan) acciones y ven funciones que leen valores de la tienda. Con el patrón Flux, mantiene el estado de su aplicación en una tienda donde el acceso a la tienda solo es posible a través de funciones bien definidas y desacopladas, lo que da como resultado una arquitectura que escala bien porque, de forma aislada, las funciones desacopladas son fáciles de razonar y escribir pruebas unitarias automatizadas para.
@@ -378,12 +374,9 @@ Esta descripción general básica debería darle una idea de las diferencias arq
 
 Puede obtener más información sobre React en https://reactjs.org.
 
-
-
 ## Notable Angular features (Características notables de Angular)
 
 Las versiones específicas de Angular introducen cambios notables para avanzar en la filosofía de la plataforma y hacerla más fluida y completa. Recomiendo comprobar los cambios únicos que han introducido estos lanzamientos fundamentales.
-
 
 ### Angular 6
 
@@ -417,11 +410,11 @@ Angular Elements, introducido en la versión 6, le permite codificar un componen
 
 A principios de 2020, Chrome, Edge y Firefox admiten elementos personalizados de forma nativa, un cambio significativo con respecto al status que a principios de 2018. Angular 9 habilita el motor de renderizado Ivy de forma predeterminada, y las actualizaciones futuras de Angular deberían impulsar los tamaños de los paquetes básicos a ser tan pequeños como 2,7 KB, el uso generalizado de elementos personalizados basados en Angular pronto podría convertirse en realidad. En 2020, todos los principales navegadores admiten elementos personalizados de forma nativa, dejando a Safari como el último navegador que implementó el estándar.
 
-:high_brightness: *Siempre consulte https://caniuse.com antes de entusiasmarse demasiado con una nueva tecnología web para asegurarse de que realmente puede usar esa función en los navegadores que debe admitir.*
+> :high_brightness: *Siempre consulte https://caniuse.com antes de entusiasmarse demasiado con una nueva tecnología web para asegurarse de que realmente puede usar esa función en los navegadores que debe admitir.*
 
 Angular.io aprovecha los elementos personalizados para demostrar la viabilidad de la tecnología. El sitio de documentación atrae más de 1 millón de visitantes únicos por mes, por lo que debería ayudar a resolver algunos de los problemas a medida que madura. Los elementos personalizados son excelentes para alojar muestras de código interactivo junto con contenido estático. Por ejemplo, a principios de 2018, Angular.io comenzó a usar StackBlitz.io para muestras de código interactivo.
 
-:high_brightness: *StackBlitz.io es una herramienta increíble, un IDE enriquecido directamente en el navegador, por lo que puede experimentar con diferentes ideas o ejecutar repositorios de GitHub sin necesidad de extraer o ejecutar ningún código localmente.*
+> :high_brightness: *StackBlitz.io es una herramienta increíble, un IDE enriquecido directamente en el navegador, por lo que puede experimentar con diferentes ideas o ejecutar repositorios de GitHub sin necesidad de extraer o ejecutar ningún código localmente.*
 
 Otras actualizaciones importantes incluyen la carga diferencial de paquetes de JavaScript para mejorar los tiempos de carga y el **time-to-interactive (TTI)** para los navegadores modernos. Angular Router agrega compatibilidad con versiones anteriores para que sea factible realizar actualizaciones parciales de proyectos heredados de AngularJS.
 
@@ -435,7 +428,7 @@ En resumen, las tecnologías web han evolucionado hasta un punto en el que es po
 
 Angular está diseñado para ser reactivo de principio a fin y, por lo tanto, debe ajustar su estilo de programación para que se ajuste a este patrón. Además, Angular está destinado a ser consumido de manera imperecedera, por lo que es una gran idea mantener siempre actualizado tu Angular.
 
-:blue_book: *Aprovechar las promesas en una aplicación Angular, en lugar de observables y la async pipe, equivale a ignorar todos los consejos y documentación que el equipo de Angular y los líderes de opinión de la comunidad han comunicado. Es fácil caer en malas prácticas y hábitos siguiendo consejos superficiales o muy fuera de contexto que puede obtener de sitios de autoayuda o publicaciones de blogs escritos con una mentalidad experimental. La documentación oficial debe ser su Biblia, que se encuentra en https://angular.io/docs.*
+> :blue_book: *Aprovechar las promesas en una aplicación Angular, en lugar de observables y la async pipe, equivale a ignorar todos los consejos y documentación que el equipo de Angular y los líderes de opinión de la comunidad han comunicado. Es fácil caer en malas prácticas y hábitos siguiendo consejos superficiales o muy fuera de contexto que puede obtener de sitios de autoayuda o publicaciones de blogs escritos con una mentalidad experimental. La documentación oficial debe ser su Biblia, que se encuentra en https://angular.io/docs.*
 
 En el próximo capítulo, configurará su entorno de desarrollo para optimizarlo para una experiencia de desarrollo angular excelente y consistente en los sistemas operativos macOS y Windows. En los siguientes capítulos, aprenderá cómo crear una aplicación Angular básica, implementarla en Internet, luego aprenderá sobre patrones arquitectónicos avanzados para crear aplicaciones escalables, aprenderá cómo crear una aplicación TypeScript de pila completa usando Minimal MEAN y aprovechar las Técnicas de DevOps e Integración Continua. El libro concluye presentándole Amazon Web Services y Google Analytics.
 
