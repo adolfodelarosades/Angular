@@ -132,7 +132,24 @@ En macOS, si tiene problemas de permisos al instalar paquetes brew, relacionados
 
 > :blue_book: *Para obtener más información, consulte https://brew.sh/.*
 
-## Installing development tools
+## Instalación de Herramientas de Desarrollo
+
+En esta sección, instalará todas las herramientas de desarrollo que necesita para comenzar a desarrollar una aplicación web. ***Git*** y ***GitHub Desktop*** establecen un repositorio de código fuente en su máquina y le permiten sincronizar su código con un repositorio remoto. ***Node.js*** es un JavaScript runtime para su PC e incluye **Node Package Manager** o **npm** que gestiona el código fuente de terceros, incluido Angular. ***Visual Studio Code*** es un entorno de desarrollo integrado o IDE.
+
+> :blue_book: *Para instalar automáticamente todas las herramientas de desarrollo web necesarias para este libro, ejecute los siguientes comandos para que su sistema operativo configure su entorno.*
+> *En Windows PowerShell, ejecute:*
+> ```sh
+PS> Install-Script -Name setup-windows-dev-env
+PS> setup-windows-dev-env.ps1
+```
+> *En MacOS Terminal, ejecute:*
+> ```sh
+$> bash <(wget -O - https://git.io/JvHi1)
+```
+> *Para más información refierase a https://github.com/duluca/web-dev-environment-setup.*
+
+
+
 ### Git and GitHub Desktop
 #### Why use GitHub?
 #### Why use GitHub Desktop?
