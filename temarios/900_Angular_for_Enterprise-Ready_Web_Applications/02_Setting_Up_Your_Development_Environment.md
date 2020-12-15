@@ -101,7 +101,10 @@ PS> Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointMa
 > :high_brightness: *Todos los comandos de Chocolatey posteriores también deben ejecutarse desde un shell de comandos elevado. Alternativamente, es posible instalar Chocolatey en una configuración que no sea de administrador y que no requiera un shell de comandos elevado. Sin embargo, esto da como resultado un entorno de desarrollo no estándar y menos seguro, y es posible que ciertas aplicaciones instaladas a través de la herramienta aún requieran elevación.*
 
 > :blue_book: *Scoop es una alternativa a Chocolatey que proporciona una experiencia más similar a Unix. Si prefiere las herramientas y los comandos de estilo Unix, puede instalar Scoop en https://scoop.sh/ o ejecutando:*
-> `$ iwr -useb get.scoop.sh | iex`
+
+```sh
+$ iwr -useb get.scoop.sh | iex
+```
 
 Para obtener más información sobre Chocolatey, consulte https://chocolatey.org/install.
 
@@ -136,14 +139,14 @@ En macOS, si tiene problemas de permisos al instalar paquetes brew, relacionados
 
 En esta sección, instalará todas las herramientas de desarrollo que necesita para comenzar a desarrollar una aplicación web. ***Git*** y ***GitHub Desktop*** establecen un repositorio de código fuente en su máquina y le permiten sincronizar su código con un repositorio remoto. ***Node.js*** es un JavaScript runtime para su PC e incluye **Node Package Manager** o **npm** que gestiona el código fuente de terceros, incluido Angular. ***Visual Studio Code*** es un entorno de desarrollo integrado o IDE.
 
-> :blue_book: *Para instalar automáticamente todas las herramientas de desarrollo web necesarias para este libro, ejecute los siguientes comandos para que su sistema operativo configure su entorno.*
-> *En Windows PowerShell, ejecute:*
-> ```sh
+> :blue_book: *Para instalar automáticamente todas las herramientas de desarrollo web necesarias para este libro, ejecute los siguientes comandos para que su sistema operativo configure su entorno. En Windows PowerShell, ejecute:*
+
+```sh
 PS> Install-Script -Name setup-windows-dev-env
 PS> setup-windows-dev-env.ps1
 ```
 > *En MacOS Terminal, ejecute:*
-> ```sh
+```sh
 $> bash <(wget -O - https://git.io/JvHi1)
 ```
 > *Para más información refierase a https://github.com/duluca/web-dev-environment-setup.*
