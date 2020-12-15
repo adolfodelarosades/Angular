@@ -319,22 +319,146 @@ Analicemos la carga diferida con más detalle.
 
 ### Lazy loading
 
+La línea discontinua que conecta `/b/...` a `rootRouter` demuestra cómo funciona la carga diferida. La carga diferida permite a los desarrolladores lograr rápidamente una primera pintura significativa en menos de un segundo. Al aplazar la carga de módulos adicionales, podemos mantener al mínimo el tamaño del paquete entregado al navegador. El tamaño de un módulo afecta las velocidades de descarga y carga, porque cuanto más tiene que hacer un navegador, más tiempo tarda un usuario en ver la primera pantalla de la aplicación. Al definir módulos de carga diferida, cada módulo se empaqueta como archivos separados, que se pueden descargar y cargar individualmente y bajo demanda.
 
-### State management
-#### The Flux pattern
-#### NgRx
-### React.js architecture
-## Notable Angular features
-### Angular 6
-### Angular 8
-### Angular 9
-## Summary
-## Further reading
-## Questions
+El Router Angular proporciona un seguimiento inteligente de enlaces activos, lo que da como resultado una experiencia superior para el desarrollador y el usuario, lo que facilita la implementación de funciones de resaltado para indicar al usuario la pestaña actual o la parte de la aplicación que está actualmente activa. Las rutas auxiliares maximizan la reutilización de componentes y ayudan a realizar transiciones de estado complicadas con facilidad. Con las rutas auxiliares, puede renderizar múltiples vistas maestras y de detalles usando solo una plantilla externa. También puede controlar cómo se muestra la ruta al usuario en la barra de URL del navegador y componer rutas usando `routerLink`, en templates, y `Router.navigate`, en código, conduciendo escenarios complicados.
+
+En el Capítulo 7, Creación de una aplicación de primera línea de negocio de enrutador, cubro la implementación de los conceptos básicos del enrutador, y las recetas avanzadas se tratan en el Capítulo 11, Recipes – Reusability, Routing, y Caching.
+
+Más allá del routing, la administración(management) del estado es otro concepto crucial que debe dominar si desea crear aplicaciones angulares sofisticadas.
+
+### State management (Administración del Estado)
+
+Una clase respalda cada componente y servicio en Angular. Cuando se crea una instancia, una clase se convierte en un objeto en la memoria. Mientras trabaja con un objeto, si almacena valores en las propiedades del objeto, entonces está introduciendo el estado en su aplicación Angular. Si no se administra, el estado se convierte en una responsabilidad importante para el éxito y la capacidad de mantenimiento de su aplicación.
+
+Soy fanático del diseño sin estado tanto en el backend como en el frontend. Desde mi perspectiva, el estado es malo y debes prestar mucha atención para no introducir el estado en tu código. Anteriormente, discutimos cómo los servicios en Angular son singletons por defecto. Esta es una terrible oportunidad para introducir el estado en su aplicación. Debe evitar almacenar información en sus servicios. En el Capítulo 7, Creación de una aplicación de primera línea de negocio de enrutador, le presento `BehaviorSubjects`, que actúan como anclajes de datos para su aplicación. En este caso, almacenamos estos anclajes en servicios, para que puedan compartirse entre componentes para sincronizar datos.
+
+En los componentes angulares, la clase es un `ViewModel` que actúa como el código de unión entre su código y la plantilla. En comparación con los servicios, los componentes tienen una vida relativamente corta y está bien usar propiedades de objeto en este contexto.
+
+Sin embargo, más allá del diseño, existen casos de uso específicos para introducir mecanismos robustos para mantener modelos de datos complicados en el estado de su aplicación. Las aplicaciones web progresivas y las aplicaciones móviles son un caso de uso en el que la conectividad no está garantizada. En estos casos, poder guardar y reanudar todo el estado de su aplicación es imprescindible para brindar una excelente experiencia de usuario (UX) para su usuario final.
+
+La biblioteca NgRx para Angular aprovecha el patrón Flux para permitir una gestión de estado sofisticada para sus aplicaciones. En el Capítulo 6, Formularios, Observables y Temas y en el Capítulo 12, Recetas - Maestro/Detalle, Tablas de datos y NgRx, proporciono implementaciones alternativas para varias características que usan NgRx para demostrar las diferencias en la implementación entre métodos más ligeros.
 
 
+#### The Flux pattern (EL PATRÓN DE FLUJO)
+
+Flux es la arquitectura de la aplicación que fue creada por Facebook para ayudar en la construcción de aplicaciones web del lado del cliente. El patrón Flux define una serie de componentes que administran una tienda que almacena el estado de su aplicación a través de distribuidores que trigger/handle(activan/manejan) acciones y ven funciones que leen valores de la tienda. Con el patrón Flux, mantiene el estado de su aplicación en una tienda donde el acceso a la tienda solo es posible a través de funciones bien definidas y desacopladas, lo que da como resultado una arquitectura que escala bien porque, de forma aislada, las funciones desacopladas son fáciles de razonar y escribir pruebas unitarias automatizadas para.
+
+Considere el diagrama que se muestra a continuación para comprender el flujo de información entre estos componentes:
 
 ![01-16](images/01-16.png)
+
+NgRx implementa el patrón Flux en Angular usando RxJS.
+
+#### NgRx
+
+La biblioteca NgRx trae la administración de estado reactivo similar a Redux (una biblioteca popular de React.js) a Angular basada en RxJS. La gestión de estado con NgRx permite a los desarrolladores escribir piezas de código atómicas, autocontenidas y componibles que crean acciones, reductores y selectores. Este tipo de programación reactiva permite aislar los efectos secundarios en los cambios de estado y se siente como en casa con los patrones generales de codificación de React.js. NgRx termina creando una capa de abstracción sobre herramientas ya complejas y sofisticadas como RxJS.
+
+Hay excelentes razones para usar NgRx, como si maneja más de 3 flujos de entrada en su aplicación. En tal escenario, la sobrecarga de lidiar con tantos eventos hace que valga la pena introducir un nuevo paradigma de codificación en su proyecto. Sin embargo, la mayoría de las aplicaciones solo tienen dos flujos de entrada: API REST y entrada de usuario. En menor medida, NgRx puede tener sentido si está escribiendo primero aplicaciones web progresivas (PWA) sin conexión, donde es posible que tenga que conservar información de estado complicada o diseñar una aplicación empresarial de nicho con necesidades similares.
+
+Aquí hay una descripción general de la arquitectura de NgRx:
+
 ![01-17](images/01-17.png)
+
+Considere la parte superior del diagrama como un flujo de acción observable, donde las acciones se pueden enviar y actuar según lo indicado por los círculos. Los efectos y componentes pueden enviar una acción. Los reductores y los efectos pueden actuar sobre estas acciones para almacenar valores en la tienda o activar una interacción con el servidor. Los componentes aprovechan los selectores para leer valores de la tienda.
+
+Dada mi actitud positiva hacia las herramientas mínimas y la falta de una necesidad definida de NgRx más allá de las audiencias de nicho mencionadas anteriormente, no recomiendo NgRx como una opción predeterminada. RxJS/BehaviorSubjects son lo suficientemente potentes y capaces para desbloquear patrones sofisticados y escalables para ayudarlo a construir excelentes aplicaciones Angular, como se demuestra en los capítulos que conducen al Capítulo 12, Recetas - Maestro / Detalle, Tablas de datos y NgRx.
+
+Puede leer más sobre NgRx en https://ngrx.io.
+
+### React.js architecture
+
+A diferencia de Angular, React.js, en su conjunto, implementa el patrón Flux. A continuación se muestra una vista centrada en el enrutador de una aplicación de React, donde los componentes/contenedores y los proveedores se representan de una manera estricta en forma de árbol.
+
 ![01-18](images/01-18.png)
+
+En las versiones iniciales de React, había que pasar laboriosamente valores up/down arriba/abajo del árbol de herencia de cada componente para que incluso la funcionalidad más básica funcionara. Más tarde, se introdujo react-redux, por lo que cada componente puede leer/escribir valores directamente en la tienda sin tener que atravesar el árbol.
+
+Esta descripción general básica debería darle una idea de las diferencias arquitectónicas significativas entre Angular y React. Sin embargo, tenga en cuenta que, al igual que Angular, React, su comunidad, patrones y prácticas están evolucionando continuamente y mejorando con el tiempo.
+
+Puede obtener más información sobre React en https://reactjs.org.
+
+
+
+## Notable Angular features (Características notables de Angular)
+
+Las versiones específicas de Angular introducen cambios notables para avanzar en la filosofía de la plataforma y hacerla más fluida y completa. Recomiendo comprobar los cambios únicos que han introducido estos lanzamientos fundamentales.
+
+
+### Angular 6
+
+La mayoría, si no todos, del contenido, los patrones y las prácticas de este libro son compatibles con Angular 4 y versiones posteriores. Sin embargo, Angular 6 fue un lanzamiento fundamental de Angular, que trajo muchas mejoras ocultas a la plataforma y la estabilidad y cohesión generales en todo el ecosistema. La experiencia de desarrollo ha mejorado enormemente con herramientas CLI adicionales que facilitan la actualización de versiones de paquetes y tiempos de compilación más rápidos para mejorar su ciclo de comentarios de vista de compilación de código. Con Angular 6, todas las herramientas de la plataforma están sincronizadas con la versión 6.0, lo que facilita el razonamiento sobre el ecosistema. En la siguiente tabla, puede ver cómo esto hace que sea más fácil comunicar la compatibilidad de herramientas:
+
 ![01-19](images/01-19.png)
+
+Angular CLI 6.0 viene con importantes capacidades nuevas, como los comandos `ng update` y `ng add`; `ng update` hace que sea mucho más fácil actualizar su versión de Angular, npm dependencies, RxJS y Angular Material, incluidas algunas capacidades de reescritura de código determinista para aplicar cambios de nombre a API o funciones. El tema de la actualización de su versión de Angular se trata en profundidad en el *Apéndice C, Mantener Angular y Herramientas Evergreen*. Puede encontrar este apéndice en línea en https://static.packt-cdn.com/downloads/9781838648800_Appendix_C_Keeping_Angular_and_Tools_Evergreen.pdf o en https://expertlysimple.io/stay-evergreen. `ng add` brinda soporte de esquemas a la CLI de Angular. Con los esquemas, puede escribir código personalizado para agregar nuevas capacidades a una aplicación Angular, agregando cualquier dependencia, código de configuración repetitivo o andamio. Un gran ejemplo es poder agregar material angular a su proyecto ejecutando `ng add @angular/material`. El tema de agregar material angular a su proyecto se trata en profundidad en el Capítulo 5, Entrega de UX de alta calidad con material. Una herramienta de actualización de material independiente tiene como objetivo hacer que las actualizaciones de material angular sean menos dolorosas, que se encuentra en Github.com/angular/material-update-tool, pero se espera que esta funcionalidad se fusione en `ng update`. Más esquemas pueden traer sus propios comandos `generate` a la CLI, facilitando su vida y haciendo que su base de código sea más consistente con el tiempo. Además, la versión 4 del paquete web está configurada para construir su aplicación Angular en módulos más pequeños con alojamiento de alcance, acortando el tiempo de primera pintura de su aplicación.
+
+El tema principal de Angular 6 son las mejoras de rendimiento internas y la compatibilidad con elementos personalizados. La versión 6 mejora la v5 en términos del tamaño del paquete básico en un 12% a 65 KB, lo que mejora los tiempos de carga en un 21-40% desde conexiones rápidas de 3G a fibra. A medida que sus aplicaciones crecen, Angular aprovecha una mejor técnica de agitación de árboles para eliminar aún más el código no utilizado de su entrega final. La velocidad es una característica de UX en Angular 6. Esto se logra con un mejor soporte para Angular **Component Development Kit (CDK)**, Angular Material, Animations e i18n. Angular Universal permite tiempos de inicio rápidos asistidos del lado del servidor, y la compatibilidad con Angular PWA aprovecha las características de la plataforma nativa, como el almacenamiento en caché y fuera de línea, por lo que en visitas posteriores, su aplicación se mantiene rápida. La compatibilidad con RxJS 6 permite el comando de tubería ree-shakeable pipe, lo que reduce el tamaño de los paquetes con más frecuencia y corrige el comportamiento del acelerador como le advierto en el Capítulo 6, Formularios, Observables y Temas, entre numerosas correcciones de errores y mejoras de rendimiento. TypeScript 2.7 ofrece un mejor soporte para importar diferentes tipos de paquetes de JavaScript y funciones más avanzadas para detectar errores de codificación durante el tiempo de compilación.
+
+Angular Material 6 agregó nuevos controles de usuario, como el tree y badge, al tiempo que hace que la biblioteca sea mucho más estable con una gran cantidad de correcciones de errores, funcionalidad completa y temas en los componentes existentes. Angular Flex Layout 6 incorporó polyfills, lo que permite que Internet Explorer 11 admita CSS Flexbox. Esto hace que las aplicaciones de Angular que usan Material y Flex Layout sean totalmente compatibles con la última gran tecnología de navegador heredada que aún persiste en empresas y gobiernos a pesar de dejar el soporte general en enero de 2018 junto con Windows 8.1 y ser reemplazada 18 veces por Microsoft Edge. Angular 6 en sí se puede configurar para que sea compatible con IE9 utilizando polyfills. Esto es excelente para los desarrolladores que deben admitir esos navegadores heredados y aún poder utilizar tecnologías modernas para crear sus soluciones.
+
+También se lanzaron algunas herramientas auxiliares nuevas y emocionantes para permitir casos de uso de alta frecuencia, alto rendimiento o grandes empresas. El ecosistema Angular dio la bienvenida a la biblioteca NgRx, trayendo la administración de estado reactivo similar a Redux a Angular basada en RxJS. La herramienta Nx CLI, creada por ex miembros del equipo de Angular, brinda una configuración de entorno de desarrollo obstinada a Angular, adecuada para consultores y grandes organizaciones que deben garantizar un entorno coherente. Este libro sigue un patrón similar y tiene como objetivo educarlo para establecer una arquitectura y un patrón de diseño coherentes para aplicar en todas sus aplicaciones. La herramienta de compilación Bazel de Google permite compilaciones incrementales, por lo que las partes de su aplicación que no han cambiado no necesitan reconstruirse, lo que mejora enormemente los tiempos de compilación para proyectos grandes y permite que el empaquetado de bibliotecas se comparta entre aplicaciones de Angular.
+
+### Angular 8
+
+Como se menciona en el Prefacio de este libro, este libro ha sido diseñado para ser efectivo con cualquier nueva versión de Angular. Esta es una idea defendida por el equipo de Angular, que desea restar importancia a la versión específica de Angular que estás usando actualmente, en lugar de enfocarte e invertir en estar continuamente actualizado con cada lanzamiento menor y mayor de Angular. El equipo de Angular está invirtiendo una energía y un esfuerzo considerables para garantizar que la mayor parte del código que ha escrito siga siendo compatible, así como el rendimiento y las características.
+
+El conjunto de Angular mejora con el tiempo. Cualquier cambio importante está respaldado por herramientas automatizadas, lo que lo ayuda a reescribir partes de su código, o desaprobaciones planificadas, lo que le brinda tiempo suficiente para eliminar gradualmente el código no compatible.
+
+Angular 7 trajo actualizaciones de rendimiento, accesibilidad y dependencia para TypeScript, RxJS y Node, junto con una actualización significativa y la expansión de los controles de Angular Material; Angular 8 continúa estas tendencias. Angular 8 introduce carga diferencial y soporte para polyfills mínimos para navegadores de hoja perenne, ahorrando entre el 7 y el 20% de la carga útil entregada al cliente.
+
+### Angular 9
+
+Angular 9 y su posterior actualización 9.1 trae algunas de las actualizaciones más significativas al marco hasta la fecha al brindar el motor de renderizado Ivy y compatibilidad con TypeScript 3.8. Esta actualización aborda una gran cantidad de eliminación de deudas tecnológicas, trae 100 correcciones de errores y características, y expande enormemente la cobertura de prueba automatizada del marco. El motor de renderizado Ivy da como resultado tamaños de paquete más pequeños y tiempos de carga más rápidos para sus aplicaciones. Además, Angular 9.1 ofrece tiempos de compilación un 40% más rápidos, tiempos de ejecución de pruebas unitarias mejorados entre un 40% y un 50% y mejores capacidades de depuración con seguimientos de pila más simples y enlace de plantillas. TypeScript 3.8 trae nuevos beneficios sintácticos como el encadenamiento opcional y el operador nullish para que sea mucho más fácil lidiar con valores nulos o indefinidos en el modo estricto de Angular.
+
+Los beneficios completos del motor de renderizado Ivy se sentirán con futuras actualizaciones. Ivy permitirá la creación de aplicaciones angulares pequeñas y esbeltas. Antes de Ivy, los metadatos necesarios para describir un componente angular se almacenaban dentro de un módulo. Con Ivy, los componentes implementan el principio de localidad, por lo que pueden ser autodescriptivos. Esto le permite a Ivy cargar componentes individuales de forma perezosa y crear componentes independientes. Imagine una biblioteca Angular que puede representar componentes con una sola llamada de función y tener solo unos pocos kilobytes de tamaño. Esta miniaturización hace que sea factible implementar elementos angulares utilizando los elementos personalizados, parte de la especificación de componentes web.
+
+Angular Elements, introducido en la versión 6, le permite codificar un componente Angular y reutilizar ese componente en cualquier otra aplicación web utilizando cualquier tecnología web, en esencia declarando su propio elemento HTML personalizado. Estos elementos personalizados son compatibles con cualquier cadena de herramientas basada en HTML, incluidas otras bibliotecas o marcos de aplicaciones web. Para que esto funcione, todo el marco Angular debe empaquetarse junto con su nuevo elemento personalizado. Esto no era factible en Angular 6, porque eso significaba agregar al menos 65 KB cada vez que creaba un nuevo control de usuario.
+
+A principios de 2020, Chrome, Edge y Firefox admiten elementos personalizados de forma nativa, un cambio significativo con respecto al status que a principios de 2018. Angular 9 habilita el motor de renderizado Ivy de forma predeterminada, y las actualizaciones futuras de Angular deberían impulsar los tamaños de los paquetes básicos a ser tan pequeños como 2,7 KB, el uso generalizado de elementos personalizados basados en Angular pronto podría convertirse en realidad. En 2020, todos los principales navegadores admiten elementos personalizados de forma nativa, dejando a Safari como el último navegador que implementó el estándar.
+
+:high_brightness: *Siempre consulte https://caniuse.com antes de entusiasmarse demasiado con una nueva tecnología web para asegurarse de que realmente puede usar esa función en los navegadores que debe admitir.*
+
+Angular.io aprovecha los elementos personalizados para demostrar la viabilidad de la tecnología. El sitio de documentación atrae más de 1 millón de visitantes únicos por mes, por lo que debería ayudar a resolver algunos de los problemas a medida que madura. Los elementos personalizados son excelentes para alojar muestras de código interactivo junto con contenido estático. Por ejemplo, a principios de 2018, Angular.io comenzó a usar StackBlitz.io para muestras de código interactivo.
+
+:high_brightness: *StackBlitz.io es una herramienta increíble, un IDE enriquecido directamente en el navegador, por lo que puede experimentar con diferentes ideas o ejecutar repositorios de GitHub sin necesidad de extraer o ejecutar ningún código localmente.*
+
+Otras actualizaciones importantes incluyen la carga diferencial de paquetes de JavaScript para mejorar los tiempos de carga y el **time-to-interactive (TTI)** para los navegadores modernos. Angular Router agrega compatibilidad con versiones anteriores para que sea factible realizar actualizaciones parciales de proyectos heredados de AngularJS.
+
+Google exige que los más de 2000 proyectos de Angular que tienen deben estar todos en la misma versión de Angular. Esto significa que cada nueva actualización de Angular está bien probada y no hay sorpresas de compatibilidad con versiones anteriores.
+
+Con todo el trabajo preliminar establecido en la versión 9, podemos esperar un marco más ágil y capaz con Angular 10. Espero que esté tan emocionado como yo con Angular y las posibilidades futuras que abre. Abróchate el cinturón de seguridad Dorothy, porque Kansas se va adiós.
+
+## Resumen
+
+En resumen, las tecnologías web han evolucionado hasta un punto en el que es posible crear aplicaciones web nativas, ricas y rápidas que pueden funcionar bien en la gran mayoría de los navegadores de escritorio y móviles que se implementan en la actualidad. Angular ha evolucionado para convertirse en una plataforma madura y estable, aplicando lecciones aprendidas del pasado. Permite sofisticas metodologías de desarrollo que permiten a los desarrolladores crear aplicaciones rápidas, interactivas y fáciles de mantener. Tecnologías como TypeScript, RxJS y NgRx permitieron patrones de programación orientada a objetos, programación reactiva y el patrón Flux.
+
+Angular está diseñado para ser reactivo de principio a fin y, por lo tanto, debe ajustar su estilo de programación para que se ajuste a este patrón. Además, Angular está destinado a ser consumido de manera imperecedera, por lo que es una gran idea mantener siempre actualizado tu Angular.
+
+:blue_book: *Aprovechar las promesas en una aplicación Angular, en lugar de observables y la async pipe, equivale a ignorar todos los consejos y documentación que el equipo de Angular y los líderes de opinión de la comunidad han comunicado. Es fácil caer en malas prácticas y hábitos siguiendo consejos superficiales o muy fuera de contexto que puede obtener de sitios de autoayuda o publicaciones de blogs escritos con una mentalidad experimental. La documentación oficial debe ser su Biblia, que se encuentra en https://angular.io/docs.*
+
+En el próximo capítulo, configurará su entorno de desarrollo para optimizarlo para una experiencia de desarrollo angular excelente y consistente en los sistemas operativos macOS y Windows. En los siguientes capítulos, aprenderá cómo crear una aplicación Angular básica, implementarla en Internet, luego aprenderá sobre patrones arquitectónicos avanzados para crear aplicaciones escalables, aprenderá cómo crear una aplicación TypeScript de pila completa usando Minimal MEAN y aprovechar las Técnicas de DevOps e Integración Continua. El libro concluye presentándole Amazon Web Services y Google Analytics.
+
+
+## Otras lecturas
+
+* Patrones de diseño: elementos de software reutilizable orientado a objetos, Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994, Addison Wesley, ISBN 0-201-63361-2.
+* JavaScript humano, Henrik Joreteg, 2013, http://read.humanjavascript.com.
+* Novedades de TypeScript x MS Build 2017, Anders Hejlsberg, 2017, https://www.youtube.com/watch?v=0sMZJ02rs2c.
+* El programador pragmático, edición del vigésimo aniversario, David Thomas y Andrew Hunt, 2019, Addison Wesley, ISBN 978-0135957059.
+* Pensar de forma reactiva: lo más difícil, Mike Pearson, 2019, https://www.youtube.com/watch?v=-4cwkHNguXE.
+* Composición de datos con RxJS, Deborah Kurata, 2019, https://www.youtube.com/watch?v=Z76QlSpYcck.
+* Descripción general detallada del patrón de flujo, Facebook, 2019, https://facebook.github.io/flux/docs/in-depth-overview.
+
+
+## Preguntas
+
+Responda las siguientes preguntas lo mejor que pueda para asegurarse de que ha entendido los conceptos clave de este capítulo sin buscar en Google. ¿Necesitas ayuda para responder las preguntas? Consulte el Apéndice D, Respuestas de autoevaluación en línea en https://static.packt-cdn.com/downloads/9781838648800_Appendix_D_Self-Assessment_Answers.pdf o visite https://expertlysimple.io/angular-self-assessment.
+
+1. ¿Cuál es el concepto detrás de Angular Evergreen?
+2. Usando el ejemplo de doble clic para flujos reactivos, implemente los siguientes pasos usando RxJS: Escuche los eventos de clic de un destino HTML con la función `fromEvent`. Determine si se hizo doble clic en el mouse dentro de un período de tiempo de 250 ms utilizando los operadores `throttleTime`, `asyncScheduler`, `buffer` y `filter`. Si se detecta un doble clic, muestra una alerta en el navegador. Sugerencia: use https://stackblitz.com o implemente su código y use https://rxjs.dev/ para obtener ayuda.
+3. ¿Qué es NgRx y qué papel juega en una aplicación Angular?
+4. ¿Cuál es la diferencia entre un módulo, un componente y un servicio en Angular?
+
+
+
