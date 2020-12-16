@@ -513,29 +513,626 @@ $ brew upgrade awscli
 
 2. Verifique la instalación ejecutando `aws --version`
 
-ara obtener más información, consulte https://aws.amazon.com/.
+Para obtener más información, consulte https://aws.amazon.com/.
 
 ## Setup automation for Windows and macOS
-AQUIIIIIIII
+
+Al comienzo del capítulo, proclamé que cualquier cosa que pueda expresarse como un comando CLI también puede automatizarse. A lo largo del proceso de configuración, nos hemos asegurado de que todas las herramientas que se utilizan estén configuradas y su funcionalidad se pueda verificar mediante un comando CLI. Esto significa que podemos crear fácilmente un script de PowerShell o bash para encadenar estos comandos y facilitar la tarea de configurar y verificar nuevos entornos.
+
+Implementemos scripts rudimentarios pero efectivos para ayudar a configurar su entorno de desarrollo.
+
 ### PowerShell script
+
+Para entornos de desarrollo basados en Windows, debe crear un script de PowerShell.
+
+1. Cree un archivo llamado `setup-windows-dev-env.ps1`
+2. Inserte el siguiente texto, también disponible en https://github.com/duluca/web-dev-environment-setup, en el archivo:
+
+```sh
+setup-windows-dev-env.ps1
+# This script is intentionally kept simple to demonstrate basic automation techniques.
+Write-Output "You must run this script in an elevated command shell, using 'Run as Administrator'"
+$title = "Setup Web Development Environment"
+$message = "Select the appropriate option to continue (Absolutely NO WARRANTIES or GUARANTEES are provided):"
+$yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Install Software using Chocolatey", `
+"Setup development environment."
+$no = New-Object System.Management.Automation.Host.ChoiceDescription "&Exit", `
+"Do not execute script."
+$options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+$result = $host.ui.PromptForChoice($title, $message, $options, 1)
+switch ($result) {
+  0 {
+    Write-Output "Installing chocolatey"
+    Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    Write-Output "Refreshing environment variables. If rest of the script fails, restart elevated shell and rerun script."
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path", "User")
+    Write-Output "Assuming chocolatey is already installed"
+    Write-Output "Installing Git & GitHub Desktop"
+    choco.exe upgrade git github-desktop -y
+    Write-Output "Installing NodeJS and NVS"
+    choco.exe upgrade nodejs-lts nvs -y
+    Write-Output "Installing Docker"
+    choco.exe upgrade docker docker-for-windows -y
+    Write-Output "Installing AWS"
+    choco.exe upgrade awscli -y
+    Write-Output "Installing VS Code"
+    choco.exe upgrade VisualStudioCode -y
+    RefreshEnv.cmd
+    Write-Output "Results:"
+    Write-Output "Verify installation of AWS, Docker, GitHub Desktop and VS Code manually."
+    $gitVersion = git.exe --version
+    Write-Output "git: $gitVersion"
+    $nodeVersion = node.exe -v
+    Write-Output "Node: $nodeVersion"
+    $npmVersion = npm.cmd -v
+    Write-Output "npm: $npmVersion"
+  }
+  1 { "Aborted." }
+}
+```
+
+3. Para ejecutar el script, ejecute
+
+```sh
+PS> Set-ExecutionPolicy Unrestricted; .\setup-windows-dev-env.ps1
+```
+
+Alternativamente, puede instalar y ejecutar el script directamente desde la Galería de PowerShell, ubicada en https://www.powershellgallery.com, ejecutando el siguiente comando:
+
+```sh
+PS> Install-Script -Name setup-windows-dev-env 
+PS> setup-windows-dev-env.ps1
+```
+
+Al ejecutar este script, ha configurado correctamente su entorno de desarrollo en Windows.
+
+> :high_brightness: *Si está interesado en publicar sus propios scripts en la Galería de PowerShell o, en general, está interesado en mejorar sus habilidades en PowerShell, le sugiero que instale PowerShell Core, una versión multiplataforma de PowerShell. desde https://github.com/PowerShell/PowerShell.*
+
+Ahora, veamos cómo puede lograr una configuración similar en Mac.
+
 ### Bash script
-## The Angular CLI
-### Setting up your development directory
-### Generating your Angular application
-#### Installing the Angular CLI
-#### Initializing your Angular app
-#### Publishing a Git repository using GitHub Desktop
-#### Inspecting and updating package.json
-#### Committing code using VS Code
-### Running your Angular app
-### Verifying your code
-## Optimizing VS Code for Angular
-### Configuring your project automatically
+
+Para entornos de desarrollo basados en Mac, debe crear un script bash.
+
+1. Cree un archivo llamado `setup-mac-dev-env.sh`
+2. Ejecute `chmod a+x setup-mac-dev-env.sh` para hacer que el archivo sea ejecutable
+3. Inserte el siguiente texto, también disponible en https://github.com/duluca/web-dev-environment-setup, en el archivo:
+
+```sh
+setup-mac-dev-env.sh
+#!/bin/bash
+echo "Execute Installation Script"
+read -r -p "Absolutely NO WARRANTIES or GUARANTEES are provided. Are you sure you want to continue? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+    echo "Installing brew"
+    
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    
+    echo "Installing git"
+    brew install git
+    brew upgrade git
+    echo "Installing GitHub Desktop"
+    brew cask install github
+    brew cask upgrade github
+    echo "Installing NodeJS"
+    brew install node@12
+    brew upgrade node@12
+    echo "Installing Docker"
+    brew cask install docker
+    brew cask upgrade docker
+    echo "Installing AWS"
+    brew install awscli
+    brew upgrade awscli
+    echo "Installing VS Code"
+    brew cask install visual-studio-code
+    brew cask upgrade visual-studio-code
+    echo "Results:"
+    echo "Verify installation of AWS, Docker, GitHub Desktop and VS Code manually."
+    gitVersion=$(git --version)
+    echo "git: $gitVersion"
+    nodeVersion=$(node -v)
+    echo "Node: $nodeVersion"
+    npmVersion=$(npm -v)
+    echo "npm: $npmVersion"
+else
+    echo "Aborted."
+fi
+```
+
+4. Para ejecutar el script, ejecute
+
+```sh
+$ ./setup-mac-dev-env.sh
+```
+
+Al ejecutar este script, ha configurado correctamente su entorno de desarrollo en Mac. Aquí hay un ejemplo de una rutina de instalación y verificación más sofisticada, donde puede verificar si un programa en particular, como brew o node, ya está instalado, antes de intentar instalarlos:
+
+```sh
+echo "Checking if brew is installed"
+which -s brew
+if [[ $? != 0 ]] ; then
+    echo "Installing brew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null
+else
+    echo "Found brew"
+fi
+echo "Checking for Node version ${NODE_VERSION}"
+node -v | grep ${NODE_VERSION}
+if [[ $? != 0 ]] ; then
+    echo "Installing Node version ${NODE_VERSION}"
+    brew install nodejs
+else
+    echo "Found Node version ${NODE_VERSION}"
+fi
+```
+
+Ahora, tiene una idea bastante clara de cómo se ve automatizar la ejecución de sus scripts. La dura realidad es que estos scripts no representan una solución muy capaz o resistente. Los scripts no se pueden ejecutar ni administrar de forma remota, y no pueden recuperarse rápidamente de los errores ni sobrevivir a los ciclos de arranque de la máquina. Además, sus requisitos de TI pueden estar más allá de lo que se cubre aquí.
+
+Si trata con equipos grandes y tiene una rotación frecuente de personal, una herramienta de automatización paga generosamente dividendos, mientras que si está solo o forma parte de un equipo más pequeño y estable, es una exageración. Te animo a explorar herramientas como ***Puppet, Chef, Ansible y Vagrant*** para ayudarte a decidir cuál se adapta mejor a tus necesidades o si un guión simple es lo suficientemente bueno.
+
+## El Angular CLI
+
+La herramienta Angular CLI, **ng**, es un proyecto oficial de Angular para garantizar que las aplicaciones Angular recién creadas tengan una arquitectura uniforme, siguiendo las mejores prácticas perfeccionadas por la comunidad a lo largo del tiempo. Esto significa que cualquier aplicación Angular que encuentre en el futuro debe tener la misma forma general.
+
+### Configurando su Directorio de Desarrollo
+
+Configurar un directorio de desarrollo `dev` dedicado es un salvavidas. Dado que todos los datos de este directorio se respaldan mediante GitHub, puede configurar de manera segura su antivirus, sincronización en la nube o software de respaldo para ignorarlos. Esto ayuda a reducir significativamente la utilización de la CPU, el disco y la red. Como desarrollador full-stack, es probable que realice muchas tareas múltiples, por lo que evitar la actividad innecesaria tiene un impacto neto positivo en el rendimiento, la energía y el consumo de datos a diario, especialmente si su entorno de desarrollo es una computadora portátil que carece de recursos o desea aprovechar al máximo la duración de la batería cuando está en movimiento.
+
+> :blue_book: *Crear una carpeta de desarrollo `dev` en la unidad `c:\` es muy importante en Windows. Las versiones anteriores de Windows, o más bien NTFS, no pueden manejar rutas de archivo de más de 260 caracteres. Esto puede parecer adecuado al principio, pero cuando instala paquetes npm en una estructura de carpetas que ya está en la jerarquía, la estructura de carpetas de `node_modules` puede llegar a ser lo suficientemente profunda como para alcanzar este límite con mucha facilidad. Con npm 3+, se introdujo una nueva estrategia de instalación de paquetes más plana, que ayuda con los problemas relacionados con npm, pero estar lo más cerca posible de la carpeta raíz ayuda enormemente con cualquier herramienta.*
+
+Crea tu carpeta `dev` usando los siguientes comandos:
+
+Para Windows:
+
+```sh
+PS> mkdir c:\dev 
+PS> cd c:\dev
+```
+
+Para macOS:
+
+```sh
+$ mkdir ~
+$  ~
+```
+
+> :high_brightness: *En los sistemas operativos basados en Unix, `~` (tilde) es un acceso directo al directorio de inicio del usuario actual, que se encuentra en `/Users/your-user-name`.*
+
+Ahora que su directorio de desarrollo está listo, comencemos con la generación de su aplicación Angular.
+
+### Generando su Aplicación Angular
+
+Angular CLI es un proyecto oficial de Angular para garantizar que las aplicaciones Angular recién creadas tengan una arquitectura uniforme, siguiendo las mejores prácticas perfeccionadas por la comunidad a lo largo del tiempo. Esto significa que cualquier aplicación Angular que encuentre en el futuro debe tener la misma forma general. La CLI de Angular va más allá de la generación de código inicial; lo usará con frecuencia para crear nuevos components, directives, pipes, services, modules y más. La CLI de Angular también ayuda durante el desarrollo, con funciones de recarga en vivo para que pueda ver rápidamente los resultados de sus cambios. La CLI de Angular también puede probar, filtrar y crear versiones optimizadas de su código para una versión de producción. Además, a medida que se lanzan nuevas versiones de Angular, la CLI de Angular lo ayuda a actualizar su código reescribiendo automáticamente partes de él para que siga siendo compatible con posibles cambios importantes.
+
+#### INSTALACIÓN DEL CLI ANGULAR
+
+La documentación en https://angular.io/guide/quickstart lo guía sobre cómo instalar `@angular/cli` como un paquete npm global. No hagas esto. Con el tiempo, a medida que se actualiza la CLI de Angular, es un irritante constante tener que mantener sincronizadas la versión global y la del proyecto. Si no lo hace, la herramienta se queja sin cesar. Además, si está trabajando en varios proyectos, terminará con diferentes versiones de Angular CLI a lo largo del tiempo. Como resultado, es posible que sus comandos no devuelvan los resultados que espera o los resultados que obtienen los miembros de su equipo.
+
+La estrategia detallada en la siguiente sección hace que la configuración inicial de su proyecto Angular sea un poco más complicada de lo que debería ser; sin embargo, compensará con creces este dolor si tiene que volver a un proyecto unos meses o un año después. En ese caso, podría utilizar la versión de la herramienta que utilizó por última vez en el proyecto, en lugar de alguna versión futura que pueda requerir actualizaciones que no está dispuesto a realizar. En la siguiente sección, utilizará esta práctica recomendada para inicializar su aplicación Angular.
+
+#### INICIALIZANDO SU APLICACIÓN ANGULAR
+
+La forma principal de inicializar su aplicación es mediante la CLI de Angular. Inicialicemos la aplicación para el desarrollo usando `npx`, que ya está instalada en su sistema desde que instaló la última versión de Node LTS, desde PowerShell/Terminal:
+
+1. En su carpeta `dev`, ejecute `npx @angular/cli new local-weather-app`
+2. Seleccione **No**, cuando se le pregunte **Would you like to add Angular routing?**
+3. Seleccione **CSS**, cuando se le pregunte **Which stylesheet format would you like to use?**
+4. En su terminal, debería ver un mensaje de éxito similar a este
+
+```sh
+$ npx @angular/cli new local-weather-app
+...
+CREATE local-weather-app/src/environments/environment.ts (662 bytes)
+CREATE local-weather-app/src/app/app-routing.module.ts (245 bytes) CREATE local-weather-app/src/app/app.module.ts (393 bytes)
+CREATE local-weather-app/src/app/app.component.html (1152 bytes) CREATE local-weather-app/src/app/app.component.spec.ts (1086 bytes) CREATE local-weather-app/src/app/app.component.ts (207 bytes) CREATE local-weather-app/src/app/app.component.css (0 bytes)
+CREATE local-weather-app/e2e/protractor.conf.js (752 bytes) CREATE local-weather-app/e2e/tsconfig.e2e.json (213 bytes) CREATE local-weather-app/e2e/src/app.e2e-spec.ts (632 bytes) CREATE local-weather-app/e2e/src/app.po.ts (251 bytes)
+added 1076 packages from 1026 contributors and audited 42608 packages in 62.832s
+found 0 vulnerabilities Successfully initialized git.
+Project 'local-weather-app' successfully created.
+```
+
+La carpeta de tu proyecto, `local-weather-app`, se ha inicializado como un repositorio de Git y se ha modificado con la estructura inicial de archivos y carpetas, que debería verse así:
+
+![02-08](images/02-08.png)
+
+El alias de `@angular/cli` es `ng`. Si instalara Angular CLI globalmente, ejecutaría `ng new local-weather-app`, pero no hicimos esto. Por lo tanto, es esencial recordar que, en el futuro, ejecuta el comando `ng`, pero esta vez en el directorio `local-weather-app`. La última versión de Angular CLI se ha instalado en el directorio `node_modules/.bin` para que pueda ejecutar comandos `ng` como `npx ng generate component my-new-component` y continuar trabajando de manera eficiente.
+
+> :high_brightness: *Si está en macOS, puede mejorar aún más su experiencia de desarrollo implementando shell auto-fallback, lo que elimina la necesidad de tener que usar el comando `npx`. Si se encuentra un comando desconocido, `npx` se hace cargo de la solicitud. Si el paquete ya existe localmente en `node_modules/.bin`, npx pasa su solicitud al binario correcto. Por lo tanto, puede ejecutar comandos como `ng g c my-new-component` como si estuvieran instalados globalmente. Consulte el archivo Léame de npx sobre cómo configurar esto, en npmjs.com/package/npx#shell-auto-fallback.*
+
+#### PUBLICAR UN REPOSITORIO GIT CON GITHUB DESKTOP
+
+GitHub Desktop te permite crear un nuevo repositorio directamente dentro de la aplicación:
+
+1. Abrir GitHub para escritorio
+2. **File | Add local repository...**
+3. Busque la carpeta `local-weather-app` haciendo clic en **Choose...**
+4. Haga clic en **Add repository**
+5. Tenga en cuenta que Angular CLI ya creó la primera confirmación (commit) para usted en la pestaña Historial **History tab**
+6. Finalmente, haga clic en **Publish repository**, marcado en la siguiente captura de pantalla como **6**:
+
+![02-04](images/02-04.png)
+
+#### INSPECCIÓN Y ACTUALIZACIÓN DEL PAQUETE.JSON
+
+**`Package.json` es el archivo de configuración más importante que debe conocer en todo momento**. Los scripts, el tiempo de ejecución y las dependencias de desarrollo de su proyecto se almacenan en este archivo.
+
+1. Abra `package.json` y busque el nombre y las propiedades de la versión.
+
+```sh
+package.json
+{
+  "name": "local-weather-app", 
+  "version": "0.0.0",
+  "license": "MIT",
+...
+```
+
+2. Cambie el nombre de su aplicación a lo que desee; Usé `localcast-weather`
+3. Establezca su número de versión en `1.0.0`
+
+> :blue_book: *`npm` utiliza el control de versiones semántico (semver), donde los dígitos del número de versión representan incrementos Major.Minor.Patch. Semver inicia los números de versión en `1.0.0` para cualquier API publicada, aunque no evita el control de versiones `0.x.x`. Como autor de una aplicación web, el control de versiones de su aplicación no tiene un impacto real en usted, fuera de las herramientas internas, el equipo o los propósitos de comunicación de la empresa. Sin embargo, el control de versiones de sus dependencias es fundamental para la confiabilidad de su aplicación. En resumen, las versiones de parches deberían ser solo correcciones de errores. Las versiones secundarias agregan funcionalidad sin romper las características existentes, y los incrementos de versiones principales son gratuitos para realizar cambios de API incompatibles. Sin embargo, cualquier actualización es peligrosa para el comportamiento probado de su aplicación. Por lo tanto, el archivo `package-lock.json` almacena todo el árbol de dependencias de su aplicación, por lo que el estado exacto de su aplicación puede ser replicado por otros desarrolladores o servidores de CI. Para obtener más información, visite: https://semver.org/.*
+
+En el siguiente bloque de código, observe que la propiedad de `scripts` contiene una colección de útiles scripts de inicio que puede ampliar. Los comandos `start` y `test` son valores predeterminados de npm, por lo que solo pueden ejecutarse mediante `npm start` o `npm test`. Sin embargo, los otros comandos son comandos personalizados que deben ir precedidos de la palabra clave `run`. Por ejemplo, para construir su aplicación, debe usar `npm run build`:
+
+```sh
+package.json
+...
+"scripts": { 
+  "ng": "ng",
+  "start": "ng serve",
+  "build": "ng build",
+  "test": "ng test",
+  "lint": "ng lint",
+  "e2e": "ng e2e"
+},
+...
+```
+
+Antes de la introducción de npx, si deseaba utilizar la CLI de Angular sin una instalación global, tendría que ejecutarla con `npm run ng -- g c my-new-component`. Los guiones dobles son necesarios para que npm sepa dónde termina el nombre de la herramienta de línea de comandos y dónde comienzan las opciones. Por ejemplo, para iniciar su aplicación Angular en un puerto que no sea el `4200` predeterminado, debe ejecutar `npm start -- --port 5000`.
+
+4. Actualice su archivo `package.json` para ejecutar su versión de desarrollo de la aplicación desde un puerto poco utilizado como `5000` como el nuevo comportamiento predeterminado:
+
+```sh
+package.json
+...
+  "start": "ng serve --port 5000",
+...
+```
+
+En la propiedad de dependencias, puede observar sus dependencias en tiempo de ejecución. Estas son bibliotecas que se empaquetan junto con su código y se envían al navegador del cliente. Es esencial mantener esta lista al mínimo:
+
+```sh
+package.json
+...
+  "dependencies": { 
+    "@angular/animations": "~9.0.0",
+    "@angular/common": "~9.0.0",
+    "@angular/compiler": "~9.0.0",
+    "@angular/core": "~9.0.0",
+    "@angular/forms": "~9.0.0",
+    "@angular/platform-browser": "~9.0.0",
+    "@angular/platform-browser-dynamic": "~9.0.0",
+    "@angular/router": "~9.0.0",
+    "rxjs": "~6.5.3",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  },
+...
+```
+
+> :blue_book: *En el ejemplo anterior, todos los componentes de Angular están en la misma versión. A medida que instale componentes Angular adicionales o actualice los individuales, es aconsejable mantener todos los paquetes Angular en la misma versión. Esto es especialmente fácil de hacer ya que npm ya no requiere la opción `--save` para actualizar permanentemente la versión del paquete. Por ejemplo, basta con ejecutar `npm install @angular/router` para actualizar la versión en `package.json`. Este es un cambio positivo en general, ya que lo que ve en `package.json` coincide con lo que realmente está instalado. Sin embargo, debe tener cuidado, porque npm también actualiza automáticamente `package-lock.json`, que propaga sus cambios, potencialmente no deseados, a los miembros de su equipo.*
+
+Sus dependencias de desarrollo se almacenan en la propiedad `devDependencies`. Al instalar nuevas herramientas para su proyecto, debe tener cuidado de agregar el comando con `--save-dev` para que su dependencia esté categorizada correctamente. Las dependencias de desarrollo solo se utilizan durante el desarrollo y no se envían al navegador del cliente. Debe familiarizarse con cada uno de estos paquetes y su propósito específico. Si no está familiarizado con un paquete que se muestra a medida que avanzamos, su mejor recurso para obtener más información sobre ellos es https://www.npmjs.com/:
+
+```sh
+package.json
+...
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.900.0",
+    "@angular/cli": "~9.0.0",
+    "@angular/compiler-cli": "~9.0.0",
+    "@angular/language-service": "~9.0.0",
+    "@types/node": "^12.11.1",
+    "@types/jasmine": "~3.4.0",
+    "@types/jasminewd2": "~2.0.3",
+    "codelyzer": "^5.1.2",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~4.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.0",
+    "karma-jasmine": "~2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.2",
+    "protractor": "~5.4.2",
+    "ts-node": "~8.3.0",
+    "tslint": "~5.18.0",
+    "typescript": "~3.6.4"
+  }
+...
+```
+
+Los caracteres delante de los números de versión tienen significados específicos en semver:
+
+* La tilde, `~`, habilita rangos de tilde cuando se definen los tres dígitos del número de versión, lo que permite que las actualizaciones de la versión del parche se apliquen automáticamente.
+* El carácter up-caret, `^`, habilita rangos de intercalación, lo que permite que las actualizaciones de versiones menores se apliquen automáticamente.
+* La falta de cualquier carácter indica a npm que instale esa versión exacta de la biblioteca en su máquina.
+
+Puede notar que no se permite que las actualizaciones de versiones principales se realicen automáticamente. En general, la actualización de paquetes puede ser peligrosa. Para asegurarse de que ningún paquete se actualice sin su conocimiento explícito, puede instalar paquetes de la versión exacta utilizando la opción `--save-exact` de npm. Experimentemos con este comportamiento instalando un paquete npm que publiqué llamado `dev-norms`, una herramienta CLI que genera un archivo de rebajas con normas predeterminadas sensibles para que su equipo tenga una conversación, como se muestra aquí:
+
+1. En el directorio `local-weather-app`, ejecute `npm install dev-norms --save-dev --save-exact`. Tenga en cuenta que "`dev-norms`": "`1.7.0`" o similar se ha agregado a `package.json` con `package-lock.json` actualizado automáticamente para reflejar los cambios en consecuencia.
+2. Una vez instalada la herramienta, ejecute `npx dev-norms create`. Se ha creado un archivo llamado `dev-norms.md` que contiene las normas para desarrolladores mencionadas anteriormente.
+3. Guarde sus cambios en `package.json`.
+
+Trabajar con paquetes obsoletos conlleva sus riesgos. Con npm 6, se ha introducido el comando `npm audit` para informarle de las vulnerabilidades descubiertas en los paquetes que está utilizando. Durante `npm install`, si recibe algún aviso de vulnerabilidad, puede ejecutar `npm audit` para conocer detalles sobre cualquier riesgo potencial.
+
+En la siguiente sección, confirmará los cambios que ha realizado en Git.
+
+#### COMMITTING EL CÓDIGO USANDO EL VSC
+
+Para confirmar sus cambios en Git y luego sincronizar sus confirmaciones en GitHub, puede usar VS Code:
+
+1. Cambie al panel **Source Control**, marcado como **1** aquí:
+
+![02-05](images/02-05.png)
+
+2. Ingrese un mensaje de confirmación (commit message) en el cuadro marcado como **2**
+3. Haga clic en el icono de marca de verificación(check-mark), marcado como **3**, para confirmar sus cambios
+4. Finalmente, sincronice sus cambios con su repositorio de GitHub haciendo clic en el ícono de actualización (refresh icon), marcado como **4**
+
+Si tiene habilitada la autenticación de dos factores, como debería, GitHub puede solicitar sus credenciales. En este caso, debe crear un token de acceso personal. Siga las instrucciones a continuación para hacer esto:
+
+1. Vaya a la página https://github.com/settings/tokens
+2. Genere un nuevo token y cópielo
+3. Intente volver a sincronizar su cambio dentro de VS Code
+4. Ignore la ventana de autenticación de GitHub, que le presenta la barra de entrada de credenciales de VS Code
+5. Ingrese su nombre de usuario (username) de GitHub, no su correo electrónico
+6. Pega el token como password
+7. La sincronización debería tener éxito y las sincronizaciones posteriores no deberían solicitar una contraseña
+
+> :high_brightness: *Consulte la sección Git y Github Desktop anteriormente en este capítulo para obtener una discusión más amplia de los diversos métodos que puede usar para conectar su cliente Git a GitHub.*
+
+En el futuro, puede realizar la mayoría de las operaciones de Git desde VS Code.
+
+### Ejecutando su aplicación Angular
+
+Ejecute su aplicación Angular para comprobar si funciona. Durante el desarrollo, puede ejecutar `npm start` mediante el comando `ng serve`; esta acción transpila, empaqueta y entrega el código en localhost con la recarga en vivo (live-reloading) habilitada:
+
+1. Ejecutar `npm start`
+2. Navegue a `http://localhost:5000`
+3. Debería ver una página renderizada similar a esta:
+
+![02-06](images/02-06.png)
+
+4. Detenga su aplicación presionando `Ctrl + C` en el terminal integrado
+
+¡Felicidades! Está listo para comenzar a desarrollar su aplicación web. Si tuvo algún problema durante la configuración, consulte la siguiente sección sobre cómo puede verificar su código con el proyecto de muestra en GitHub.
+
+### Verificando su Código
+
+Las versiones más actualizadas del código de muestra para el libro están en GitHub en el repositorio vinculado a continuación. El repositorio contiene el estado final y completo del código. Puede verificar su progreso al final de un capítulo buscando la instantánea del código al final del capítulo en la carpeta `projects`.
+
+Para el Capítulo 2:
+
+1. Clona el repositorio https://github.com/duluca/local-weather-app
+2. Ejecute `npm install` en la carpeta raíz para instalar dependencias
+3. El ejemplo de código de este capítulo se encuentra en la subcarpeta:
+
+```sh
+projects/ch2
+```
+
+4. Para ejecutar la aplicación Angular para este capítulo, ejecute:
+
+```sh
+npx ng serve ch2
+```
+
+5. Para ejecutar pruebas de unidades Angular(Angular Unit Tests) para este capítulo, ejecute:
+
+```sh
+npx ng test ch2 --watch=false
+```
+
+> :blue_book: *Tenga en cuenta que es posible que el código fuente en el libro o en GitHub no siempre coincida con el código generado por Angular CLI. También puede haber pequeñas diferencias en la implementación entre el código del libro y lo que hay en GitHub porque el ecosistema está en constante evolución. Es natural que el código de muestra cambie con el tiempo. También en GitHub, espere encontrar correcciones, correcciones para admitir versiones más nuevas de bibliotecas o implementaciones en paralelo de múltiples técnicas para que el lector las observe. Solo se espera que el lector implemente la solución ideal recomendada en el libro. Si encuentra errores o tiene preguntas, cree un problema o envíe una solicitud de extracción en GitHub para beneficio de todos los lectores.*
+
+En la siguiente sección, cubriré cómo puede optimizar VS Code para Angular para obtener la mejor experiencia de desarrollo posible.
+
+## Optimización del VS Code para Angular
+
+Es fundamental optimizar tu IDE para tener una gran experiencia de desarrollo. Si aprovecha las herramientas automatizadas que presento en esta sección, puede configurar rápidamente su IDE y su proyecto Angular con docenas de configuraciones que funcionan bien juntas.
+
+### Configurando su Proyecto Automáticamente
+
+Para aplicar rápidamente los pasos de configuración que se tratan en los próximos capítulos, ejecute los siguientes comandos:
+
+1. Instale Angular VS Code task:
+
+```sh
+npm i -g mrm-task-angular-vscode
+```
+
+2. Aplicar la configuración de Angular VS Code:
+
+```sh
+npx mrm angular-vscode
+```
+
+3. Instale los scripts npm para la tarea de Docker:
+
+```sh
+npm i -g mrm-task-npm-docker
+```
+
+4. Aplicar los scripts npm para la configuración de Docker:
+
+```sh
+npx mrm npm-docker
+```
+
+> :high_brightness: *Estas configuraciones se modifican continuamente para adaptarse al panorama en constante evolución de extensiones, complementos, Angular y VS Code. Asegúrese siempre de instalar una versión nueva de la tarea volviendo a ejecutar el comando de instalación para obtener la última versión.*
+
+5. Ejecutar `npm run style:fix`
+6. Ejecute `npm run lint:fix`
+
+Para obtener más información sobre las tareas de mrm, consulte:
+
+* https://github.com/expertly-simple/mrm-task-angular-vscode
+* https://github.com/expertly-simple/mrm-task-npm-docker
+* https://github.com/expertly-simple/mrm-task-npm-aws
+
+> :blue_book: *Tenga en cuenta que `mrm-task-npm-aws` configura scripts npm para AWS ECS, que se utiliza en el Capítulo 13, Infraestructura en la nube de alta disponibilidad en AWS.*
+
+> :high_brightness: *Puede verificar su configuración con los proyectos de muestra en GitHub. Sin embargo, tenga en cuenta que las piezas de configuración se aplicarán en la raíz del repositorio y no en la carpeta `projects`.*
+
+Las siguientes tres secciones cubren las configuraciones que se aplicaron automáticamente anteriormente. Si tiene alguna pregunta, no dude en seguir adelante y volver a consultar.
+
+
 #### VS Code auto save
-#### IDE settings
-#### IDE extensions
+
+Guardar archivos todo el tiempo puede resultar tedioso. Puede habilitar el guardado automático haciendo lo siguiente:
+
+1. Abra VS Code
+2. Cambie la configuración en **File | Auto Save**
+
+Puede personalizar aún más muchos aspectos del comportamiento de VS Code iniciando **Preferences**. El atajo de teclado para iniciar **Preferences** es [`Ctrl +`,] en Windows y [`Gato + ,`] en macOS.
+
+#### IDE SETTINGS
+
+Puede compartir dicha configuración con sus compañeros de trabajo creando una carpeta `.vscode` en la raíz del directorio de su proyecto y colocando un archivo `settings.json` en ella. Si envía este archivo al repositorio, todos compartirán la misma experiencia IDE. Desafortunadamente, las personas no pueden anular estas configuraciones con sus preferencias locales, así que asegúrese de que las configuraciones compartidas sean mínimas y se acuerden como una norma del equipo.
+
+Estas son las personalizaciones que utilizo para una experiencia de desarrollo angular óptima y consciente de la duración de la batería:
+
+```sh
+.vscode/settings.json
+{
+  "debug.openExplorerOnEnd": true,
+  "editor.tabSize": 2,
+  "editor.rulers": [90],
+  "editor.autoIndent": "full",
+  "editor.cursorBlinking": "solid",
+  "editor.formatOnType": false,       // Adjust the intensity of
+  "editor.formatOnPaste": false,         auto-formatting to taste
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": false,
+    "source.fixAll.tslint": true,
+  },
+  "explorer.openEditors.visible": 0,
+  "files.trimTrailingWhitespace": true,
+  "files.autoSave": "onFocusChange",
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "npm.enableScriptExplorer": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "workbench.iconTheme": "material-icon-theme",     // Requires 
+                                                  Material Icon 
+                                                Theme Extension 
+  "auto-close-tag.SublimeText3Mode": true,          // Requires Auto 
+                                              Close Tag Extension 
+  "html.autoClosingTags": false, 
+  "peacock.affectActivityBar": true,               // Requires Peacock 
+  "peacock.affectStatusBar": true,                           Extension
+  "peacock.affectTitleBar": false,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#d04649",
+    "activityBar.activeBorder": "#37cb34",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#37cb34",
+    "activityBarBadge.foreground": "#15202b",
+    "statusBar.background": "#b52e31",
+    "statusBarItem.hoverBackground": "#d04649",
+    "statusBar.foreground": "#e7e7e7"
+  },
+  "peacock.color": "#b52e31",
+  "gitlens.menus": {                              // Requires GitLens 
+    "editorGroup": false                               Extension 
+  }, 
+  "ng-evergreen.upgradeChannel": "Latest"            // Requires Angular 
+                                                  Evergreen Extension 
+}
+```
+
+En secciones posteriores, a medida que agreguemos herramientas que refuercen nuestro estilo de codificación, tenga cuidado de no introducir nuevas configuraciones que se superpongan o se contradigan.
+
+#### IDE EXTENSIONS
+
+Para una experiencia de desarrollo mágica con VS Code y Angular, debe instalar el paquete de extensión ***Angular Essentials*** creado y curado por John Papa. John Papa es uno de los principales campeones y líderes de opinión de la comunidad Angular. Él busca de manera continua e incansable la mejor experiencia de desarrollo posible que pueda obtener para que sea más productivo y feliz como desarrollador. Para obtener más información sobre Angular Essentials, consulte esta publicación de blog en https://johnpapa.net/rec-ng-extensions y el repositorio de GitHub en https://github.com/johnpapa/vscode-angular-essentials.
+
+> :high_brightness: *Te recomiendo que sigas a John Papa en Twitter en `@john_papa`.*
+
+De manera similar a la configuración, también puede compartir extensiones recomendadas a través de un archivo JSON. Estas son las extensiones que utilizo para el desarrollo Angular:
+
+```sh
+.vscode/extensions.json
+{
+  "recommendations":[
+    "johnpapa.angular-essentials",
+    "PKief.material-icon-theme",
+    "formulahendry.auto-close-tag",
+    "ms-azuretools.vscode-docker",
+    "eamodio.gitlens",
+    "WallabyJs.quokka-vscode",
+    "amatiasq.sort-imports",
+    "DSKWRK.vscode-generate-getter-setter",
+    "esbenp.prettier-vscode",
+    "HookyQR.beautify",
+    "expertly-simple.ng-evergreen",
+    "msjsdiag.debugger-for-edge"
+  ]
+}
+```
+
+VS Code también recomienda algunas extensiones para que las instale. Yo advertiría contra la instalación de demasiadas extensiones, ya que estas comienzan a ralentizar notablemente el rendimiento de lanzamiento y el funcionamiento óptimo de VS Code.
+
+> :high_brightness: *El ecosistema de VS Code es un ecosistema rico, dinámico y en constante evolución. Como tal, ciertas extensiones o configuraciones pueden desaparecer, dejar de funcionar o tener errores. Si tiene algún problema o simplemente tiene curiosidad, puede encontrar las últimas versiones de mis archivos de configuración de VS Code preferidos en GitHub en http://bit.ly/ngCodeSettings.*
+
 ### Scripting code styling and linting
-#### Configuring tooling
+
+Puede personalizar la aplicación de estilo de código y el comportamiento de generación de código en VS Code y Angular CLI. El objetivo más importante de automatizar la aplicación del estilo de código y las reglas de borrado es establecer un terreno común entre los desarrolladores. Si el equipo no puede ponerse de acuerdo sobre qué estilo seguir, es mejor lanzar una moneda que no llegar a un acuerdo. Los equipos de desarrollo deben centrarse en la calidad del código y dejar que las herramientas automatizadas se preocupen por la sangría de su código, la ubicación de los corchetes y los espacios entre paréntesis. En equipos grandes, cualquier desviación en el estilo puede causar importantes dolores de cabeza con conflictos de fusión. Se recomienda encarecidamente que implemente mecanismos para hacer cumplir los estándares.
+
+Prefiero la configuración de **StandardJS para JavaScript**, que codifica un enfoque mínimo para escribir código mientras mantiene una alta legibilidad. Esto significa dos espacios para tabulaciones y ningún punto y coma. Además de las pulsaciones de teclas reducidas, StandardJS también ocupa menos espacio horizontal, lo que es especialmente valioso cuando su IDE solo puede utilizar la mitad de la pantalla, mientras que el navegador ocupa la otra mitad. Puede leer más sobre StandardJS en: https://standardjs.com/.
+
+Con la configuración predeterminada, su código se ve así:
+
+```sh
+import { AppComponent } from "./app.component";
+```
+
+Con la configuración de StandardJS, su código se ve así:
+
+```sh
+import { AppComponent } from './app.component'
+```
+
+Si no te gusta este estilo, está bien. Si bien compartiré mis configuraciones preferidas a continuación, siéntase libre de modificarlas a su gusto. El mecanismo que implementamos para hacer cumplir las reglas sigue siendo el mismo independientemente.
+
+Para aplicar y hacer cumplir las reglas de estilo de código, utilizamos algunas herramientas que proporcionan una herramienta CLI y una extensión de VS Code:
+
+* Prettier: se utiliza para formatear archivos `.ts`
+* ImportSort/SortImports: se utiliza para organizar TypeScript import statements
+* Beautify: se utiliza para formatear archivos `.html`,
+* `TSLint`: se utiliza como una herramienta de análisis de código estático para comprobar la legibilidad, el mantenimiento y los errores de funcionalidad del código.
+
+Nuestro objetivo es terminar con cuatro guiones:
+
+1. `style`: para verificar si nuestro código se adhiere a las reglas de estilo
+2. `style: fix` - para formatear automáticamente los archivos de código según las reglas de estilo
+3. `lint`: para comprobar si nuestro código tiene algún error linting
+4. `lint:fix`: para corregir automáticamente errores auto-fixable linting errors
+
+Nuestro servidor de CI utilizará los comandos style y lint para garantizar que todos los miembros del equipo se adhieran a los mismos estándares de codificación. Los comandos `style:fix` y `lint:fix` ayudarían a los desarrolladores a adherirse a los estándares de codificación con el menor esfuerzo posible.
+
+> :high_brightness: *Estas herramientas se actualizan constantemente. El comportamiento de estas herramientas puede cambiar con el tiempo, así que esté atento y no dude en experimentar con la adición/eliminación de herramientas a esta mezcla para lograr la configuración que más le convenga.*
+
+Antes de configurar nuestras dependencias y archivos de configuración, asegúrese de que estén instaladas todas las extensiones recomendadas en la sección de extensiones IDE.
+
+
+#### CONFIGURING TOOLING
+
+
 #### Implementing a style checker and fixer
 #### Implementing a lint checker and fixer
 ### Configuring Angular CLI autocomplete
@@ -544,7 +1141,15 @@ AQUIIIIIIII
 ## Further reading
 ## Questions
 
-![02-04](images/02-04.png)
-![02-05](images/02-05.png)
-![02-06](images/02-06.png)
+
+
+```sh
+```
+
+```sh
+```
+
+
+
+
 ![02-07](images/02-07.png)
