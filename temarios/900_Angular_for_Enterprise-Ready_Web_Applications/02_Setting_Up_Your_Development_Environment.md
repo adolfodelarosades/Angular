@@ -408,9 +408,9 @@ Ejecute `docker -v` para verificar la instalación
 
 ### Cloud services
 
-A lo largo del libro, usaremos varios proveedores de nube para realizar implementaciones de las aplicaciones que va a crear. Cada servicio se envía con una herramienta CLI que facilita la implementación de su aplicación desde su Terminal o un **entorno de integración continua (CI) - continuous integration (CI) ** en la nube.
+A lo largo del libro, usaremos varios proveedores de nube para realizar implementaciones de las aplicaciones que va a crear. Cada servicio se envía con una herramienta CLI que facilita la implementación de su aplicación desde su Terminal o un **entorno de integración continua (CI) - continuous integration (CI)** en la nube.
 
-#### VERCEL AHORA
+#### VERCEL NOW
 
 ***Vercel Now*** es una plataforma en la nube para sitios estáticos y funciones sin servidor. Con un simple comando CLI, puede alojar sitios web e implementar servicios web al instante. Este libro aprovecha una cuenta Vercel Now de nivel gratuito.
 
