@@ -131,6 +131,12 @@ $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst
 $ brew tap caskroom/cask
 ```
 
+En mi ordenador me indica que pulse el comando:
+
+```sh
+$ brew tap homebrew/cask
+```
+
 En macOS, si tiene problemas de permisos al instalar paquetes brew, relacionados con chown'ing `/usr/local`, debe ejecutar el comando `sudo chown -R $(whoami) $(brew --prefix)/*`. Este comando restablece la propiedad a nivel de usuario para preparar paquetes, que es más seguro que el acceso amplio a nivel de superusuario.
 
 > :blue_book: *Para obtener más información, consulte https://brew.sh/.*
