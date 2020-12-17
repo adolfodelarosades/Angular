@@ -1132,6 +1132,60 @@ Antes de configurar nuestras dependencias y archivos de configuración, asegúre
 
 #### CONFIGURING TOOLING
 
+Puede comenzar a realizar los cambios de configuración siguiendo estos pasos:
+
+1. Asegúrese de que las extensiones **Prettier – Code formatter, TSLint, sort-imports, Beautify** estén instaladas (ya incluidas en `extensions.json` de la sección anterior)
+2. Instale las herramientas CLI ejecutando el siguiente comando:
+
+```sh
+npm i -D prettier tslint-config-prettier tslint-plugin-prettier
+npm i -D js-beautify
+npm i -D import-sort import-sort-cli import-sort-parser-typescript import-sort-style-module
+npm i -D tslint tslint-etc
+```
+
+> :high_brightness: *Con `npm`, puede usar `i` como un alias para `install` y `-D` en lugar de la opción más detallada `--save- dev`. Sin embargo, si escribe mal `-D` como `-d`, termina guardando el paquete como una dependencia de producción.*
+
+3. Edite `package.json` agregando un atributo `importSort` al final del archivo
+
+```sh
+package.json
+...
+  "importSort": {
+    ".ts, .tsx": {
+      "parser": "typescript",
+      "style": "module",
+      "options": {}
+    }
+  }
+...
+```
+
+4. Actualice las reglas `tslint.json` para la integración con Prettier y `tslint-etc`:
+
+```sh
+tslint.json
+{
+  : [
+    ,
+    ,
+    ,
+    
+  ],
+  : {
+    : ,
+    : ,
+
+: [, , ],
+
+: [ , ],
+
+: [ ,90],
+
+}
+```
+
+5. Agregue un nuevo archivo a la raíz de su proyecto, llamado .jsbeautifyrc
 
 #### Implementing a style checker and fixer
 #### Implementing a lint checker and fixer
