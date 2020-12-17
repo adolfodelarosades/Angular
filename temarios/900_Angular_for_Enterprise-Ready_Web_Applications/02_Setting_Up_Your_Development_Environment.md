@@ -1187,23 +1187,160 @@ tslint.json
 
 5. Agregue un nuevo archivo a la raíz de su proyecto, llamado .jsbeautifyrc
 
-#### Implementing a style checker and fixer
-#### Implementing a lint checker and fixer
-### Configuring Angular CLI autocomplete
+```sh
+.jsbeautifyrc
+{
+  "indent_size": 2,
+  "wrap_line_length": 90,
+  "language": {
+    "html": [
+      "html"
+    ]
+  }
+}
+```
+
+6. Agregue un nuevo archivo a la raíz de su proyecto, llamado `.prettierrc`:
+
+```sh
+. prettierrc
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "printWidth": 90,
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "jsxBracketSameLine": true
+}
+```
+
+7. Agregue un nuevo archivo a la raíz de su proyecto, llamado `.prettierignore`. Tenga en cuenta que este archivo no tiene corchetes:
+
+```sh
+. prettierignore
+**/*.html
+```
+
+Ahora hemos terminado de configurar todas las herramientas necesarias para implementar nuestros scripts de estilo y lint.
+
+#### IMPLEMENTANDO UN VERIFICADOR Y FIJADOR DE ESTILO
+
+Implementemos scripts npm para estilo y comandos `style:fix`. Los scripts de Npm son una excelente manera de documentar los scripts de CLI que su equipo necesita ejecutar en diferentes plataformas e incluso en un servidor de CI.
+
+Ahora, agreguemos nuestro primer script:
+
+1. Edite el atributo de scripts `package.json` para agregar comandos `style` y `style:fix`:
+
+```sh
+package.json
+...
+  "scripts": {
+    "style:fix": "import-sort --write \"**/{src,tests,e2e}/*.ts\" && prettier --write \"**/{src,tests,e2e}/*.{*css,ts}\" && js-beautify \"src/**/*.html\"",
+    "style": "import-sort -l \"**/{src,tests,e2e}/*.ts\" && prettier --check \"**/{src,tests,e2e}/*.{*css,ts}\"",  ...
+  }
+...
+```
+
+2. Ejecute `npm run style` para ver los archivos que no cumplen con las reglas de estilo
+3. Ejecute `npm run style:fix` para actualizar todos sus archivos al nuevo estilo
+4. Observe todos los cambios de archivo en GitHub Desktop
+5. Confirma tus cambios
+
+> :high_brightness: *Cuando utiliza plantillas en línea en Angular, **Prettier** da formato a la parte en línea de HTML en lugar de **Beautify**. En la mayoría de estos casos, su código se verá bien, pero si sus elementos HTML tienen demasiados atributos, su código se formateará de una manera muy detallada. Para evitar que esto suceda, puede seleccionar el código HTML relevante y ejecutar el comando **Beautify selection** dentro de VS Code. Si agrega `// prettier-ignore` encima de la propiedad de la plantilla, Prettier dejará de estropear su HTML embellecido.
+
+Ahora, configuremos nuestros scripts de linting.
+
+#### IMPLEMENTACIÓN DE UN LINT CHECKER Y FIXER
+
+Ya existe un comando `lint` en `package.json`. Sobrescribimos el comando `lint` existente con el nuestro e implementamos un comando adicional `lint:fix`.
+
+Agregue los nuevos scripts:
+
+1. Edite en el scripts `package.json` el atributo, reemplazar `lint` y agregar el comandos `lint:fix`:  
+```sh
+package.json
+
+  : {
+  
+    : ,
+    : ,  
+  }
+```
+
+> :high_brightness: *Tenga en cuenta que, a diferencia de los scripts de estilo, excluimos `test.ts` y `polyfills.ts` para que no sean linkeados. Estos archivos se envían con errores linting; es poco probable que se editen con frecuencia y, dado que no influyen en la calidad de nuestro código, podemos ignorarlos con seguridad.*
+
+2. Ejecute `npm run lint` para ver los archivos que tienen errores de linting.
+3. Ejecute `npm run lint:fix` para corregir cualquier error auto-reparable(auto-fixable).
+4. Si hay más errores, presione `Ctrl/cmd + clic` en los archivos y corrija manualmente los errores
+5. Observe todos los cambios de archivo en GitHub Desktop
+6. Confirma(Commit) tus cambios
+7. ¡No olvide enviar sus cambios a su repositorio!
+
+A veces, a medida que ingresa un nuevo código o genera nuevos componentes usando la CLI de Angular, puede encontrar comillas dobles o punto y coma subrayados con una línea roja ondulada para indicar un problema. Hemos configurado VS Code para formatear automáticamente los archivos al guardar, lo que ocurre automáticamente cuando la ventana pierde el foco. Cuando se activa el formateo automático, el archivo se actualiza y los errores relacionados con el formato desaparecen.
+
+> :high_brightness: *Cuando cubramos CI en el Capítulo 4, Pruebas automatizadas, CI y Versión para producción, vamos a ejecutar nuestro comprobador de estilo y lint como parte de nuestra pipeline.*
+
+A continuación, configure la herramienta ng para obtener la funcionalidad de autocompletar en la terminal.
+
+### Configuración del Autocompletado de CLI angular
+
+Puede obtener una experiencia de autocompletar en su terminal cuando usa la CLI de Angular. Ejecute el comando apropiado para su entorno `*nix`:
+
+Para el bash shell:
+
+```sh
+$ ng completion --bash >> ~/.bashrc
+$ source ~/.bashrc
+```
+
+Para el zsh shell:
+
+```sh
+$ ng completion  >> ~
+$ source ~
+```
+
+Para usuarios de Windows que utilizan el shell de bash de Git:
+
+```sh
+$ ng completion --bash >> ~/.bash_profile
+$ source ~/.bash_profile
+```
+
+A continuación, aprendamos sobre VS Code Auto Fixer.
+
 ### VS Code Auto Fixer
-## Summary
-## Further reading
-## Questions
 
-
-
-```sh
-```
-
-```sh
-```
-
-
-
+A veces, aparece un icono de bombilla amarilla junto a una línea de código. Esto puede suceder porque ha escrito un código que viola una regla definida en `tslint.json`. Si hace clic en la bombilla, verá una acción etiquetada como **Fix**. Puede aprovechar estos arreglos automáticos para permitir que VS Code corrija su código automáticamente. La captura de pantalla que sigue muestra un ejemplo de un problema de punto y coma innecesario:
 
 ![02-07](images/02-07.png)
+
+Enhorabuena, ha terminado de configurar su entorno de desarrollo.
+
+## Resumen
+
+En este capítulo, dominó el uso de administradores de paquetes basados en CLI para Windows y macOS para acelerar y automatizar la configuración de entornos de desarrollo para usted y sus colegas. También creó su primer proyecto Angular y optimizó su configuración para el desarrollo usando Visual Studio Code. Luego implementó correctores y correctores de estilo automatizados (automated style checkers and fixers ) para hacer cumplir los estándares de codificación y el estilo en todo su equipo. El lint checker y fixer que implementó detectará automáticamente posibles errores de codificación y problemas de mantenimiento.
+
+Los scripts automatizados que ha creado codifican las normas de su equipo y las documentan tanto para miembros nuevos como existentes. Al reducir la variación de un entorno de desarrollador a otro, su equipo puede superar cualquier problema de configuración individual de manera más eficiente y permanecer enfocado en la ejecución de la tarea en cuestión. Con una comprensión colectiva de un entorno común, ninguna persona del equipo tiene la carga de tener que ayudar a solucionar los problemas de los demás. La misma idea se aplica a la forma y el estilo de sus archivos de código.
+
+Cuando un miembro del equipo mira el código de otro miembro del equipo, se ve estilísticamente idéntico, lo que facilita la resolución de problemas y la depuración de un problema. Como resultado, su equipo es más productivo. Al aprovechar herramientas más sofisticadas y resistentes, las organizaciones de tamaño mediano a grande pueden lograr ahorros considerables en sus presupuestos de TI.
+
+En el próximo capítulo, aprenderá más sobre la plataforma Angular, aprovechará Kanban usando proyectos de GitHub y problemas de GitHub, aprenderá los fundamentos de Angular para crear una aplicación web simple con una arquitectura de pila completa en mente y conocerá la programación reactiva con RxJS.
+
+## Otras lecturas
+
+El artículo sobre Automatización de la configuración de la máquina del desarrollador local de Vishwas Parameshwarappa es un excelente lugar para comenzar a usar Vagrant, que se encuentra en https://www.vagrantup.com. Puede encontrar el artículo en https://Red-gate.com/simple-talk/sysadmin/general/automating-setup-local-developer-machine.
+
+Otras herramientas incluyen **Chef**, que se encuentra en https://www.chef.io/, y **Puppet**, que se encuentra en https://puppet.com. Algunos desarrolladores prefieren trabajar dentro de los contenedores de **Docker** durante la codificación, que se encuentran en https://www.docker.com. Esto se hace para aislar diferentes versiones de SDK entre sí. ***Las herramientas de desarrollo específicas no pueden ajustarse a una carpeta determinada y deben instalarse globalmente o en todo el sistema operativo, lo que dificulta mucho trabajar en varios proyectos al mismo tiempo.*** Recomiendo mantenerse alejado de este tipo de configuración si puede evitarlo. En el futuro, espero que dichos quehaceres sean automatizados por IDE, a medida que aumente el número de núcleos de CPU y la tecnología de virtualización tenga una mejor aceleración de hardware.
+
+Aprovecharemos Docker un poco más adelante en este libro, pero lo usaremos para aislar nuestras dependencias de software de producción de sus elementos circundantes, como nuestro entorno de desarrollo local o un servidor en la nube.
+
+## Preguntas
+
+Responda las siguientes preguntas lo mejor que pueda para asegurarse de que ha entendido los conceptos clave de este capítulo sin buscar en Google. ¿Necesitas ayuda para responder las preguntas? Consulte el Apéndice D, Respuestas de autoevaluación en línea en https://static.packt-cdn.com/downloads/9781838648800_Appendix_D_Self-Assessment_Answers.pdf o visite https://expertlysimple.io/angular-self-assessment.
+
+1. ¿Cuáles son las motivaciones para usar una herramienta CLI en lugar de una GUI?
+2. Para su sistema operativo específico, ¿cuál es el administrador de paquetes sugerido para usar?
+3. ¿Cuáles son algunos de los beneficios de utilizar un administrador de paquetes?
+4. ¿Cuáles son los beneficios de mantener los entornos de desarrollo de los miembros de su equipo de desarrollo lo más similares posible entre sí?
