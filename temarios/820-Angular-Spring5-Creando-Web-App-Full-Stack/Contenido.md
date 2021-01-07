@@ -1,161 +1,121 @@
-Contenido del curso
-21 secciones • 220 clases • 23 h 33 m de duración total
-Vista previa
-05:24
-Antes de comenzar
-03:19
-Introducción a Angular
-13:44
-Vista previa
-11:37
-Una mirada al editor Atom e instalando algunos plugins
-06:25
-Vista previa
-13:00
-Introducción a los Componentes
-04:12
-Vista previa
-10:57
-Estructura de directorio del proyecto angular: Parte 2 el directorio src
-06:47
-Integrar Bootstrap con Angular
-06:54
-Creando nuevo componente HeaderComponent
-10:37
-Separando el template del componente con TemplateUrl
-02:31
-Creando nuevo componente FooterComponent
-10:07
-Directiva estructural *ngFor
-07:07
-Directiva estructural *ngIf
-04:48
-Creando el componente clientes.component
-03:28
-Listando los objetos del tipo Cliente
-07:17
-Creando archivo clientes.json.ts con la lista de objetos
-02:51
-Creando la clase de Servicio ClienteService y la Inyección de Dependencia
-07:51
-Introducción a los Observables
-09:56
-Implementando Observable en nuestra clase Servicio ClienteService
-08:18
-Implementando Rutas en Angular y navegación
-05:14
-Actualización: sobre el archivo angular.cli.json vs angular.json
-00:39
-Configurando e integrando Bootstrap de forma local en nuestra app
-05:32
-Actualización: configurando los styles y scripts en archivo angular.json
-00:17
-Instalando Bootstrap utilizando el comando npm desde el terminal
-03:55
-Vista previa
-02:33
-Vista previa
-06:46
-Vista previa
-06:40
-Actualización: Wizard para seleccionar dependencias en Spring Tools
-02:25
-Vista previa
-10:23
-Configurando el Datasource a MySQL en el proyecto backend
-06:46
-Vista previa
-04:12
-Creando la Base de Datos
-03:11
-Añadiendo la clase Entity Cliente al Backend
-08:20
-Añadiendo las clases Repository y Service de la lógica de negocio
-11:48
-Creando controlador @RestController y EndPoint para listar
-04:22
-Añadiendo Datos de pueba
-02:54
-Usando Postman para probar nuestras APIs
-04:09
-Uso de Cors para compartir recursos en API REST
-04:02
-Implementando Servicio Angular con HttpClient
-09:28
-Descargar Código Fuente
-00:03
-Escribiendo los métodos del CRUD en la clase ClienteService del Backend
-03:44
-Escribiendo los métodos show y create en el Controlador Backend API Rest
-05:26
-Escribiendo los métodos update y delete en el Controlador Backend API Rest
-05:37
-Probando nuestro Backend API Rest con Postman
-06:41
-Actualización: Modificadores de acceso en las variables public y private.
-00:36
-Creando el componente form.component y la vista del formulario
-10:46
-Configurando la ruta y navegación del formulario
-04:55
-Escribiendo implementación crear en el cliente.service.ts y en form.component.ts
-06:00
-Actualización: nueva versión de SweetAlert2 8.0.1 o superior
-00:35
-Instalar SweetAlert2 para enviar mensajes de alerta en el cliente
-05:06
-Cargando los datos en el formulario para actualizar
-06:28
-Escribiendo el update en el cliente.service.ts y en form.component.ts
-07:02
-Escribiendo el delete en la clase service y en el componente clientes
-07:37
-Overflow en listado de clientes, ajustando layout
-03:16
-Validando los clientes en la tabla HTML con directiva ngIf
-02:41
-Descargar Código Fuente
-00:03
-Manejo de error en el Backend en método handler show (obtener por id)
-09:33
-Manejo de error en el Backend en método handler create
-08:34
-Manejo de error en el Backend en método handler update
-05:13
-Manejo de error en el Backend en método handler delete
-03:46
-Manejo de error en el Frontend Angular en obtener por id
-06:02
-Manejo de error en el Frontend Angular en create, update y delete
-05:46
-Customizando y arreglando los textos de éxito en crear y actualizar del frontend
-09:08
-Validando form en el template
-10:17
-Anotaciones JavaBeans Validation en la clase Entity
-03:28
-Implementando anotación @Valid en métodos handler create y update del controller
-08:50
-Probando validación API REST en POSTMAN
-02:30
-Manejando los error de validación en Angular
-05:09
-Agregando los mensajes de errores en la plantilla form
-04:42
-Customizar mensajes de validación en español
-02:40
-Descargar Código Fuente
-00:03
-Operador map formato uppercase en Observable
-03:50
-Operador map formato fecha en Observable
-03:32
-Registrando el Locale y los diferentes Pattern para formatear fechas
-06:43
-Uso de Pipe para formatear fecha y uppercase en las plantillas html
-04:02
-Uso del operador tap en el Observable
-08:53
+# Contenido del curso
+
+## Descripción
+
+* 21 secciones
+* 220 clases 
+* 23 h 33 m de duración total
+
+### 01. Introducción - 2 Clases - 9 min
+
+* Introducción 05:24
+* Antes de comenzar 03:19
+
+### 02. Primeros Pasos en Angular - 13 Clases - 1 h 49 min
+
+* Introducción a Angular 13:44
+* Instalaciones y herramientas necesarias 11:37
+* Una mirada al editor Atom e instalando algunos plugins 06:25
+* Creando nuestra aplicación Angular 13:00
+* Introducción a los Componentes 04:12
+* Estructura de directorio del proyecto Angular 10:57
+* Estructura de directorio del proyecto angular: Parte 2 el directorio src 06:47
+* Integrar Bootstrap con Angular 06:54
+* Creando nuevo componente HeaderComponent 10:37
+* Separando el template del componente con TemplateUrl 02:31
+* Creando nuevo componente FooterComponent 10:07
+* Directiva estructural `*ngFor` 07:07
+* Directiva estructural `*ngIf` 04:48
+
+### 03. Angular: Componente Clientes - 11 Clases - 55 min
+
+* Creando el componente clientes.component 03:28
+* Listando los objetos del tipo Cliente 07:17
+* Creando archivo clientes.json.ts con la lista de objetos 02:51
+* Creando la clase de Servicio ClienteService y la Inyección de Dependencia 07:51
+* Introducción a los Observables 09:56
+* Implementando Observable en nuestra clase Servicio ClienteService 08:18
+* Implementando Rutas en Angular y navegación 05:14
+* Actualización: sobre el archivo angular.cli.json vs angular.json 00:39
+* Configurando e integrando Bootstrap de forma local en nuestra app 05:32
+* Actualización: configurando los styles y scripts en archivo angular.json 00:17
+* Instalando Bootstrap utilizando el comando npm desde el terminal 03:55
+
+### 04. Backend: Spring API REST - 16 Clases - 1 h 28 min 
+
+* Demostración de lo que lograremos al finalizar las siguientes secciones 02:33
+* Herramientas necesarias Backend 06:46
+* Instalación y configuración del IDE Eclipse 06:40
+* Actualización: Wizard para seleccionar dependencias en Spring Tools 02:25
+* Creando Proyecto Backend API REST 10:23
+* Configurando el Datasource a MySQL en el proyecto backend 06:46
+* Instalando MySQL 04:12
+* Creando la Base de Datos 03:11
+* Añadiendo la clase Entity Cliente al Backend 08:20
+* Añadiendo las clases Repository y Service de la lógica de negocio 11:48
+* Creando controlador `@RestController` y EndPoint para listar 04:22
+* Añadiendo Datos de pueba 02:54
+* Usando Postman para probar nuestras APIs 04:09
+* Uso de Cors para compartir recursos en API REST 04:02
+* Implementando Servicio Angular con HttpClient 09:28
+* Descargar Código Fuente 00:03
+
+### 05. CRUD con Spring API Rest - 16 Clases - 1 h 17 min
+
+* Escribiendo los métodos del CRUD en la clase ClienteService del Backend 03:44
+* Escribiendo los métodos show y create en el Controlador Backend API Rest 05:26
+* Escribiendo los métodos update y delete en el Controlador Backend API Rest 05:37
+* Probando nuestro Backend API Rest con Postman 06:41
+* Actualización: Modificadores de acceso en las variables public y private. 00:36
+* Creando el componente form.component y la vista del formulario 10:46
+* Configurando la ruta y navegación del formulario 04:55
+* Escribiendo implementación crear en el cliente.service.ts y en form.component.ts 06:00
+* Actualización: nueva versión de SweetAlert2 8.0.1 o superior 00:35
+* Instalar SweetAlert2 para enviar mensajes de alerta en el cliente 05:06
+* Cargando los datos en el formulario para actualizar 06:28
+* Escribiendo el update en el cliente.service.ts y en form.component.ts 07:02
+* Escribiendo el delete en la clase service y en el componente clientes 07:37
+* Overflow en listado de clientes, ajustando layout 03:16
+* Validando los clientes en la tabla HTML con directiva ngIf 02:41
+* Descargar Código Fuente 00:03
+
+### 06. Manejo de Errores en Backend Spring - 4 Clases - 27 min
+
+* Manejo de error en el Backend en método handler show (obtener por id) 09:33
+* Manejo de error en el Backend en método handler create 08:34
+* Manejo de error en el Backend en método handler update 05:13
+* Manejo de error en el Backend en método handler delete 03:46
+
+### 07. Manejo de Errores en FrontEnd(Angular) - 3 Clases - 21 min
+
+* Manejo de error en el Frontend Angular en obtener por id 06:02
+* Manejo de error en el Frontend Angular en create, update y delete 05:46
+* Customizando y arreglando los textos de éxito en crear y actualizar del frontend 09:08
+
+### 08. Validando form por el FrontEnd(Angular) - 1 Clases - 10 min
+
+* Validando form en el template 10:17
+
+### 09. Validando form por el BackEnd(Spring) - 7 Clases - 27 min
+
+* Anotaciones JavaBeans Validation en la clase Entity 03:28
+* Implementando anotación @Valid en métodos handler create y update del controller 08:50
+* Probando validación API REST en POSTMAN 02:30
+* Manejando los error de validación en Angular 05:09
+* Agregando los mensajes de errores en la plantilla form 04:42
+* Customizar mensajes de validación en español 02:40
+* Descargar Código Fuente 00:03
+
+### 10. Transformando datos Observable: usando operador map y Pipes - 5 Clases - 27 min
+
+* Operador map formato uppercase en Observable 03:50
+* Operador map formato fecha en Observable 03:32
+* Registrando el Locale y los diferentes Pattern para formatear fechas 06:43
+* Uso de Pipe para formatear fecha y uppercase en las plantillas html 04:02
+* Uso del operador tap en el Observable 08:53
+
+### 11. Paginación desde el Backend - 13 Clases - 1 h 10 min
+AQUIIIIIIII
 Implementando paginación en API REST y Repository
 09:25
 Probar paginación API REST en POSTMAN
