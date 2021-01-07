@@ -16,11 +16,13 @@
 
 ## Introducción a Angular 13:44
 
+![02-01](images/02-01.png)
+
 Pero bueno, antes comenzar con Angular y a ver las herramientas necesarias a comenzar la instalación.
 
 En fin, crear el proyecto.
 
-Bueno, quería ver una introducción angular.
+Bueno, quería ver una introducción Angular.
 
 De qué se trata?
 
@@ -28,57 +30,27 @@ Angular?
 
 Bueno, la idea de esta parte del curso es aprender paso a paso cómo crear una aplicación web.
 
-Bueno, justamente Angula es un framework de JavaScript por el ardiente en el frontend para crear aplicaciones
+Bueno, justamente Angular es un Framework de JavaScript por el ardiente en el FrontEnd para crear aplicaciones web interactivas y sobretodo amistosas al usuario. Es decir, con interfaz gráfica bonita, reactivas, instantáneas, dinámicas. En fin, enriquece nuestra aplicación por el cliente.
 
-web interactivas y sobretodo amistosas al usuario.
+Nuestra aplicación web bien pero Angular mucho más que eso, aparte de ser un Framework para JavaScript, también es uno de los más utilizados, más populares en el mercado y es el que más piden en la industria, en las empresas para desarrollar este tipo aplicación. Cada vez está más posicionado como el Framework estándar de JavaScript o de script, porque en realidad se programa en tal script, pero finalmente se traspilas se convierte a JavaScript.
 
-Es decir, con interfaz gráfica bonita, reactivas, instantáneas, dinámicas.
-
-En fin, enriquece nuestra aplicación por el cliente.
-
-Nuestra aplicación web bienpero angular mucho más que eso, aparte de ser un framework para JavaScript,
-
-también es uno de los más utilizados, más populares en el mercado y es el que más piden en la industria
-
-en las empresas para desarrollar este tipo aplicación.
-
-Cada vez está más posicionado como el framework estándar de JavaScript o de script, porque en realidad
-
-se programa en tal script, pero finalmente se tras pilas se convierte a JavaScript.
-
-Bueno, es el más estándar para desarrollar este tipo aplicaciones del lado cliente, del lado del front
-
-y además desarrollado por un gigante por Google.
+Bueno, es el más estándar para desarrollar este tipo aplicaciones del lado cliente, del lado del front y además desarrollado por un gigante, por Google.
 
 Ven características para crear aplicaciones web responsive?
 
-S que se adaptan a diferentes dispositivos, equipos, tanto a equipos móviles de celular o navegador
+S que se adaptan a diferentes dispositivos, equipos, tanto a equipos móviles de celular o navegador de un PC o notebook, tablets, en fin, y están preparada para que se adapten según la resolución y según nuestro equipo, ya sea utilizando Bootstrap o Angular material propio de Angular. En fin, hay diferentes herramientas.
 
-de un PC o notebook, tablets, en fin, y están preparada para que se adapten según la resolución y
+Otra característica muy importante que es la ausencia de Angular es SPA Single Page Application, es decir, aplicación de una sola página.
 
-según nuestro equipo, ya sea utilizando Bootstrap o Angular material propio de Angular.
+Al final construimos una gran aplicación con Angular, varios componentes que forman esta aplicación, pero siempre el usuario va a estar interactuando dentro de la misma página del navegador.
 
-En fin, hay diferentes herramientas.
-
-Otra característica muy importante que es la ausencia de Angular es S.p.A.
-
-Single Page Application, es decir, aplicación de una sola página.
-
-Al final construimos una gran aplicación con Angular, varios componentes que forman esta aplicación,
-
-pero siempre el usuario va a estar interactuando dentro de la misma página del navegador.
-
-Esta nunca se ha de actualizar, nunca va a realizar un reflejo donde contenido va cambiando de forma
-
-dinámica pero sin recargar.
+Esta nunca se ha de actualizar, nunca va a realizar un reflejo donde contenido va cambiando de forma dinámica pero sin recargar.
 
 La página es instantáneo, de forma asíncrona y reactiva.
 
 Bueno, y justamente eso es una de las grandes diferencias con un monolito.
 
-Por ejemplo, si desarrollamos una aplicación con spring web m%s con pistas jsp o timeline dentro,
-
-bueno, todo dentro del servidor.
+Por ejemplo, si desarrollamos una aplicación con Spring Eeb m%s con pistas jsp o timeline dentro, bueno, todo dentro del servidor.
 
 En el bakker todos ejecutan el Wacken.
 
@@ -86,77 +58,37 @@ Al final se genera el HTML.
 
 Bueno, todo ocurre en el servidor.
 
-Entonces el problema que por cada rico es que estamos realizando a nuestro Wacken, lo que hace el cliente
-
-es enviar todo el contenido HTML completo desde las primeras etiquetas del HTML, las hojas de estilos,
-
-los JavaScript, el contenido principal, el menú, los banner, menú lateral, las imágenes.
+Entonces el problema que por cada rico es que estamos realizando a nuestro Wacken, lo que hace el cliente es enviar todo el contenido HTML completo desde las primeras etiquetas del HTML, las hojas de estilos, los JavaScript, el contenido principal, el menú, los banner, menú lateral, las imágenes.
 
 Todo se está enviando en cada request al backend y finalmente retorna lo mismo.
 
-Devuelve exactamente lo mismo con el contenido dinámico que cambia según el controlador, según la ruta
+Devuelve exactamente lo mismo con el contenido dinámico que cambia según el controlador, según la ruta que estemos enviando o llamando.
 
-que estemos enviando o llamando.
+Se fijan. Entonces envía todo y devuelve todo.
 
-Se fijan.
+Es una carga bastante pesada al servidor y eso multiplicado por la cantidad de usuarios concurrentes que usan la aplicación. Bueno, el rendimiento podría no ser menor.
 
-Entonces envía todo y devuelve todo.
+Hay que tener en cuenta, mientras que Angular todo ocurre en una sola página en el cliente, las hojas estilo todo permanece intacto en su mismo lugar.
 
-Es una carga bastante pesada al servidor y eso multiplicado por la cantidad de usuarios concurrentes
+Por ejemplo, el componente del menú, el menú de navegación, menú lateral, los banner, imágenes. Todos se quedan en clientes.
 
-que usan la aplicación.
+Solamente enviamos un Jaison al bokken. Los datos importantes nada más.
 
-Bueno, el rendimiento podría no ser menor.
-
-Hay que tener en cuenta, mientras que Angular todo ocurre en una sola página en el cliente, las hojas
-
-estilo todo permanece intacto en su mismo lugar.
-
-Por ejemplo, el componente del menú, el menú de navegación, menú lateral, los banner, imágenes.
-
-Todos se quedan en clientes.
-
-Solamente enviamos un Jaison al bokken.
-
-Los datos importantes nada más.
-
-Enviamos los datos y nos regresan datos ya sea modificados o queremos hacer una consulta, nos retorna
-
-una lista de algo o el detalle de algo, pero solamente un Jetson, no todo el HTML, no todo el CSS
-
-ya scrip, el HTML.
-
-Entonces claro, es mucho más rabio.
+Enviamos los datos y nos regresan datos ya sea modificados o queremos hacer una consulta, nos retorna una lista de algo o el detalle de algo, pero solamente un Jetson, no todo el HTML, no todo el CSS ya scrip, el HTML. Entonces claro, es mucho más rabio.
 
 Se mantiene forma de una sola página estática en el cliente.
 
-Lo que cambia bueno es la parte dinámica, el contenido principal que va variando según las rutas que
+Lo que cambia bueno es la parte dinámica, el contenido principal que va variando según las rutas que invoquemos en nuestro API rest en el paquete.
 
-invoquemos en nuestro API rest en el paquete.
+Por eso es S.P.A. Simplemente cambia nuestro contenido principal, que son otros componentes que están enrutador a jureles de Angular y está bueno mediante una clase servida angular de forma reactiva utilizando el API RX 10 se comunica con el Wacken.
 
-Por eso es S.P.A.
-
-Simplemente cambia nuestro contenido principal, que son otros componentes que están enrutador a jureles
-
-de Angular y está bueno mediante una clase servida angular de forma reactiva utilizando el API RX 10
-
-se comunica con el Wacken.
-
-Realiza esta comunicación con nuestro micro servicios mediante en paint y manejamos la respuesta de
-
-forma reactiva utilizando el API observable.
+Realiza esta comunicación con nuestro micro servicios mediante en paint y manejamos la respuesta de forma reactiva utilizando el API observable.
 
 Ahí tenemos que suscribirnos y ahí implementar nuestro código.
 
-Hoy se emite la respuesta que obtenemos del Wacken y podemos mostrar está en la vista de alguna forma,
+Hoy se emite la respuesta que obtenemos del Wacken y podemos mostrar está en la vista de alguna forma, ya sea con un end Gifford y tirando con un loop, por ejemplo, o mostrar los objetos de este JSON mediante extrapolación de string.
 
-ya sea con un end Gifford y tirando con un loop, por ejemplo, o mostrar los objetos de este JSON mediante
-
-extrapolación de string.
-
-Pero bueno, son puras cosas que vamos a ver en el curso, así que no se preocupen, esto es solamente
-
-una introducción.
+Pero bueno, son puras cosas que vamos a ver en el curso, así que no se preocupen, esto es solamente una introducción.
 
 Entonces estas serían las cuatro características principales.
 
@@ -164,7 +96,7 @@ Bueno, por supuesto, hay muchas más.
 
 Otros deben importante en las versiones cuando se actualiza o cambio una versión a otra.
 
-Acá tenemos la versión 9.0 .2 hasta el momento.
+Acá tenemos la versión 9.0.2 hasta el momento.
 
 La última última versión.
 
