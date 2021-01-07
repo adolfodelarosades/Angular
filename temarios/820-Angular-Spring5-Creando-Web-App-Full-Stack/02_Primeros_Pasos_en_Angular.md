@@ -138,6 +138,8 @@ En la pestaña izquierda tenemos el proyecto con todos sus archivos, Si se fijan
 
 Si vemos la carpeta `src` es el más importante es donde tenemos nuestra aplicación, todo nuestro código dentro de `app` donde tenemos nuestro ***componente principal***.
 
+#### Ejecutar la Aplicación
+
 Ahora vamos a ejecutar nuestra aplicación utilizando el comando:
 
 ```sh
