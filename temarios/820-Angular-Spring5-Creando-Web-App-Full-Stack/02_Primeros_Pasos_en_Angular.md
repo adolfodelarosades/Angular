@@ -85,6 +85,284 @@ También podemos crear nuestra propia clase TypeScript, ya sea de utilidad, **He
 ## Instalaciones y herramientas necesarias 11:37
 ## Una mirada al editor Atom e instalando algunos plugins 06:25
 ## Creando nuestra aplicación Angular 13:00
+
+Ahora sí que estamos listos para comenzar para crear nuestra aplicación con Angular desde cero utilizando **Angular CLI**, lo primero es ir a la página  https://angular.io/ 
+
+![02-06](images/02-06.png)
+![02-07](images/02-07.png)
+![02-08](images/02-08.png)
+
+Para crear un proyecto usamos el comando 
+
+```sh
+ng new my-app
+```
+
+El comando `ng` de la consola de angular lo tenemos disponible con la instalación de Angular CLI que realizamos en la clase anterior, ahora simplemente vamos al terminal de nuestro sistema operativo y vamos a crear el proyecto, ***pero primero tenemos que crear un directorio en el cual vamos a guardar todos nuestros ejemplos y proyectos del curso***.
+
+![02-09](images/02-09.png)
+
+Ahí tenemos nuestro directorio raíz de Angular.
+
+### :computer: Crear el Proyecto `clientes-app`
+
+Vamos a crear el proyecto, le vamos a llamar `clientes-app` con el comando 
+
+```sh
+ng new clientes-app
+```
+
+![02-10](images/02-10.png)
+
+Lo primero que pregunta es...
+
+Lo segundo que pregunta es si queremos agregar en nuestra aplicación Angular el componente `routing`, le indicamos que NO porque eso después lo vamos a agregar de forma manual, la idea es aprender cómo se configura, así que lo dejamos para después, por ahora simplemente no.
+
+La tercer pregunta es qué formato de estilos vamos a querer utilizar, por defecto marca CSS, ese es más que suficiente y aceptamos simplemente con un Enter. 
+
+Crear el proyecto, va a descargar todas las dependencias por lo tanto se puede demorar un buen rato.
+
+![02-11](images/02-11.png)
+
+Una vez que haya finalizado en Windows pueden aparecer un par de warnings.
+
+![02-12](images/02-12.png)
+
+Se debe a que Windows no tiene soporte a esa librería pero sí en Mac en OS X y acá tenemos otro warning típico de Windows que no hay que dar ninguna importancia.
+
+Una vez que se haya creado con éxito el siguiente paso es abrir con VSC. 
+
+![02-13](images/02-13.png)
+
+En la pestaña izquierda tenemos el proyecto con todos sus archivos, Si se fijan aparece un icono distinto por cada tipo de archivo eso es porque instalamos la Extensión.
+
+Si vemos la carpeta `src` es el más importante es donde tenemos nuestra aplicación, todo nuestro código dentro de `app` donde tenemos nuestro ***componente principal***.
+
+Ahora vamos a ejecutar nuestra aplicación utilizando el comando:
+
+```sh
+ng serve --open
+```
+
+o la versión abreviada 
+
+```sh
+ng serve -o
+```
+
+Nos vamos a la consola y dentro del directorio angular donde tenemos creado nuestro proyecto `clientes-app` ejecutamos el comando.
+
+![02-14](images/02-14.png)
+
+Es muy parecido a Spring Boot en el sentido que incluye un servidor embebido para desplegar nuestra aplicación Angular.
+
+Tenemos nuestra página de bienvenida con un prototipo por defecto.
+
+![02-15](images/02-15.png)
+
+AQUIIIIIIIIIIIIIIIIIIIIIIIIIII
+
+que prácticamente
+
+podemos quitar eliminar todo lo que aparece y reemplazarlo por nuestro propio contenido.
+
+Ahora este servidor en dicer por supuesto que es para desarrollar no es para un ambiente de producción
+
+cuando llevamos nuestra aplicación a producción lo que hacemos es transpirar convertir todo nuestro
+
+script en JavaScript en código estático HTML y ya escrituró que es interpretado y lo entienden los navegadores
+
+y eso lo podemos llevar lo podemos subir a cualquier servidor que pueda publicar este contenido estático
+
+como por ejemplo Google storage.
+
+O también tenemos Amazon S3 en fin hay varias alternativas de toda forma en el curso.
+
+Más adelante vamos a ver cómo llevar a producción y publicar nuestra aplicación.
+
+Incluso lo podríamos hacer con Nott con el servidor que trae no guíes con Apache con cualquiera con
+
+cualquiera que pueda servir contenido estático.
+
+Básicamente lleva scrip HTML y hojas de estilos ya que levantamos nuestra aplicación.
+
+El siguiente paso es modificar el contenido que tenemos lo que está cargando es el componente principal.
+
+El app component acá tenemos la clase componente y acá vemos varias cosas pero antes de entrar en detalle
+
+lo primero que observamos es que está asociada a un template a una vista HTML.
+
+Después vamos a analizar el decorador componen y todo lo demás pero primero vamos a la vista acá tenemos
+
+la vista a component punto HTML y todo lo que se visualiza en el navegador.
+
+Acá es justamente el código HTML que tenemos en esta plantilla.
+
+Por lo tanto vamos a quitar todo.
+
+Por ahora vamos a dejar solamente el H1.
+
+Nada más.
+
+Todo lo demás lo vamos a quitar e igual con tu también vamos a guardar con control s y volvemos al navegador
+
+observamos que aparecen solamente clientes App el nombre de nuestra obligación.
+
+Perfecto vamos a abrir nuevamente el app component con doble click y como paréntesis aparte cualquier
+
+sugerencia o pregunta para instalar algún tipo de Plains le colocan que sí que instale todos los Playitas
+
+necesarios como por ejemplo.
+
+Lo más probable que te va a pedir instalar el límite necesario para detectar errores de sintaxis en
+
+nuestro código en tiempo de desarrollo a medida que está escribiendo nuestro código con tal script.
+
+El Lipper se encarga de evaluar los errores detectarlos y mostrar cualquier mensaje de estos errores
+
+en el editor.
+
+Entonces si nos pide instalar el Inter lo tenemos que instalar.
+
+De todas maneras el Inter y todas sus dependencias y también techos o cualquier dependencia que necesite
+
+simplemente le colocan bien pero ahora analicemos el componente es un decorador una anotación con cierta
+
+configuración metadata muy parecido a las anotaciones en sprint.
+
+Es para lo mismo para configurar por ejemplo acá tenemos una clase a component que está marcada con
+
+el decorador.
+
+Es una clase componente de angulas tiene un selector.
+
+El selector corresponde a una etiqueta HTML esta etiqueta HTML la podemos incluir en otros componentes.
+
+En este caso como es el componente root o principal la tenemos que incluir en el índex HTML que es la
+
+página principal en la puerta de entrada a nuestra aplicación.
+
+Si se fijan en el body la estamos incluyendo simplemente una etiqueta HTML que contiene el nombre del
+
+selector AP Ruto.
+
+Por lo tanto si colocamos cualquier cosa cualquier nombre que queramos acá tenemos que reflejar ese
+
+mismo nombre.
+
+Y acá se incluye.
+
+Estamos viviendo todo el contenido de este componente todo el HTML que tiene y toda la programación
+
+dinámica dentro de la clase con toda la lógica que le queremos dar.
+
+Lo segundo es el temple R.L en la vista contenido HTML que está asociado a esta clase componente.
+
+Luego tenemos Tails o R.L serían nuestras hojas estilos podríamos tener una o más.
+
+Por eso el corchete se separa por comas por defecto una sola que es la que tenemos acá a components
+
+puntos Esses.
+
+Acá podemos tener solamente los estilos de este componente sin afectar a los demás componentes que tengamos
+
+en nuestra aplicación sólo hacen efecto en el propio componente y no en los demás.
+
+Después vamos a ver cómo aplicar estilos de forma global a todos nuestros componentes por ejemplo agregando
+
+estilos en esta Helesponto CSS.
+
+Acá en stays cualquier estilo que coloquemos se va a aplicar a toda nuestra aplicación a toda nuestra
+
+página y a todo el componente.
+
+Para resumir a component sería nuestro componente principal o por defecto raíz se tiene que dejar tal
+
+cual.
+
+Y a partir de este componente podemos incluir agregar otro componente y empezamos a crear y armar nuestra
+
+aplicación.
+
+Un componente angular son piezas de código que van a componer nuestra aplicación.
+
+Un componente se puede anidar dentro de otro con un componente fijo o bien un componente padre podría
+
+estar formado por varios componentes hijos se conoce como el patrón de diseño composites o compositor.
+
+Por debajo implementa este patrón de diseño lo que lo hace bastante modular escalable y también fácil
+
+de mantener.
+
+Por ahora vamos a modificar un poco más nuestra clase acá vamos a colocar bienvenido angular
+
+y también podríamos tener más atributos de la clase componentes por ejemplo curso podemos usar comilla
+
+simple para hacer referencia en este link.
+
+Como recomendación aunque no es obligación el punto y coma final ahora como buena práctica se recomienda
+
+colocar entonces el curso sería
+
+con angular 7 como había mencionado también una de las características que maneja el script es el tipado.
+
+Si bien es opcional.
+
+Por ejemplo acá asume que es una estreno porque le estamos asignando un valor del tipo Link pero también
+
+lo podría manejar de forma estática por ejemplo.
+
+2 punto 2 punto Streeck es opcional pero también es buena práctica definir los tipos lo hacemos un poco
+
+más robusto
+
+en los estrenos también podemos usar comilla doble o comilla simple.
+
+Bueno en realidad a gusto de cada uno se ve más limpio utilizar comilla simple.
+
+Así que durante el curso vamos a tratar los estrenos con comida simple pero no es tan relevante.
+
+Perfecto vamos a guardar con control ese vamos a ir a la vista a componer.
+
+Acá tenemos el título.
+
+Vamos a tener una lista u el Helí
+
+en el primer Lihn vamos a colocar el nombre del curso siempre usando doble llaves para interpolar las
+
+variables interpolar es para que se imprima se imprime la variable en la salida en la respuesta en el
+
+navegador simplemente hacemos referencia al nombre del atributo en este caso curso después profesor
+
+vamos a copiar el Li
+
+y guardamos entonces siempre las variables que vamos a imprimir es con doble llave una que guardamos.
+
+Volvemos al navegador y vemos el cambio bienvenido vincular curso es principesco con angular 7 profesor
+
+Andrés Guzmán.
+
+Por ahora nada más.
+
+Y en la próxima clase vamos a estudiar analizar la estructura de directorio explicar un poco en qué
+
+consiste cada componente cada tipo de archivo cada directorio por ejemplo el modulos la carpeta ese
+
+reces la carpeta app los asset y también cada tipo de archivo.
+
+Todos los archivos importantes de nuestra aplicación y antes que me olvide un pequeño detalle es opcional
+
+si nos vamos a la clase a component se me fue justamente el punto y coma como no lo marca como un error
+
+porque en realidad no es un error simplemente es opcional es recomendable como buena práctica para mantener
+
+un orden y nuestro código sea un poco más estricto entonces agregamos el punto y coma en el profesor.
+
+Pero insisto es opcional y nuestra aplicación va a funcionar exactamente igual y volvemos a guardar.
+
+Hemos llegado a su fin hasta la próxima.
+
+
 ## Introducción a los Componentes 04:12
 ## Estructura de directorio del proyecto Angular 10:57
 ## Estructura de directorio del proyecto angular: Parte 2 el directorio src 06:47
