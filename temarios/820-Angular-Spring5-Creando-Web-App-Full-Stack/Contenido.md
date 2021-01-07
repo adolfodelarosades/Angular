@@ -11,7 +11,7 @@
 * Introducción 05:24
 * Antes de comenzar 03:19
 
-### 02. Primeros Pasos en Angular - 13 Clases - 1 h 49 min
+### [02. Primeros Pasos en Angular](02_Primeros_Pasos_en_Angular.md) - 13 Clases - 1 h 49 min
 
 * Introducción a Angular 13:44
 * Instalaciones y herramientas necesarias 11:37
