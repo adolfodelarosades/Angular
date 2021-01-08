@@ -255,8 +255,92 @@ Veamos sus características.
 
 Y mucha característica más.
 
-
 ## Estructura de directorio del proyecto Angular 10:57
+
+![02-26](images/02-26.png)
+
+Vamos a ver la estructura de directorio del proyecto qué generamos con la consola de Angular con Angular CLI.
+
+Vamos a comenzar desde el principio con el directorio `e2e`, básicamente contiene todas las herramientas necesarias para realizar pruebas unitarias, fuera del alcance de este curso.
+
+El siguiente directorio es el `node_modules` donde están todas las librerías y dependencias del proyecto.
+
+![02-27](images/02-27.png)
+
+Todo se maneja de forma automática a través del NPM y todo esto se maneja y se registra dentro del archivo `package.json` donde están todas las dependencias, muy parecido a lo que sería el `pom.xml` en Java.
+
+Luego tenemos `src` una carpeta muy importante contiene todo nuestro código, todo el código fuente de nuestra aplicación es bastante amplio así que lo vamos a dejar para la próxima leccción.
+
+Luego tenemos el archivo `.editorconfig` en realidad no lo vamos a ocupar para nada en el curso, pero básicamente contiene toda la configuración del editor. 
+
+Luego tenemos el `.gitignore` es un archivo de GitHub del repositorio GitHub donde podemos subir nuestro proyecto y compartirlo. Este archivo nos permite omitir, ocultar o ignorar archivos y carpetas que no queramos compartir en el repositorio
+
+
+```sh
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/node_modules
+...
+```
+
+como por ejemplo la carpeta de distribución `/dist` que contiene todo el código compilado cuando generamos el proyecto con `ng build`, el directorio `/tmp`, las dependencias `/node_modules` no tienen ningún sentido compartir todas las librerías y dependencia del proyecto. Lo importante es el código fuente y así un montón de carpetas y archivos que podemos ocultar.
+
+**`angular.json`** es el archivo principal de configuración del proyecto, es el más importante, podemos configurar prácticamente todo.
+
+![02-28](images/02-28.png)
+
+Para comenzar aparece en projects el nombre del proyecto como un atributo, con toda la configuración, por ejemplo cuál es la carpeta raíz del proyecto del código fuente `"sourceRoot": "src",`. Luego tenemos todo lo que es `"build": {` cuando generamos el proyecto, por ejemplo el directorio de salida `"outputPath": "dist/clientes-app",` todo el contenido que generamos cuando realizamos el deploy, todo se genera dentro del directorio `dist/clientes-app`. Luego tenemos el `"index": "src/index.html",` que sería la puerta de entrada a nuestra aplicación. Luego tenemos la clase principal `"main": "src/main.ts",` que básicamente lo que hace es cargar nuestro módulo por defecto, el módulo por defecto lo tenemos dentro de `app` llamado `app.module.ts`.
+
+
+Vemos justamente `main.ts` justamente realiza el arranque de `AppModule`.
+
+![02-29](images/02-29.png)
+
+Luego regreseando a `angular.json` tenemos los `"polyfills": "src/polyfills.ts",` que es una herramienta que nos permite la compatibilidad con todos los navegadores.
+
+La configuración de TypeScript `"tsConfig": "tsconfig.app.json",`.
+
+Los `"assets": [` muy importante son todos los recursos estáticos de nuestra aplicación por ejemplo el Favicon, todo lo que son imágenes, cualquier recurso estático lo podemos tener dentro de los assets.
+
+Luego podemos configurar hojas de estilos que se van a agregar 
+`"styles": [ "src/styles.css" ],` cuando arranca nuestra aplicación dentro del `index.html` por defecto tiene `styles.css` pero podemos tener más separadas por comas, podemos agregar más hojas de estilos globales en nuestra aplicación y pasa lo mismo con los scripts que serían los JavaScript `"scripts": []` cualquier archivo js lo podemos registrar aquí, también separada por comas.
+
+Luego tenemos configuraciones de ambiente de producción, desarrollo y un montón de cosas.
+
+Continuamos con **`package.json`** otro archivo muy importante.
+
+![02-30](images/02-30.png)
+
+Contiene el nombre de la aplicación, la versión, scripts que son atajos para ejecutar comandos y las dependencias, en este archivo se manejan todas las dependencias con sus versiones. Por ejemplo todo lo que son `dependencies` son dependencias para producción, para ejecutar nuestra aplicación, como por ejemplo todos los paquetes de Angular y en `devDependencies` son todas las dependencias que están relacionadas al ambiente de desarrollo, todo lo que es escribir nuestro código, pruebas unitarias, el lenguaje TypeScript, el linter para detectar errores de sintaxis, está todo acá, por supuesto cuando generamos el proyecto, lo compilamos, todas estas librerías no se incluyen, solamente se van a incluir las de producción, en ningún caso las de desarrollo.
+
+Por lo que cuando generemos nuestro proyecto con `ng build` se va a incluir en el directorio `dist` lo justo y necesario y va a quedar nuestra aplicación bastante liviana solamente el javascript necesario para correr la aplicación, hojas de estilos y HTML todo estático.
+
+En caso de que se haya eliminado por ejemplo una librería de nuestro proyecto del directorio `node-modules` que se haya borrado o se haya corrompido, este archivo nos permite recuperar todas las dependencias, con el comando:
+
+```sh
+npm install
+```
+
+es nuestro salvavidas.
+
+Luego tenemos el `README.md`, básicamente la documentación con varias instrucciones que podemos usar para construir elementos de nuestro proyecto.
+
+![02-31](images/02-31.png)
+
+Este archivo `README.md` es una pequeña documentación resumida.
+
+Luego tenemos el archivo `tsconfig.json` archivo de configuración de TypeScript que nos ayuda con las alertas, si estamos usando bien las variables en el código. Si estamos creando correctamente una clase, si estamos usando bien un decorador, una anotación y también nos permite activar la compilación que compile de forma automática, cada vez que guardemos nuestro código fuente, un archivo, lo cual no se recomienda porque cada vez que estemos guardando una clase del proyecto, un archivo va a estar compilando, la idea es compilar después que finalicemos nuestra aplicación, pero no ante cualquier cambio.
+
+Luego tenemos el `tslint.json` que igual que el `tsconfig.json` no es necesario que lo toquemos ya que viene todo automático, se encarga de detectar errores de sintaxis en nuestro código y también nos ayuda a que todos los errores de sintaxis que puedan ocurrir a medida que estén escribiendo el código en el editor se muestren de forma correcta en el IDE, en el editor y no tenemos más.
+
 ## Estructura de directorio del proyecto angular: Parte 2 el directorio src 06:47
 ## Integrar Bootstrap con Angular 06:54
 ## Creando nuevo componente HeaderComponent 10:37
