@@ -223,6 +223,39 @@ Volvemos al navegador y vemos el cambio.
 ![02-22](images/02-22.png)
 
 ## Introducción a los Componentes 04:12
+
+![02-23](images/02-23.png)
+
+Veamos una introducción a los componentes.
+
+¿Qué es lo que son? Son lo más importante de Angular, ya que Angular está compuesto por componentes, también hay otras cosas como los módulos, las directivas, los PIPES, hay muchas cosas, pero todo gira alrededor de los componentes.
+
+Una aplicación de Angular tiene un módulo principal, pero este módulo principal carga un componente principal y este componente principal, también está compuesto por otros componentes esa es la gracia.
+
+Los componentes son pequeñas partes o piezas, bloques de nuestra aplicación, en términos de programación son clases de TypeScript que tienen un decorador y también están asociados a una plantilla. Cada uno de estos componentes, de esta clases tiene su propia lógica, cumple una función, un rol muy específico dentro de esta aplicación.
+
+![02-24](images/02-24.png)
+
+Por ejemplo, un componente pueden ser un menú de navegación, una barra lateral o sidebar, un calendario, un pie de página o un footer, pero también puede ser páginas, páginas dinámicas que van cambiando su contenido a través de rutas.
+
+![02-25](images/02-25.png)
+
+Veamos sus características.
+
+* Una clase de TypeScript con una función específica dentro de la aplicación.
+* Detrás de escena implementa el patrón de diseño composite.
+* Los componentes se pueden anidar y puede estar formados unos con otros.
+* Dentro de la clase de un componente se indica una anotación, se decora y esta anotación incluye metadata configuraciones. Una de ellas es el *selector*, la etiqueta que vamos a utilizar para cargar el componente en el HTML.
+* Puede estar asociado a una ruta URL de Angular, cada que hacemos un clic en estas rutas el contenido de nuestra página va cambiando de forma dinámica y se muestra el contenido de ese componente que está mapeado a esa ruta.
+* Muy parecido a lo que sucede con Spring, con Spring MVC cuando un controlador con un método Handler está asociado o está mapeado a una ruta.
+* También tiene su propio ciclo de vida para inicializarce, para destruirse, hacer algo cuando cambie algún elemento hijo o padre de los componentes, realizar alguna tarea antes de renderizar la vista.
+* MVC separa lógica de programación de la plantilla y por otro lado tenemos también la clases que representan lógica de negocio como los *Services* y la clase *Model* que representa los datos que estan mapeados a los JSON. Al final el componente es el controlador que interactúa con el Service, con la lógica negocio, el Service le retorna los datos en JSON y el Componente se lo pasa a la plantilla por eso es un MVC, el usuario interactúa con la plantilla, con la vista, con controles, con eventos, las cuales la clase componente, da soporte, recibe estos datos, interactúa con el Service, lógica negocio y después los datos se imprimen, se presentan en la vista.
+* Otra característica muy importante es que son Asíncrono, cada componente se ejecuta en su propio proceso y no se interrumpen entre sí, por lo tanto, si un componente falla los demás se siguen ejecutando en un proceso diferente, no se afectan unos con otros, no se rompe la aplicación, se ejecutan de forma paralela y un componente tampoco nos tiene que estar esperando a que se inicialicen los demás para poder inicializace el mismo.
+* Soportan inyección de dependencia vía constructor, podemos inyectar objetos que sean inyectables y además cada componente maneja sus propios estilos, cada uno está asociado a un HTML y también a una hoja de estilos.
+
+Y mucha característica más.
+
+
 ## Estructura de directorio del proyecto Angular 10:57
 ## Estructura de directorio del proyecto angular: Parte 2 el directorio src 06:47
 ## Integrar Bootstrap con Angular 06:54
