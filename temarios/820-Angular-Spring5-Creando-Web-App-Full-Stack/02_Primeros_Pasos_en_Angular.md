@@ -341,7 +341,68 @@ Luego tenemos el archivo `tsconfig.json` archivo de configuración de TypeScript
 
 Luego tenemos el `tslint.json` que igual que el `tsconfig.json` no es necesario que lo toquemos ya que viene todo automático, se encarga de detectar errores de sintaxis en nuestro código y también nos ayuda a que todos los errores de sintaxis que puedan ocurrir a medida que estén escribiendo el código en el editor se muestren de forma correcta en el IDE, en el editor y no tenemos más.
 
-## Estructura de directorio del proyecto angular: Parte 2 el directorio src 06:47
+## Estructura de directorio del proyecto angular: Parte 2 el directorio `src` 06:47
+
+![02-32](images/02-32.png)
+
+Continuamos con la segunda parte vamos al directorio `src` lo primero que tenemos es el `app` donde esta todo el contenido de nuestro componente principal el `app.component`, tenemos los directorios `assert`, `environments`  y también algunos archivos en la raíz del `src`.
+
+Vamos a partir con el directorio `app`, primero tenemos nuestra hoja de estilo en `app.component.css` donde podemos tener todos los estilos que son exclusivamente y específicamente del componente `app.component` no hace efecto en los demás componentes solamente en el `app.component`. Como ya dijimos anteriormente si queremos agregar estilos globales tenemos que usar el `styles.css` que está en la raíz.
+
+Luego tenemos la plantilla o la vista `app.component.html` que responde al componente `app.component`, contiene básicamente el HTML la Vista.
+
+Luego tenemos el archivo `app.component.spec.ts` esto significa que son de prueba unitaria de testing que no veremos en el curso. Por lo tanto incluso lo podemos borrar, no lo vamos a utilizar.
+
+Luego tenemos el `app.component.ts` que nuestro componente, una clase que representa una parte de nuestra aplicación web, que se puede comparar como si fuera un controlador de Spring, que controla con lógica ciertos contenidos y cómo se muestra este contenido utilizando el selector, donde usemos la etiqueta `<app-root>` es donde se va a mostrar, a desplegar el contenido dinámico de este componente que está asociado también a una vista a una plantilla. Por ejemplo como lo vimos dentro del `index.html` dentro de esta etiqueta se está insertando el contenido HTML de esta plantilla qué responde con la lógica del componente.
+
+![02-33](images/02-33.png)
+
+Es muy importante primero antes que nada importar el componente.
+
+Después del decorador `@Component` se define la clase compone siempre con el `export` para que se pueda después registrar y configurar como un componente en el `app.module.ts`.
+
+Luego tenemos precisamente `app.module.ts`, muy importante.
+
+![02-34](images/02-34.png)
+
+Este es como un repositorio donde se registran nuestros componentes, las clases Component donde se registran los PIPE, las clases del Servicio, aquí también se importan los diferentes módulos que vamos a utilizar por ejemplo, por defecto está el `BrowserModule` que incluye las directivas por ejemplo `ngIf` y `ngFor` y todas las directivas con las cuales trabajamos en la plantilla, en las vistas.
+
+Pero además podríamos tener el `FormModule` para trabajar con formularios, el `HttpModule` para trabajar con peticiones HTTP para trabajar con REST y poder realizar peticiones asíncronas y obtener resultados JSON.
+
+En `imports: [` podemos cargar configuraciones de la base datos por ejemplo con Memory Data, con Firebase, en fin importamos los diferentes módulos que vamos a utilizar. 
+
+En `declarations: [` se registran todos nuestros componentes.
+
+Dentro de `providers: [],` se registran nuestras clases de servicios, todas aquellas que tengan algún tipo de lógica de negocio o clases con algún tipo de funcionalidad, por ejemplo para trabajar con JSON que realizan consultas asíncrona a un servidor Rest o a una aplicación BackEnd por ejemplo con el Spring Framework.
+
+Tenemos `bootstrap: [AppComponent]` donde se indica cuál es el componente principal que se va a cargar, tenemos el `AppComponent`.
+
+Finalmente tenemos la clase `AppModule` y es justamente la clase que se carga, que arranca en el `main.ts`
+
+Entonces resumiendo el `app.module.ts` es un repositorio, es un contenedor donde se registran nuestros componentes, nuestros módulos, nuestras clases de servicio muy parecido en el fondo a lo que sería un contenedor de Spring, también los providers, las clases servicio se puede inyectar a través de inyección de dependencia y se pueden pasar a los diferentes componentes, son globales.
+
+Luego tenemos el `assets` donde se guardan todos los contenidos estáticos.
+
+En `environments` tenemos el ambiente desarrollo y de produción esto se utiliza ya cuando se genera la carpeta de distribución y se publica a producción.
+
+Luego tenemos el `favicon.ico` que se muestra en el navegador.
+
+Luego tenemos `index.html` que muestra la página principal aquí se coloca el selector `<app-root>` del componente principal `app-component`.
+
+La clase `main.ts`
+
+![02-35](images/02-35.png)
+
+que levanta y arranca nuestra aplicación el `AppModule` por defecto estamos utilizando el `platformBrowserDynamic()` es decir podemos trabajar tanto con navegador, con aplicaciones web también con aplicaciones smartphone, aplicaciones móviles pero también podríamos utilizar otro tipo que sean solamente para aplicaciones móviles.
+
+Pero durante el curso vamos a trabajar con aplicaciones web y utilizando Bootstrap se pueden hacer responsive para que nuestra creación web funcione perfectamente en un dispositivo smartphone o celular.
+
+Luego tenemos el `polyfills` un archivo de configuración para aumentar la compatibilidad de nuestra aplicación.
+
+Tenemos el `styles.css` para los estilos globales.
+
+Luego tenemos `test.ts` para pruebas unitarias.
+
 ## Integrar Bootstrap con Angular 06:54
 ## Creando nuevo componente HeaderComponent 10:37
 ## Separando el template del componente con TemplateUrl 02:31
