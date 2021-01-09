@@ -678,21 +678,33 @@ Ya tenemos nuestro NavBar en un componente independiente y funcionando.
 
 ## Separando el template del componente con TemplateUrl 02:31
 
+Como se menciono anteriormente si el HTML es muy amplio es mejor tenerlo en un archivo separado, en una plantilla independiente.
 
+Dentro de la carpeta `header` vamos a crear el archivo `header.component.html`.
 
+![02-45](images/02-45.png)
 
-```js
-```
-```js
-```
+Vamos a pasar el contenido del `template` del archivo `header.component.ts`  a este nuevo archivo `header.component.html`, además debemos remplazar `template` por un `templateUrl` con el nombre de la plantilla en `header.component.ts`.
 
-```js
-```
+![02-46](images/02-46.png)
 
-```js
-```
-```js
-```
+Si vamos al navegador vemos que todo sigue funcionando correctamente.
+
+![02-47](images/02-47.png)
+
 ## Creando nuevo componente FooterComponent 10:07
+
+```js
+```
+```js
+```
+
+```js
+```
+
+```js
+```
+```js
+```
 ## Directiva estructural `*ngFor` 07:07
 ## Directiva estructural `*ngIf` 04:48
