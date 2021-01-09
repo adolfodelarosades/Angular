@@ -692,19 +692,191 @@ Si vamos al navegador vemos que todo sigue funcionando correctamente.
 
 ![02-47](images/02-47.png)
 
-## Creando nuevo componente FooterComponent 10:07
+## Creando nuevo Componente `FooterComponent` 10:07
+
+En esta lección vamos a crear un nuevo componente `FooterComponent` lo vamos a hacer de forma diferente. Vamos a crear la clase utilizando la consola de Angular CLI.
+
+En la consola vamos a ejecutar los siguientes comandos:
+
+![02-48](images/02-48.png)
+
+Con el comando:
 
 ```js
-```
-```js
-```
-
-```js
+ng generate class footer.component
 ```
 
+creamos la clase (y `footer.component.spec.ts` que eliminaremos) en la ubicación donde nos encontramos.
+
+![02-49](images/02-49.png)
+
+Pero esta clase creada tiene un error de compilación por que al nombrer de la clase le esta poniendo un punto, lo modificamos para que este correcto.
+
 ```js
+export class FooterComponent {
+}
 ```
+El siguiente paso es poner el decorador `@Component` con todos sus atributos.
+
 ```js
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-footer',
+  templateUrl: './footer.component.html'
+})
+export class FooterComponent {
+  public autor: any = {nombre: 'Adolfo', apellido: 'De la Rosa'};
+}
 ```
+
+Hemos creado un atributo `autor` de tipo `any` lo que indica que no es de un tipo en particular y para ello usamos `any`, podríamos a ver creado un tipo `Persona` y declararlo de ese tipo pero como no tenemos dicho tipo nos manejamos con `any`, también le hemos asignado que sea `public`.
+
+Ahora creamos `footer.component.html` con el siguente código:
+
+```js
+<footer class="bg-dark rounded-top">
+  <div>
+    <p>
+      &copy; {{ autor.nombre + ' ' + autor.apellido}}
+    </p>
+  </div>
+</footer>
+```
+
+El siguiente paso es registrar este `footer.component` dentro de `app.module.ts`.
+
+```js
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+El siguiente paso es incluir el selector `<app-footer>` en el archivo `app.component.html`.
+
+```js
+<app-header></app-header>
+
+<h1>{{ title }}</h1>
+<ul>
+  <li>{{curso}}</li>
+  <li>{{profesor}}</li>
+</ul>
+
+<app-footer></app-footer>
+```
+
+Si vamos al navegador veremos:
+
+![02-50](images/02-50.png)
+
+Lo podemos mejorar con algunos estilos.
+
+```html
+<footer class="bg-dark rounded-top text-center">
+  <div>
+    <p class="text-white">
+      &copy; {{ autor.nombre + ' ' + autor.apellido}}
+    </p>
+  </div>
+</footer>
+```
+
+![02-51](images/02-51.png)
+
+Lo ajustamos aún más.
+
+```html
+<footer class="bg-dark rounded-top text-center">
+  <div class="container py-2">
+    <p class="text-white my-2">
+      &copy; {{ autor.nombre + ' ' + autor.apellido}}
+    </p>
+  </div>
+</footer>
+```
+
+![02-52](images/02-52.png)
+
+Para poder poner el Footer en la parte inferior vamos a necesitar una hoja de estilos para este componente. Recordemos que los estilos del componente hacen efecto solamente a un componente en particular.
+
+Vamos a crear el archivo `footer.component.css`
+
+![02-53](images/02-53.png)
+
+Con el siguiente código
+
+```js
+.footer {
+  position: absolute;
+  bottom: 0px;
+  height: 60px;
+  width: 100%;
+}
+```
+
+Esta hoja de estilo tenemos que registrarla dentro del componente `footer.component.ts`.
+
+![02-54](images/02-54.png)
+
+Y en `footer.component.html` aplicamos este estilo.
+
+```html
+<footer class="footer bg-dark rounded-top text-center">
+  <div class="container py-2">
+    <p class="text-white my-2">
+      &copy; {{ autor.nombre + ' ' + autor.apellido}}
+    </p>
+  </div>
+</footer>
+```
+
+Si nos vamos a nuestro navegador podemos observar ya totalmente colocado nuestro Footer no importando el tamaño del navegador.
+
+![02-55](images/02-55.png)
+![02-56](images/02-56.png)
+
+Para colocar también el Header de color oscuro nos vamos a `header.component.html` cambiamos `navbar-light bg-light` por `navbar-dark bg-dark`. 
+
+El resultado es el siguiente:
+
+![02-57](images/02-57.png)
+
+Finalmente para afinarlo aún más vamos a meter el contenido principal del `app.component.html` dentro de un contenedor para que no este tan pegado a la izquierda.
+
+![02-58](images/02-58.png)
+![02-59](images/02-59.png)
+
 ## Directiva estructural `*ngFor` 07:07
+
+```js
+```
+```js
+```
+
+```js
+```
+
+```js
+```
+```js
+
+```
 ## Directiva estructural `*ngIf` 04:48
