@@ -987,16 +987,118 @@ Si vamos al navegador tenemos:
 
 ## Directiva estructural `*ngIf` 04:48
 
-```js
-```
-```js
+Vamos a segir con las directivas estructurales en este caso con `*ngIf` que maneja una condición típica de cualquier lenguaje de programación para evaluar una expresión y de acuerdo si es verdadero o falso mostrar u ocultar un contenido.
+
+Vamos a `directiva.component.html` donde vamos a poner un botón para mostrar u ocultar el listado de curso.
+
+```html
+<button type="button" class="btn btn-primary my-3">Ocultar</button>
 ```
 
-```js
-```
+En `directiva.component.ts` vamos a tener una variable booleana `habilitar` con un valor inicial `true` para indicar que se muestre el listado de cursos.
 
 ```js
-```
-```js
+export class DirectivaComponent {
 
+  listaCurso: string[] = ['TypeScript', 'JavaScript', 'Java SE', 'C#', 'PHP'];
+
+  habilitar: boolean = true;
+  constructor() { }
+}
 ```
+
+Regresamos nuevamente a `directiva.component.html` para usar esta variable con la la directiva `*ngIf` de la siguiente manera:
+
+```html
+  <button type="button" class="btn btn-primary my-3">Ocultar</button>
+  <div class="card">
+    <div class="card-header">
+      Lista de cursos
+    </div>
+    <ul class="list-group" *ngIf="habilitar">
+      <li class="list-group-item" *ngFor="let curso of listaCurso">{{ curso }}</li>
+    </ul>
+  </div>
+```
+
+![02-65](images/02-65.png)
+
+Para hacer que se oculte el listado al pulsar el botón manejamos dicho evento en el botón:
+
+```html
+<button type="button" (click)="habilitar = false" class="btn btn-primary my-3">Ocultar</button>
+```
+
+![02-66](images/02-66.png)
+![02-67](images/02-67.png)
+
+Ya oculta el listado, como hacemos ahora para que se vuelva a mostrar, podemos usar la siguiente lógica:
+
+```html
+<button type="button" (click)="habilitar = (habilitar==true) ? false: true;" class="btn btn-primary my-3">Ocultar</button>
+```
+
+![02-68](images/02-68.png)
+![02-69](images/02-69.png)
+![02-70](images/02-70.png)
+
+Ahora sería bueno cambiar el texto según corresponda.
+
+```html
+<button type="button" (click)="habilitar = (habilitar==true) ? false: true;" class="btn btn-primary my-3">
+   {{ habilitar==true ? 'Ocultar': 'Mostrar'}}
+</button>
+```
+
+![02-71](images/02-71.png)
+![02-72](images/02-72.png)
+![02-73](images/02-73.png)
+
+Una mejor opción en vez de evaluar en el HTML la variable y habilitar el `true` o `false`, el `Ocultar` o `Mostrar`, es mejor hacerlo en un método en la clase `directiva.component.ts` que invocamos al pulsar el botón.
+
+El archivo `directiva.component.html` nos va a quedar así:
+
+```html
+<button type="button" (click)="setHabilitar();" class="btn btn-primary my-3">
+   {{ textoBoton }}
+</button>
+<div class="card">
+    <div class="card-header">
+      Lista de cursos
+    </div>
+    <ul class="list-group" *ngIf="habilitar">
+      <li class="list-group-item" *ngFor="let curso of listaCurso">{{ curso }}</li>
+    </ul>
+</div>
+```
+
+El archivo `directiva.component.ts` nos queda así:
+
+```js
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-directiva',
+  templateUrl: './directiva.component.html'
+})
+export class DirectivaComponent {
+
+  listaCurso: string[] = ['TypeScript', 'JavaScript', 'Java SE', 'C#', 'PHP'];
+
+  habilitar: boolean = true;
+  textoBoton: string = 'Ocultar'
+  constructor() { }
+
+  setHabilitar(): void{
+    this.habilitar = (this.habilitar==true) ? false: true;
+    this.textoBoton = (this.habilitar==true) ? 'Ocultar': 'Mostrar'
+  }
+}
+```
+
+Y en el navegador tenemos:
+
+![02-71](images/02-71.png)
+![02-72](images/02-72.png)
+![02-73](images/02-73.png)
+
