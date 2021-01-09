@@ -896,136 +896,107 @@ Observamos que automáticamente importa `DirectivaComponent` y se incluye en las
 
 Todo lo hace de forma automática.
 
-AQUIIIIIIIIIIIIII
-
-
-
-Acá se declara justo después de fútbol por lo tanto está todo de forma automática crea la clase acá
-
-tenemos la clase directiva crea el HTML crea la hoja de estilo en fin crea todo vamos a borrar el archivo
-
-deteste y vamos a abrir nuestra clase directiva componen y la vamos a simplificar.
-
-Acá implementa la interfaz on init que es para manejar el ciclo de día el evento cuando se inicializar
-```js
-```
-
+Si abrimos la clase `directiva.component.ts` vemos lo siguiente:
 
 ```js
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-directiva',
+  templateUrl: './directiva.component.html',
+  styleUrls: ['./directiva.component.css']
+})
+export class DirectivaComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
 ```
 
-componentes pero cómo no lo vamos a ocupar simplemente mejor eliminar mejor tener lo justo y necesario.
-
-Y también tiene un constructor que construye el objeto.
-
-Ahí tenemos nuestra clase directiva y crea todo de forma automática el selector el templete PRL y la
-
-hoja de estilo la hoja estilo tampoco lo vamos a utilizar para este ejemplo así que la podemos quitar
-
-se puede eliminar y dejamos solamente el temple o R.L y el selector.
-
-Por lo tanto también podríamos eliminar la hoja de estilo el archivo es ese bien hasta ahí estamos perfecto
-
-vamos a crear un atributo le vamos a llamar lista curso del tipo string pero es un arreglo así que lo
-
-vamos a dejar con corchete igual recordemos que todo arreglo se define con corchete y vamos a tener
-
-acá los elementos.
-
-Por ejemplo acá vamos a tener scrip por ejemplo lleva scrip Java estándar derechón o Java simplemente
-
-y por ejemplo se Etchart y PHP faltó la cosa bien acá tenemos entonces un arreglo una lista.
-
-Entonces la idea iterar sobre este arreglo utilizando la directiva en Ford en la lista.
-
-Ahora vamos a ir a directiva compra entonces acá la idea.
-
-Vamos a quitar el código que viene de ejemplo guardamos y acá vamos a tener nuestro en Gifford.
-
-Por ejemplo podríamos tener un tip y dentro del DIP podríamos tener una lista un huele y también lí
-
-nuestro Dib va a tener una clase de vostra Car y el huele va a tener también vostra vamos a utilizar
-
-Liss Group y por supuesto lí son los items entonces sería Liz Krupp item y además podríamos tener un
-
-título vamos a utilizar hundir también por ejemplo el listado de cursos
-
-un CAT idea guardamos con control s como siempre y la idea es iterar o mostrar cada curso dentro del
-
-huele en cada ítem.
-
-Entonces en la etiqueta que queremos repetir varias veces por cada elemento de la lista del arreglo
-
-queremos repetir.
-
-En este caso el lí entonces en el link vamos a utilizar la directiva en forma primero con el austríaco
-
-en Yi for Gifford igual y acá va toda la estructura y la estructura sería la variable utilizando Let
-
-por ejemplo curso off del arreglo.
-
-En este caso el arreglo sería lista curso esto sería una forma u otra forma un poco más automática.
-
-Escribimos en Chí y acá tenemos el Enjoy for que esto lo provee el Plains para trabajar con angular
-
-doble clic en esta directiva y automáticamente nos genera el Gifford con su estructura.
-
-Acá tenemos la variable por cada elemento que está reiterando curso off y arreglo.
-
-La lista sería lista.
-
-Curso tenemos nuestro Henry Ford.
-
-Entonces vamos a repetir tantas veces este elemento lí como elemento tengamos en nuestro arreglo o lista.
-
-Acá tenemos que mostrar el valor de cada elemento de la iteración.
-
-Entonces como siempre utilizando las llaves de interpolación de Streeck vamos a imprimir el curso que
-
-el curso sería justamente nuestra variable el Let que contiene el nombre el nombre del curso.
-
-Vamos a guardar y vamos a ejecutar
-
-con él ser menos o vamos a adelantar el servicio.
-
-Tenemos creado otro componente pero en ninguna parte le hemos dicho dónde la vamos a utilizar.
-
-Recuerden que importante el selector bien ahí tenemos nuestra aplicación pero en ninguna parte hemos
-
-utilizado el selector de nuestro componente directiva.
-
-Si se fijan acá el PP directiva el nombre selector y si queremos mostrar el contenido de este componente
-
-utilizar este componente más que colocar en algún lugar de nuestra aplicación.
-
-Entonces para poder mostrar la lista de curso tenemos que utilizar este selector donde por ejemplo en
-
-componer HTML que sería el componente principal y acá vamos a quitar el Ueli que tenemos del curso profesor
-
-vamos a colocar el selector directiva justamente acá vamos a guardar y tenemos script ya escrito ya
-
-está entredicho en se Char y PHP.
-
-Entonces acá tenemos nuestro primer ejemplo utilizando Gifford para iterar cosa que vamos a seguir utilizando
-
-en nuestro curso.
-
-Quedamos hasta acá hasta la próxima.
-
-
-
+Implementa la interface `OnInit` que es para manejar el ciclo de vida pero como no lo vamos a ocupar lo eliminamos.
 
 ```js
-```
-```js
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-directiva',
+  templateUrl: './directiva.component.html',
+  styleUrls: ['./directiva.component.css']
+})
+export class DirectivaComponent {
+
+  constructor() { }
+}
 ```
 
-```js
-```
+También tiene un constructor que construye el objeto.
+
+La hoja estilo tampoco lo vamos a utilizar para este ejemplo así que la podemos quitar, se puede eliminar y dejamos solamente el `templateUrl` y el `selector`.
 
 ```js
-```
-```js
+import { Component, OnInit } from '@angular/core';
 
+@Component({
+  selector: 'app-directiva',
+  templateUrl: './directiva.component.html'
+})
+export class DirectivaComponent {
+
+  constructor() { }
+}
 ```
+
+Por lo tanto también podríamos eliminar la hoja de estilo, el archivo `directiva.component.css`.
+
+Vamos a crear un atributo en `directiva.component.ts`, le vamos a llamar `listaCurso` el cual va a ser de tipo array de string.
+
+```js
+...
+export class DirectivaComponent {
+
+  listaCurso: string[] = ['TypeScript', 'JavaScript', 'Java SE', 'C#', 'PHP'];
+  constructor() { }
+}
+```
+
+La idea es iterar sobre este arreglo utilizando la directiva `*ngFor` en la lista, vamos a ir a `directiva.component.html` y colocamos el siguiente código:
+
+```html
+<div class="card">
+  <div class="card-header">
+    Lista de cursos
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let curso of listaCurso">{{ curso }}</li>
+  </ul>
+</div>
+```
+
+Como queremos pintar una lista de los cursos usamos la directiva `*ngFor` y la colocamos en el elemento que queremos repetir en este caso `<li` donde colocamos `*ngFor="let curso of listaCurso"` donde `listaCurso` es el atributo definido en `directiva.component.ts` el cual va a ir recorriendo y colocar el valor obtenido en `curso` el cual gracias a la interpolación `{{ curso }}` vamos pintando en cada iteracción.
+
+Para poder mostrar la lista de curso tenemos que utilizar el selector `app-directiva` y colocarlo en `app.component.html` el cual es el componente principal, vamos a replazar el `ul` que tiene y poner nuestro selector `app-directiva`.
+
+![02-63](images/02-63.png)
+
+Si vamos al navegador tenemos:
+
+![02-64](images/02-64.png)
+
 ## Directiva estructural `*ngIf` 04:48
+
+```js
+```
+```js
+```
+
+```js
+```
+
+```js
+```
+```js
+
+```
