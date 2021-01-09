@@ -404,8 +404,295 @@ Tenemos el `styles.css` para los estilos globales.
 Luego tenemos `test.ts` para pruebas unitarias.
 
 ## Integrar Bootstrap con Angular 06:54
+
+En esta clase vamos a ver la integración con el framework Bootstrap para trabajar con HTML5 y CSS para tener diseños bastante más robusto y atractivos, lo vamos a instalar de la forma más fácil posible.
+
+Hay diferentes formas para poder instalar y configurar Bootstrap en nuestro proyecto, podemos utilizar una instalación a través de Angular CLI o bien podemos integrarlo de forma manual, copiar las hojas estilos y lo JavaScript correspondiente en nuestro `index.html` del proyecto que es justamente lo que vamos a hacer ahora.
+
+Pero después más adelante vamos a configurar de otra forma Bootstrap 
+
+Vamos a ir a la página oficial de Bootstrap https://getbootstrap.com/ nos vamos a downloads y vamos a copiar las librerías la hoja de estilo vostra CSS y JavaScript. 
+
+```js
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+```
+
+```js
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+```
+
+Ahora nos vamos a nuestro proyecto Angular cerramos y vamos a abrir el `index.html` dentro de `<head>` metemos los estilos y antes de `</body>` vamos a meter los JavaScript, todo lo que sea JavaScript es bueno tenerlo al final.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ClientesApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+  <app-root></app-root>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>
+```
+
+Después obviamente lo vamos a hacer de la mejor forma posible, una manera mucho más optimizada y recomendada pero por ahora lo vamos a hacer de esta manera,  ya tenemos integrado nuestro Bootstrap.
+
+El siguiente paso es ir a la documentación Bootstrap para buscar `Navbar` copiamos el siguiente ejemplo:
+
+![02-36](images/02-36.png)
+
+Esto lo vamos a insertar dentro de nuestro componente principal `app.component.html` justo al comienzo.
+
+```html
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<h1>{{ title }}</h1>
+<ul>
+  <li>{{curso}}</li>
+  <li>{{profesor}}</li>
+</ul>
+```
+
+Después obviamente también lo vamos a mejorar, a optimizar, vamos a crear componentes por ejemplo un componente específico para el *Header* que contenga el menú de navegación, un *componente para el cuerpo*, el body, que sería el contenido principal dinámico que va cambiando según las rutas de los componentes y finalmente vamos a tener el *Footer*, también podríamos tener un *Sidebar*, por ahora en esta clase vamos a dejar el menú de navegación a secas en `app.component.html` que básicamente podría ser nuestro Layout lo vamos a guardar y ejecutamos.
+
+![02-37](images/02-37.png)
+
+Es recomendable cuando trabajamos con Angular abrir las herramientas de desarrollo con F12.
+
+![02-38](images/02-38.png)
+
+que nos va a permitir ver lo que sucede cuando ejecutamos nuestra aplicación y nos permitirá ver posibles errores que tengamos en nuestro código.
+
 ## Creando nuevo componente HeaderComponent 10:37
+
+En el ejemplo anterior creamos nuestro Navbar, el menú para nuestra página pero la incluimos en duro dentro del `app.component.html`. La idea es tener un componente separado que no esté tan acoplado al componente principal, entonces la idea es crear desde cero.
+
+Vamos a ver diferentes formas para crear componentes ya sea de forma automática utilizando la consola Angular CLI o bien crear cada componente, la clase, la vista de forma manual, archivo por archivo y por supuesto tenemos que configurar y registrarlo en Angular.
+
+La idea es que en el archivo `app.component.html` donde insertamos el menú de navegación en vez de eso solo tener una etiquta `<app-header></app-header>`.
+
+
+```html
+<app-header></app-header>
+
+<h1>{{ title }}</h1>
+<ul>
+  <li>{{curso}}</li>
+  <li>{{profesor}}</li>
+</ul>
+```
+
+Si ejecutamos la aplicación tenemos:
+
+![02-40](images/02-40.png)
+
+![02-39](images/02-39.png)
+
+un error por que es componente aun no existe.
+
+#### Crear el Componente `Header`
+
+Vamos a crear el Componente `Header` de forma manual, lo primero es tener una carpeta `header` 
+
+![02-41](images/02-41.png)
+
+y dentro vamos a crear nuestra clase `header.component.ts`, este nombre responde a una nomenclatura a un estándar recomendado en Angular.
+
+![02-42](images/02-42.png)
+
+Lo primero es crear la clase, la sintaxis es usar `export` básicamente nos permite poder exportar esta clase para que se pueda utilizar, para que se pueda registrar, guardar en la configuración del `app.module.ts` el contenedor de angulas. Una clase de tipo component debería llevar el sufijo component.
+
+```js
+export class HeaderComponent {
+
+}
+```
+
+La clase tiene que estar anotada con un decorador `@Component` para lo cual previamente debemos importar esa anotación. Dentro de `@Component` añadimos los atributos el *selector*, el *temple* o el *templateUrl*, por ahora usaremos `temple` y usamos el carácter de multilínea para colocar todo el contenido HTML en vez de usar una plantilla HTML.
+
+Por supuesto vamos a ver las dos formas, primero con temple, se recomienda cuando son HTML muy básico de 3 a 5 líneas como máximo, pero si son más de 5 líneas es 
+mucho mejor ya tener un archivo separado utilizando *templateUrl*.
+
+Nuestro componente `header.component.ts` final nos queda así:
+
+```js
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-header',
+  template: `
+  <h1>Angular - Spring</h1>
+  `
+})
+export class HeaderComponent {
+
+}
+```
+
+Qué es lo que faltaría para que este componente funcione en nuestra aplicación ya que hasta el momento solamente hemos creado la clase nadamas una clase dentro de proyecto pero en ninguna parte le estamos diciendo a Angular que tenemos un nuevo componente, en ninguna parte lo hemos configurado.
+
+Para eso nos vamos a `app.module.ts` lo primero es importar el componente, esto lo podemos hacer gracias a que cuando creamos la clase se define la firma como `export` para que después se pueda importar y utilizar.
+
+```js
+import { HeaderComponent } from './header/header.component';
+```
+
+Lo debemos registrar en:
+
+```js
+  declarations: [
+    AppComponent,
+    HeaderComponent
+  ],
+```
+
+Nuestro `app.module.ts` completo nos queda así:
+
+
+```js
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+Si volvemos a nuestro navegador tenemos:
+
+![02-43](images/02-43.png)
+
+Ahora que ya vimos que funciona nuestro componente `header.component.ts` vamos a meter dentro de el todo el Navbar con un título personalizado.
+
+```js
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-header',
+  template: `
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">{{title}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+  `
+})
+export class HeaderComponent {
+  title: string = 'App Angular'
+}
+```
+
+Y vemos que pasa en el navegador.
+
+![02-44](images/02-44.png)
+
+Ya tenemos nuestro NavBar en un componente independiente y funcionando.
+
 ## Separando el template del componente con TemplateUrl 02:31
+
+
+
+
+```js
+```
+```js
+```
+
+```js
+```
+
+```js
+```
+```js
+```
 ## Creando nuevo componente FooterComponent 10:07
 ## Directiva estructural `*ngFor` 07:07
 ## Directiva estructural `*ngIf` 04:48
