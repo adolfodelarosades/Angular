@@ -27,7 +27,7 @@
 * Directiva estructural `*ngFor` 07:07
 * Directiva estructural `*ngIf` 04:48
 
-### 03. Angular: Componente Clientes - 11 Clases - 55 min
+### [03. Angular: Componente Clientes](03-Angular_Componente-Clientes.md) - 11 Clases - 55 min
 
 * Creando el componente clientes.component 03:28
 * Listando los objetos del tipo Cliente 07:17
