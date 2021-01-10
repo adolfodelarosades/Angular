@@ -205,8 +205,15 @@ pero queda más limpio, los datos quedan en un archivo separado **SIMULANDO COMO
 ## Creando la clase de Servicio ClienteService y la Inyección de Dependencia 07:51
 
 Aun que sacamos los datos del componente, aun quedan rastros de los datos dentro del componente, como la importación del archivo `clientes.json` y el uso de la constante `CLIENTES`, **la idea es DESACOPLAR COMPLETAMENTE TODO LO REFERENTE A LOS DATOS, MODELO O LÓGICA DE NEGOCIOS DE LA CLASE Component** por lo que tenemos que **mover `CLIENTES` a una clase especializada en la Lógica de Negocios** que sería **nuestra clase ClienteService**
-
+AQUIIIIIIIIIIII
 * Dentro de la carpeta `clientes` crear el **servicio** cliente con el comando: `ng g service /clientes/cliente` se crea una clase de tipo `service`:
+
+![03-07](images/03-07.png)
+
+Se ha creado dos archivos la clase `service` y el archivo de pruebas unitarias que lo vamos a eliminar.
+
+![03-08](images/03-08.png)
+
 ```js
 import { Injectable } from '@angular/core';
 
