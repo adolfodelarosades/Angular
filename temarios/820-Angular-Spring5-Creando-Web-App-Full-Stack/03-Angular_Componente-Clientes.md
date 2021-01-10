@@ -572,6 +572,9 @@ Se debe a que estamos trabajando y estamos actualizados
 
 * En la carpeta `assets` crear las carpetas `css` y `js`.
 * Descargar los archivos de bootstrap y meterlo en las carpetas `css` y `js`.
+![03-18](images/03-18.png)
+Imagen para Bootstrap 5.0.0
+
 * En el archivo `index.html` hacer referencia a los archivos locales.
 ```html
 <!doctype html>
@@ -594,7 +597,26 @@ Se debe a que estamos trabajando y estamos actualizados
 </html>
 ```
 
-### Primera forma
+Para Bootstrap 5.0.0
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ClientesApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <app-root></app-root>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+```
+
+### Segunda forma
 
 * Ir a `angular.json`
 * Colocar los `css` en el array `"styles` y los `js` en el array `"scripts"`:
@@ -607,6 +629,16 @@ Se debe a que estamos trabajando y estamos actualizados
   "assets/js/jquery-3.4.1.slim.min.js",
   "assets/js/popper.min.js",
   "assets/js//bootstrap.min.js"
+]
+```
+Para Bootstrap 5.0.0 y Angular 10 (Ojo no hacerlo en el TEST)
+```js
+"styles": [
+  "src/styles.css",
+  "src/assets/css/bootstrap.min.css"
+],
+"scripts": [
+  "src/assets/js/bootstrap.bundle.min.js"
 ]
 ```
 * Quitar los links en `index.html`
@@ -625,8 +657,34 @@ Se debe a que estamos trabajando y estamos actualizados
 </body>
 </html>
 ```
+Para Bootstrap 5.0.0
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ClientesApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+```
 
 Cuando se modifica el archivo `angular.json` o cualquiera de configuración es posible que se tenga que reiniciar el servidor.
+
+![03-16](images/03-16.png)
+
+Todo sigue funcionando correctamente pero queda bastante más limpia, en `index.html` no tenemos que incluir nada todo está dentro de `angular.json`
+
+Si vamos a ver código fuente en ninguna parte aparece ya que se maneja de forma interna en el proyecto.
+
+![03-17](images/03-17.png)
+
+Es una buena forma de instalar Bootsrap y otras librerías JavaScript que podamos necesitar.
 
 ## Actualización: configurando los styles y scripts en archivo angular.json 00:19
 
@@ -642,7 +700,20 @@ Para instalar Bootstrap con npm debemos ejecutar el comando:
 
 `npm install bootstrap@4.1.1 jquery popper.js -save`
 
+Para Bootstrap 5.0.0
+
+`npm install bootstrap@5.0.0-beta1 jquery popper.js --save`
+
+![03-19](images/03-19.png)
+
 Con `--save` lo que se hace es guardar la dependencia en `package.json`
+
+Antes
+![03-23](images/03-23.png)
+
+Después de ejecutar el comando.
+
+![03-20](images/03-20.png)
 
 * En `angular.json` hacer las referencias a los archivos que se acaban de instalar dentro de `node_modules`.
 ```js
@@ -656,4 +727,21 @@ Con `--save` lo que se hace es guardar la dependencia en `package.json`
   "node_modules/bootstrap/dist/js//bootstrap.min.js"
 ]
 ```
+Para Boostrap 5.0.0
+
+![03-21](images/03-21.png)
+```js
+"styles": [
+  "src/styles.css",
+  "node_modules/bootstrap/dist/css/bootstrap.min.css"
+],
+"scripts": [
+  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+]
+```
+
 * Eliminar las carpetas `css` y `js` que metimos en `assets`.
+
+Al ir al navegador vemos que todo sigue funcionando correctamente.
+
+![03-22](images/03-22.png)
