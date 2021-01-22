@@ -1,4 +1,4 @@
-## 4. Backend: Spring API REST 01:28:02
+# 4. Backend: Spring API REST 01:28:02
 
 **REST** REpresentational State Transfer Transferencia de Estado Representacional.
 
@@ -19,11 +19,11 @@ PUT    |/clientes/{id}      | update()
 DELETE |/clientes/{id}      | destroy()
 
 
-### Descargar Código Fuente 00:03
+## Descargar Código Fuente 00:03
 
 :+1:
 
-### Demostración de lo que lograremos al finalizar las siguientes secciones 02:33
+## Demostración de lo que lograremos al finalizar las siguientes secciones 02:33
 
 * CRUD con paginación
 * Insertar, Editar y Eliminar Clientes
@@ -32,7 +32,7 @@ DELETE |/clientes/{id}      | destroy()
 * Uso de Date Picker
 * Relaciones de tablas
 
-### Herramientas necesarias Backend 06:46
+## Herramientas necesarias Backend 06:46
 
 * JDK (Java SE Development Kit (JDK(Desarrollo) + JRE(Ejecución))
 * IDE Eclipse + Spring Tools
@@ -40,7 +40,7 @@ DELETE |/clientes/{id}      | destroy()
 * MySQL
 * Postman
 
-#### Instalar JDK
+### Instalar JDK
 
 [Download JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
@@ -49,7 +49,7 @@ java -version
 java version "1.8.0_231"
 ```
 
-#### Instalar Eclipse
+### Instalar Eclipse
 
 [Eclipse](https://www.eclipse.org/)
 
@@ -57,11 +57,11 @@ java version "1.8.0_231"
 
 Debemos descargar [Eclipse IDE for Enterprise Java Developers](https://www.eclipse.org/downloads/packages/release/2019-12/r/eclipse-ide-enterprise-java-developers)
 
-### Instalación y configuración del IDE Eclipse 06:40
+## Instalación y configuración del IDE Eclipse 06:40
 
 Debemos descomprimir el ZIP descargado y ejecutar el archivo **eclipse.exe**. Nos pide el lugar de nuestro workspace.
 
-#### Instalar Spring Tools 4 (4.5.0 Release)
+### Instalar Spring Tools 4 (4.5.0 Release)
 
 * Ir `Help / Eclipse Marketplace` y en `Find` escribir `Spring` y `Enter`, en el listado nos saldra **Spring Tools 4 - for Spring Boot (aka Spring Tool Suite 4) 4.5.0 RELEASE** pulsamos en el botón `Install`.
 * Con todo seleccionado pulsamos en `Confirm`.
@@ -73,7 +73,7 @@ Con todo esto hecho en la barra de herramientas nos aparecerá el icono de **Boo
 
 En esta pestaña tendremos nuestro proyecto Spring Boot.
 
-#### Crear proyecto Spring
+### Crear proyecto Spring
 
 Para crear un proyecto Spring podemos seguir los siguientes pasos:
 
@@ -95,15 +95,15 @@ Para crear un proyecto Spring podemos seguir los siguientes pasos:
       * Kotlin
       * Groovy
 
-#### Eclipse configurado por el equipo de Spring
+### Eclipse configurado por el equipo de Spring
 
 Existe un Eclipse ya configirado con Spring Boot creado por el equipo de [Spring](https://spring.io/), hasta el final de la página tenemos el [link de tools](https://spring.io/tools) donde se nos permite descargar un Eclipse ya configurado con Spring Boot el cual es muy similar al que instalamos a mano.
 
-### Actualización: Wizard para seleccionar dependencias en Spring Tools 02:25
+## Actualización: Wizard para seleccionar dependencias en Spring Tools 02:25
 
 :+1: 
 
-### Creando Proyecto Backend API REST 10:23
+## Creando Proyecto Backend API REST 10:23
 
 Para crear un proyecto nuevo seguir los siguientes pasos:
 
@@ -137,7 +137,7 @@ Una vez hecho esto se genera la estructura de nuestro proyecto, algunos archivos
    * **SpringBootBackendApirestApplication**: Clase principal, es el **Boot Start** el arranque, una clase que se crea de forma automática en el package base de nuestro proyecto. Contiene lo siguiente:
       * **@SpringBootApplication**: anotación más importante de la aplicación 
    
-#### Ejecutar nuestro proyecto
+### Ejecutar nuestro proyecto
 
 * Colocarnos en la raiz del proyecto
 * Pulsar click derecho
@@ -145,7 +145,7 @@ Una vez hecho esto se genera la estructura de nuestro proyecto, algunos archivos
 
 Nos marcara algún error por que aún falta configurar el proyecto.
 
-### Configurando el Datasource a MySQL en el proyecto backend 06:46
+## Configurando el Datasource a MySQL en el proyecto backend 06:46
 
 Ir a **application.properties** e insertar el siguiente codigo:
  
@@ -163,20 +163,20 @@ logging.level.org.hibernate.SQL=debug
  
  ```
  <dependency>
-	<groupId>mysql</groupId>
-	<artifactId>mysql-connector-java</artifactId>
-	<scope>runtime</scope>
+   <groupId>mysql</groupId>
+   <artifactId>mysql-connector-java</artifactId>
+   <scope>runtime</scope>
 </dependency> 
 ```
 
-### Instalando MySQL 04:12
+## Instalando MySQL 04:12
 
 Ir a [MySQL](https://www.mysql.com/), vamos a [MySQL Community (GPL) Downloads](https://dev.mysql.com/downloads/) Seleccionamos MySQL Community Server 8.0.18 y descargamos la versión completa para nuestro Sistema Operativo. 
 Ejecutarlo para instalar:
 * MySQL Server
 * Workbeanch
 
-### Creando la Base de Datos 03:11
+## Creando la Base de Datos 03:11
 
 Vamos a crear la BD `db_springboot_backend` con comandos seria así:
 
@@ -189,16 +189,16 @@ MySQL [(none)]> CREATE DATABASE db_springboot_backend;
 MySQL [(none)]> show databases;
 ```
 
-#### Probar la conexión
+### Probar la conexión
 
 Una vez creada la BD podemos crear la conexión ejecutando la aplicación. `Run As / Spring Boot Ass`. 
 Se levanta el servidor sin errores y en la **consola** podemos ver el dialecto que esta utilizando **Using dialect: org.hibernate.dialect.MySQL57Dialect** es el que configuramos.
 
-#### Abrir la BD en Workbeanch
+### Abrir la BD en Workbeanch
 
 Podemos abrir la BD creada en Workbeanch, actualmente no tendra tablas pero ya las crearemos.
 
-### Añadiendo la clase Entity Cliente al Backend 08:20
+## Añadiendo la clase Entity Cliente al Backend 08:20
 
 Vamos a crear la clase **Entity Cliente**, la idea es que esta clase este mapeada a la tabla Clientes y represente la persistencia o datos de los clientes por el lado del servidor. Vamos a seguir los siguientes pasos:
 
@@ -208,56 +208,55 @@ Vamos a crear la clase **Entity Cliente**, la idea es que esta clase este mapead
 ```java
 public class Cliente {
 	
-	private Long id;
-	private String nombre;
-	private String apellido;
-	private String email;
-	private Date createAt;
+   private Long id;
+   private String nombre;
+   private String apellido;
+   private String email;
+   private Date createAt;
 
 }
 ```
 * Añadimos los `Getters` y `Setters` de todas las propiedades:
 ```java
 public Long getId() {
-		return id;
-	}
+   return id;
+}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+public void setId(Long id) {
+   this.id = id;
+}
 
-	public String getNombre() {
-		return nombre;
-	}
+public String getNombre() {
+   return nombre;
+}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+public void setNombre(String nombre) {
+   this.nombre = nombre;
+}
 
-	public String getApellido() {
-		return apellido;
-	}
+public String getApellido() {
+   return apellido;
+}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+public void setApellido(String apellido) {
+   this.apellido = apellido;
+}
 
-	public String getEmail() {
-		return email;
-	}
+public String getEmail() {
+   return email;
+}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+public void setEmail(String email) {
+   this.email = email;
+}
 
-	public Date getCreateAt() {
-		return createAt;
-	}
+public Date getCreateAt() {
+   return createAt;
+}
 
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-
+public void setCreateAt(Date createAt) {
+   this.createAt = createAt;
+}
 ```
 * El siguiente paso es convertir esta clase en una clase **Entity**, en una clase de persistencia que esta mapeada a una tabla de una BD, cada atributo de la clase corresponde a un campo en la tabla, los pasos son:
    * Implementar la **interface Serializable**:    `public class Cliente implements Serializable {`
@@ -291,60 +290,59 @@ import javax.persistence.TemporalType;
 @Table(name="clientes")
 public class Cliente implements Serializable {
 
+   @Id
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
+   private Long id;
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+   private String nombre;
+   private String apellido;
+   private String email;
 	
-	private String nombre;
-	private String apellido;
-	private String email;
+   @Column(name="create_at")
+   @Temporal(TemporalType.DATE)
+   private Date createAt;
+
+   public Long getId() {
+      return id;
+   }
+
+   public void setId(Long id) {
+      this.id = id;
+   }
+
+   public String getNombre() {
+      return nombre;
+   }
+
+   public void setNombre(String nombre) {
+      this.nombre = nombre;
+   }
+
+   public String getApellido() {
+      return apellido;
+   }
+
+   public void setApellido(String apellido) {
+      this.apellido = apellido;
+   }
+
+   public String getEmail() {
+      return email;
+   }
+
+   public void setEmail(String email) {
+      this.email = email;
+   }
+
+   public Date getCreateAt() {
+      return createAt;
+   }
+
+   public void setCreateAt(Date createAt) {
+      this.createAt = createAt;
+   }
 	
-	@Column(name="create_at")
-	@Temporal(TemporalType.DATE)
-	private Date createAt;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-	
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
 
 }
 ```
@@ -362,7 +360,7 @@ Podemos abrir el Workbeanch y ver nuestra tabla desde allí. Cabe aclarar que el
 
 `id   apellido   create_at   email   nombre`
 
-### Añadiendo las clases Repository y Service de la lógica de negocio 11:48
+## Añadiendo las clases Repository y Service de la lógica de negocio 11:48
 
 Vamos a comenzar creando la clase de acceso a datos DAO o Repository la cual tiene como función acceder a los datos para realizar consultas y todo tipo de operaciones en la BD. 
 
@@ -374,7 +372,7 @@ Simplemente se implementa una interfaz, heredamos de la interfaz CRUD repositor 
 
 Y además si queremos podemos implementar nuestros propios métodos customizados usando la notación @Query o también utilizando el nombre el método cosa que vamos a ver un poco en esta clase.
 
-#### Crear la Clase Repository o DAO
+### Crear la Clase Repository o DAO
 
 Pero vamos a implementar primero la interfaz DAO:
 
@@ -416,9 +414,9 @@ Y varios métodos y propiedades más.
 
 **Ya podemos contar con los métodos que estamos heredando, ya los podemos usar practicamente sin hacer nada, solo por haber utilizado `CrudRepository`.**
 
-#### Spring Data JPA
+### Spring Data JPA
 
- Podriamos revisar la documentación de [Spring Data JPA](https://spring.io/projects/spring-data-jpa) y ver su [Documentación](https://docs.spring.io/spring-data/jpa/docs/2.2.3.RELEASE/reference/html/#reference) para ver más detalles.
+Podriamos revisar la documentación de [Spring Data JPA](https://spring.io/projects/spring-data-jpa) y ver su [Documentación](https://docs.spring.io/spring-data/jpa/docs/2.2.3.RELEASE/reference/html/#reference) para ver más detalles.
 
 Tenemos `4.1. Core concepts` concepto del core una interfaz Repository tal como la vimos y esta interesante porque va a realizar las consultas y operaciones de acuerdo al nombre el método.
 
@@ -427,20 +425,20 @@ Si tenemos el nombre **save** va a realizar un **persist en JPA**. Por lo tanto 
 ```java
 interface PersonRepository extends Repository<Person, Long> {
 
-  List<Person> findByEmailAddressAndLastname(EmailAddress emailAddress, String lastname);
+   List<Person> findByEmailAddressAndLastname(EmailAddress emailAddress, String lastname);
 
-  // Enables the distinct flag for the query
-  List<Person> findDistinctPeopleByLastnameOrFirstname(String lastname, String firstname);
-  List<Person> findPeopleDistinctByLastnameOrFirstname(String lastname, String firstname);
+   // Enables the distinct flag for the query
+   List<Person> findDistinctPeopleByLastnameOrFirstname(String lastname, String firstname);
+   List<Person> findPeopleDistinctByLastnameOrFirstname(String lastname, String firstname);
 
-  // Enabling ignoring case for an individual property
-  List<Person> findByLastnameIgnoreCase(String lastname);
-  // Enabling ignoring case for all suitable properties
-  List<Person> findByLastnameAndFirstnameAllIgnoreCase(String lastname, String firstname);
+   // Enabling ignoring case for an individual property
+   List<Person> findByLastnameIgnoreCase(String lastname);
+   // Enabling ignoring case for all suitable properties
+   List<Person> findByLastnameAndFirstnameAllIgnoreCase(String lastname, String firstname);
 
-  // Enabling static ORDER BY for a query
-  List<Person> findByLastnameOrderByFirstnameAsc(String lastname);
-  List<Person> findByLastnameOrderByFirstnameDesc(String lastname);
+   // Enabling static ORDER BY for a query
+   List<Person> findByLastnameOrderByFirstnameAsc(String lastname);
+   List<Person> findByLastnameOrderByFirstnameDesc(String lastname);
 }
 ```
 Podemos realizar consulta en la interfaz, implementar métodos personalizados por ejemplo en `List<Person> findByEmailAddressAndLastname(EmailAddress emailAddress, String lastname);`:
@@ -460,8 +458,8 @@ Otra alternativa aparte de realizar consulta a través del nombre del método es
 ```java
 public interface UserRepository extends JpaRepository<User, Long> {
 
-  @Query("select u from User u where u.emailAddress = ?1")
-  User findByEmailAddress(String emailAddress);
+   @Query("select u from User u where u.emailAddress = ?1")
+   User findByEmailAddress(String emailAddress);
 }
 ```
 
@@ -487,7 +485,7 @@ import com.bolsadeideas.springboot.backend.apirest.models.entity.Cliente;
 
 public interface IClienteService {
 
-	public List<Cliente> findAll();
+   public List<Cliente> findAll();
 }
 ```
 #### Crear la Clase Service
@@ -517,16 +515,16 @@ import com.bolsadeideas.springboot.backend.apirest.models.entity.Cliente;
 @Service
 public class ClienteServiceImpl implements IClienteService{
 
-	//Inyectar (Inyección de dependdencias) el ClienteDao
-	@Autowired
-	private IClienteDao clienteDao;
+   //Inyectar (Inyección de dependdencias) el ClienteDao
+   @Autowired
+   private IClienteDao clienteDao;
 	
-	@Override
-	@Transactional(readOnly = true) //Permite manejar transacción en el método y como es un Select será sólo de lectura
-	public List<Cliente> findAll() {
-		//Como findAll() retorna un Iterable le hacemos un CAST
-		return (List<Cliente>) clienteDao.findAll();
-	}
+   @Override
+   @Transactional(readOnly = true) //Permite manejar transacción en el método y como es un Select será sólo de lectura
+   public List<Cliente> findAll() {
+      //Como findAll() retorna un Iterable le hacemos un CAST
+      return (List<Cliente>) clienteDao.findAll();
+   }
 
 }
 ```
@@ -549,10 +547,9 @@ Por lo tanto la podemos inyectar en cualquier otro componente, ya sea una clase 
 
 Para finalizar anotamos con **@Service** la clase, una anotación muy importante ya que con esto decoramos y marcamos esta clase como un componente de servicio en Sprint y también se va a guardar en el contenedor de Sprint va a quedar almacenado en el contexto. Y después podemos inyectar este objeto, este Beans de Sprint en el controlador y lo podemos utilizar pero para eso tenemos que decorarlo y Service lo que hace es justamente eso, si vemos su definición veremos que es un estereotipo de **@Component**. Por lo tanto con **@Component** marca la clase, la decora para que sea un componente del Framework un Beans y se registra en el contenedor.
 
-### Creando controlador @RestController y EndPoint para listar 04:22
+## Creando controlador @RestController y EndPoint para listar 04:22
 
 Vamos a crear nuestro API Rest un controlador Rest que es una URL que vamos a utilizar para conectar y enviar datos, peticiones a nuestra aplicación por ejemplo para listar nuestro cliente en nuestra aplicación con angular.
-
 
 * Crear package **controllers**
 * Crear la clase **ClienteRestController**
@@ -579,7 +576,7 @@ Recordemos que en Spring cuando se declara un Beans con su tipo genérico ya sea
 * Ya podemos hacer retornar los datos:
 ```java
 public List<Cliente> index(){
-	return clienteService.findAll();
+   return clienteService.findAll();
 }
 ``` 
 
@@ -588,7 +585,7 @@ public List<Cliente> index(){
 ```java
 @GetMapping("/clientes")
 public List<Cliente> index(){
-	return clienteService.findAll();
+   return clienteService.findAll();
 }
 ```
 
@@ -611,14 +608,14 @@ import com.bolsadeideas.springboot.backend.apirest.models.services.IClienteServi
 @RequestMapping("/api")
 public class ClienteRestController {
 	
-	@Autowired
-	private IClienteService clienteService;
+   @Autowired
+   private IClienteService clienteService;
 	
 	
-	@GetMapping("/clientes")
-	public List<Cliente> index(){
-		return clienteService.findAll();
-	}
+   @GetMapping("/clientes")
+   public List<Cliente> index(){
+      return clienteService.findAll();
+   }
 }
 ```
 Este sería nuestro API REST nuestro controlador utilizando RestController mapeamos con `/api` todos los métodos del REST y luego cada método va a tener su propio EndPoint:
@@ -806,9 +803,6 @@ Vamos a implementar Cors en nuestra API REST Controller de una forma bastante si
 * Lo primero es ir a **ClienteRestController** y debemos anotar la clase con la anotación **@CrossOrigin** y entre parentesis ponemos los origenes que tienen acceso a este recurso, en este caso será nuestro dominio de Angular, pero se puede colocar un arreglo de origenes:
 
 `@CrossOrigin(origins = {"http://localhost:4200"})`
-
-
-
 
 Se indica el dominio o la IP del servidor y puede soportar un arreglo. Acá pueden indicar como restricción que puede soportar una lista de dominios permitidos.
 
