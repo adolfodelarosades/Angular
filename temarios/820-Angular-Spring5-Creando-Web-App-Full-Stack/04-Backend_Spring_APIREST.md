@@ -808,7 +808,7 @@ Para ejecutar en Postman presionamos el botón **Send** lo que hace que retorne 
 ]
 ```
 Aparte del JSON nos regresa:
-`Status: 200OK     Time: 26ms     Size: 1.38 KB`
+`Status: 200OK     Time: 36ms     Size: 1.37 KB`
 El Status indica que se realizó correctamente sin ningún problema. También tenemos el tiempo que se demoró el Request y el tamaño de la respuesta. 
 
 ![04-20](images/04-20.png)
@@ -824,15 +824,18 @@ Además si nos vamos a Headers tenemos el **Content type**  **aplication/json**
 * **Raw**: Presenta el JSON sin formato.
 * **Preview**: Muestra un registro por renglón
 
-Para eso lo primero que vamos a tener que hacer es añadir el Cors significa o se le conoce como Cross Origin Resort Charing que permite en el fondo compartir dos aplicaciones compartir o integrar dos aplicaciones que están en diferentes dominios será lo que veremos en la próxima sección.
+![04-22](images/04-22.png)
+![04-23](images/04-23.png)
+
+Con lo que hemos hecho hasta ahora ya estamos preparados para conectar nuestra aplicación Angular que es nuestro FrontEnd con nuestra API REST, con Spring que es nuestro BackeEnd, para eso lo primero que vamos a tener que hacer es añadir el Cors significa o se le conoce como Cross Origin Resort Charing que permite en el fondo compartir dos aplicaciones compartir o integrar dos aplicaciones que están en diferentes dominios será lo que veremos en la próxima sección.
 
 ### Uso de Cors para compartir recursos en API REST 04:02
 
-[CORS](https://developer.mozilla.org/es/docs/Web/HTTP/Access_control_CORS) Significa **Intercambio de Recursos de Origen Cruzado** permite a los navegadores modernos enviar y recibir datos restringidos, como por ejemplo pueden ser flujo de datos, streams, archivo de un dominio, imágenes, hojas de estilo CSS, Script. En general cualquier tipo de recursos, desde un dominio a otro diferente que ha hecho la petición es decir **es un mecanismo de control de acceso HTTP para acceder a ciertos recursos en un servidor Backend**.
+[CORS](https://developer.mozilla.org/es/docs/Web/HTTP/Access_control_CORS) Significa **Intercambio de Recursos de Origen Cruzado** permite a los navegadores modernos enviar y recibir datos restringidos, como por ejemplo pueden ser flujo de datos, streams, archivo de un dominio, imágenes, hojas de estilo CSS, Script. En general cualquier tipo de recursos, desde un dominio a otro diferente que ha hecho la petición, es decir **es un mecanismo de control de acceso HTTP para acceder a ciertos recursos en un servidor Backend**.
 
 Por lo tanto tenemos un cliente que accede a través de un navegador a recursos que están desplegados y servidos en otro dominio. La idea es que el navegador se encargue de toda esta materia de seguridad que ya es un estándar para compartir estos recursos entre diferentes dominios.
 
-El primer paso, se debe configurar Cors en el servidor API REST es decir en el package. Cors determina si se permite compartir recursos en una solicitud de origen cruzado, en un recurso específico en función de si el dominio específico que realiza la solicitud está permitido. El tipo de solicitud HTTP que se realiza si está permitido el GET el POST el PUT el DELETE etc.
+El primer paso, se debe configurar Cors en el servidor API REST es decir en el backend. Cors determina si se permite compartir recursos en una solicitud de origen cruzado, en un recurso específico en función de si el dominio específico que realiza la solicitud está permitido. El tipo de solicitud HTTP que se realiza si está permitido el GET el POST el PUT el DELETE etc.
 
 **Entonces para resumir el modo en que trabaja Cors es interactuando entre el navegador web y el servidor para determinar si es seguro o no permitir estas peticiones de origen cruzado.**
 
@@ -842,7 +845,7 @@ Primero se envía un Pre Request indicando si el dominio que intenta acceder a e
 
 Por ejemplo si tiene acceso a POST a GET a PUT a DELETE y va a devolver al navegador todos los métodos que están soportados para este dominio(2).
 
-Luego se envía el Request final que requiere el recurso y ve si este dominio tiene permiso para poder acceder a este recurso y si es así va a devolver la respuesta con el recurso solicitado por ejemplo con el servicio REST en formato JSON o bien si un archivo, una hoja de estilo o JavaScript, una imagen, un video, cualquier flujo de dato del tipo Stream.
+Luego se envía el Request final que requiere el recurso y ve si este dominio tiene permiso para poder acceder a este recurso y si es así va a devolver la respuesta con el recurso solicitado, por ejemplo con el servicio REST en formato JSON o bien si un archivo, una hoja de estilo o JavaScript, una imagen, un video, cualquier flujo de dato del tipo Stream.
 
 Vamos a implementar Cors en nuestra API REST Controller de una forma bastante simple, vámonos a Eclipse. 
 
