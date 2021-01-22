@@ -6,12 +6,12 @@
 * 220 clases 
 * 23 h 33 m de duración total
 
-### [01. Introducción](01-Introduccion.md) - 2 Clases - 9 min
+### [01. Introducción](01-Introduccion.md) - 2 Clases - 9 min :+1:
 
 * Introducción 05:24
 * Antes de comenzar 03:19
 
-### [02. Primeros Pasos en Angular](02_Primeros_Pasos_en_Angular.md) - 13 Clases - 1 h 49 min
+### [02. Primeros Pasos en Angular](02_Primeros_Pasos_en_Angular.md) - 13 Clases - 1 h 49 min :+1:
 
 * Introducción a Angular 13:44
 * Instalaciones y herramientas necesarias 11:37
@@ -27,7 +27,7 @@
 * Directiva estructural `*ngFor` 07:07
 * Directiva estructural `*ngIf` 04:48
 
-### [03. Angular: Componente Clientes](03-Angular_Componente-Clientes.md) - 11 Clases - 55 min
+### [03. Angular: Componente Clientes](03-Angular_Componente-Clientes.md) - 11 Clases - 55 min :+1:
 
 * Creando el componente clientes.component 03:28
 * Listando los objetos del tipo Cliente 07:17
@@ -41,7 +41,7 @@
 * Actualización: configurando los styles y scripts en archivo angular.json 00:17
 * Instalando Bootstrap utilizando el comando npm desde el terminal 03:55
 
-### 04. Backend: Spring API REST - 16 Clases - 1 h 28 min 
+### [04. Backend: Spring API REST - 16 Clases](820-Angular-Spring5-Creando-Web-App-Full-Stack/04-Backend_Spring_APIREST.md) - 1 h 28 min :point_up:
 
 * Demostración de lo que lograremos al finalizar las siguientes secciones 02:33
 * Herramientas necesarias Backend 06:46
@@ -60,7 +60,7 @@
 * Implementando Servicio Angular con HttpClient 09:28
 * Descargar Código Fuente 00:03
 
-### 05. CRUD con Spring API Rest - 16 Clases - 1 h 17 min
+### [05. CRUD con Spring API Rest](820-Angular-Spring5-Creando-Web-App-Full-Stack/05-CRUD_con_Spring_APIRest.md) - 16 Clases - 1 h 17 min :point_up:
 
 * Escribiendo los métodos del CRUD en la clase ClienteService del Backend 03:44
 * Escribiendo los métodos show y create en el Controlador Backend API Rest 05:26
