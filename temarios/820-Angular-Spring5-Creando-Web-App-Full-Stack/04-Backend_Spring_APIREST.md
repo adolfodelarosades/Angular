@@ -119,8 +119,8 @@ Para crear un proyecto nuevo seguir los siguientes pasos:
    * Packaging: **Jar**
    * Java Version: **8**
    * Language: **Java**
-   * Group: **com.bolsadeideas.springboot.backend.apirest**
-   * Package: **com.bolsadeideas.springboot.backend.apirest**
+   * Group: **com.example.springboot.backend.apirest**
+   * Package: **com.example.springboot.backend.apirest**
 * Presionamos el botón **Next**, para ir a la ventana de Dependencias o Librerías **New Spring Starter Project Dependencies**
    * Spring Boot Version: **2.2.2** ( La versión más estable hasta el momento**
    * Seleccionar **Web** 
@@ -132,12 +132,20 @@ Para crear un proyecto nuevo seguir los siguientes pasos:
       * Marcar **Spring Boot DevTools** (Para actualizar automáticamente el deploy cuando se realicen cambios)
 * Dar click en **Finish**
 
+![04-01](images/04-01.png)
+![04-02](images/04-02.png)
+
 Una vez hecho esto se genera la estructura de nuestro proyecto, algunos archivos importantes son:
+
+![04-03](images/04-03.png)
    
    * **pom.xml**: Contiene la estructura de nuestro proyecto. (Con la información que se metio al crear el proyecto)
    * **application.properties**: Archivo principal de configuración. Permite sobreescribir cualquier configuración del proyecto. (Actualmente vacío)
    * **SpringBootBackendApirestApplication**: Clase principal, es el **Boot Start** el arranque, una clase que se crea de forma automática en el package base de nuestro proyecto. Contiene lo siguiente:
-      * **@SpringBootApplication**: anotación más importante de la aplicación 
+      * **@SpringBootApplication**: anotación más importante de la aplicación, si entramos a ver su definición esta comouesta a su vez por varias anotaciones, las más importantes las 3 últimas, `@SpringBootConfiguration` configuración de Spring Boot, `@EnableAutoConfiguration` permitir la auto configuración, `@ComponentScan` buscar y registra en el contenedor de Spring todas las clases anotadas con `@RestController`, `@Controller`, `@Service`, `@Repository` y `@Component`.
+      
+      ![04-04](images/04-04.png)
+      ![04-05](images/04-05.png)
    
 ### Ejecutar nuestro proyecto
 
@@ -147,11 +155,13 @@ Una vez hecho esto se genera la estructura de nuestro proyecto, algunos archivos
 
 Nos marcara algún error por que aún falta configurar el proyecto.
 
+![04-06](images/04-06.png)
+
 ## Configurando el Datasource a MySQL en el proyecto backend 06:46
 
 Ir a **application.properties** e insertar el siguiente codigo:
  
- ```
+```
 spring.datasource.url=jdbc:mysql://localhost/db_springboot_backend?usesSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
 spring.datasource.username=root
 spring.datasource.password=
@@ -159,12 +169,15 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.database-platform=org.hibernate.dialect.MySQL57Dialect
 spring.jpa.hibernate.ddl-auto=create-drop
 logging.level.org.hibernate.SQL=debug
- ```
+```
+
+* Con la propiedad `spring.jpa.hibernate.ddl-auto=create-drop` las tablas de la BD se crean automáticamente a partir de las clases Entity y en base a todas las antaciones, de la MetaData que vamos a crear con las anotaciones de persistencia, esto va a pasar cada que arranquemos la aplicación cada que se baja el servicio de eliminan las tablas, esto más que nada se usa cuando estamos desarrollando, en ambito de producción esta propiedad no la deberíamos tener, deberíamos tener las tablas creadas desde antes.
+* Con la propiedad `logging.level.org.hibernate.SQL=debug` vamos a mostrar las sentencias SQL nativas que se generan por detrás.
  
- Es muy importante tener el Driver de MySQL en el pom.xml:
+Es muy importante tener el Driver de MySQL en el pom.xml:
  
- ```
- <dependency>
+```
+<dependency>
    <groupId>mysql</groupId>
    <artifactId>mysql-connector-java</artifactId>
    <scope>runtime</scope>
