@@ -41,7 +41,7 @@
 * Actualización: configurando los styles y scripts en archivo angular.json 00:17
 * Instalando Bootstrap utilizando el comando npm desde el terminal 03:55
 
-### [04. Backend: Spring API REST - 16 Clases](820-Angular-Spring5-Creando-Web-App-Full-Stack/04-Backend_Spring_APIREST.md) - 1 h 28 min :point_up:
+### [04. Backend: Spring API REST - 16 Clases](04-Backend_Spring_APIREST.md) - 1 h 28 min :point_up:
 
 * Demostración de lo que lograremos al finalizar las siguientes secciones 02:33
 * Herramientas necesarias Backend 06:46
@@ -60,7 +60,7 @@
 * Implementando Servicio Angular con HttpClient 09:28
 * Descargar Código Fuente 00:03
 
-### [05. CRUD con Spring API Rest](820-Angular-Spring5-Creando-Web-App-Full-Stack/05-CRUD_con_Spring_APIRest.md) - 16 Clases - 1 h 17 min :point_up:
+### [05. CRUD con Spring API Rest](05-CRUD_con_Spring_APIRest.md) - 16 Clases - 1 h 17 min :point_up:
 
 * Escribiendo los métodos del CRUD en la clase ClienteService del Backend 03:44
 * Escribiendo los métodos show y create en el Controlador Backend API Rest 05:26
