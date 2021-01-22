@@ -6,6 +6,8 @@ Es un protocolo entre cliente y servidor sin estado (Stateless), en el BackEnd n
 
 Una de las aplicaciones principales es integrar aplicaciones utilizando REST para **obtener datos** desde el BackeEnd en formato JSON a un cliente o **enviar datos** desde cualquier cliente al BackeEnd y realizar operaciones CRUD en la BD.
 
+![rest](images/rest.png)
+
 La transferencia y envio de datos se realiza a través de un **ENDPOINT** que es una URL o URI que envía una petición HTTP al servidor con diferentes métodos o verbos del Request, por ejemplo:
 
 Verbos | URI                | Action o Handler
