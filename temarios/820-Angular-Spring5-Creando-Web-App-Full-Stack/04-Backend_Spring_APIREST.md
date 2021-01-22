@@ -162,6 +162,7 @@ Nos marcara algún error por que aún falta configurar el proyecto.
 Ir a **application.properties** e insertar el siguiente codigo:
  
 ```
+#spring.datasource.url=jdbc:mysql://localhost/db_springboot_backend?usesSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
 spring.datasource.url=jdbc:mysql://localhost/db_springboot_backend?usesSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
 spring.datasource.username=root
 spring.datasource.password=
@@ -209,9 +210,14 @@ MySQL [(none)]> show databases;
 Una vez creada la BD podemos crear la conexión ejecutando la aplicación. `Run As / Spring Boot Ass`. 
 Se levanta el servidor sin errores y en la **consola** podemos ver el dialecto que esta utilizando **Using dialect: org.hibernate.dialect.MySQL57Dialect** es el que configuramos.
 
+![04-07](images/04-07.png)
+![04-08](images/04-08.png)
+
 ### Abrir la BD en Workbeanch
 
 Podemos abrir la BD creada en Workbeanch, actualmente no tendra tablas pero ya las crearemos.
+
+![04-09](images/04-09.png)
 
 ## Añadiendo la clase Entity Cliente al Backend 08:20
 
@@ -220,6 +226,9 @@ Vamos a crear la clase **Entity Cliente**, la idea es que esta clase este mapead
 * Crear dentro del package principal el package **models.entity**.
 * Dentro del nuevo package creamos la clase **Cliente**
 * Declaramos las propiedades de la clase:
+
+`Cliente`
+
 ```java
 public class Cliente {
 	
@@ -231,7 +240,9 @@ public class Cliente {
 
 }
 ```
+
 * Añadimos los `Getters` y `Setters` de todas las propiedades:
+
 ```java
 public Long getId() {
    return id;
@@ -274,7 +285,7 @@ public void setCreateAt(Date createAt) {
 }
 ```
 * El siguiente paso es convertir esta clase en una clase **Entity**, en una clase de persistencia que esta mapeada a una tabla de una BD, cada atributo de la clase corresponde a un campo en la tabla, los pasos son:
-   * Implementar la **interface Serializable**:    `public class Cliente implements Serializable {`
+   * Implementar la **interface Serializable**: `public class Cliente implements Serializable {`
    * Crear el **default serial version ID** pulsando el foco amarillo que sale: `private static final long serialVersionUID = 1L;` es un atributo estatico que es requerido cuando se implementa el serializable.
    * Marcar la clase para indicar que se trata de una clase Entity con: `@Entity` importarla de `javax.persistence`
    * La siguiente anotación no seria necesaria si la Tabla y la Clase se llaman igual pero en este caso no sera así (por que la tabla se llama **clientes**: `@Table(name="clientes")`
@@ -371,13 +382,17 @@ Si vemos el log nos indica:
 ```
 Esta boorando la tabla si existe y luego la crea con todas las caracteristicas en los campos que se definieron en la clase.
 
+![04-10](images/04-10.png)
+
 Podemos abrir el Workbeanch y ver nuestra tabla desde allí. Cabe aclarar que el orden de los campos es alfabetico a excepción del id por ser clave primaria.
 
 `id   apellido   create_at   email   nombre`
 
-## Añadiendo las clases Repository y Service de la lógica de negocio 11:48
+![04-11](images/04-11.png)
 
-Vamos a comenzar creando la clase de acceso a datos DAO o Repository la cual tiene como función acceder a los datos para realizar consultas y todo tipo de operaciones en la BD. 
+## Añadiendo las clases Repository y Service de la Lógica de Negocio 11:48
+
+Vamos a comenzar creando la clase de acceso a datos, DAO o Repository la cual tiene como función acceder a los datos para realizar consultas y todo tipo de operaciones en la BD. 
 
 Después crearemos la clase Service que en el fondo puede contener a las clases DAO que interactuan todas bajo una misma transacción, el objetivo principal del Service es evitar ensuciar el Controlador con las clases DAO, simplemente se desacopla y se lleva a una fachada.
 
@@ -385,14 +400,14 @@ Hay diferentes formas de implementar un DAO, podemos crear una clase, podemos tr
 
 Simplemente se implementa una interfaz, heredamos de la interfaz CRUD repositor y prácticamente estamos listos ya trae todos los métodos básicos para un CRUD, para poder listar, para buscar, para modificar, para guardar y para eliminar.
 
-Y además si queremos podemos implementar nuestros propios métodos customizados usando la notación @Query o también utilizando el nombre el método cosa que vamos a ver un poco en esta clase.
+Y además si queremos podemos implementar nuestros propios métodos customizados usando la notación `@Query` o también utilizando el nombre el método cosa que vamos a ver un poco en esta clase.
 
 ### Crear la Clase Repository o DAO
 
 Pero vamos a implementar primero la interfaz DAO:
 
-* Crear el package **models.dao** dentro del package principal.
-* Clic derecho en el package models.dao y damos `New / Interface`
+* Crear el package **`models.dao`** dentro del package principal.
+* Clic derecho en el package `models.dao` y damos `New / Interface`
 * Name: **IClienteDao**
 
 Crea el archivo:
@@ -417,6 +432,10 @@ public interface IClienteDao extends CrudRepository<Cliente, Long>{
 
 Si damos un `Ctrl + Click` sobre `CruRepository` nos vanos a los métodos de esta interfaz `Interface for generic CRUD operations on a repository for a specific type.`.
 
+![04-14](images/04-14.png)
+![04-15](images/04-15.png)
+![04-16](images/04-16.png)
+
 Tenemos el método **save**  que recibe un genérico de una entidad.
 Tenemos el método **saveAll** para guardar varias entidades.
 Tenemos el método **findById** para buscar por ID, retorna un Optional. Un Optional es una clase, un tipo de dato que nos permite manejar mejor el resultado. Por ejemplo si se realizó bien la consulta va a retornar el objeto con get. Si no podemos manejar el error con manejo de excepción o bien retornar Null.
@@ -431,7 +450,10 @@ Y varios métodos y propiedades más.
 
 ### Spring Data JPA
 
-Podriamos revisar la documentación de [Spring Data JPA](https://spring.io/projects/spring-data-jpa) y ver su [Documentación](https://docs.spring.io/spring-data/jpa/docs/2.2.3.RELEASE/reference/html/#reference) para ver más detalles.
+Podriamos revisar la documentación de [Spring Data JPA](https://spring.io/projects/spring-data-jpa) y ver su [Documentación 2.2.3](https://docs.spring.io/spring-data/jpa/docs/2.2.3.RELEASE/reference/html/#reference) para ver más detalles. [Documentación 2.4.3](https://docs.spring.io/spring-data/jpa/docs/2.4.3/reference/html/#jpa.repositories)
+
+![04-12](images/04-12.png)
+![04-13](images/04-13.png)
 
 Tenemos `4.1. Core concepts` concepto del core una interfaz Repository tal como la vimos y esta interesante porque va a realizar las consultas y operaciones de acuerdo al nombre el método.
 
@@ -562,7 +584,7 @@ Por lo tanto la podemos inyectar en cualquier otro componente, ya sea una clase 
 
 Para finalizar anotamos con **@Service** la clase, una anotación muy importante ya que con esto decoramos y marcamos esta clase como un componente de servicio en Sprint y también se va a guardar en el contenedor de Sprint va a quedar almacenado en el contexto. Y después podemos inyectar este objeto, este Beans de Sprint en el controlador y lo podemos utilizar pero para eso tenemos que decorarlo y Service lo que hace es justamente eso, si vemos su definición veremos que es un estereotipo de **@Component**. Por lo tanto con **@Component** marca la clase, la decora para que sea un componente del Framework un Beans y se registra en el contenedor.
 
-## Creando controlador @RestController y EndPoint para listar 04:22
+## Creando Controlador `@RestController` y EndPoint para listar 04:22
 
 Vamos a crear nuestro API Rest un controlador Rest que es una URL que vamos a utilizar para conectar y enviar datos, peticiones a nuestra aplicación por ejemplo para listar nuestro cliente en nuestra aplicación con angular.
 
@@ -655,23 +677,30 @@ En esta sección vamos a agregar los datos de pruebas, ya tenemos configura la b
 
 ```sql
 /* Populate tabla clientes */
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andrés', 'Guzmán', 'profesor@bolsadeideas.com', '2018-01-01');
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', 'john.doe@gmail.com', '2018-01-02');
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', 'linus.torvalds@gmail.com', '2018-01-03');
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', 'rasmus.lerdorf@gmail.com', '2018-01-04');
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Erich', 'Gamma', 'erich.gamma@gmail.com', '2018-02-01');
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Richard', 'Helm', 'richard.helm@gmail.com', '2018-02-10');
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Ralph', 'Johnson', 'ralph.johnson@gmail.com', '2018-02-18');
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('John', 'Vlissides', 'john.vlissides@gmail.com', '2018-02-28');
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Dr. James', 'Gosling', 'james.gosling@gmail.com', '2018-03-03');
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee', 'magma.lee@gmail.com', '2018-03-04');
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', 'tornado.roe@gmail.com', '2018-03-05');
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', 'jane.doe@gmail.com', '2018-03-06');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Adolfo', 'De la Rosa', 'adolfo@gmail.com', '2021-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', 'john.doe@gmail.com', '2021-01-02');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', 'linus.torvalds@gmail.com', '2021-01-03');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', 'rasmus.lerdorf@gmail.com', '2021-01-04');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Erich', 'Gamma', 'erich.gamma@gmail.com', '2021-02-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Richard', 'Helm', 'richard.helm@gmail.com', '2021-02-10');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Ralph', 'Johnson', 'ralph.johnson@gmail.com', '2021-02-18');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('John', 'Vlissides', 'john.vlissides@gmail.com', '2021-02-28');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Dr. James', 'Gosling', 'james.gosling@gmail.com', '2021-03-03');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee', 'magma.lee@gmail.com', '2021-03-04');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', 'tornado.roe@gmail.com', '2021-03-05');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', 'jane.doe@gmail.com', '2021-03-06');
 ```
 
 Inserta datos de nombre, apellido, email, create_at, si revisamos la clase Entity tenemos esos mismos datos son atributos de la clase pero que también están mapeados a las columnas en la tabla, en la tabla de clientes y el id es incremental se va a generar de forma automática un Identity que se incrementa en 1 auto incremental.
 
-Vamos a guardar y vamos a ejecutar. En la consola vemos que se insertaron los clientes. Además también tenemos mapeada nuestro API `/api/clientes`. Así que vamos a probar nuestra aplicación, nos vamos al navegador y ejecutamos `http://localhost:8080/api/clientes` muestra la respuesta en formato JSON. Todo perfecto.
+Vamos a guardar y vamos a ejecutar. En la consola vemos que se insertaron los clientes. Además también tenemos mapeada nuestro API `/api/clientes`. 
+
+![04-17](images/04-17.png)
+
+Así que vamos a probar nuestra aplicación, nos vamos al navegador y ejecutamos `http://localhost:8080/api/clientes` muestra la respuesta en formato JSON. Todo perfecto.
+
+![04-18](images/04-18.png)
+![04-19](images/04-19.png)
 
 ### Usando Postman para probar nuestras APIs 04:09
 
@@ -682,7 +711,6 @@ En fin ahí tenemos varias herramientas que son bien interesante para poder prob
 En página de [Postman](https://www.getpostman.com/) podemos descargar la aplicación. 
 
 Una vez que lo tengan instalado nos vamos a Eclipse y levantamos el proyecto, una vez que haya iniciado entonces ejecutamos Postman.
-
 
 En Postman podemos seleccionar los distintos tipos de petición o los verbos por ejemplo **GET** para consultar un listado o un registro en estructura JSon o incluso XML o cualquier, **POST** para crear un nuevo registro. **PUT** modificar, **DELETE** para eliminar, etc.
 
@@ -782,6 +810,9 @@ Para ejecutar en Postman presionamos el botón **Send** lo que hace que retorne 
 Aparte del JSON nos regresa:
 `Status: 200OK     Time: 26ms     Size: 1.38 KB`
 El Status indica que se realizó correctamente sin ningún problema. También tenemos el tiempo que se demoró el Request y el tamaño de la respuesta. 
+
+![04-20](images/04-20.png)
+![04-21](images/04-21.png)
 
 #### Pestaña Headers
 
