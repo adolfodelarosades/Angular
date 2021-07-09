@@ -170,39 +170,37 @@ ng new my-app
 
 El comando `ng` de la consola de angular lo tenemos disponible con la instalación de Angular CLI que realizamos en la clase anterior, ahora simplemente vamos al terminal de nuestro sistema operativo y vamos a crear el proyecto, ***pero primero tenemos que crear un directorio en el cual vamos a guardar todos nuestros ejemplos y proyectos del curso***.
 
-![02-09](images/02-09.png)
+![image](https://user-images.githubusercontent.com/23094588/125055908-fcc71d80-e0a7-11eb-80cb-5c53e0e90600.png)
 
 Ahí tenemos nuestro directorio raíz de Angular.
 
 ### :computer: Crear el Proyecto `clientes-app`
 
-Vamos a crear el proyecto, le vamos a llamar `clientes-app` con el comando 
+Vamos a crear el proyecto dentro de la carpeta `PROYECTOS-ANGULAR`, le vamos a llamar `clientes-app` con el comando 
 
 ```sh
 ng new clientes-app
 ```
 
-![02-10](images/02-10.png)
+![image](https://user-images.githubusercontent.com/23094588/125056633-b58d5c80-e0a8-11eb-87cf-58bdd2795a5b.png)
 
-Lo primero que pregunta es...
+Lo primero que pregunta es si queremos agregar en nuestra aplicación Angular el componente `routing`, le indicamos que NO porque eso después lo vamos a agregar de forma manual, la idea es aprender cómo se configura, así que lo dejamos para después, por ahora simplemente NO.
 
-Lo segundo que pregunta es si queremos agregar en nuestra aplicación Angular el componente `routing`, le indicamos que NO porque eso después lo vamos a agregar de forma manual, la idea es aprender cómo se configura, así que lo dejamos para después, por ahora simplemente no.
-
-La tercer pregunta es qué formato de estilos vamos a querer utilizar, por defecto marca CSS, ese es más que suficiente y aceptamos simplemente con un Enter. 
+Lo segundo que pregunta es qué formato de estilos vamos a querer utilizar, por defecto marca CSS, ese es más que suficiente y aceptamos simplemente con un Enter. 
 
 Crear el proyecto, va a descargar todas las dependencias por lo tanto se puede demorar un buen rato.
 
-![02-11](images/02-11.png)
+![image](https://user-images.githubusercontent.com/23094588/125056924-00a76f80-e0a9-11eb-896b-c7e6d9898ea5.png)
 
 Una vez que haya finalizado en Windows pueden aparecer un par de warnings.
 
-![02-12](images/02-12.png)
+![image](https://user-images.githubusercontent.com/23094588/125058063-2bde8e80-e0aa-11eb-83bc-1a9b620c63d7.png)
 
 Se debe a que Windows no tiene soporte a esa librería pero sí en Mac en OS X y acá tenemos otro warning típico de Windows que no hay que dar ninguna importancia.
 
 Una vez que se haya creado con éxito el siguiente paso es abrir con VSC. 
 
-![02-13](images/02-13.png)
+![image](https://user-images.githubusercontent.com/23094588/125058556-b0311180-e0aa-11eb-8585-208f91bf4b1f.png)
 
 En la pestaña izquierda tenemos el proyecto con todos sus archivos, Si se fijan aparece un icono distinto por cada tipo de archivo eso es porque instalamos la Extensión.
 
@@ -224,23 +222,27 @@ ng serve -o
 
 Nos vamos a la consola y dentro del directorio angular donde tenemos creado nuestro proyecto `clientes-app` ejecutamos el comando.
 
-![02-14](images/02-14.png)
+![image](https://user-images.githubusercontent.com/23094588/125060421-a6101280-e0ac-11eb-85f1-ff46793d5b6b.png)
 
 Es muy parecido a Spring Boot en el sentido que incluye un servidor embebido para desplegar nuestra aplicación Angular.
 
 Tenemos nuestra página de bienvenida con un prototipo por defecto.
 
-![02-15](images/02-15.png)
+![image](https://user-images.githubusercontent.com/23094588/125060534-c50ea480-e0ac-11eb-83a3-369e9d0b31ec.png)
 
 Este servidor `ng serve` es para desarrollar, no es para un ambiente de producción, cuando llevamos nuestra aplicación a producción lo que hacemos es transpirar, convertir todo nuestro TypeScript en JavaScript, en código estático HTML y JavaScript puro que es interpretado y lo entienden los navegadores y eso lo podemos subir a cualquier servidor que pueda publicar este contenido estático como por ejemplo **Google Storage**, o también tenemos **Amazon S3**, hay varias alternativas que más adelante vamos a ver, cómo llevar a producción y publicar nuestra aplicación. Incluso lo podríamos hacer con **NodeJS** con el servidor que trae NodeJS, con Apache, con cualquiera que pueda servir contenido estático, básicamente JavaScript, HTML y hojas de estilos.
 
 #### Modificar la Plantilla HTML
 
-Ya que levantamos nuestra aplicación el siguiente paso es modificar el contenido que tenemos, lo que está cargando es el componente principal el `app.component`.
+Ya que levantamos nuestra aplicación el siguiente paso es modificar el contenido que tenemos, lo que está cargando es el componente principal el **`app.component`**.
 
-![02-16](images/02-16.png)
+![image](https://user-images.githubusercontent.com/23094588/125063869-4d427900-e0b0-11eb-81a4-39154292639d.png)
 
-Tenemos la clase componente, vemos varias cosas pero antes de entrar en detalle, lo primero que observamos es que está asociada a un template a una vista HTML `app.component.html` que contiene todo el código (más de 500 líneas) que pinta la página de bienvenida que vimos anteriormente en el navegador. Vamos a quitar todo ese código y lo vamos a reemplazar con:
+Tenemos la clase componente, vemos varias cosas pero antes de entrar en detalle, lo primero que observamos es que está asociada a un template a una vista HTML **`app.component.html`**.
+
+![image](https://user-images.githubusercontent.com/23094588/125064264-c2ae4980-e0b0-11eb-84e6-94218ce73a8c.png)
+
+Contiene todo el código (más de 500 líneas) que pinta la página de bienvenida que vimos anteriormente en el navegador. Vamos a quitar todo ese código y lo vamos a reemplazar con:
 
 ```html
  <h1>{{ title }}</h1>
@@ -248,45 +250,45 @@ Tenemos la clase componente, vemos varias cosas pero antes de entrar en detalle,
 
 Volvemos al navegador, observamos que aparecen solamente:
 
-![02-17](images/02-17.png)
+![image](https://user-images.githubusercontent.com/23094588/125064655-233d8680-e0b1-11eb-8f45-f73a5a918b50.png)
 
-Vamos a abrir `app.component.ts`
+Vamos a abrir **`app.component.ts`**
 
-![02-18](images/02-18.png)
+![image](https://user-images.githubusercontent.com/23094588/125063869-4d427900-e0b0-11eb-81a4-39154292639d.png)
 
-Analicemos el `Component`, es un decorador, una anotación con cierta configuración metadata muy parecido a las anotaciones de Sprint, es para lo mismo, para configurar, tenemos la clase `AppComponent` que está marcada con el decorador `@Component`, es una clase componente de Angular.
+Analicemos el **`Component`**, es un decorador, una anotación con cierta configuración metadata muy parecido a las anotaciones de Sprint, es para lo mismo, para configurar, tenemos la clase **`AppComponent`** que está marcada con el decorador **`@Component`**, es una clase componente de Angular.
 
-En primer lugar tiene un **selector**, el selector corresponde a una etiqueta HTML, esta etiqueta HTML la podemos incluir en otros componentes, en este caso como es el componente root o principal la tenemos que incluir en `index.html`.
+En primer lugar tiene un **selector**, el selector corresponde a una etiqueta HTML, esta etiqueta HTML la podemos incluir en otros componentes, en este caso como es el componente root o principal la tenemos que incluir en **`index.html`**.
 
 ![02-19](images/02-19.png)
 
-`index.html` es la página principal, es la puerta de entrada a nuestra aplicación. Si se fijan en el body la estamos incluyendo simplemente una etiqueta HTML que contiene el nombre del selector `app-root`, por lo tanto el nombre del selector en `app.component.ts` será el que se ponga en `index.html`. 
+**`index.html`** es la página principal, es la puerta de entrada a nuestra aplicación. Si se fijan en el body la estamos incluyendo simplemente una etiqueta HTML que contiene el nombre del selector **`app-root`**, por lo tanto el nombre del selector en **`app.component.ts`** será el que se ponga en **`index.html`**. 
 
-Lo que estamos haciendo es embeber todo el contenido de ese componente `app.component`, todo el HTML que tiene y toda la programación dinámica dentro de la clase, con toda la lógica que le queremos dar.
+Lo que estamos haciendo es embeber todo el contenido de ese componente **`app.component`**, todo el HTML que tiene y toda la programación dinámica dentro de la clase, con toda la lógica que le queremos dar.
 
 Lo segundo es que tiene un **templateUrl**, es la vista, el contenido HTML que está asociado a esta clase componente.
 
-Luego tenemos **styleUrls** serían nuestras hojas estilos, podríamos tener una o más, por eso el corchete, se separan por comas, por defecto tenemos una sola que es `app.component.css`, donde tenemos solamente los estilos de este componente sin afectar a los demás componentes que tengamos en nuestra aplicación, sólo hacen efecto en el propio componente y no en los demás.
+Luego tenemos **styleUrls** serían nuestras hojas estilos, podríamos tener una o más, por eso el corchete, se separan por comas, por defecto tenemos una sola que es **`app.component.css`**, donde tenemos solamente los estilos de este componente sin afectar a los demás componentes que tengamos en nuestra aplicación, sólo hacen efecto en el propio componente y no en los demás.
 
-Después vamos a ver cómo aplicar estilos de forma global a todos nuestros componentes, por ejemplo agregando estilos en `styles.css`, cualquier estilo que coloquemos se va a aplicar a toda nuestra aplicación, a toda nuestras páginas y a todos los componentes.
+Después vamos a ver cómo aplicar estilos de forma global a todos nuestros componentes, por ejemplo agregando estilos en **`styles.css`**, cualquier estilo que coloquemos se va a aplicar a toda nuestra aplicación, a toda nuestras páginas y a todos los componentes.
 
-Para resumir **`app.component` sería nuestro componente principal o raíz** se tiene que dejar tal y a partir de este componente podemos incluir, agregar otros componentes.
+Para resumir **`app.component` sería nuestro componente principal o raíz** se tiene que dejar tal cual y a partir de este componente podemos incluir, agregar otros componentes.
 
-Un componente Angular son piezas de código que van a componer nuestra aplicación.
+***Un componente Angular son piezas de código que van a componer nuestra aplicación***.
 
 Un componente se puede anidar dentro de otro, con un componente hijo o bien un componente padre, podría estar formado por varios componentes hijos, esto se conoce como el ***Patrón de Diseño Composites o Compositor***. Por debajo implementa este patrón de diseño lo que lo hace bastante modular, escalable y también fácil de mantener.
 
 Por ahora vamos a modificar un poco más nuestra clase, vamos a modificar el título de la aplicación y podemos meter más atributos:
 
-![02-20](images/02-20.png)
+![image](https://user-images.githubusercontent.com/23094588/125066287-1e79d200-e0b3-11eb-9eb9-82bbb4478194.png)
 
-podemos usar comilla simples o dobles pero se usa más la simple con TypeScript. Como recomendación aunque no es obligación el punto y coma final se recomienda. En Angular 7 como había mencionado también una de las características que maneja es el tipado, si bien es opcional lo hemos puesto en nuestros dos atributos.
+Podemos usar comilla simples o dobles pero se usa más la simple con TypeScript. Como recomendación aunque no es obligación el punto y coma final se recomienda. En Angular 7 como había mencionado también una de las características que maneja es el tipado, si bien es opcional lo hemos puesto en nuestros dos atributos.
 
 Vamos a ir a la vista para modificarla así:
 
 ![02-21](images/02-21.png)
 
-Usando doble llaves para interpolar las variables, interpolar es para que se imprima la variable en la salida, en el navegador, simplemente hacemos referencia al nombre del atributo.
+Usando doble llaves para **interpolar las variables**, ***interpolar es para que se imprima la variable en la salida***, en el navegador, simplemente hacemos referencia al nombre del atributo.
 
 Volvemos al navegador y vemos el cambio.
 
