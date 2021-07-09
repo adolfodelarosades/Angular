@@ -44,13 +44,15 @@ La segunda versión que tenemos acá, en este caso la **0**, es la ***versión m
 
 Y por último, la versión **9** corresponde a la ***versión mayor***, esto más o menos ocurre cada seis meses a un año, pero lo típico 6 meses, 8 meses va cambiando la versión mayor que sí podrían afectar en nuestro código, pero las estadísticas, todos los cambio versiones que han ocurrido la verdad es que no ha afectado prácticamente en nada en las aplicaciones, pero también podría ocurrir cambios mayores, por ejemplo alguna librería que en alguna versión anterior estaba deprecated es decir obsoleta y está marcada como deprecated, puede que en una versión mayor posterior, esa clase o característica se elimine y ahí podríamos tener un problema, pero de momento no ha ocurrió de esa forma. Entonces, cualquier cambio de versión, incluso mayor, con cambio estructural o con cambio más robustos, por lo general no afecta al funcionamiento de nuestra aplicación que teníamos desarrollada con otra versió, la podemos emigrar sin ningún problema.
 
-Si durante el curso llegan a tener algún problema con versiones posteriores, claro, porque ahora están en la 9, pero muy probable en el momento de que vean esta clase, quizá en qué versión esté Angular, quizá en la 10, 11, en fin, lo más probable que todo funcione tal cual, pero en caso de que cambie algo, algún import, alguna clase, bueno, simplemente me avisan y la actualiza, pero de todas formas, creo que es poco probable dado el historial de cambio de versiones. Por ejemplo, desde las 7 a la 8 y de la otra 9 no hubo ningún cambio en el código, ha funcionado de forma transparente.
+Si durante el curso llegan a tener algún problema con versiones posteriores, claro, porque ahora están en la 9, pero muy probable en el momento de que vean esta clase, quizá en qué versión esté Angular, quizá en la 10, 11, en fin, lo más probable que todo funcione tal cual, pero en caso de que cambie algo, algún import, alguna clase, bueno, simplemente me avisan y la actualiza, pero de todas formas, creo que es poco probable dado el historial de cambio de versiones. Por ejemplo, desde las 7 a la 8 y de la 8 a la 9 no hubo ningún cambio en el código, ha funcionado de forma transparente.
+
+![image](https://user-images.githubusercontent.com/23094588/125040617-29733900-e098-11eb-8332-82e096e6b0c8.png)
 
 Entonces, recuerden, de izquierda a derecha, la primera corresponde a la *versión mayor*, ambios estructurales podrían cambiar algunas clases, eliminar alguna clases deprecated, cambiar algún import, en fin, la *versión menor* nuevas característica y la última *arreglos de bugs*, de errores, optimizaciones del código, pero todo a nivel de Core del Framework.
 
 ![02-04](images/02-04.png)
 
-Bueno, Angular utiliza el lenguaje de programación **TypeScript**, que es un super conjunto de JavaScript, por supuesto también incluye ECMAScript 6, también ECMAScript 5, ECMAScript 5 es el JavaScript nativo que se ejecuta, interpreta en los navegadores, ECMAScript 6 es un poco más avanzado, más orientado a Objetos, nueva característica, creo que actualmente estamos en la versión 10 de ECMAScript o versión 2019, también muchas características, pero todo relacionado a la programación orientada a objetos, librerías mucho más robusto. Entonces lo que hace TypeScript es juntar todas estas versiones de JavaScript, este super conjunto y le agrega una abstracción mucho más robusta, mucho más orientada a objetos, mucho más al nivel de Java, por ejemplo, los tipos de datos se basan en clases e interfaces, podemos usar clases interface, clases abstractas, los principios orientados a objetos de Java o C++ acá se aplican exactamente igual. Tenemos modificadores, visibilidad, abstracción, polimorfismo, herencia, sobrecarga de  métodos, sobreescritura, interfaces, tipos de datos más fuertemente tipados, tenemos atributos, métodos, constructores, métodos GET, métodos SET, muy parecido también a los de Java, tenemos tipos **Generics**, podemos implementar nuestro generics para poder reutilizar mejor nuestra clases en la herencia, decoradores, anotaciones y mucho más, es un lenguaje robusto y por último **desarrollado por Microsoft** se utiliza en Angular, se integra en Angular como el lenguaje principal, pero por supuesto que cuando generamos el código de nuestro proyecto en producción con el comando:
+Bueno, Angular utiliza el lenguaje de programación **TypeScript**, que es un super conjunto de JavaScript, por supuesto también incluye **ECMAScript 6**, también **ECMAScript 5**, ECMAScript 5 es el JavaScript nativo que se ejecuta, interpreta en los navegadores, ECMAScript 6 es un poco más avanzado, más orientado a Objetos, nueva característica, creo que actualmente estamos en la ***versión 10 de ECMAScript o versión 2019***, también muchas características, pero todo relacionado a la programación orientada a objetos, librerías mucho más robusto. Entonces lo que hace TypeScript es juntar todas estas versiones de JavaScript, este super conjunto y le agrega una abstracción mucho más robusta, mucho más orientada a objetos, mucho más al nivel de Java, por ejemplo, los tipos de datos se basan en clases e interfaces, podemos usar clases interface, clases abstractas, los principios orientados a objetos de Java o C++ acá se aplican exactamente igual. Tenemos modificadores, visibilidad, abstracción, polimorfismo, herencia, sobrecarga de  métodos, sobreescritura, interfaces, tipos de datos más fuertemente tipados, tenemos atributos, métodos, constructores, métodos GET, métodos SET, muy parecido también a los de Java, tenemos tipos **Generics**, podemos implementar nuestro generics para poder reutilizar mejor nuestra clases en la herencia, decoradores, anotaciones y mucho más, es un lenguaje robusto y por último **desarrollado por Microsoft** se utiliza en Angular, se integra en Angular como el lenguaje principal, pero por supuesto que cuando generamos el código de nuestro proyecto en producción con el comando:
 
 ```sh
 ng build
@@ -60,7 +62,7 @@ Lo que hace es traducir, convertir, ***traspilar*** este código TypeScript a Ja
 
 ![02-05](images/02-05.png)
 
-Componentes principales de Angular del framework, muchos entre ellos y los más importante, son los **Componentes**, los Componentes mismos de Angular, una aplicación de Angular está compuesta por muchos componentes, *básicamente  un componente es una página*, pero podemos tener un componente principal, que está formado por otros componentes, por sus componentes, por ejemplo, un menú de navegación, un banner, un calendario, alguna tabla con datos, algún gráfico, un pie de página, en fin, cada uno de estos elementos de nuestra aplicación es un componente, pero también tiene un componente principal que es dinámico, que va cambiando según rutas, según link que tengamos de Angular, entonces, a medida que hacemos un clic en algún botón, en el menú de navegación, nuestro contenido principal va cambiando.
+Componentes principales de Angular del framework, muchos entre ellos y los más importante, son los **Componentes**, los Componentes mismos de Angular, una aplicación de Angular está compuesta por muchos componentes, ***básicamente  un componente es una página***, pero podemos tener un componente principal, que está formado por otros componentes, por sus componentes, ***por ejemplo, un menú de navegación, un banner, un calendario, alguna tabla con datos, algún gráfico, un pie de página***, en fin, cada uno de estos elementos de nuestra aplicación es un componente, pero también tiene ***un componente principal que es dinámico***, que va cambiando según rutas, según link que tengamos de Angular, entonces, a medida que hacemos un clic en algún botón, en el menú de navegación, nuestro contenido principal va cambiando.
 
 Podemos enrutar un componente a una ruta URL en Angular, y estas cambian de forma dinámica y también muy importante sin recargar la página, la página jamás se actualiza, se refresca, no, siempre se mantiene en una sola página, hace que nuestra aplicación sea instantánea, asíncrona, por supuesto, con características reactivas.
 
@@ -68,21 +70,89 @@ En Angular una clase Componente, es una clase de TypeScript común y corriente, 
 
 También puede implementar algunas interfaces, algunos contratos, ***otra característica del componente es que son asíncronos***, es decir, se ejecutan cada uno en su propio proceso, se ejecutan y se cargan, por lo tanto, entre sí no se interrumpen, un componente no tiene que estar esperando a que se carguen los demás componentes para poder iniciarse, no todos se ejecutan, se inicializan de forma paralela. 
 
-**Las plantillas**, las plantillas también son parte del componente, el componente en la clase que hay por detrás y la plantilla, la presentación que se muestra al usuario, el HTML, ahí podemos imprimir variables de la vista que son atributos del componente y podemos mostrar, imprimir estos atributos mediante extrapolación de strings utilizando llaves, también podemos utilizar directivas como `ngIf` para evaluar una expresión booleana y de esa forma poder mostrar o no mostrar un componente, un elemento html, ocultarlo, por ejemplo, o mostrarlo según una condición, `ngFor` para iterar.
+**Las plantillas**, las plantillas también son parte del componente, el componente en la clase que hay por detrás y la plantilla, la presentación que se muestra al usuario, el HTML, ahí podemos imprimir variables de la vista que son atributos del componente y podemos mostrar, imprimir estos atributos mediante extrapolación de strings utilizando llaves, también podemos utilizar directivas como **`ngIf`** para evaluar una expresión booleana y de esa forma poder mostrar o no mostrar un componente, un elemento html, ocultarlo, por ejemplo, o mostrarlo según una condición, **`ngFor`** para iterar.
 
-También los **Eventos** muy importantes, eventos para que el usuario pueda interactuar con la aplicación, eventos en los botones, en nuestras tablas, es decir, en las filas o registros en nuestros enlaces, en fin, por ejemplo, el evento típico `change` cuando cambia algún elemento en un campo del formulario o una lista desplegable en un check box, también el evento `click` cuando hacemos un clic en un botón para que llame o invoque un método de la clase componente en cuestión.
+También los **Eventos** muy importantes, eventos para que el usuario pueda interactuar con la aplicación, eventos en los botones, en nuestras tablas, es decir, en las filas o registros en nuestros enlaces, en fin, por ejemplo, el evento típico **`change`** cuando cambia algún elemento en un campo del formulario o una lista desplegable en un check box, también el evento **`click`** cuando hacemos un clic en un botón para que llame o invoque un método de la clase componente en cuestión.
 
 Los **Pipe** son filtros que nos permite modificar y dar formato a los datos de nuestra vista por ejemplo, dar formato a una fecha, a una moneda, a números y convertir en mayúsculas, minúsculas, podemos hacer muchas cosas y Angular trae varios Pipes por defecto.
 
 **Rutas de Navegación** tal como explicaba, podemos mapear componentes a rutas para que nuestro contenido principal cambie de forma dinámica, a medida que hacemos clic en estas rutas, ejecute el contenido, muestre el contenido de forma instantánea sin recargar la página.
 
-**Decoradores**, **Anotaciones**, **Servicios** que se encarga de la lógica negocio, se trabajan con datos que vienen desde el BackEnd utilizando el **HttpClient** de forma reactiva o utilizando el Observable, básicamente el HttpClient nos permite comunicarnos mediante verbos del request POST, PUT, GET, DELETE con el BackEnd para guardar datos, para eliminar, para enviar, en fin, subir imágenes y todo esto de forma asíncrona, orientado a eventos sin recargar la página.
+**Decoradores**, **Anotaciones**, **Servicios** que se encarga de la lógica negocio, se trabajan con datos que vienen desde el BackEnd utilizando el **HttpClient** de forma reactiva o utilizando el **Observable**, básicamente el HttpClient nos permite comunicarnos mediante verbos del request POST, PUT, GET, DELETE con el BackEnd para guardar datos, para eliminar, para enviar, en fin, subir imágenes y todo esto de forma asíncrona, orientado a eventos sin recargar la página.
 
-También podemos crear nuestra propia clase TypeScript, ya sea de utilidad, **Helpers** o clases del modelo que representa nuestros datos mapeado a los JSon que corresponden a las **Entity**, por ejemplo, o a los POJOS en Java o Spring, manejo de **Formularios**, también muy importante **Data Binding** para poblar datos `ngModel` una directiva que nos permite mapear un formulario a una clase de TypeScript de forma automática, para que se vayan poblando los campos, los datos a medida que vayamos escribiendo, **Validar** también estos datos con sus respectivos mensaje de error.
+También podemos crear nuestra propia **clase TypeScript**, ya sea de utilidad, **Helpers** o clases del modelo que representa nuestros datos mapeado a los JSon que corresponden a las **Entity**, por ejemplo, o a los **POJOS en Java o Spring**, manejo de **Formularios**, también muy importante **Data Binding** para poblar datos `ngModel` una directiva que nos permite mapear un formulario a una clase de TypeScript de forma automática, para que se vayan poblando los campos, los datos a medida que vayamos escribiendo, **Validar** también estos datos con sus respectivos mensaje de error.
 
 **Módulos**, **Angular Material** para todo lo que es la vista, un montón de cosas, cosas que vamos a ver en el curso en detalle.
 
 ## Instalaciones y herramientas necesarias 11:37
+
+### Intalar NodeJS
+
+https://nodejs.org/es/
+
+Lo primero que tenemos que instalar es NodeJS ya que incluye un componente llamado **NPM Node Package Manager** muy parecido a lo que es **Maven en Java** para administrar y descargar dependencias. Acá es lo mismo pero llevado al mundo **JavaScrip** **NPM Node Package Manager** nos permite descargar cualquier herramienta o framework JavaScrip para **Angular CLI** para crear proyectos en Angular. 
+
+Recomiendo que sea la versión más estable recomendada para la mayoría de los usuarios. La **versión LTS** que significa ***Soporte a Largo Plazo*** mientras que la **versión Current** incluye las últimas características pero para trabajar con Angular no se requieren las últimas características además que podríamos tener algún problema de compatibilidad de soporte. 
+
+> 💡 Yo tengo instalada la ***versión v14.15.1*** Siendo la más actual la ***versión v14.17.3***
+
+Verificando versiones de **Node** y **NPM**
+
+![image](https://user-images.githubusercontent.com/23094588/125048950-bb7f3f80-e0a0-11eb-95a3-04db518c44d9.png)
+
+### Intalar TypeScript
+
+https://www.typescriptlang.org/
+
+Continuamos instalando **TypeScript** a pesar de que cuando creamos un proyecto con Angular con Angular CLI se incluye va a agregar e instalar TypeScript de forma automática. Por lo tanto en teoría no sería necesario tener que instalar TypeScript en nuestra máquina de forma global pero se recomienda ya que nos ayuda a detectar todos los errores en tiempo de escritura cuando estemos escribiendo el código en el editor o va marcando y va indicando los errores de sintaxis.
+
+Entonces por eso es importante instalar de forma global independiente que después se incluya en el proyecto de Angular.
+
+Verificando versión de **TypeScript**
+
+![image](https://user-images.githubusercontent.com/23094588/125050660-74924980-e0a2-11eb-9d5c-04f7d07f1e57.png)
+
+### Instalar Angular CLI
+
+https://angular.io/
+
+El siguiente paso es instalar **Angular CLI**, la *consola*, el *terminal* el *gestor de Angular* ***para crear nuestros proyectos Angular y*** no solamente el proyecto sino también para ***crear Clases, Componentes, Servicios, Pipes***, en fin un montón de cosas relacionadas a nuestro proyecto con Angular.
+
+Para instalar vemos en la documentación:
+
+![image](https://user-images.githubusercontent.com/23094588/125052303-1e260a80-e0a4-11eb-8f66-499647f9498a.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125052694-8b39a000-e0a4-11eb-9c0f-de4ba04a2668.png)
+
+Verificamos la versión de **Angular CLI**
+
+![image](https://user-images.githubusercontent.com/23094588/125052810-a73d4180-e0a4-11eb-8d0b-25f58c103461.png)
+
+Una vez instalada **Angular CLI** tenemos varios comandos entre ellos uno para crear un nuevo proyecto:
+
+![image](https://user-images.githubusercontent.com/23094588/125053118-069b5180-e0a5-11eb-929f-ab77155509a9.png)
+
+Otro para ejecutar el servidor:
+
+![image](https://user-images.githubusercontent.com/23094588/125053222-25014d00-e0a5-11eb-92c2-2dd025dbdbbe.png)
+
+Existen varios comandos de CLI para crear diferentes cosas como ***Clases, Componentes, Servicios, Pipes, etc.***, los cuales podemos consultar en la documentación:
+
+![image](https://user-images.githubusercontent.com/23094588/125053737-bec8fa00-e0a5-11eb-944a-4562d887196b.png)
+
+
+### Instalar Navegador Chrome
+
+https://www.google.com/chrome/
+
+Vamos a usar el navegador Chrome y su potente **Herramienta para Desarrolladores**
+
+### Instalar el Editor VSC
+
+https://code.visualstudio.com/
+
+Vamos a usar Visual Studio Code para desarrollar las aplicaciones con angular.
+
 ## Una mirada al editor Atom e instalando algunos plugins 06:25
 ## Creando nuestra aplicación Angular 13:00
 
