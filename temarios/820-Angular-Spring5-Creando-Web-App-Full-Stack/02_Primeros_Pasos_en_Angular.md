@@ -1231,3 +1231,4 @@ Y en el navegador tenemos:
 ![image](https://user-images.githubusercontent.com/23094588/125159173-19ca2200-e176-11eb-8eb9-271a455a4a35.png)
 ![image](https://user-images.githubusercontent.com/23094588/125159186-25b5e400-e176-11eb-8935-33f1f1cc985f.png)
 
+![image](https://user-images.githubusercontent.com/23094588/125159715-58151080-e179-11eb-8e88-ad2756082529.png)
