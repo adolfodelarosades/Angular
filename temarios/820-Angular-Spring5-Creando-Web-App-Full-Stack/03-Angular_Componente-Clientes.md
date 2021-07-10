@@ -100,6 +100,7 @@ export class Cliente {
 ```
 
 ![image](https://user-images.githubusercontent.com/23094588/125159985-eb9b1100-e17a-11eb-920f-e33ae7bab6db.png)
+![image](https://user-images.githubusercontent.com/23094588/125160578-03c05f80-e17e-11eb-8826-14edca18a2fc.png)
 
 ## 💻 Listando los objetos del tipo Cliente 07:17
 
@@ -175,50 +176,58 @@ El resultado es:
 
 ![image](https://user-images.githubusercontent.com/23094588/125160667-729db880-e17e-11eb-8efa-d0a92874f3a2.png)
 
-![image](https://user-images.githubusercontent.com/23094588/125160578-03c05f80-e17e-11eb-8826-14edca18a2fc.png)
-
 ![image](https://user-images.githubusercontent.com/23094588/125160708-b7c1ea80-e17e-11eb-828b-e794872b9010.png)
 ![image](https://user-images.githubusercontent.com/23094588/125160768-08d1de80-e17f-11eb-8d43-79f338fe14bb.png)
 
-## Creando archivo `clientes.json.ts` con la Lista de Objetos 02:51
+## 💻 Creando archivo `clientes.json.ts` con la Lista de Objetos 02:51
 
 Vamos a desacoplar el listado de los clientes del componente Clientes ya que estamos mezclando datos con lógica.
 
-* En la carpeta `clientes` creamos el archivo `clientes.json.ts`
+* En la carpeta **`clientes` creamos el archivo **`clientes.json.ts`**
 
 ![03-06](images/03-06.png)
 
 y movemos el listado de clientes aquí, lo declaramos como una constante y le ponemos el calificador `export` para poderlo exportar (importar desde otras clases):
+
 ```js
 import { Cliente } from './cliente';
 
 export const CLIENTES : Cliente[] = [
-    {id: 1,  nombre: 'Andrés', apellido: 'Guzmán', email: 'profesor@bolsadeideas.com', createAt: '2018-01-01'},
-    {id: 2,  nombre: 'Mr. John', apellido: 'Doe', email: 'john.doe@gmail.com', createAt: '2018-01-02'},
-    {id: 3,  nombre: 'Linus', apellido: 'Torvalds', email: 'linus.torvalds@gmail.com', createAt: '2018-01-03'},
-    {id: 4,  nombre: 'Rasmus', apellido: 'Lerdorf', email: 'rasmus.lerdorf@gmail.com', createAt: '2018-01-04'},
-    {id: 5,  nombre: 'Erich', apellido: 'Gamma', email: 'erich.gamma@gmail.com', createAt: '2018-02-01'},
-    {id: 6,  nombre: 'Richard', apellido: 'Helm', email: 'richard.helm@gmail.com', createAt: '2018-02-10'},
-    {id: 7,  nombre: 'Ralph', apellido: 'Johnson', email: 'ralph.johnson@gmail.com', createAt: '2018-02-18'},
-    {id: 8,  nombre: 'John', apellido: 'Vlissides', email: 'john.vlissides@gmail.com', createAt: '2018-02-28'},
-    {id: 9,  nombre: 'Dr. James', apellido: 'Gosling', email: 'james.gosling@gmail.com', createAt: '2018-03-03'},
-    {id: 10, nombre: 'Magma', apellido: 'Lee', email: 'magma.lee@gmail.com', createAt: '2018-03-04'},
-    {id: 11, nombre: 'Tornado', apellido: 'Roe', email: 'tornado.roe@gmail.com', createAt: '2018-03-05'},
-    {id: 12, nombre: 'Jade', apellido: 'Doe', email: 'jane.doe@gmail.com', createAt: '2018-03-06'}
-  ];
+  {id: 1,  nombre: 'Andrés', apellido: 'Guzmán', email: 'profesor@bolsadeideas.com', createdAt: '2018-01-01'},
+  {id: 2,  nombre: 'Mr. John', apellido: 'Doe', email: 'john.doe@gmail.com', createdAt: '2018-01-02'},
+  {id: 3,  nombre: 'Linus', apellido: 'Torvalds', email: 'linus.torvalds@gmail.com', createdAt: '2018-01-03'},
+  {id: 4,  nombre: 'Rasmus', apellido: 'Lerdorf', email: 'rasmus.lerdorf@gmail.com', createdAt: '2018-01-04'},
+  {id: 5,  nombre: 'Erich', apellido: 'Gamma', email: 'erich.gamma@gmail.com', createdAt: '2018-02-01'},
+  {id: 6,  nombre: 'Richard', apellido: 'Helm', email: 'richard.helm@gmail.com', createdAt: '2018-02-10'},
+  {id: 7,  nombre: 'Ralph', apellido: 'Johnson', email: 'ralph.johnson@gmail.com', createdAt: '2018-02-18'},
+  {id: 8,  nombre: 'John', apellido: 'Vlissides', email: 'john.vlissides@gmail.com', createdAt: '2018-02-28'},
+  {id: 9,  nombre: 'Dr. James', apellido: 'Gosling', email: 'james.gosling@gmail.com', createdAt: '2018-03-03'},
+  {id: 10, nombre: 'Magma', apellido: 'Lee', email: 'magma.lee@gmail.com', createdAt: '2018-03-04'},
+  {id: 11, nombre: 'Tornado', apellido: 'Roe', email: 'tornado.roe@gmail.com', createdAt: '2018-03-05'},
+  {id: 12, nombre: 'Jade', apellido: 'Doe', email: 'jane.doe@gmail.com', createdAt: '2018-03-06'}
+];
 ```
 
-* En `clientes.component.ts` declaramos el Array vacío: `clientes: Cliente[];`
-* En `clientes.component.ts` importaremos la constante CLIENTES por eso la definimos con `export`: 
-`import { CLIENTES } from './clientes.json';`
-* En el método `ngOnItit()` que es cuando se inicia el componente asignaremos `CLIENTES` a nuestra propiedad `clientes`.
+* En **`clientes.component.ts`** declaramos el Array vacío: **`clientes: Cliente[];`**
+* En **`clientes.component.ts`** importaremos la constante CLIENTES por eso la definimos con **`export`**: 
+**`import { CLIENTES } from './clientes.json';`**
+* En el método **`ngOnItit()`** que es cuando se inicia el componente asignaremos **`CLIENTES`** a nuestra propiedad **`clientes`**.
+
 ```js
 ngOnInit() {
   this.clientes = CLIENTES;
 }
 ```
 
-La clase `clientes.component.ts` completa queda así:
+La clase **`clientes.component.ts`** completa queda así:
+
+![image](https://user-images.githubusercontent.com/23094588/125161119-cf01d780-e180-11eb-84d8-6957b8e7b2a1.png)
+
+
+Como sigue dando problemas en **`clientes`** se a colocado **`"strict": false`** en **`tsconfig.json`** para no tener que usar el constructor en **`cliente.ts`**. De esta manera la clase **`clientes.component.ts`** ya no marca errores.
+
+![image](https://user-images.githubusercontent.com/23094588/125161244-81399f00-e181-11eb-81ec-0107c376dc51.png)
+
 
 ```js
 import { Component, OnInit } from '@angular/core';
@@ -239,24 +248,28 @@ export class ClientesComponent implements OnInit {
     this.clientes = CLIENTES;
   }
 
-}
+}  
 ```
 
 Este es todo el cambio, todo sigue funcionando igual,
 
-![03-05](images/03-05.png)
+![image](https://user-images.githubusercontent.com/23094588/125161281-b7771e80-e181-11eb-8a34-0761604bc110.png)
 
 pero queda más limpio, los datos quedan en un archivo separado **SIMULANDO COMO SI FUERA UN JSON QUE OBTENEMOS DE UN API REST O DE UNA BD**
 
-## Creando la clase de Servicio ClienteService y la Inyección de Dependencia 07:51
+## 💻 Creando la clase de Servicio `ClienteService` y la Inyección de Dependencia 07:51
 
-Aun que sacamos los datos del componente, aun quedan rastros de los datos dentro del componente, como la importación del archivo `clientes.json` y el uso de la constante `CLIENTES`, **la idea es DESACOPLAR COMPLETAMENTE TODO LO REFERENTE A LOS DATOS, MODELO O LÓGICA DE NEGOCIOS DE LA CLASE Component** por lo que tenemos que **mover `CLIENTES` a una clase especializada en la Lógica de Negocios** que sería **nuestra clase ClienteService**
+Aun que sacamos los datos del componente, aun quedan rastros de los datos dentro del componente, como la importación del archivo **`clientes.json`** y el uso de la constante **`CLIENTES`**, **la idea es DESACOPLAR COMPLETAMENTE TODO LO REFERENTE A LOS DATOS, MODELO O LÓGICA DE NEGOCIOS DE LA CLASE Component** por lo que tenemos que **mover `CLIENTES` a una clase especializada en la Lógica de Negocios** que sería **nuestra clase `ClienteService`**
 
-* Dentro de la carpeta `clientes` crear el **servicio** cliente con el comando: `ng g service cliente` se crea una clase de tipo `service`:
+Dentro de la carpeta **`clientes`** crear el **servicio** cliente con el comando: 
+
+`ng g service cliente` 
+
+se crea una clase de tipo `service`:
 
 ![03-07](images/03-07.png)
 
-Se ha creado dos archivos la clase `service` y el archivo de pruebas unitarias que lo vamos a eliminar y además se a registrado en `app.module.ts`.
+Se ha creado dos archivos la clase **`service`** y el archivo de pruebas unitarias que lo vamos a eliminar y además se a registrado en **`app.module.ts`**.
 
 ![03-08](images/03-08.png)
 
@@ -273,11 +286,13 @@ export class ClienteService {
   constructor() { }
 }
 ```
-El decorador `@Injectable` representa lógica de negocios por lo que las clases de servicio llevaran este decorador, lo que nos permite **INYECTAR EN OTRO COMPONENTE VÍA INYECCION DE DEPENDENCIAS**.
-Otra cosa muy importante es que dentro de `@Injectable` tenemos el atributo `providedIn: 'root'` lo que permite usar el servicio en cualquier componente, **ANTES TENIAMOS QUE DECLARAR EL SERVICIO EN EL `app.module.ts` DENTRO DEL APARTADO `providers: []`.
 
-* Mover el import de CLIENTES del `clientes.component.ts` y lo llevamos a `cliente.service.ts`
-* Crear el método `getClientes()` de tipo array de clientes, que va a retornar los clientes, debemos importar la clase `Cliente`.
+El decorador **`@Injectable`** representa lógica de negocios por lo que las clases de servicio llevaran este decorador, lo que nos permite **INYECTAR EN OTRO COMPONENTE VÍA INYECCION DE DEPENDENCIAS**.
+
+Otra cosa muy importante es que dentro de **`@Injectable`** tenemos el atributo **`providedIn: 'root'`** lo que permite usar el servicio en cualquier componente, **ANTES TENIAMOS QUE DECLARAR EL SERVICIO EN EL `app.module.ts` DENTRO DEL APARTADO `providers: []`.
+
+* Mover el import de CLIENTES del **`clientes.component.ts`** y lo llevamos a **`cliente.service.ts`**
+* Crear el método **`getClientes()`** de tipo array de clientes, que va a retornar los clientes, debemos importar la clase **`Cliente`**.
 
 ```js
 ...
@@ -289,7 +304,7 @@ getClientes(): Cliente[] {
 ...
 ```
 
-Nuestra clase de servicio `cliente.service.ts` completa nos queda así:
+Nuestra clase de servicio **`cliente.service.ts`** completa nos queda así:
 
 ```js
 import { Injectable } from '@angular/core';
@@ -309,16 +324,19 @@ export class ClienteService {
 }
 ```
 
-* Inyectar la clase service `cliente.service.ts` (debemos importarla) a través de la inyección de dependencias en `cliente.component.ts` esto se hace en el constructo:
-`constructor(private clienteService: ClienteService) { }`
-* Y en el método `ngOnInit()` le asignamos a nuestro atributo `clientes` el método `getClientes()`:
-```js
-ngOnInit() {
-  this.clientes = this.clienteService.getClientes();
-}
-```
+* Inyectar la clase service **`cliente.service.ts`** (debemos importarla) a través de la inyección de dependencias en **`cliente.component.ts`** esto se hace en el constructo:
 
-Nuestra clase de componente `cliente.component.ts` completa nos queda así:
+   `constructor(private clienteService: ClienteService) { }`
+   
+* Y en el método **`ngOnInit()`** le asignamos a nuestro atributo **`clientes`** el método **`getClientes()`**:
+
+   ```js
+   ngOnInit() {
+      this.clientes = this.clienteService.getClientes();
+   }
+   ```
+
+Nuestra clase de componente **`cliente.component.ts`** completa nos queda así:
 
 ```js
 import { Component, OnInit } from '@angular/core';
@@ -349,9 +367,9 @@ Si vemos en el navegador el resultado es:
 
 **YA TENEMOS SEPARADOS LOS DIFERENTES ROLES:**
 
-* La clase `component` representa a nuestro **CONTROLADOR**
-* La clase `service` representa a nuestra al **MODELO** o Lógica de Negocio
-* El archivo `html` representa a la **VISTA**
+* La clase **`component`** representa a nuestro **CONTROLADOR**
+* La clase **`service`** representa a nuestra al **MODELO** o Lógica de Negocio
+* El archivo **`html`** representa a la **VISTA**
 
 ## Introducción a los Observables 09:56
 
