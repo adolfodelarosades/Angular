@@ -228,7 +228,6 @@ Como sigue dando problemas en **`clientes`** se a colocado **`"strict": false`**
 
 ![image](https://user-images.githubusercontent.com/23094588/125161244-81399f00-e181-11eb-81ec-0107c376dc51.png)
 
-
 ```js
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
@@ -257,6 +256,9 @@ Este es todo el cambio, todo sigue funcionando igual,
 
 pero queda más limpio, los datos quedan en un archivo separado **SIMULANDO COMO SI FUERA UN JSON QUE OBTENEMOS DE UN API REST O DE UNA BD**
 
+![image](https://user-images.githubusercontent.com/23094588/125167170-7a218980-e19f-11eb-9457-e520b9767dbd.png)
+
+
 ## 💻 Creando la clase de Servicio `ClienteService` y la Inyección de Dependencia 07:51
 
 Aun que sacamos los datos del componente, aun quedan rastros de los datos dentro del componente, como la importación del archivo **`clientes.json`** y el uso de la constante **`CLIENTES`**, **la idea es DESACOPLAR COMPLETAMENTE TODO LO REFERENTE A LOS DATOS, MODELO O LÓGICA DE NEGOCIOS DE LA CLASE Component** por lo que tenemos que **mover `CLIENTES` a una clase especializada en la Lógica de Negocios** que sería **nuestra clase `ClienteService`**
@@ -267,11 +269,11 @@ Dentro de la carpeta **`clientes`** crear el **servicio** cliente con el comando
 
 se crea una clase de tipo `service`:
 
-![03-07](images/03-07.png)
+![image](https://user-images.githubusercontent.com/23094588/125167048-d20bc080-e19e-11eb-880e-e028930171b4.png)
 
 Se ha creado dos archivos la clase **`service`** y el archivo de pruebas unitarias que lo vamos a eliminar y además se a registrado en **`app.module.ts`**.
 
-![03-08](images/03-08.png)
+![image](https://user-images.githubusercontent.com/23094588/125167074-f798ca00-e19e-11eb-86aa-1fbc839fd2db.png)
 
 Este es el esqueleto de la clase `ClienteService`:
 
@@ -286,6 +288,8 @@ export class ClienteService {
   constructor() { }
 }
 ```
+
+![image](https://user-images.githubusercontent.com/23094588/125167183-8e658680-e19f-11eb-8115-0b7f0b29095b.png)
 
 El decorador **`@Injectable`** representa lógica de negocios por lo que las clases de servicio llevaran este decorador, lo que nos permite **INYECTAR EN OTRO COMPONENTE VÍA INYECCION DE DEPENDENCIAS**.
 
@@ -336,6 +340,12 @@ export class ClienteService {
    }
    ```
 
+Los dos pasos anteriores son la forma abreviada de hacer lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/125167527-4ba4ae00-e1a1-11eb-901d-96000f17c86a.png)
+
+Lo ideal es inyectarla en el Contrsuctor y ya podemos usar ese atributo para el Servicio.
+
 Nuestra clase de componente **`cliente.component.ts`** completa nos queda así:
 
 ```js
@@ -363,7 +373,7 @@ export class ClientesComponent implements OnInit {
 
 Si vemos en el navegador el resultado es:
 
-![03-09](images/03-09.png)
+![image](https://user-images.githubusercontent.com/23094588/125167591-a76f3700-e1a1-11eb-95e1-9dc957360ebd.png)
 
 **YA TENEMOS SEPARADOS LOS DIFERENTES ROLES:**
 
@@ -371,15 +381,17 @@ Si vemos en el navegador el resultado es:
 * La clase **`service`** representa a nuestra al **MODELO** o Lógica de Negocio
 * El archivo **`html`** representa a la **VISTA**
 
+![image](https://user-images.githubusercontent.com/23094588/125167709-295f6000-e1a2-11eb-84d4-48e48b1f214c.png)
+
 ## Introducción a los Observables 09:56
 
 ![03-10](images/03-10.png)
 
 Vamos a ver una pequeña introducción a los observables que es parte del **API Reactive Streams de JavaScript RxJs**.
 
-Es una librería de JavaScript que nos permite implementar programación reactiva en Angular y es para traja con datos, con flujos que puede que vengan no de forma inmediata, puede tener un delay, algún tiempo de espera.
+Es una librería de JavaScript que nos permite implementar programación reactiva en Angular y es para traja con datos, con flujos que puede que vengan no de forma inmediata, puede tener un ***delay***, algún tiempo de espera.
 
-La idea es trabajar con eventos, suscribirnos y estar pendiente escuchando cuando se emitan estos flujo de datos, estos streams. Cuando se emiten hay implementar un código que se le conoce como un ***observador o centinela***, que es un fragmento de código que está pendiente escuchando y se encarga de ejecutar algo, realizar un proceso cuando se reciben los datos, cuando llegan, entonces el ***observable es el evento***, el ***observador es el centinela***, nuestro código que maneja estos datos, que lo recibe, el observable emite estos datos. 
+La idea es trabajar con eventos, suscribirnos y estar pendiente escuchando cuando se emitan estos flujo de datos, estos **streams**. Cuando se emiten hay implementar un código que se le conoce como un ***observador o centinela***, que es un fragmento de código que está pendiente escuchando y se encarga de ejecutar algo, realizar un proceso cuando se reciben los datos, cuando llegan, entonces el ***observable es el evento***, el ***observador es el centinela***, nuestro código que maneja estos datos, que lo recibe, el observable emite estos datos. 
 
 Para resumir un observador, nuestro código reacciona a cualquier elemento de este flujo o secuencia del evento que se esté emetiendo en este observable y tenemos que suscribirnos.
 
@@ -403,7 +415,7 @@ Otra característica es que son **Concurrentes**, por lo tanto no bloquean otros
 
 Un observable no se ejecuta si no nos **Suscribimos**, es decir, podríamos invocar un observable pero mientras no invoquemos el método subscribe, mientras no implementemos nuestro código, nuestro observador o centinela, simplemente no hace nada.
 
-También podemos aplicar **Operadores en nuestro flujo** (map), en nuestros datos, realizar algún cambio, modificar el flujo, esto se aplica también a los objetos, es decir, podríamos tener un stream del tipo string y podríamos convertir esto en otro tipo de dato, por ejemplo, en objetos de tipo usuario. Podemos tomar un objeto y le podemos asignar valores, realizar cálculos, guardar información extra en atributos o modificar atributos. Tenemos el operador map para convertir datos,  el filter para filtrar, el retry para "intentar" por ejemplo si ocurre un error en nuestra comunicación o en el flujo y quiero volver a intentar comunicarme por ejemplo con el API Rest y obtener los datos. También tenemos otros operadores para trabajar con intervalo de tiempo, con cálculo matemático, calcular el máximo, el mínimo, el count para contar, el sum para sumar. También podemos concatenar es decir, combinar dos flujos. También podemos repetir dos o varias veces el mismo flujo. 
+También podemos aplicar **Operadores en nuestro flujo** (**map**), en nuestros datos, realizar algún cambio, modificar el flujo, esto se aplica también a los objetos, es decir, podríamos tener un stream del tipo string y podríamos convertir esto en otro tipo de dato, por ejemplo, en objetos de tipo usuario. Podemos tomar un objeto y le podemos asignar valores, realizar cálculos, guardar información extra en atributos o modificar atributos. Tenemos el operador **map** para convertir datos,  el **filter** para filtrar, el **retry** para "intentar" por ejemplo si ocurre un error en nuestra comunicación o en el flujo y quiero volver a intentar comunicarme por ejemplo con el API Rest y obtener los datos. También tenemos otros operadores para trabajar con intervalo de tiempo, con cálculo matemático, calcular el máximo, el mínimo, el **count** para contar, el **sum** para sumar. También podemos **concatenar** es decir, **combinar dos flujos**. También podemos repetir dos o varias veces el mismo flujo. 
 
 Podemos trabajar con el **manejo de error y reintentos**.
 
@@ -411,27 +423,27 @@ También **pueden ser infinitos** nos podríamos suscribir a un evento que esté
 
 La gran mayoría son **finitos**, es decir, un proceso que realiza alguna tarea, se emite algún dato o una secuencia y finaliza.
 
-Otra característica súper importante de los observable que **se pueden cancelar** en cualquier momento y ante cualquier inconveniente o problema, podríamos cancelar nuestro observable, la suscripción invocando el método unsuscribe, entonces cualquier momento podemos terminar la suscripción o cancelar y finaliza el observador.
+Otra característica súper importante de los observable que **se pueden cancelar** en cualquier momento y ante cualquier inconveniente o problema, podríamos cancelar nuestro observable, la suscripción invocando el método **unsuscribe**, entonces cualquier momento podemos terminar la suscripción o cancelar y finaliza el observador.
 
-Son **inmutables** cada observable, cada flujo es inmutable en sí mismo, esto quiere decir que cada que modificamos el flujo con un operador, lo que hace es no modificar el flujo original, el flujo original no cambia, lo que hace es retornar un nuevo flujo, un nuevo observable, un stream con los nuevos datos, con los datos modificados, ya sea con el MAP, con el filter, con el merch, con el concat, con el zep, en fin, con cualquier operador que modifique los datos siempre retorna un nuevo observable con estos cambios y el anterior se mantiene tal cual, siempre podemos volver a los datos originales.
+Son **inmutables** cada observable, cada flujo es inmutable en sí mismo, esto quiere decir que ***cada que modificamos el flujo con un operador, lo que hace es no modificar el flujo original, el flujo original no cambia, lo que hace es retornar un nuevo flujo, un nuevo observable, un stream con los nuevos datos, con los datos modificados***, ya sea con el **MAP**, con el **filter**, con el **merch**, con el **concat**, con el **zep**, en fin, con cualquier operador que modifique los datos siempre retorna un nuevo observable con estos cambios y el anterior se mantiene tal cual, siempre podemos volver a los datos originales.
 
 Estas serían la características más importante.
 
-## Implementando Observable en nuestra clase de Servicio `ClienteService` 08:18
+## 💻 Implementando Observable en nuestra clase de Servicio `ClienteService` 08:18
 
-Vamos a modificar la clase `cliente.service` para que las peticiones sean más **REACTIVAS** y **ASINCRONAS** para cuando trabajemos con el API REST. El método `getCliente()` actual es un método **SINCRONO** por lo que no podría trabajar correntamente con un API REST, ya que se necesita trabajar con peticiones Asincronas que no bloquen nuestra aplicación mientras espera la respuesta del servidor. Además la idea es que se puedan realizar varias peticiones al servidor al mismo tiempo, que no esten sincronizadas entre si, y que se puedan manejar de forma paralela al mismo tiempo y en tiempo real. 
+Vamos a modificar la clase **`cliente.service`** para que las peticiones sean más **REACTIVAS** y **ASINCRONAS** para cuando trabajemos con el API REST. El método **`getCliente()`** actual es un método **SINCRONO** por lo que no podría trabajar correntamente con un API REST, ya que se necesita trabajar con ***peticiones Asincronas que no bloquen nuestra aplicación mientras espera la respuesta del servidor***. Además ***la idea es que se puedan realizar varias peticiones al servidor al mismo tiempo, que no esten sincronizadas entre si, y que se puedan manejar de forma paralela al mismo tiempo y en tiempo real***. 
 
 **REACTIVO**
 
-El concepto **REACTIVO** es que reaccione en Tiempo Real y a travéz de flujos de datos con **Streams**, flujos de datos de entrada y salida.
+***El concepto REACTIVO es que reaccione en Tiempo Real y a travéz de flujos de datos con Streams, flujos de datos de entrada y salida***.
 
-Por lo que tenemos que modificar nuestro método `getClientes(): Clientes[]` para que nuestro tipo `Clientes[]` lo transformemos a un **Stream** y para eso utilizamos el **API Observable**.
+Por lo que tenemos que modificar nuestro método **`getClientes(): Clientes[]`** para que nuestro tipo **`Clientes[]`** lo transformemos a un **Stream** y para eso utilizamos el **API Observable**.
 
-* Importar la clase Observable: `import { Observable } from 'rxjs';`.
-* Lo que retorna el método `getClientes()` debe ser un **Stream** es decir un **Observable** de clientes: 
-`getClientes(): Observable<Cliente[]> {`
-* Por lo que que lo que se retorna `return CLIENTES;` tambien debe ser un observable para que sea del mismo tipo de lo que regresamos:
-`return of(CLIENTES);`
+* Importar la clase Observable: **`import { Observable } from 'rxjs';`**.
+* Lo que retorna el método **`getClientes()`** debe ser un **Stream** es decir un **Observable** de clientes: 
+**`getClientes(): Observable<Cliente[]> {`**
+* Por lo que que lo que se retorna **`return CLIENTES;`** tambien debe ser un observable para que sea del mismo tipo de lo que regresamos:
+**`return of(CLIENTES);`**
 * Importar el operador `of` de `rxjs`: `import { Observable, of } from 'rxjs';`.
 
 La clase `cliente.service` completa nos queda así:
@@ -459,11 +471,11 @@ export class ClienteService {
 
 ## Concepto Observable y patrón de diseño Observador
 
-El Observable esta basado en el **patrón de diseño Observador**, donde tenemos un **Sujeto que es Observable**, en este caso nuestro Cliente y tenemos también **Observadores**, que estan atentos escuchando un posible cambio en el sujeto, estos observadores se suscriben al sujeto (el `Observable`) y cuando cambia su estado se notifica a los observadores para que lleven a cabo algún proceso o tarea según las necesidades.
+El Observable esta basado en el **patrón de diseño Observador**, donde tenemos un **Sujeto que es Observable**, en este caso nuestro Cliente y tenemos también **Observadores**, que estan atentos escuchando un posible cambio en el sujeto, estos observadores se suscriben al sujeto (el **`Observable`**) y cuando cambia su estado se notifica a los observadores para que lleven a cabo algún proceso o tarea según las necesidades.
 
 Esto debería hacer que cuando cambia algún dato en el servidor(Spring) automáticamente notifique al cliente y se actualicen en tiempo real los datos en el cliente, sin necesidad de recargar la página. 
 
-* En `cliente.component.ts` tenemos que **registrar o suscribir el observador** a nuestros clientes(el `Observable` que es `getClientes() el cual va a ser Observado por Observadores`) por lo que vamos a cambiar:
+* En **`cliente.component.ts`** tenemos que **registrar o suscribir el observador** a nuestros clientes(el **`Observable`** que es **`getClientes()`** el cual va a ser Observado por Observadores) por lo que vamos a cambiar:
 
 ```js
 ngOnInit() {
@@ -480,7 +492,9 @@ ngOnInit() {
   );
 }
 ```
-Desde el observador nos estamos **Suscribiendo** para escuchar al Observable y este nos regresa un resultado que estamos recibiendo en `clientes` y este valor se lo asignamos a nuestro atributo `clientes`, todo ello usando una función anónima, podríamos haber puesto:
+
+Desde el observador nos estamos **Suscribiendo** para escuchar al Observable y este nos regresa un resultado que estamos recibiendo en `clientes` y este valor se lo asignamos a nuestro atributo **`clientes`**, todo ello usando una función anónima, podríamos haber puesto:
+
 ```js
 ngOnInit() {
   this.clienteService.getClientes().subscribe( 
@@ -490,9 +504,10 @@ ngOnInit() {
   );
 }
 ```
+
 Pero usaremos la función anónima.
 
-La clase `cliente.component.ts` completa nos queda así
+La clase **`cliente.component.ts`** completa nos queda así
 
 ```js
 import { Component, OnInit } from '@angular/core';
@@ -518,13 +533,15 @@ export class ClientesComponent implements OnInit {
 }
 ```
 
-La aplicación se sigue viendo igual pero ya esta trabajando de forma REACTIVA y ASINCRONA.
+La aplicación se sigue viendo igual pero ya esta trabajando de forma **REACTIVA y ASINCRONA**.
 
-![03-13](images/03-13.png)
+![image](https://user-images.githubusercontent.com/23094588/125168440-e2736980-e1a5-11eb-9a5a-05d343b054f4.png)
 
-## Implementando Rutas en Angular y navegación 05:14
+![image](https://user-images.githubusercontent.com/23094588/125168506-27979b80-e1a6-11eb-8495-fefbc4d5428c.png)
 
-Utilizando rutas podemos dividir nuestra aplicación en varias secciones o áreas las cuales se podrían llamar páginas pero en realidad no son páginas. Recordemos que una aplicación en Angular son aplicaciones en una sola página **SPA Single Page Aplication**, es decir tenemos una sola página para renderizar páginas diferentes y Angular utiliza esta técnica del Routing para realizarlo.
+## 💻 Implementando Rutas en Angular y Navegación 05:14
+
+Utilizando rutas podemos dividir nuestra aplicación en varias secciones o áreas las cuales se podrían llamar páginas pero en realidad no son páginas aisladas. Recordemos que una aplicación en Angular son aplicaciones en una sola página **SPA Single Page Aplication**, es decir tenemos una sola página para renderizar páginas diferentes y Angular utiliza esta técnica del Routing para realizarlo.
 
 Entonces la idea es:
 * Dentro de la página de Rutas anidar un contenido de un componente que esté mapeado a una URL.
@@ -542,8 +559,8 @@ const routes: Routes = [
   {path: 'clientes', component: ClientesComponent}
 ];
 ```
-   El path vacio representa nuestra página principal o home que redige a `/clientes` el `pathMatch: 'full'` hace un Match completo con la URL.
-* Finalmente hay que importar el `RouterModule` pasandole como parámetro nuestro array de rutas:
+   El path vacio representa nuestra página principal o home que redige a **`/clientes`** el **`pathMatch: 'full'`** hace un Match completo con la URL.
+* Finalmente hay que importar el **`RouterModule`** pasandole como parámetro nuestro array de rutas:
 ```js
 imports: [
   BrowserModule,
@@ -597,10 +614,12 @@ export class AppModule { }
 </div>
 <app-footer></app-footer>
 ```
-`<router-outlet>` es una directiva de Angular para indicar donde se van a renderizar el contenido (el componente) de cada ruta que seleccionemos.
 
-* Ir a `header.component.html`
+**`<router-outlet>`** es una directiva de Angular para indicar donde se van a renderizar el contenido (el componente) de cada ruta que seleccionemos.
+
+* Ir a **`header.component.html`**
 * Meter los links correspondientes para cada opción del menú.
+
 ```js
 <li class='nav-item' routerLinkActive="active">
     <a class='nav-link' routerLink="/directivas">Directivas</a>
@@ -610,19 +629,22 @@ export class AppModule { }
 </li>
 ```
 
-La directiva `routerLink` permite agregar el link de lo que queremos mostrar.
-La directiva `routerLinkActive` dejamos marcada la opción seleccionada.
+La directiva **`routerLink`** permite agregar el link de lo que queremos mostrar.
+La directiva **`routerLinkActive`** dejamos marcada la opción seleccionada.
 
 Guardamos y vamos a levantar el servidor, automáticamente redirige a Clientes y lo marca(A MI NO, hasta que hago click en el) , si nos vamos a Directivas también lo marca. De esta forma podemos tenemos nuestras propias rutas que por estar mapeado a los distintos componentes los cargan al seleccionarlas.
 
 En ningún momento se está actualizando la página, siempre nos mantenemos en una sola página, pero lo que cambia es el contenido principal, a través de la directiva `<router-outlet>` que tenemos en la plantilla principal `app.component.html`.
 
-![03-14](images/03-14.png)
-![03-15](images/03-15.png)
+![image](https://user-images.githubusercontent.com/23094588/125168951-53b41c00-e1a8-11eb-9f3b-b71bbdce4bb6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125168964-662e5580-e1a8-11eb-85bb-8a7d95569ead.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125169082-e94fab80-e1a8-11eb-8c40-94b02488dcb4.png)
 
 ## Actualización: sobre el archivo angular.cli.json vs angular.json 00:41
 
-¿Los archivos angular.cli.json y angular.json son los mismo?
+**¿Los archivos angular.cli.json y angular.json son los mismo?**
 
 Desde la versión 6 y 7 de angular se pasó a llamar angular.json, pero en versiones anteriores de angular se llamaba angular.cli.json pero básicamente son y sirven para lo mismo.
 
@@ -630,7 +652,7 @@ Desde la versión 6 y 7 de angular se pasó a llamar angular.json, pero en versi
 
 Se debe a que estamos trabajando y estamos actualizados
 
-## Configurando e integrando Bootstrap de forma local en nuestra app 05:32
+## 💻 Configurando e integrando Bootstrap de forma local en nuestra app 05:32
 
 ### Primera forma
 
