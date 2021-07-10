@@ -174,7 +174,7 @@ El comando `ng` de la consola de angular lo tenemos disponible con la instalaci�
 
 Ahí tenemos nuestro directorio raíz de Angular.
 
-### :computer: Crear el Proyecto `clientes-app`
+### 💻 Crear el Proyecto `clientes-app`
 
 Vamos a crear el proyecto dentro de la carpeta `PROYECTOS-ANGULAR`, le vamos a llamar `clientes-app` con el comando 
 
@@ -511,7 +511,7 @@ Tenemos el **`styles.css`** para los estilos globales.
 
 Luego tenemos **`test.ts`** para pruebas unitarias.
 
-## Integrar Bootstrap con Angular 06:54
+## 💻 Integrar Bootstrap con Angular 06:54
 
 En esta clase vamos a ver la integración con el framework **Bootstrap** para trabajar con **HTML5** y **CSS** para tener diseños bastante más robusto y atractivos, lo vamos a instalar de la forma más fácil posible.
 
@@ -621,13 +621,13 @@ Es recomendable cuando trabajamos con Angular abrir las herramientas de desarrol
 
 que nos va a permitir ver lo que sucede cuando ejecutamos nuestra aplicación y nos permitirá ver posibles errores que tengamos en nuestro código.
 
-## Creando nuevo componente HeaderComponent 10:37
+## 💻 Creando nuevo componente HeaderComponent 10:37
 
-En el ejemplo anterior creamos nuestro Navbar, el menú para nuestra página pero la incluimos en duro dentro del `app.component.html`. La idea es tener un componente separado que no esté tan acoplado al componente principal, entonces la idea es crear desde cero.
+En el ejemplo anterior creamos nuestro Navbar, el menú para nuestra página pero la incluimos en duro dentro del **`app.component.html`**. La idea es tener un componente separado que no esté tan acoplado al componente principal, entonces la idea es crear desde cero.
 
 Vamos a ver diferentes formas para crear componentes ya sea de forma automática utilizando la consola Angular CLI o bien crear cada componente, la clase, la vista de forma manual, archivo por archivo y por supuesto tenemos que configurar y registrarlo en Angular.
 
-La idea es que en el archivo `app.component.html` donde insertamos el menú de navegación en vez de eso solo tener una etiquta `<app-header></app-header>`.
+La idea es que en el archivo **`app.component.html`** donde insertamos el menú de navegación, en vez de eso solo tener una etiquta **`<app-header></app-header>`**.
 
 
 ```html
@@ -650,15 +650,15 @@ un error por que es componente aun no existe.
 
 #### Crear el Componente `Header`
 
-Vamos a crear el Componente `Header` de forma manual, lo primero es tener una carpeta `header` 
+Vamos a crear el Componente **`Header`** de forma manual, lo primero es tener una carpeta **`header`** 
 
 ![02-41](images/02-41.png)
 
-y dentro vamos a crear nuestra clase `header.component.ts`, este nombre responde a una nomenclatura a un estándar recomendado en Angular.
+y dentro vamos a crear nuestra clase **`header.component.ts`**, este nombre responde a una nomenclatura a un estándar recomendado en Angular.
 
 ![02-42](images/02-42.png)
 
-Lo primero es crear la clase, la sintaxis es usar `export` básicamente nos permite poder exportar esta clase para que se pueda utilizar, para que se pueda registrar, guardar en la configuración del `app.module.ts` el contenedor de angulas. Una clase de tipo component debería llevar el sufijo component.
+Lo primero es crear la clase, la sintaxis es usar **`export`** básicamente nos permite poder exportar esta clase para que se pueda utilizar, para que se pueda registrar, guardar en la configuración del **`app.module.ts`** el contenedor de Angular. Una clase de tipo component debería llevar el sufijo **`Component`**.
 
 ```js
 export class HeaderComponent {
@@ -666,12 +666,11 @@ export class HeaderComponent {
 }
 ```
 
-La clase tiene que estar anotada con un decorador `@Component` para lo cual previamente debemos importar esa anotación. Dentro de `@Component` añadimos los atributos el *selector*, el *temple* o el *templateUrl*, por ahora usaremos `temple` y usamos el carácter de multilínea para colocar todo el contenido HTML en vez de usar una plantilla HTML.
+La clase tiene que estar anotada con un decorador **`@Component`** para lo cual previamente debemos importar esa anotación. Dentro de **`@Component`** añadimos los atributos el **selector**, el **temple** o el **templateUrl**, por ahora usaremos **`temple`** y usamos el carácter de multilínea para colocar todo el contenido HTML en vez de usar una plantilla HTML.
 
-Por supuesto vamos a ver las dos formas, primero con temple, se recomienda cuando son HTML muy básico de 3 a 5 líneas como máximo, pero si son más de 5 líneas es 
-mucho mejor ya tener un archivo separado utilizando *templateUrl*.
+Por supuesto vamos a ver las dos formas, ***primero con temple, se recomienda cuando son HTML muy básico de 3 a 5 líneas como máximo, pero si son más de 5 líneas es mucho mejor ya tener un archivo separado utilizando templateUrl***.
 
-Nuestro componente `header.component.ts` final nos queda así:
+Nuestro componente **`header.component.ts`** final nos queda así:
 
 ```js
 import { Component } from '@angular/core';
@@ -689,7 +688,7 @@ export class HeaderComponent {
 
 Qué es lo que faltaría para que este componente funcione en nuestra aplicación ya que hasta el momento solamente hemos creado la clase nadamas una clase dentro de proyecto pero en ninguna parte le estamos diciendo a Angular que tenemos un nuevo componente, en ninguna parte lo hemos configurado.
 
-Para eso nos vamos a `app.module.ts` lo primero es importar el componente, esto lo podemos hacer gracias a que cuando creamos la clase se define la firma como `export` para que después se pueda importar y utilizar.
+Para eso nos vamos a **`app.module.ts`** lo primero es importar el componente, esto lo podemos hacer gracias a que cuando creamos la clase se define la firma como **`export`** para que después se pueda importar y utilizar.
 
 ```js
 import { HeaderComponent } from './header/header.component';
@@ -704,7 +703,7 @@ Lo debemos registrar en:
   ],
 ```
 
-Nuestro `app.module.ts` completo nos queda así:
+Nuestro **`app.module.ts`** completo nos queda así:
 
 
 ```js
@@ -732,7 +731,7 @@ Si volvemos a nuestro navegador tenemos:
 
 ![02-43](images/02-43.png)
 
-Ahora que ya vimos que funciona nuestro componente `header.component.ts` vamos a meter dentro de el todo el Navbar con un título personalizado.
+Ahora que ya vimos que funciona nuestro componente **`header.component.ts`** vamos a meter dentro de el todo el Navbar con un título personalizado.
 
 ```js
 import { Component } from '@angular/core';
