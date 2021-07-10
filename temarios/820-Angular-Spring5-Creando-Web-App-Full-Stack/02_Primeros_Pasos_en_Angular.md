@@ -1150,7 +1150,7 @@ Regresamos nuevamente a **`directiva.component.html`** para usar esta variable c
   </div>
 ```
 
-![02-65](images/02-65.png)
+![image](https://user-images.githubusercontent.com/23094588/125159007-f783d480-e174-11eb-9465-45cc5a506d2d.png)
 
 Para hacer que se oculte el listado al pulsar el botón manejamos dicho evento en el botón:
 
@@ -1158,8 +1158,8 @@ Para hacer que se oculte el listado al pulsar el botón manejamos dicho evento e
 <button type="button" (click)="habilitar = false" class="btn btn-primary my-3">Ocultar</button>
 ```
 
-![02-66](images/02-66.png)
-![02-67](images/02-67.png)
+![image](https://user-images.githubusercontent.com/23094588/125159031-1d10de00-e175-11eb-9535-6b499e46e53d.png)
+![image](https://user-images.githubusercontent.com/23094588/125159072-59dcd500-e175-11eb-8ddf-055f48521699.png)
 
 Ya oculta el listado, como hacemos ahora para que se vuelva a mostrar, podemos usar la siguiente lógica:
 
@@ -1167,9 +1167,9 @@ Ya oculta el listado, como hacemos ahora para que se vuelva a mostrar, podemos u
 <button type="button" (click)="habilitar = (habilitar==true) ? false: true;" class="btn btn-primary my-3">Ocultar</button>
 ```
 
-![02-68](images/02-68.png)
-![02-69](images/02-69.png)
-![02-70](images/02-70.png)
+![image](https://user-images.githubusercontent.com/23094588/125159031-1d10de00-e175-11eb-9535-6b499e46e53d.png)
+![image](https://user-images.githubusercontent.com/23094588/125159072-59dcd500-e175-11eb-8ddf-055f48521699.png)
+![image](https://user-images.githubusercontent.com/23094588/125159031-1d10de00-e175-11eb-9535-6b499e46e53d.png)
 
 Ahora sería bueno cambiar el texto según corresponda.
 
@@ -1179,9 +1179,9 @@ Ahora sería bueno cambiar el texto según corresponda.
 </button>
 ```
 
-![02-71](images/02-71.png)
-![02-72](images/02-72.png)
-![02-73](images/02-73.png)
+![image](https://user-images.githubusercontent.com/23094588/125159116-ab855f80-e175-11eb-9774-9ea3fdf9b0af.png)
+![image](https://user-images.githubusercontent.com/23094588/125159122-b50ec780-e175-11eb-84b0-bc0607b54894.png)
+![image](https://user-images.githubusercontent.com/23094588/125159128-bdff9900-e175-11eb-87b0-2f42c33ff3d9.png)
 
 Una mejor opción en vez de evaluar en el HTML la variable y habilitar el **`true`** o **`false`**, el **`Ocultar`** o **`Mostrar`**, es mejor hacerlo en un método en la clase **`directiva.component.ts`** que invocamos al pulsar el botón.
 
@@ -1227,7 +1227,7 @@ export class DirectivaComponent {
 
 Y en el navegador tenemos:
 
-![02-71](images/02-71.png)
-![02-72](images/02-72.png)
-![02-73](images/02-73.png)
+![image](https://user-images.githubusercontent.com/23094588/125159166-0fa82380-e176-11eb-9521-2a3408477422.png)
+![image](https://user-images.githubusercontent.com/23094588/125159173-19ca2200-e176-11eb-8eb9-271a455a4a35.png)
+![image](https://user-images.githubusercontent.com/23094588/125159186-25b5e400-e176-11eb-8935-33f1f1cc985f.png)
 
