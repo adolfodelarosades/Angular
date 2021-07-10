@@ -27,10 +27,47 @@ DELETE |/clientes/{id}      | destroy()
 
 ## Demostración de lo que lograremos al finalizar las siguientes secciones 02:33
 
-* CRUD con paginación
+![image](https://user-images.githubusercontent.com/23094588/125174953-3f344b80-e1c9-11eb-8248-143f60dfcb69.png)
+
+* CRUD con paginación   
+
+   ![image](https://user-images.githubusercontent.com/23094588/125174969-5c691a00-e1c9-11eb-9b46-09eb5f02f08e.png)
+
 * Insertar, Editar y Eliminar Clientes
+
+   ![image](https://user-images.githubusercontent.com/23094588/125175076-16608600-e1ca-11eb-86a1-64f5dafe9a37.png)
+
+   ![image](https://user-images.githubusercontent.com/23094588/125175085-211b1b00-e1ca-11eb-9273-a5300895a91c.png)
+ 
+   ![image](https://user-images.githubusercontent.com/23094588/125175124-34c68180-e1ca-11eb-84d5-7ded98e4a4e5.png)
+   
+   ![image](https://user-images.githubusercontent.com/23094588/125175131-3f811680-e1ca-11eb-82fc-a995e1c6b129.png)
+
+   ![image](https://user-images.githubusercontent.com/23094588/125175015-b5d14900-e1c9-11eb-865d-ff2cafc5eead.png)
+
+   ![image](https://user-images.githubusercontent.com/23094588/125175027-c41f6500-e1c9-11eb-8022-71256d114610.png)
+
+   ![image](https://user-images.githubusercontent.com/23094588/125175039-db5e5280-e1c9-11eb-832f-0c40aa5ceecb.png)
+   
+   ![image](https://user-images.githubusercontent.com/23094588/125175063-fc26a800-e1c9-11eb-8e49-75c64fc96e8a.png)
+
+   ![image](https://user-images.githubusercontent.com/23094588/125175068-08126a00-e1ca-11eb-9d55-773ae713563f.png)
+
+
+
 * Ver detalles del perfil con un modal
+
+   ![image](https://user-images.githubusercontent.com/23094588/125175055-f03ae600-e1c9-11eb-8f3e-8afb3ffc96e0.png)
+       
+   ![image](https://user-images.githubusercontent.com/23094588/125174983-7d316f80-e1c9-11eb-9372-667f908c31f4.png)
+
 * Subir una imágen
+
+   ![image](https://user-images.githubusercontent.com/23094588/125174992-8d494f00-e1c9-11eb-804b-d06cf5d4aef0.png)
+   
+   ![image](https://user-images.githubusercontent.com/23094588/125174997-9cc89800-e1c9-11eb-8f48-623c1a730e10.png)
+
+
 * Uso de Date Picker
 * Relaciones de tablas
 
