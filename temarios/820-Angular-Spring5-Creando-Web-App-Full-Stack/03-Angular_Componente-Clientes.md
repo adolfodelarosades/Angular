@@ -48,20 +48,58 @@ Vamos a borrar los archivos de de pruebas unitarias y la hoja de estilos.
 
 Modificamos **`clientes.component.ts`** para eliminar la hoja de estilos.
 
-En nuestra clase de modelo `Cliente` vamos a insertar los atributos necesarios:
+En nuestra clase de modelo **`Cliente`** vamos a insertar los atributos necesarios:
 
 ```js
 export class Cliente {
   id: number;
   nombre: string;
   apellido: string;
-  createAt: string;
+  createdAt: string;
   email: string;
 }
 ```
 
-![image](https://user-images.githubusercontent.com/23094588/125159985-eb9b1100-e17a-11eb-920f-e33ae7bab6db.png)
+En versiones más actuales de TypeScript esta composición de clase **`Cliente`** no es valida:
 
+![image](https://user-images.githubusercontent.com/23094588/125160310-86481f80-e17c-11eb-8f1f-ac01942537c9.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125160329-9b24b300-e17c-11eb-946d-9ff6f617197b.png)
+
+Tenemos dos opciones para hacer que funcione:
+
+1) Modificar el archivo **`tsconfig.json`** y en la propiedad **`strict`**
+
+![image](https://user-images.githubusercontent.com/23094588/125160399-ec34a700-e17c-11eb-9233-41ccde830a61.png)
+
+Cambiarla de **`true`** a **`false`**.
+
+Con esto el error desaparece:
+
+![image](https://user-images.githubusercontent.com/23094588/125160433-21d99000-e17d-11eb-8266-5470b787f776.png)
+
+
+2) Otra es crear el Constructor dentro de la clase **`Cliente`** 
+
+```js
+export class Cliente {
+  id: number;
+  nombre: string;
+  apellido: string;
+  createdAt: string;
+  email: string;
+
+  constructor(){
+    this.id=0;
+    this.nombre="";
+    this.apellido="";
+    this.createdAt="";
+    this.email="";
+  }
+}
+```
+
+![image](https://user-images.githubusercontent.com/23094588/125159985-eb9b1100-e17a-11eb-920f-e33ae7bab6db.png)
 
 ## 💻 Listando los objetos del tipo Cliente 07:17
 
@@ -78,19 +116,19 @@ import { Cliente } from './cliente';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[] = [
-    {id: 1,  nombre: 'Andrés', apellido: 'Guzmán', email: 'profesor@bolsadeideas.com', createAt: '2018-01-01'},
-    {id: 2,  nombre: 'Mr. John', apellido: 'Doe', email: 'john.doe@gmail.com', createAt: '2018-01-02'},
-    {id: 3,  nombre: 'Linus', apellido: 'Torvalds', email: 'linus.torvalds@gmail.com', createAt: '2018-01-03'},
-    {id: 4,  nombre: 'Rasmus', apellido: 'Lerdorf', email: 'rasmus.lerdorf@gmail.com', createAt: '2018-01-04'},
-    {id: 5,  nombre: 'Erich', apellido: 'Gamma', email: 'erich.gamma@gmail.com', createAt: '2018-02-01'},
-    {id: 6,  nombre: 'Richard', apellido: 'Helm', email: 'richard.helm@gmail.com', createAt: '2018-02-10'},
-    {id: 7,  nombre: 'Ralph', apellido: 'Johnson', email: 'ralph.johnson@gmail.com', createAt: '2018-02-18'},
-    {id: 8,  nombre: 'John', apellido: 'Vlissides', email: 'john.vlissides@gmail.com', createAt: '2018-02-28'},
-    {id: 9,  nombre: 'Dr. James', apellido: 'Gosling', email: 'james.gosling@gmail.com', createAt: '2018-03-03'},
-    {id: 10, nombre: 'Magma', apellido: 'Lee', email: 'magma.lee@gmail.com', createAt: '2018-03-04'},
-    {id: 11, nombre: 'Tornado', apellido: 'Roe', email: 'tornado.roe@gmail.com', createAt: '2018-03-05'},
-    {id: 12, nombre: 'Jade', apellido: 'Doe', email: 'jane.doe@gmail.com', createAt: '2018-03-06'}
-];
+    {id: 1,  nombre: 'Andrés', apellido: 'Guzmán', email: 'profesor@bolsadeideas.com', createdAt: '2018-01-01'},
+    {id: 2,  nombre: 'Mr. John', apellido: 'Doe', email: 'john.doe@gmail.com', createdAt: '2018-01-02'},
+    {id: 3,  nombre: 'Linus', apellido: 'Torvalds', email: 'linus.torvalds@gmail.com', createdAt: '2018-01-03'},
+    {id: 4,  nombre: 'Rasmus', apellido: 'Lerdorf', email: 'rasmus.lerdorf@gmail.com', createdAt: '2018-01-04'},
+    {id: 5,  nombre: 'Erich', apellido: 'Gamma', email: 'erich.gamma@gmail.com', createdAt: '2018-02-01'},
+    {id: 6,  nombre: 'Richard', apellido: 'Helm', email: 'richard.helm@gmail.com', createdAt: '2018-02-10'},
+    {id: 7,  nombre: 'Ralph', apellido: 'Johnson', email: 'ralph.johnson@gmail.com', createdAt: '2018-02-18'},
+    {id: 8,  nombre: 'John', apellido: 'Vlissides', email: 'john.vlissides@gmail.com', createdAt: '2018-02-28'},
+    {id: 9,  nombre: 'Dr. James', apellido: 'Gosling', email: 'james.gosling@gmail.com', createdAt: '2018-03-03'},
+    {id: 10, nombre: 'Magma', apellido: 'Lee', email: 'magma.lee@gmail.com', createdAt: '2018-03-04'},
+    {id: 11, nombre: 'Tornado', apellido: 'Roe', email: 'tornado.roe@gmail.com', createdAt: '2018-03-05'},
+    {id: 12, nombre: 'Jade', apellido: 'Doe', email: 'jane.doe@gmail.com', createdAt: '2018-03-06'}
+  ];
 
   constructor() { }
 
@@ -123,7 +161,7 @@ El siguiente paso es implementar la vista para mostrar el listado de clientes, e
           <td> {{ cliente.nombre }}</td>
           <td> {{ cliente.apellido }}</td>
           <td> {{ cliente.email }}</td>
-          <td> {{ cliente.createAt }}</td>
+          <td> {{ cliente.createdAt }}</td>
         </tr>
       </tbody>
     </table>
@@ -135,7 +173,12 @@ Nos faltaría poner el selector **`app-clientes`** en **`app.component.html`** l
 
 El resultado es:
 
-![03-05](images/03-05.png)
+![image](https://user-images.githubusercontent.com/23094588/125160667-729db880-e17e-11eb-8efa-d0a92874f3a2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125160578-03c05f80-e17e-11eb-8826-14edca18a2fc.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125160708-b7c1ea80-e17e-11eb-828b-e794872b9010.png)
+![image](https://user-images.githubusercontent.com/23094588/125160768-08d1de80-e17f-11eb-8d43-79f338fe14bb.png)
 
 ## Creando archivo `clientes.json.ts` con la Lista de Objetos 02:51
 
