@@ -1007,7 +1007,7 @@ ng g c directiva
 
 Es importante estar en la carpeta **`clientes-app`**.
 
-![02-60](images/02-60.png)
+![image](https://user-images.githubusercontent.com/23094588/125158697-0d909580-e173-11eb-9f95-2a19a73bc007.png)
 
 Esto automáticamente va a crear el HTML **`directiva.component.html`** del componente, va a crear también el archivo para las pruebas unitarias **`directiva.component.spec.ts`**, la clase **`directiva.component.ts`** y también el estilo CSS **`directiva.component.css`** y todo dentro de un directorio de una carpeta con el nombre del componente.
 
@@ -1017,9 +1017,9 @@ Además al final actualiza el **`app.module.ts`** justamente para registrar este
 
 ![02-62](images/02-62.png)
 
-Observamos que automáticamente importa **`DirectivaComponent**` y se incluye en las **`declarations`**.
+Observamos que automáticamente importa **`DirectivaComponent`** y se incluye en las **`declarations`**.
 
-Todo lo hace de forma automática.
+**Todo lo hace de forma automática**.
 
 Si abrimos la clase **`directiva.component.ts`** vemos lo siguiente:
 
@@ -1054,6 +1054,7 @@ import { Component, OnInit } from '@angular/core';
 export class DirectivaComponent {
 
   constructor() { }
+  
 }
 ```
 
@@ -1062,7 +1063,7 @@ También tiene un constructor que construye el objeto.
 La hoja estilo tampoco lo vamos a utilizar para este ejemplo así que la podemos quitar, se puede eliminar y dejamos solamente el **`templateUrl`** y el **`selector`**.
 
 ```js
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-directiva',
@@ -1071,6 +1072,7 @@ import { Component, OnInit } from '@angular/core';
 export class DirectivaComponent {
 
   constructor() { }
+
 }
 ```
 
@@ -1104,11 +1106,13 @@ Como queremos pintar una lista de los cursos usamos la directiva **`*ngFor`** y 
 
 Para poder mostrar la lista de curso tenemos que utilizar el selector **`app-directiva`** y colocarlo en **`app.component.html`** el cual es el componente principal, vamos a replazar el **`ul`** que tiene y poner nuestro selector **`app-directiva`**.
 
-![02-63](images/02-63.png)
+![image](https://user-images.githubusercontent.com/23094588/125158865-03bb6200-e174-11eb-97c4-9b44101a5c81.png)
 
 Si vamos al navegador tenemos:
 
-![02-64](images/02-64.png)
+![image](https://user-images.githubusercontent.com/23094588/125158881-19308c00-e174-11eb-84da-a80d3d99c8ee.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125158910-51d06580-e174-11eb-9bd4-96c3d2c494fd.png)
 
 ## 💻 Directiva estructural `*ngIf` 04:48
 
