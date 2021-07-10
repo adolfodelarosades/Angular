@@ -658,7 +658,9 @@ Se debe a que estamos trabajando y estamos actualizados
 
 * En la carpeta `assets` crear las carpetas `css` y `js`.
 * Descargar los archivos de bootstrap y meterlo en las carpetas `css` y `js`.
+* 
 ![03-18](images/03-18.png)
+
 Imagen para Bootstrap 5.0.0
 
 * En el archivo `index.html` hacer referencia a los archivos locales.
