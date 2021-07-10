@@ -14,7 +14,7 @@ Verbos | URI                | Action o Handler
 -------|--------------------|------------
 GET    |/clientes           | index()
 GET    |/clientes/create    | create()
-POST   |/clientes           | storre()
+POST   |/clientes           | store()
 GET    |/clientes/{id}      | show()
 GET    |/clientes/{id}/edit | edit()
 PUT    |/clientes/{id}      | update()
@@ -48,7 +48,6 @@ DELETE |/clientes/{id}      | destroy()
    ![image](https://user-images.githubusercontent.com/23094588/125175063-fc26a800-e1c9-11eb-8e49-75c64fc96e8a.png)
 
    ![image](https://user-images.githubusercontent.com/23094588/125175068-08126a00-e1ca-11eb-9d55-773ae713563f.png)
-
 
 * Ver detalles del perfil con un modal
 
@@ -86,6 +85,7 @@ DELETE |/clientes/{id}      | destroy()
 java -version
 java version "1.8.0_231"
 ```
+![image](https://user-images.githubusercontent.com/23094588/125175308-81f72300-e1cb-11eb-95b6-53fcf9a4adc6.png)
 
 ### Instalar Eclipse
 
@@ -99,6 +99,8 @@ Debemos descargar [Eclipse IDE for Enterprise Java Developers](https://www.eclip
 
 Debemos descomprimir el ZIP descargado y ejecutar el archivo **eclipse.exe**. Nos pide el lugar de nuestro workspace.
 
+![image](https://user-images.githubusercontent.com/23094588/125175542-347bb580-e1cd-11eb-85f3-1429aa24623e.png)
+
 ### Instalar Spring Tools 4 (4.5.0 Release)
 
 * Ir `Help / Eclipse Marketplace` y en `Find` escribir `Spring` y `Enter`, en el listado nos saldra **Spring Tools 4 - for Spring Boot (aka Spring Tool Suite 4) 4.5.0 RELEASE** pulsamos en el botón `Install`.
@@ -106,8 +108,13 @@ Debemos descomprimir el ZIP descargado y ejecutar el archivo **eclipse.exe**. No
 * Aceptamos las licencias, terminos y pulsamos el botón `Finish`.
 * Se instala el software y nos pide reiniciar Eclipse.
 
+![image](https://user-images.githubusercontent.com/23094588/125175656-def3d880-e1cd-11eb-953c-737818547fed.png)
+
 Con todo esto hecho en la barra de herramientas nos aparecerá el icono de **Boot Dashboard**
 * Pulsamos en el icono y nos aparece la pestaña **Boot Dashboard** 
+
+![image](https://user-images.githubusercontent.com/23094588/125175731-43af3300-e1ce-11eb-9b66-48a0ec6fc06e.png)
+
 
 En esta pestaña tendremos nuestro proyecto Spring Boot.
 
@@ -141,7 +148,10 @@ Existe un Eclipse ya configirado con Spring Boot creado por el equipo de [Spring
 
 :+1: 
 
-## Creando Proyecto Backend API REST 10:23
+![image](https://user-images.githubusercontent.com/23094588/125175823-04cdad00-e1cf-11eb-8669-b39091fdbc5a.png)
+
+
+## 💻 Creando Proyecto Backend API REST 10:23
 
 Para crear un proyecto nuevo seguir los siguientes pasos:
 
@@ -149,16 +159,24 @@ Para crear un proyecto nuevo seguir los siguientes pasos:
 * Seleccionar `Spring Boot` y se nos presentan dos opciones:
    * `Import Spring Started Content`
    * `Spring Starter Project`
+   
+   ![image](https://user-images.githubusercontent.com/23094588/125175908-afde6680-e1cf-11eb-9cab-712a466eb571.png)
+
+   
 * Seleccionamos `Spring Starter Project` y se nos pediran varios datos
    * Name: **spring-boot-backend-apirest**
    * Type: **Maven**
    * Packaging: **Jar**
    * Java Version: **8**
    * Language: **Java**
-   * Group: **com.example.springboot.backend.apirest**
-   * Package: **com.example.springboot.backend.apirest**
+   * Group: **com.javaocio.springboot.backend.apirest**
+   * Package: **com.javaocio.springboot.backend.apirest**
+
+   ![image](https://user-images.githubusercontent.com/23094588/125176003-6a6e6900-e1d0-11eb-8bdd-d500f311b5d3.png)
+
+
 * Presionamos el botón **Next**, para ir a la ventana de Dependencias o Librerías **New Spring Starter Project Dependencies**
-   * Spring Boot Version: **2.2.2** ( La versión más estable hasta el momento**
+   * Spring Boot Version: **2.2.2** ( La versión más estable hasta el momento** (**2.5.2** Revisión 20210710)
    * Seleccionar **Web** 
       * Marcar **Spring Web** (Contiene el API, las anotaciones y controladores para crear nuestro REST
    * Seleccionar **SQL**
@@ -166,16 +184,26 @@ Para crear un proyecto nuevo seguir los siguientes pasos:
       * Marcar la dependencia **MySQL Driver**
    * Seleccionar **Developer Tools**
       * Marcar **Spring Boot DevTools** (Para actualizar automáticamente el deploy cuando se realicen cambios)
-* Dar click en **Finish**
+   * Dar click en **Finish**
 
-![04-01](images/04-01.png)
-![04-02](images/04-02.png)
+   ![image](https://user-images.githubusercontent.com/23094588/125176091-0d26e780-e1d1-11eb-88da-aad7ce27d382.png)
 
 Una vez hecho esto se genera la estructura de nuestro proyecto, algunos archivos importantes son:
 
-![04-03](images/04-03.png)
+![image](https://user-images.githubusercontent.com/23094588/125176157-99d1a580-e1d1-11eb-8273-69a06fc0b73f.png)
    
    * **pom.xml**: Contiene la estructura de nuestro proyecto. (Con la información que se metio al crear el proyecto)
+      * El `packaging` con `jar`
+      * El `groupId`
+      * El `artifactId`
+      * La versión de Spring Boot
+      * La versión de Java 
+      * Las dependencias
+         * JPA
+         * Web
+         * DevTools
+         * MySQL
+      * Por defecto incluye Tests 
    * **application.properties**: Archivo principal de configuración. Permite sobreescribir cualquier configuración del proyecto. (Actualmente vacío)
    * **SpringBootBackendApirestApplication**: Clase principal, es el **Boot Start** el arranque, una clase que se crea de forma automática en el package base de nuestro proyecto. Contiene lo siguiente:
       * **@SpringBootApplication**: anotación más importante de la aplicación, si entramos a ver su definición esta comouesta a su vez por varias anotaciones, las más importantes las 3 últimas, `@SpringBootConfiguration` configuración de Spring Boot, `@EnableAutoConfiguration` permitir la auto configuración, `@ComponentScan` buscar y registra en el contenedor de Spring todas las clases anotadas con `@RestController`, `@Controller`, `@Service`, `@Repository` y `@Component`.
@@ -191,9 +219,12 @@ Una vez hecho esto se genera la estructura de nuestro proyecto, algunos archivos
 
 Nos marcara algún error por que aún falta configurar el proyecto.
 
-![04-06](images/04-06.png)
+![image](https://user-images.githubusercontent.com/23094588/125176356-08fbc980-e1d3-11eb-854f-676f223d0c19.png)
 
-## Configurando el Datasource a MySQL en el proyecto backend 06:46
+## 💻 Incluir Git en el Proyecto
+
+
+## 💻 Configurando el Datasource a MySQL en el proyecto backend 06:46
 
 Ir a **application.properties** e insertar el siguiente codigo:
  
