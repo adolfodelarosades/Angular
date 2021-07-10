@@ -43,16 +43,11 @@ DELETE |/clientes/{id}      | destroy()
    
    ![image](https://user-images.githubusercontent.com/23094588/125175131-3f811680-e1ca-11eb-82fc-a995e1c6b129.png)
 
-   ![image](https://user-images.githubusercontent.com/23094588/125175015-b5d14900-e1c9-11eb-865d-ff2cafc5eead.png)
-
-   ![image](https://user-images.githubusercontent.com/23094588/125175027-c41f6500-e1c9-11eb-8022-71256d114610.png)
-
    ![image](https://user-images.githubusercontent.com/23094588/125175039-db5e5280-e1c9-11eb-832f-0c40aa5ceecb.png)
    
    ![image](https://user-images.githubusercontent.com/23094588/125175063-fc26a800-e1c9-11eb-8e49-75c64fc96e8a.png)
 
    ![image](https://user-images.githubusercontent.com/23094588/125175068-08126a00-e1ca-11eb-9d55-773ae713563f.png)
-
 
 
 * Ver detalles del perfil con un modal
@@ -67,10 +62,14 @@ DELETE |/clientes/{id}      | destroy()
    
    ![image](https://user-images.githubusercontent.com/23094588/125174997-9cc89800-e1c9-11eb-8f48-623c1a730e10.png)
 
-
 * Uso de Date Picker
+
+   ![image](https://user-images.githubusercontent.com/23094588/125175015-b5d14900-e1c9-11eb-865d-ff2cafc5eead.png)
+
 * Relaciones de tablas
 
+   ![image](https://user-images.githubusercontent.com/23094588/125175027-c41f6500-e1c9-11eb-8022-71256d114610.png)
+   
 ## Herramientas necesarias Backend 06:46
 
 * JDK (Java SE Development Kit (JDK(Desarrollo) + JRE(Ejecución))
