@@ -1,20 +1,20 @@
 # 03. Angular: Componente Clientes - 11 Clases - 55 min
 
-* Creando el componente clientes.component 03:28
+* Creando el componente **`clientes.component`** 03:28
 * Listando los objetos del tipo Cliente 07:17
-* Creando archivo clientes.json.ts con la lista de objetos 02:51
+* Creando archivo **`clientes.json.ts`** con la lista de objetos 02:51
 * Creando la clase de Servicio ClienteService y la Inyección de Dependencia 07:51
 * Introducción a los Observables 09:56
 * Implementando Observable en nuestra clase Servicio ClienteService 08:18
 * Implementando Rutas en Angular y navegación 05:14
-* Actualización: sobre el archivo angular.cli.json vs angular.json 00:39
+* Actualización: sobre el archivo **`angular.cli.json`** vs **`angular.json`** 00:39
 * Configurando e integrando Bootstrap de forma local en nuestra app 05:32
 * Actualización: configurando los styles y scripts en archivo angular.json 00:17
 * Instalando Bootstrap utilizando el comando npm desde el terminal 03:55
 
-## Creando el Componente `clientes.component` 03:28
+## 💻 Creando el Componente `clientes.component` y Clase `cliente` 03:28
 
-Vamos a trabajar con nuestra aplicación Clientes, la idea es crear un nuevo componente `clientes.component`, vamos a crear una clase TypeScrip con los atributos `nombre`, `apellido`, `email` y la `fecha`.
+Vamos a trabajar con nuestra aplicación Clientes, la idea es crear un nuevo componente **`clientes.component`**, vamos a crear una clase TypeScrip con los atributos **`nombre`**, **`apellido`**, **`email`** y la **`fecha`**.
 
 Por ahora vamos a armar nuestro ejemplo de forma sencilla trabajando con angular en un archivo que contenga el listado de clientes en un formato JSON, luego después en vez de leer el listado de clientes de JSON estático desde un archivo vamos a obtener los clientes desde un API REST de Spring por el lado BackEnd. 
 
@@ -24,13 +24,13 @@ Vamos a ir a la consola para crear nuestro componente con el siguiente comando:
 ng g c clientes
 ```
 
-![03-01](images/03-01.png)
+![image](https://user-images.githubusercontent.com/23094588/125159762-b641f380-e179-11eb-81f3-b3e74e812499.png)
 
 De forma automática crea la clase, la vista HTML, la hojas de estilos y la clase de test.
 
 También vamos a crear la clase `cliente` para el modelo como sigue:
 
-![03-02](images/03-02.png)
+![image](https://user-images.githubusercontent.com/23094588/125159810-19338a80-e17a-11eb-9a7a-91aa381c7b21.png)
 
 Con el siguiente comando creamos una clase. 
 
@@ -46,7 +46,7 @@ Vamos a borrar los archivos de de pruebas unitarias y la hoja de estilos.
 
 ![03-04](images/03-04.png)
 
-Modificamos `clientes.component.ts` para eliminar la hoja de estilos.
+Modificamos **`clientes.component.ts`** para eliminar la hoja de estilos.
 
 En nuestra clase de modelo `Cliente` vamos a insertar los atributos necesarios:
 
@@ -60,13 +60,16 @@ export class Cliente {
 }
 ```
 
-## Listando los objetos del tipo Cliente 07:17
+![image](https://user-images.githubusercontent.com/23094588/125159985-eb9b1100-e17a-11eb-920f-e33ae7bab6db.png)
 
-Vamos a crear el listado de clientes en el componente `clientes.component`, vamos a `clientes.component.ts` y vamos a tener un atributo del tipo array de `Cliente`, para poder usar `Cliente` lo debemos importar.
+
+## 💻 Listando los objetos del tipo Cliente 07:17
+
+Vamos a crear el listado de clientes en el componente **`clientes.component`**, vamos a **`clientes.component.ts`** y vamos a tener un atributo del tipo array de **`Cliente`**, para poder usar **`Cliente`** lo debemos importar.
 
 ```js
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from './cliente'
+import { Cliente } from './cliente';
 
 @Component({
   selector: 'app-clientes',
@@ -97,7 +100,7 @@ export class ClientesComponent implements OnInit {
 }
 ```
 
-El siguiente paso es implementar la vista para mostrar el listado de clientes, en `clientes.component.html` vamos a implementar los paneles de Bootstrap para renderizar la lista de clientes.
+El siguiente paso es implementar la vista para mostrar el listado de clientes, en **`clientes.component.html`** vamos a implementar los paneles de Bootstrap para renderizar la lista de clientes.
 
 ```html
 <div class="card border-primary mb-3">
@@ -128,7 +131,7 @@ El siguiente paso es implementar la vista para mostrar el listado de clientes, e
 </div>
 ```
 
-Nos faltaría poner el selector `app-clientes` en `app.component.html` lo vamos a colocar en lugar de `app-directiva`.
+Nos faltaría poner el selector **`app-clientes`** en **`app.component.html`** lo vamos a colocar en lugar de **`app-directiva`**.
 
 El resultado es:
 
