@@ -642,13 +642,21 @@ La idea es que en el archivo **`app.component.html`** donde insertamos el menú 
 
 Si ejecutamos la aplicación tenemos:
 
-![02-40](images/02-40.png)
+![image](https://user-images.githubusercontent.com/23094588/125155580-4758a080-e161-11eb-9a12-aa06e09b02ab.png)
 
-![02-39](images/02-39.png)
+![image](https://user-images.githubusercontent.com/23094588/125155619-6a835000-e161-11eb-8225-ad10aa443511.png)
 
-un error por que es componente aun no existe.
+![image](https://user-images.githubusercontent.com/23094588/125155637-7ff87a00-e161-11eb-99d8-e5196b0d9a65.png)
 
-#### Crear el Componente `Header`
+tenemos un error por que el componente aún no existe.
+
+En la consola del Servidor nos lo indica así:
+
+![image](https://user-images.githubusercontent.com/23094588/125155665-b0401880-e161-11eb-827b-6269bde63c8a.png)
+
+La consola del Servidor es otro lado importante donde ver cuando tengamos algún fallo.
+
+#### 💻 Crear el Componente `Header`
 
 Vamos a crear el Componente **`Header`** de forma manual, lo primero es tener una carpeta **`header`** 
 
@@ -726,73 +734,76 @@ import { HeaderComponent } from './header/header.component';
 })
 export class AppModule { }
 ```
+![image](https://user-images.githubusercontent.com/23094588/125155967-458fdc80-e163-11eb-83b0-83f7f9664b47.png)
 
 Si volvemos a nuestro navegador tenemos:
 
-![02-43](images/02-43.png)
+![image](https://user-images.githubusercontent.com/23094588/125156004-84259700-e163-11eb-82f0-7b55d91f6b44.png)
 
 Ahora que ya vimos que funciona nuestro componente **`header.component.ts`** vamos a meter dentro de el todo el Navbar con un título personalizado.
 
 ```js
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'app-header',
   template: `
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">{{title}}</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">{{title}}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
   `
 })
-export class HeaderComponent {
+export class HeaderComponent{
   title: string = 'App Angular'
 }
 ```
 
 Y vemos que pasa en el navegador.
 
-![02-44](images/02-44.png)
+![image](https://user-images.githubusercontent.com/23094588/125156083-fc8c5800-e163-11eb-9ef6-3866a6761162.png)
 
 Ya tenemos nuestro NavBar en un componente independiente y funcionando.
 
-## Separando el template del componente con TemplateUrl 02:31
+![image](https://user-images.githubusercontent.com/23094588/125156247-cd2a1b00-e164-11eb-85ef-43841a1afa07.png)
+
+## 💻 Separando el template del componente con `TemplateUrl` 02:31
 
 Como se menciono anteriormente si el HTML es muy amplio es mejor tenerlo en un archivo separado, en una plantilla independiente.
 
-Dentro de la carpeta `header` vamos a crear el archivo `header.component.html`.
+Dentro de la carpeta **`header`** vamos a crear el archivo **`header.component.html`**.
 
 ![02-45](images/02-45.png)
 
@@ -802,7 +813,7 @@ Vamos a pasar el contenido del `template` del archivo `header.component.ts`  a e
 
 Si vamos al navegador vemos que todo sigue funcionando correctamente.
 
-![02-47](images/02-47.png)
+![image](https://user-images.githubusercontent.com/23094588/125156439-a6b8af80-e165-11eb-8667-e0ec79b702d8.png)
 
 ## Creando nuevo Componente `FooterComponent` 10:07
 
