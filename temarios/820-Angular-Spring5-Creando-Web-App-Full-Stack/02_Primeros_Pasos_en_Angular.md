@@ -815,13 +815,15 @@ Si vamos al navegador vemos que todo sigue funcionando correctamente.
 
 ![image](https://user-images.githubusercontent.com/23094588/125156439-a6b8af80-e165-11eb-8667-e0ec79b702d8.png)
 
-## Creando nuevo Componente `FooterComponent` 10:07
+![image](https://user-images.githubusercontent.com/23094588/125156585-89d0ac00-e166-11eb-90e2-1d950a98726a.png)
 
-En esta lección vamos a crear un nuevo componente `FooterComponent` lo vamos a hacer de forma diferente. Vamos a crear la clase utilizando la consola de Angular CLI.
+## 💻 Creando nuevo Componente `FooterComponent` y Ajustes de Presentación 10:07
+
+En esta lección vamos a crear un nuevo componente **`FooterComponent`** lo vamos a hacer de forma diferente. Vamos a crear la clase utilizando la **consola de Angular CLI**.
 
 En la consola vamos a ejecutar los siguientes comandos:
 
-![02-48](images/02-48.png)
+![image](https://user-images.githubusercontent.com/23094588/125156730-47f43580-e167-11eb-8865-27eba5f5bbc0.png)
 
 Con el comando:
 
@@ -829,7 +831,7 @@ Con el comando:
 ng generate class footer.component
 ```
 
-creamos la clase (y `footer.component.spec.ts` que eliminaremos) en la ubicación donde nos encontramos.
+creamos la clase (y **`footer.component.spec.ts`** que eliminaremos) en la ubicación donde nos encontramos.
 
 ![02-49](images/02-49.png)
 
@@ -853,7 +855,7 @@ export class FooterComponent {
 }
 ```
 
-Hemos creado un atributo `autor` de tipo `any` lo que indica que no es de un tipo en particular y para ello usamos `any`, podríamos a ver creado un tipo `Persona` y declararlo de ese tipo pero como no tenemos dicho tipo nos manejamos con `any`, también le hemos asignado que sea `public`.
+Hemos creado un atributo **`autor`** de tipo **`any`** lo que indica que ***no es de un tipo en particular*** y para ello usamos **`any`**, podríamos haber creado un tipo **`Persona`** y declararlo de ese tipo pero como no tenemos dicho tipo nos manejamos con **`any`**, también le hemos asignado que sea **`public`**.
 
 Ahora creamos `footer.component.html` con el siguente código:
 
@@ -867,7 +869,7 @@ Ahora creamos `footer.component.html` con el siguente código:
 </footer>
 ```
 
-El siguiente paso es registrar este `footer.component` dentro de `app.module.ts`.
+El siguiente paso es registrar este **`footer.component`** dentro de **`app.module.ts`**.
 
 ```js
 import { BrowserModule } from '@angular/platform-browser';
@@ -922,7 +924,7 @@ Lo podemos mejorar con algunos estilos.
 </footer>
 ```
 
-![02-51](images/02-51.png)
+![image](https://user-images.githubusercontent.com/23094588/125157009-c43b4880-e168-11eb-8f6d-fb0bceea927b.png)
 
 Lo ajustamos aún más.
 
@@ -936,7 +938,7 @@ Lo ajustamos aún más.
 </footer>
 ```
 
-![02-52](images/02-52.png)
+![image](https://user-images.githubusercontent.com/23094588/125157051-fb115e80-e168-11eb-8d19-4ee8b3261aaf.png)
 
 Para poder poner el Footer en la parte inferior vamos a necesitar una hoja de estilos para este componente. Recordemos que los estilos del componente hacen efecto solamente a un componente en particular.
 
@@ -973,25 +975,25 @@ Y en `footer.component.html` aplicamos este estilo.
 
 Si nos vamos a nuestro navegador podemos observar ya totalmente colocado nuestro Footer no importando el tamaño del navegador.
 
-![02-55](images/02-55.png)
-![02-56](images/02-56.png)
+![image](https://user-images.githubusercontent.com/23094588/125157169-9d314680-e169-11eb-95f9-61ce10807a69.png)
 
 Para colocar también el Header de color oscuro nos vamos a `header.component.html` cambiamos `navbar-light bg-light` por `navbar-dark bg-dark`. 
 
 El resultado es el siguiente:
 
-![02-57](images/02-57.png)
+![image](https://user-images.githubusercontent.com/23094588/125157200-cc47b800-e169-11eb-9499-ced8eee226fd.png)
 
 Finalmente para afinarlo aún más vamos a meter el contenido principal del `app.component.html` dentro de un contenedor para que no este tan pegado a la izquierda.
 
-![02-58](images/02-58.png)
-![02-59](images/02-59.png)
+![image](https://user-images.githubusercontent.com/23094588/125157262-2c3e5e80-e16a-11eb-8ee1-21053511242b.png)
 
-## Directiva estructural `*ngFor` 07:07
+![image](https://user-images.githubusercontent.com/23094588/125157307-8c350500-e16a-11eb-84be-e781ab3510f4.png)
 
-En esta lección vamos a ver las **Directivas Estructurales** comenzando con `*ngFor`.
+## 💻 Directiva estructural `*ngFor` 07:07
 
-Vamos a crear un nuevo componente que le vamos a llamar `Directiva` pero ahora sí que lo vamos a crear completamente de forma automática utilizando los comandos de Angular CLI, nos vamos a la consola donde podemos usar el comando:
+En esta lección vamos a ver las **Directivas Estructurales** comenzando con **`*ngFor`**.
+
+Vamos a crear un nuevo componente que le vamos a llamar **`Directiva`** pero ahora sí que lo vamos a crear completamente de forma automática utilizando los comandos de **Angular CLI**, nos vamos a la consola donde podemos usar el comando:
 
 ```sh
 ng generate component directiva
@@ -1003,23 +1005,23 @@ o podemos usar los alias para abreviar:
 ng g c directiva
 ```
 
-Es importante estar en la carpeta `clientes-app`.
+Es importante estar en la carpeta **`clientes-app`**.
 
 ![02-60](images/02-60.png)
 
-Esto automáticamente va a crear el HTML `directiva.component.html` del componente, va a crear también el archivo para las pruebas unitarias `directiva.component.spec.ts`, la clase `directiva.component.ts` y también el estilo CSS `directiva.component.css` y todo dentro de un directorio de una carpeta con el nombre del componente.
+Esto automáticamente va a crear el HTML **`directiva.component.html`** del componente, va a crear también el archivo para las pruebas unitarias **`directiva.component.spec.ts`**, la clase **`directiva.component.ts`** y también el estilo CSS **`directiva.component.css`** y todo dentro de un directorio de una carpeta con el nombre del componente.
 
 ![02-61](images/02-61.png)
 
-Además al final actualiza el `app.module.ts` justamente para registrar este componente en nuestra aplicación.
+Además al final actualiza el **`app.module.ts`** justamente para registrar este componente en nuestra aplicación.
 
 ![02-62](images/02-62.png)
 
-Observamos que automáticamente importa `DirectivaComponent` y se incluye en las `declarations`.
+Observamos que automáticamente importa **`DirectivaComponent**` y se incluye en las **`declarations`**.
 
 Todo lo hace de forma automática.
 
-Si abrimos la clase `directiva.component.ts` vemos lo siguiente:
+Si abrimos la clase **`directiva.component.ts`** vemos lo siguiente:
 
 ```js
 import { Component, OnInit } from '@angular/core';
@@ -1039,7 +1041,7 @@ export class DirectivaComponent implements OnInit {
 }
 ```
 
-Implementa la interface `OnInit` que es para manejar el ciclo de vida pero como no lo vamos a ocupar lo eliminamos.
+Implementa la interface **`OnInit`** que es para manejar el ciclo de vida pero como no lo vamos a ocupar lo eliminamos.
 
 ```js
 import { Component, OnInit } from '@angular/core';
@@ -1057,7 +1059,7 @@ export class DirectivaComponent {
 
 También tiene un constructor que construye el objeto.
 
-La hoja estilo tampoco lo vamos a utilizar para este ejemplo así que la podemos quitar, se puede eliminar y dejamos solamente el `templateUrl` y el `selector`.
+La hoja estilo tampoco lo vamos a utilizar para este ejemplo así que la podemos quitar, se puede eliminar y dejamos solamente el **`templateUrl`** y el **`selector`**.
 
 ```js
 import { Component, OnInit } from '@angular/core';
@@ -1072,9 +1074,9 @@ export class DirectivaComponent {
 }
 ```
 
-Por lo tanto también podríamos eliminar la hoja de estilo, el archivo `directiva.component.css`.
+Por lo tanto también podríamos eliminar la hoja de estilo, el archivo **`directiva.component.css`**.
 
-Vamos a crear un atributo en `directiva.component.ts`, le vamos a llamar `listaCurso` el cual va a ser de tipo array de string.
+Vamos a crear un atributo en **`directiva.component.ts`**, le vamos a llamar **`listaCurso`** el cual va a ser de tipo array de string.
 
 ```js
 ...
@@ -1085,7 +1087,7 @@ export class DirectivaComponent {
 }
 ```
 
-La idea es iterar sobre este arreglo utilizando la directiva `*ngFor` en la lista, vamos a ir a `directiva.component.html` y colocamos el siguiente código:
+La idea es iterar sobre este arreglo utilizando la directiva **`*ngFor`** en la lista, vamos a ir a **`directiva.component.html`** y colocamos el siguiente código:
 
 ```html
 <div class="card">
@@ -1098,9 +1100,9 @@ La idea es iterar sobre este arreglo utilizando la directiva `*ngFor` en la list
 </div>
 ```
 
-Como queremos pintar una lista de los cursos usamos la directiva `*ngFor` y la colocamos en el elemento que queremos repetir en este caso `<li` donde colocamos `*ngFor="let curso of listaCurso"` donde `listaCurso` es el atributo definido en `directiva.component.ts` el cual va a ir recorriendo y colocar el valor obtenido en `curso` el cual gracias a la interpolación `{{ curso }}` vamos pintando en cada iteracción.
+Como queremos pintar una lista de los cursos usamos la directiva **`*ngFor`** y la colocamos en el elemento que queremos repetir en este caso **`<li`** donde colocamos **`*ngFor="let curso of listaCurso"`** donde **`listaCurso`** es el atributo definido en **`directiva.component.ts`** el cual va a ir recorriendo y colocar el valor obtenido en **`curso`** el cual gracias a la interpolación **`{{ curso }}`** vamos pintando en cada iteracción.
 
-Para poder mostrar la lista de curso tenemos que utilizar el selector `app-directiva` y colocarlo en `app.component.html` el cual es el componente principal, vamos a replazar el `ul` que tiene y poner nuestro selector `app-directiva`.
+Para poder mostrar la lista de curso tenemos que utilizar el selector **`app-directiva`** y colocarlo en **`app.component.html`** el cual es el componente principal, vamos a replazar el **`ul`** que tiene y poner nuestro selector **`app-directiva`**.
 
 ![02-63](images/02-63.png)
 
@@ -1108,17 +1110,17 @@ Si vamos al navegador tenemos:
 
 ![02-64](images/02-64.png)
 
-## Directiva estructural `*ngIf` 04:48
+## 💻 Directiva estructural `*ngIf` 04:48
 
-Vamos a segir con las directivas estructurales en este caso con `*ngIf` que maneja una condición típica de cualquier lenguaje de programación para evaluar una expresión y de acuerdo si es verdadero o falso mostrar u ocultar un contenido.
+Vamos a segir con las directivas estructurales en este caso con **`*ngIf`** que maneja una condición típica de cualquier lenguaje de programación para evaluar una expresión y de acuerdo si es verdadero o falso mostrar u ocultar un contenido.
 
-Vamos a `directiva.component.html` donde vamos a poner un botón para mostrar u ocultar el listado de curso.
+Vamos a **`directiva.component.html`** donde vamos a poner un botón para mostrar u ocultar el listado de curso.
 
 ```html
 <button type="button" class="btn btn-primary my-3">Ocultar</button>
 ```
 
-En `directiva.component.ts` vamos a tener una variable booleana `habilitar` con un valor inicial `true` para indicar que se muestre el listado de cursos.
+En **`directiva.component.ts`** vamos a tener una variable booleana **`habilitar`** con un valor inicial **`true`** para indicar que se muestre el listado de cursos.
 
 ```js
 export class DirectivaComponent {
@@ -1130,7 +1132,7 @@ export class DirectivaComponent {
 }
 ```
 
-Regresamos nuevamente a `directiva.component.html` para usar esta variable con la la directiva `*ngIf` de la siguiente manera:
+Regresamos nuevamente a **`directiva.component.html`** para usar esta variable con la la directiva **`*ngIf`** de la siguiente manera:
 
 ```html
   <button type="button" class="btn btn-primary my-3">Ocultar</button>
@@ -1177,9 +1179,9 @@ Ahora sería bueno cambiar el texto según corresponda.
 ![02-72](images/02-72.png)
 ![02-73](images/02-73.png)
 
-Una mejor opción en vez de evaluar en el HTML la variable y habilitar el `true` o `false`, el `Ocultar` o `Mostrar`, es mejor hacerlo en un método en la clase `directiva.component.ts` que invocamos al pulsar el botón.
+Una mejor opción en vez de evaluar en el HTML la variable y habilitar el **`true`** o **`false`**, el **`Ocultar`** o **`Mostrar`**, es mejor hacerlo en un método en la clase **`directiva.component.ts`** que invocamos al pulsar el botón.
 
-El archivo `directiva.component.html` nos va a quedar así:
+El archivo **`directiva.component.html`** nos va a quedar así:
 
 ```html
 <button type="button" (click)="setHabilitar();" class="btn btn-primary my-3">
@@ -1195,7 +1197,7 @@ El archivo `directiva.component.html` nos va a quedar así:
 </div>
 ```
 
-El archivo `directiva.component.ts` nos queda así:
+El archivo **`directiva.component.ts`** nos queda así:
 
 ```js
 import { Component, OnInit } from '@angular/core';
