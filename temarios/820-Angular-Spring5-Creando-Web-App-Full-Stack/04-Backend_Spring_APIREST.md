@@ -535,7 +535,7 @@ Podemos abrir el Workbeanch y ver nuestra tabla desde allí. Cabe aclarar que el
 
 ![image](https://user-images.githubusercontent.com/23094588/125191981-96780180-e245-11eb-8f61-3eb935608d33.png)
 
-## Añadiendo las clases Repository y Service de la Lógica de Negocio 11:48
+## 💻 Añadiendo las clases Repository y Service de la Lógica de Negocio 11:48
 
 Vamos a comenzar creando la clase de acceso a datos, **DAO o Repository** la cual tiene como función acceder a los datos para realizar consultas y todo tipo de operaciones en la BD. 
 
@@ -547,41 +547,54 @@ Simplemente se implementa una interfaz, heredamos de la ***interfaz CRUD reposit
 
 Y además si queremos podemos implementar nuestros propios métodos customizados usando la notación **`@Query`** o también utilizando el nombre el método cosa que vamos a ver un poco en esta clase.
 
-
-AQUIIIIIIIIIIIII
-
-
 ### Crear la Clase Repository o DAO
 
 Pero vamos a implementar primero la interfaz DAO:
 
 * Crear el package **`models.dao`** dentro del package principal.
 
+   ![image](https://user-images.githubusercontent.com/23094588/125203175-b4f6f080-e277-11eb-8a8a-2d598503a050.png)
    
 * Clic derecho en el package `models.dao` y damos `New / Interface`
-* Name: **IClienteDao**
 
-Crea el archivo:
+   * Name: **IClienteDao**
 
-```java
-package com.bolsadeideas.springboot.backend.apirest.models.dao;
+   ![image](https://user-images.githubusercontent.com/23094588/125203220-e374cb80-e277-11eb-8f33-bce85d0eac4c.png)
 
-public interface IClienteDao {
 
-}
-```
-* Vamos a extender de **CrudRepository**:
-```java
-public interface IClienteDao extends CrudRepository<T, ID>{
+   Crea el archivo:
 
-}
-```
-* Propone un tipo generico en `T` debemos poner la clase Entity que esta asociada a este DAO o Repository, en este caso la clase **Cliente** que creamos previamente y en `ID` tenemos que poner el tipo de dato de la llave `id`:
-```java
-public interface IClienteDao extends CrudRepository<Cliente, Long>{
-```
+   ```java
+   package com.javaocio.springboot.backend.apirest.models.dao;
 
-Si damos un `Ctrl + Click` sobre `CruRepository` nos vanos a los métodos de esta interfaz `Interface for generic CRUD operations on a repository for a specific type.`.
+   public interface IClienteDao {
+
+   }
+   ```
+   
+   * Vamos a extender de **CrudRepository**:
+   
+   ```java
+   import org.springframework.data.repository.CrudRepository;
+   
+   public interface IClienteDao extends CrudRepository<T, ID>{
+
+   }
+   ```
+   
+   ![image](https://user-images.githubusercontent.com/23094588/125203339-49615300-e278-11eb-889c-d7d9b10a817c.png)
+
+   
+   * Propone un tipo generico en **`T`** debemos poner la clase Entity que esta asociada a este DAO o Repository, en este caso la clase **Cliente** que creamos previamente y en **`ID`** tenemos que poner el tipo de dato de la llave **`id`**:
+
+   ```java
+   public interface IClienteDao extends CrudRepository<Cliente, Long>{
+   ```
+   
+   ![image](https://user-images.githubusercontent.com/23094588/125203400-7d3c7880-e278-11eb-9b90-52431061013c.png)
+
+
+Si damos un `Ctrl + Click` sobre `CruRepository` nos vamos a los métodos de esta interfaz `Interface for generic CRUD operations on a repository for a specific type.`.
 
 ![04-14](images/04-14.png)
 ![04-15](images/04-15.png)
@@ -651,114 +664,145 @@ public interface UserRepository extends JpaRepository<User, Long> {
 }
 ```
 
+### Crear la Clase Service
+
+El siguiente paso es crear la clase Service. Un Servicio consta de la Interfaz del Servicio y la Clase del Servicio.
+
 #### Crear la Interfaz Service
 
-El siguiente paso es crear la clase Service:
-
 * Vamos a crear un nuevo package **models.services*
+
+   ![image](https://user-images.githubusercontent.com/23094588/125203848-a8c06280-e27a-11eb-83fe-79050703e0af.png)
+
 * Dentro del nuevo package creamos una Interface **IClienteService**
-```java
-package com.bolsadeideas.springboot.backend.apirest.models.services;
 
-public interface IClienteService {
+   ![image](https://user-images.githubusercontent.com/23094588/125203873-c8f02180-e27a-11eb-89ea-5b0915a03fc7.png)
 
-}
-```
+   ```java
+   package com.javaocio.springboot.backend.apirest.models.services;
+
+   public interface IClienteService {
+
+   }
+   ```
+   
+   ![image](https://user-images.githubusercontent.com/23094588/125203930-12407100-e27b-11eb-9c8f-1489c2adc3d2.png)
+
 * A esta interfaz le daremos un contrato de implementación, los métodos del CRUD. Empezamos con el **findAll**:
+
 ```java
-package com.bolsadeideas.springboot.backend.apirest.models.services;
+package com.javaocio.springboot.backend.apirest.models.services;
 
 import java.util.List;
-import com.bolsadeideas.springboot.backend.apirest.models.entity.Cliente;
+import com.javaocio.springboot.backend.apirest.models.entity.Cliente;
 
 public interface IClienteService {
-
+	
    public List<Cliente> findAll();
+
 }
 ```
-#### Crear la Clase Service
 
-Vamos a crear la clase **ClienteServiceImpl** para implementar el método findAll() definido anteriormente en la interfaz:
+#### Crear la Clase Service **`ClienteServiceImpl`**
+
+Vamos a crear la clase **`ClienteServiceImpl`** para implementar el método **`findAll()`** definido anteriormente en la interfaz:
+
+![image](https://user-images.githubusercontent.com/23094588/125204113-d063fa80-e27b-11eb-8c98-4a5e1ee02944.png)
+
+
 ```java
-package com.bolsadeideas.springboot.backend.apirest.models.services;
+package com.javaocio.springboot.backend.apirest.models.services;
 
 public class ClienteServiceImpl {
 
 }
 ```
-Lo primero que hacemos es implementar **IClienteService** con lo que automáticamente nos pedirá implementar el método findAll(), nuestra clase queda así:
-```java
-package com.bolsadeideas.springboot.backend.apirest.models.services;
 
-import java.util.List;
+![image](https://user-images.githubusercontent.com/23094588/125204120-e376ca80-e27b-11eb-87db-a138e741e49b.png)
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+Lo primero que hacemos es implementar **IClienteService** con lo que automáticamente nos pedirá implementar el método **`findAll()`**
 
-import com.bolsadeideas.springboot.backend.apirest.models.dao.IClienteDao;
-import com.bolsadeideas.springboot.backend.apirest.models.entity.Cliente;
+![image](https://user-images.githubusercontent.com/23094588/125204146-0f924b80-e27c-11eb-978e-8cfef7c592e2.png)
 
-//Anotar como Service para marcarla como una clase de Servicio
-@Service
-public class ClienteServiceImpl implements IClienteService{
+![image](https://user-images.githubusercontent.com/23094588/125204166-2769cf80-e27c-11eb-8cf2-86cdb36c5358.png)
 
-   //Inyectar (Inyección de dependdencias) el ClienteDao
-   @Autowired
-   private IClienteDao clienteDao;
-	
-   @Override
-   @Transactional(readOnly = true) //Permite manejar transacción en el método y como es un Select será sólo de lectura
-   public List<Cliente> findAll() {
-      //Como findAll() retorna un Iterable le hacemos un CAST
-      return (List<Cliente>) clienteDao.findAll();
-   }
+Podemos pulsar la ayuda que nos muestra en el error para completar el código.
 
-}
-```
+![image](https://user-images.githubusercontent.com/23094588/125204202-6009a900-e27c-11eb-858e-814aaa6add74.png)
 
-Tuvimos que inyectar **IClienteDao** usando **@Autowired** (Inyección de dependencias). Entonces en el método **findAll()** debe retornar una lista de todos los clientes, eso ya esta implementado en nuestro **clienteDao** gracias a que a su vez hereda de **CrudRepository**, por lo que tiene que retorarse **clienteDao.findAll()** pero como esto retorna un Iterable debemos hacer un cast por lo que finalmente nos queda: 
-`return (List<Cliente>) clienteDao.findAll();`
 
-Luego tuvimos que anotar con **@Transactional(readOnly = true)** esta anotación nos permite manejar transacción en el método, y como es una consulta, un  Select sería solamente de lectura.
+Necesitamos inyectar el **Cliente DAO** para acceder al método que nos devuelve todos los clientes **`findAll`**, el cual retorna un **Iterable** por lo que hay que convertirlo a un **`List`** de **`Cliente`**.
 
-De todas formas los métodos del **CrudRepository** ya vienen con transaccionalidad ya son transaccionales. Por lo tanto podríamos omitir esta notación.
+![image](https://user-images.githubusercontent.com/23094588/125204364-2e451200-e27d-11eb-8797-314a4ce1717f.png)
+
+Tuvimos que inyectar **`IClienteDao`** usando **`@Autowired`** (Inyección de dependencias). Entonces en el método **`findAll()`** debe retornar una lista de todos los clientes, eso ya esta implementado en nuestro **`clienteDao`** gracias a que a su vez hereda de **`CrudRepository`**, por lo que tiene que retorarse **`clienteDao.findAll()`** pero como esto retorna un **`Iterable`** debemos hacer un cast por lo que finalmente nos queda: 
+
+**`return (List<Cliente>) clienteDao.findAll();`**
+
+Tenemos que anotar con **`@Transactional(readOnly = true)`** esta anotación nos permite manejar transacción en el método, y como es una consulta, un  Select sería solamente de lectura.
+
+![image](https://user-images.githubusercontent.com/23094588/125204495-f094b900-e27d-11eb-8e27-280f94454541.png)
+
+
+***De todas formas los métodos del CrudRepository ya vienen con transaccionalidad ya son transaccionales. Por lo tanto podríamos omitir esta anotación***.
 
 Ahora yo prefiero anotarla en el Service ya que describe la transaccionalidad de la clase **Repository** más que nada para tener el control y hacerlo de una forma más explícita. Pero de todas formas se puede omitir así que daría exactamente igual
 
-Pero todos los métodos nuevos que queramos implementar en el **IClienteDao** ya sea a través del nombre del método o utilizando la
-anotación **@Query** ahí si tendríamos que utilizar el **@Transactions**, solamente para los métodos propios.
+Pero todos los métodos nuevos que queramos implementar en el **`IClienteDao`** ya sea a través del nombre del método o utilizando la anotación **`@Query`** ahí si tendríamos que utilizar el **`@Transactions`**, solamente para los métodos propios.
 
-También quería destacar que **@Autowired** una anotación para inyectar el **IClienteDao**, a pesar de que es una interfaz pero por detrás de escena Spring va a crear una instancia de una implementación concreta utilizando la interfaz y va a quedar guardada en el contenedor de Sprint en el contexto.
+También quería destacar que **`@Autowired`** una anotación para inyectar el **`IClienteDao`**, a pesar de que es una interfaz pero por detrás de escena Spring va a crear una instancia de una implementación concreta utilizando la interfaz y va a quedar guardada en el contenedor de Sprint en el contexto.
 
-Por lo tanto la podemos inyectar en cualquier otro componente, ya sea una clase **Service**, ya sea en un Controlador en cualquier clase de nuestra aplicación.
+Por lo tanto la podemos inyectar en cualquier otro componente, ya sea una clase **`Service`**, ya sea en un Controlador en cualquier clase de nuestra aplicación.
 
-Para finalizar anotamos con **@Service** la clase, una anotación muy importante ya que con esto decoramos y marcamos esta clase como un componente de servicio en Sprint y también se va a guardar en el contenedor de Sprint va a quedar almacenado en el contexto. Y después podemos inyectar este objeto, este Beans de Sprint en el controlador y lo podemos utilizar pero para eso tenemos que decorarlo y Service lo que hace es justamente eso, si vemos su definición veremos que es un estereotipo de **@Component**. Por lo tanto con **@Component** marca la clase, la decora para que sea un componente del Framework un Beans y se registra en el contenedor.
+Para finalizar anotamos con **`@Service`** la clase, una anotación muy importante ya que con esto decoramos y marcamos esta clase como un componente de servicio en Sprint y también se va a guardar en el contenedor de Sprint va a quedar almacenado en el contexto. Y después podemos inyectar este objeto, este Beans de Sprint en el controlador y lo podemos utilizar pero para eso tenemos que decorarlo y **`@Service`** lo que hace es justamente eso.
+
+![image](https://user-images.githubusercontent.com/23094588/125204680-b7a91400-e27e-11eb-97b2-19aeb115b004.png)
+
+Si vemos su definición veremos que es un estereotipo de **@Component**. Por lo tanto con **@Component** marca la clase, la decora para que sea un componente del Framework un Beans y se registra en el contenedor.
+
+![image](https://user-images.githubusercontent.com/23094588/125204718-f343de00-e27e-11eb-9290-409b81432d72.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125204835-6ea58f80-e27f-11eb-8a09-1f205d28b86c.png)
 
 ## Creando Controlador `@RestController` y EndPoint para listar 04:22
 
-Vamos a crear nuestro API Rest un controlador Rest que es una URL que vamos a utilizar para conectar y enviar datos, peticiones a nuestra aplicación por ejemplo para listar nuestro cliente en nuestra aplicación con angular.
+Vamos a crear nuestro API Rest un controlador Rest que es una URL que vamos a utilizar para conectar y enviar datos, peticiones a nuestra aplicación por ejemplo para listar nuestro cliente en nuestra aplicación con Angular.
 
 * Crear package **controllers**
+
+   ![image](https://user-images.githubusercontent.com/23094588/125204882-a7456900-e27f-11eb-8233-23facaec76af.png)
+
 * Crear la clase **ClienteRestController**
-```java
-package com.bolsadeideas.springboot.backend.apirest.controllers;
 
-public class ClienteRestController {
+   ![image](https://user-images.githubusercontent.com/23094588/125204901-c643fb00-e27f-11eb-90ac-c08cd2a836c8.png)
+   
+   ![image](https://user-images.githubusercontent.com/23094588/125204917-d9ef6180-e27f-11eb-8306-68a485a3937a.png)
 
-}
-```
 
-* Lo primero que tenemos que implementar es decorador a nuestra clase con la anotación **@RestController** a diferencia de un controlador normal web MVC con vistas que se anotaría con **@Controller** en este caso como es un API REST, se anota con **@RestController**.
+   ```java
+   package com.javaocio.springboot.backend.apirest.controllers;
 
-* El siguiente paso es en mapear nuestro **RestController** con **@RequestMapping** para generar nuestra URL, el endpoint, entonces nos queda `@RequestMapping("/api")` 
+   public class ClienteRestController {
 
-* Luego vamos a crear el método **index()** que va a retornar un listado de clientes. Necesitamos ir al modelo a la clase Service y obtener el listado de clientes. Para eso tenemos que inyectar con **Autowired** recordemos que en la sección anterior creamos la clase **ClienteServiceImpl** que está decorada con **@Service**, por lo tanto ya es un componente, si revisábamos la anotación vemos que es un **@Component** un componente, por lo tanto ya está dentro del contexto y registrado en el contenedor simplemente la podemos inyectar:
+   }
+   ```
+
+* Lo primero que tenemos que implementar es decorador a nuestra clase con la anotación **`@RestController`** a diferencia de un controlador normal web MVC con vistas que se anotaría con **`@Controller`** en este caso como es un API REST, se anota con **`@RestController`**.
+
+   ![image](https://user-images.githubusercontent.com/23094588/125204954-11f6a480-e280-11eb-88ad-3cf8961d373b.png)
+
+
+* El siguiente paso es en mapear nuestro **RestController** con **`@RequestMapping`** para generar nuestra URL, el endpoint, entonces nos queda **`@RequestMapping("/api")`** 
+
+   ![image](https://user-images.githubusercontent.com/23094588/125205003-5e41e480-e280-11eb-9f57-be608a0c8c08.png)
+
+* Luego vamos a crear el método **`index()`** que va a retornar un listado de clientes. Necesitamos ir al modelo a la clase **Service** y obtener el listado de clientes. Para eso tenemos que inyectar con **`@Autowired`** recordemos que en la sección anterior creamos la clase **`ClienteServiceImpl`** que está decorada con **`@Service`**, por lo tanto ya es un componente, si revisábamos la anotación vemos que es un **`@Component`** un componente, por lo tanto ya está dentro del contexto y registrado en el contenedor simplemente la podemos inyectar:
 
 ```java
 @Autowired
 private IClienteService clienteService;
 ```
+
 Recordemos que en Spring cuando se declara un Beans con su tipo genérico ya sea una interfaz o clase abstracta va a buscar el primer candidato, una clase concreta que implemente esta interfaz y la tenemos en **ClienteServiceImpl** en la implementación concreta, pero implementa la interfaz **IClienteService**. Por lo tanto este Beans es un tipo de la interfaz, por lo tanto se puede definir como un tipo genérico de la interfaz y busca una implementación concreta y la inyecta, si tuviera más de una habría que usar un calificador. 
 
 * Ya podemos hacer retornar los datos:
@@ -766,9 +810,11 @@ Recordemos que en Spring cuando se declara un Beans con su tipo genérico ya sea
 public List<Cliente> index(){
    return clienteService.findAll();
 }
-``` 
+```
 
-* Lo último que faltaría sería mapear la URL para generar nuestro EndPoint del método, podemos usar **@GetMapping** ya que es una petición get poniendo la URL con la que queremos hacer el mapeo:
+![image](https://user-images.githubusercontent.com/23094588/125205166-3901a600-e281-11eb-8346-859a718f4b31.png)
+
+* Lo último que faltaría sería mapear la URL para generar nuestro EndPoint del método, podemos usar **`@GetMapping`** ya que es una petición **GET** poniendo la URL con la que queremos hacer el mapeo:
 
 ```java
 @GetMapping("/clientes")
@@ -777,10 +823,12 @@ public List<Cliente> index(){
 }
 ```
 
+![image](https://user-images.githubusercontent.com/23094588/125205206-6f3f2580-e281-11eb-8415-cb13ae469181.png)
+
 El código completo de la clase **ClienteRestController** es:
 
 ```java
-package com.bolsadeideas.springboot.backend.apirest.controllers;
+package com.javaocio.springboot.backend.apirest.controllers;
 
 import java.util.List;
 
@@ -789,8 +837,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bolsadeideas.springboot.backend.apirest.models.entity.Cliente;
-import com.bolsadeideas.springboot.backend.apirest.models.services.IClienteService;
+import com.javaocio.springboot.backend.apirest.models.entity.Cliente;
+import com.javaocio.springboot.backend.apirest.models.services.IClienteService;
 
 @RestController
 @RequestMapping("/api")
@@ -799,14 +847,17 @@ public class ClienteRestController {
    @Autowired
    private IClienteService clienteService;
 	
-	
    @GetMapping("/clientes")
    public List<Cliente> index(){
       return clienteService.findAll();
    }
+	
 }
 ```
-Este sería nuestro API REST nuestro controlador utilizando RestController mapeamos con `/api` todos los métodos del REST y luego cada método va a tener su propio EndPoint:
+
+![image](https://user-images.githubusercontent.com/23094588/125205342-ff7d6a80-e281-11eb-84c8-fd968e52e8cb.png)
+
+Este sería un resumen de nuestro **API REST**, nuestro controlador utilizando **RestController** mapeamos con **`/api`** todos los métodos del REST y luego cada método va a tener su propio EndPoint:
 
 Verbos | URI                | Action o Handler
 -------|--------------------|------------
@@ -818,11 +869,19 @@ GET    |/clientes/{id}/edit | edit()
 PUT    |/clientes/{id}      | update()
 DELETE |/clientes/{id}      | destroy()
 
-### Añadiendo Datos de pueba 02:54
+### 💻 Añadiendo Datos de pueba 02:54
 
-En esta sección vamos a agregar los datos de pruebas, ya tenemos configura la base datos, nuestra tabla, la clase del modelo y también el API REST, el controlador anotado con RestController pero para probar nos faltan algunos datos de prueba y es lo que vamos a hacer ahora
+En esta sección vamos a agregar los datos de pruebas, ya tenemos configura la base datos, nuestra tabla, la clase del modelo y también el **API REST**, el controlador anotado con RestController pero para probar nos faltan algunos datos de prueba y es lo que vamos a hacer ahora
 
-* En la carpeta **src/main/resources** vamos a crear un archivo nuevo `New / Other / SQL Development / SQL File` y de nombre le vamos a poner **import.sql**. Este nombre es importante se tiene que llamar de esa forma ya que Spring Boot a través de JPA con Hibernate va a buscar si existe este **import.sql** y va a ejecutar las sentencias que contenga.
+* En la carpeta **src/main/resources** vamos a crear un archivo nuevo **`New / Other / SQL Development / SQL File`** 
+ 
+   ![image](https://user-images.githubusercontent.com/23094588/125205414-600ca780-e282-11eb-8be1-81b929617770.png)
+
+   y de nombre le vamos a poner **`import.sql`**. 
+   
+   ![image](https://user-images.githubusercontent.com/23094588/125205431-7adf1c00-e282-11eb-886f-255a93e2fa33.png)
+
+   Este nombre es importante se tiene que llamar de esa forma ya que Spring Boot a través de JPA con Hibernate va a buscar si existe este **`import.sql`** y va a ejecutar las sentencias que contenga.
 
 * Insertar el siguiente contenido en el archivo **import.sql**
 
@@ -842,16 +901,22 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', 'jane.doe@gmail.com', '2021-03-06');
 ```
 
-Inserta datos de nombre, apellido, email, create_at, si revisamos la clase Entity tenemos esos mismos datos son atributos de la clase pero que también están mapeados a las columnas en la tabla, en la tabla de clientes y el id es incremental se va a generar de forma automática un Identity que se incrementa en 1 auto incremental.
+![image](https://user-images.githubusercontent.com/23094588/125205457-a530d980-e282-11eb-9741-bcc1caf6629b.png)
 
-Vamos a guardar y vamos a ejecutar. En la consola vemos que se insertaron los clientes. Además también tenemos mapeada nuestro API `/api/clientes`. 
+Inserta datos de **`nombre`**, **`apellido`**, **`email`**, **`create_at`**, si revisamos la clase Entity tenemos esos mismos datos son atributos de la clase pero que también están mapeados a las columnas en la tabla, en la tabla de **`clientes`** y el **`id`** es incremental se va a generar de forma automática un **`Identity`** que se incrementa en 1 auto incremental.
 
-![04-17](images/04-17.png)
+Vamos a guardar y vamos a ejecutar. En la consola vemos que se insertaron los clientes. Además también tenemos mapeada nuestro API **`/api/clientes`** (En mi log eso no se ve). 
 
-Así que vamos a probar nuestra aplicación, nos vamos al navegador y ejecutamos `http://localhost:8080/api/clientes` muestra la respuesta en formato JSON. Todo perfecto.
+![image](https://user-images.githubusercontent.com/23094588/125205680-c5ad6380-e283-11eb-9552-e49e7f32c394.png)
 
-![04-18](images/04-18.png)
-![04-19](images/04-19.png)
+Así que vamos a probar nuestra aplicación, nos vamos al navegador y ejecutamos **`http://localhost:8080/api/clientes`** muestra la respuesta en formato JSON. Todo perfecto.
+
+![image](https://user-images.githubusercontent.com/23094588/125205758-1fae2900-e284-11eb-8e65-32f3527e4127.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125205771-318fcc00-e284-11eb-93e1-d6cd8eea1390.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125205871-acf17d80-e284-11eb-84c1-36cfc237e3f3.png)
+
 
 ### Usando Postman para probar nuestras APIs 04:09
 
@@ -874,10 +939,10 @@ Para ejecutar en Postman presionamos el botón **Send** lo que hace que retorne 
 [
     {
         "id": 1,
-        "nombre": "Andrés",
-        "apellido": "Guzmán",
-        "email": "profesor@bolsadeideas.com",
-        "createAt": "2018-01-01"
+	"nombre": "Adolfo",
+	"apellido": "De la Rosa",
+	"email": "adolfo@gmail.com",
+	"createdAt": "2021-01-01"
     },
     {
         "id": 2,
@@ -958,6 +1023,7 @@ Para ejecutar en Postman presionamos el botón **Send** lo que hace que retorne 
     }
 ]
 ```
+
 Aparte del JSON nos regresa:
 `Status: 200OK     Time: 36ms     Size: 1.37 KB`
 El Status indica que se realizó correctamente sin ningún problema. También tenemos el tiempo que se demoró el Request y el tamaño de la respuesta. 
@@ -978,7 +1044,7 @@ Además si nos vamos a Headers tenemos el **Content type**  **aplication/json**
 ![04-22](images/04-22.png)
 ![04-23](images/04-23.png)
 
-Con lo que hemos hecho hasta ahora ya estamos preparados para conectar nuestra aplicación Angular que es nuestro FrontEnd con nuestra API REST, con Spring que es nuestro BackeEnd, para eso lo primero que vamos a tener que hacer es añadir el Cors significa o se le conoce como Cross Origin Resort Charing que permite en el fondo compartir dos aplicaciones compartir o integrar dos aplicaciones que están en diferentes dominios será lo que veremos en la próxima sección.
+Con lo que hemos hecho hasta ahora ya estamos preparados para conectar nuestra aplicación Angular que es nuestro FrontEnd con nuestra API REST, con Spring que es nuestro BackeEnd, para eso lo primero que vamos a tener que hacer es añadir el **Cors** significa o se le conoce como **Cross Origin Resort Charing** que permite en el fondo compartir dos aplicaciones compartir o integrar dos aplicaciones que están en diferentes dominios será lo que veremos en la próxima sección.
 
 ### Uso de Cors para compartir recursos en API REST 04:02
 
