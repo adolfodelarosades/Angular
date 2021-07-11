@@ -351,7 +351,13 @@ Podemos abrir la BD creada en Workbeanch, actualmente no tendra tablas pero ya l
 Vamos a crear la clase **Entity Cliente**, la idea es que esta clase este mapeada a la tabla Clientes y represente la persistencia o datos de los clientes por el lado del servidor. Vamos a seguir los siguientes pasos:
 
 * Crear dentro del package principal el package **models.entity**.
+   
+   ![image](https://user-images.githubusercontent.com/23094588/125190826-6e859f80-e23f-11eb-9f3e-2bc849aeb881.png)
+
 * Dentro del nuevo package creamos la clase **Cliente**
+
+   ![image](https://user-images.githubusercontent.com/23094588/125190857-9a088a00-e23f-11eb-9c66-0713c40e10ee.png)
+
 * Declaramos las propiedades de la clase:
 
 `Cliente`
@@ -363,7 +369,7 @@ public class Cliente {
    private String nombre;
    private String apellido;
    private String email;
-   private Date createAt;
+   private Date createdAt;
 
 }
 ```
@@ -403,29 +409,30 @@ public void setEmail(String email) {
    this.email = email;
 }
 
-public Date getCreateAt() {
-   return createAt;
+public Date getCreatedAt() {
+   return createdAt;
 }
 
-public void setCreateAt(Date createAt) {
-   this.createAt = createAt;
-}
+public void setCreatedAt(Date createdAt) {
+   this.createdAt = createdAt;
+}	
 ```
 * El siguiente paso es convertir esta clase en una clase **Entity**, en una clase de persistencia que esta mapeada a una tabla de una BD, cada atributo de la clase corresponde a un campo en la tabla, los pasos son:
-   * Implementar la **interface Serializable**: `public class Cliente implements Serializable {`
-   * Crear el **default serial version ID** pulsando el foco amarillo que sale: `private static final long serialVersionUID = 1L;` es un atributo estatico que es requerido cuando se implementa el serializable.
-   * Marcar la clase para indicar que se trata de una clase Entity con: `@Entity` importarla de `javax.persistence`
-   * La siguiente anotación no seria necesaria si la Tabla y la Clase se llaman igual pero en este caso no sera así (por que la tabla se llama **clientes**: `@Table(name="clientes")`
-   * La siguiente anotación nos va a permitir indicar que nuestra propiedad id corresponde a la clave primaria: `@Id`
-   * También debemos indicar como se genera o cual es la estrategia de generación de esta llave en la BD: `@GeneratedValue(strategy=GenerationType.IDENTITY)` para MySQL es IDENTITY, para Oracle es SeQUENCE.
-   * Para las propiedades **nombre**, **apellido** e **email** van a representar columnas por lo que se podrían anotar con `@Column` sin embargo, cuando el nombre del campo y la propidad son iguales se puede omitir. Se utilizaría si los nombres no son iguales, o para indicar la longitud, para indicar si acepta nulos, etc. Para estas propiedades no lo usaremos.
-   * Para la propiedad **createAt** si usaremos la anotación `@Column()` como sigue: `@Column(name="create_at")`
+
+   * Implementar la **interface Serializable**: **`public class Cliente implements Serializable {`**
+   * Crear el **default serial version ID** pulsando el foco amarillo que sale: **`private static final long serialVersionUID = 1L;`** es un atributo estatico que es requerido cuando se implementa el serializable.
+   * Marcar la clase para indicar que se trata de una clase Entity con: **`@Entity`** importarla de **`javax.persistence`**
+   * La siguiente anotación no seria necesaria si la Tabla y la Clase se llaman igual pero en este caso no sera así (por que la tabla se llama **clientes**: **`@Table(name="clientes")`**
+   * La siguiente anotación nos va a permitir indicar que nuestra propiedad **`id`** corresponde a la clave primaria: **`@Id`**
+   * También debemos indicar como se genera o cual es la estrategia de generación de esta llave en la BD: **`@GeneratedValue(strategy=GenerationType.IDENTITY)`** ***para MySQL es IDENTITY, para Oracle es SEQUENCE***.
+   * Para las propiedades **nombre**, **apellido** e **email** van a representar columnas por lo que se podrían anotar con **`@Column`** sin embargo, cuando el nombre del campo y la propidad son iguales se puede omitir. Se utilizaría si los nombres no son iguales, o para indicar la longitud, para indicar si acepta nulos, etc. Para estas propiedades no lo usaremos.
+   * Para la propiedad **createAt** si usaremos la anotación **`@Column()`** como sigue: **`@Column(name="create_at")`**
    * También le aplicaremos la antoación `@Temporal()` para indicar cual va a ser la transformación o tipo equivalente en la BD: `@Temporal(TemporalType.DATE)` transforma la fecha de Java a la de SQL. 
    
 Eso es todo, ya tenemos nuestra clase Entity, que esta mapeada parte del contexto de persistencia de JPA, por lo tanto esta sincronizada con la BD:
 
 ```java
-package com.bolsadeideas.springboot.backend.apirest.models.entity;
+package com.javaocio.springboot.backend.apirest.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -443,6 +450,8 @@ import javax.persistence.TemporalType;
 @Table(name="clientes")
 public class Cliente implements Serializable {
 
+   private static final long serialVersionUID = 1L;
+	
    @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    private Long id;
@@ -453,7 +462,7 @@ public class Cliente implements Serializable {
 	
    @Column(name="create_at")
    @Temporal(TemporalType.DATE)
-   private Date createAt;
+   private Date createdAt;
 
    public Long getId() {
       return id;
@@ -487,18 +496,19 @@ public class Cliente implements Serializable {
       this.email = email;
    }
 
-   public Date getCreateAt() {
-      return createAt;
+   public Date getCreatedAt() {
+      return createdAt;
    }
 
-   public void setCreateAt(Date createAt) {
-      this.createAt = createAt;
+   public void setCreatedAt(Date createdAt) {
+      this.createdAt = createdAt;
    }
-	
-   private static final long serialVersionUID = 1L;
-
 }
 ```
+![image](https://user-images.githubusercontent.com/23094588/125191624-b3133a00-e243-11eb-9f20-f328c2b9fdea.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125191642-c4f4dd00-e243-11eb-8750-afeaab5a9815.png)
+
 
 Vamos a ejecutar el proyecto para ver como se genera la tabla.
 Si vemos el log nos indica:
@@ -506,16 +516,22 @@ Si vemos el log nos indica:
 ```
 2020-01-02 18:52:40.014 DEBUG 21596 --- [  restartedMain] org.hibernate.SQL                        : drop table if exists clientes
 2020-01-02 18:52:40.028 DEBUG 21596 --- [  restartedMain] org.hibernate.SQL                        : create table clientes (id bigint not null auto_increment, apellido varchar(255), create_at date, email varchar(255), nombre varchar(255), primary key (id)) engine=InnoDB
+
+REVISIÓN(AÑO Y MEDIO DESPUÉS)
+2021-07-11 12:32:07.771 DEBUG 25523 --- [  restartedMain] org.hibernate.SQL                        : drop table if exists clientes
+2021-07-11 12:32:07.791 DEBUG 25523 --- [  restartedMain] org.hibernate.SQL                        : create table clientes (id bigint not null auto_increment, apellido varchar(255), create_at date, email varchar(255), nombre varchar(255), primary key (id)) engine=InnoDB
+
 ```
-Esta boorando la tabla si existe y luego la crea con todas las caracteristicas en los campos que se definieron en la clase.
+Esta borando la tabla si existe y luego la crea con todas las caracteristicas en los campos que se definieron en la clase.
 
-![04-10](images/04-10.png)
+![image](https://user-images.githubusercontent.com/23094588/125191705-1bfab200-e244-11eb-8078-961cf3f318bb.png)
+![image](https://user-images.githubusercontent.com/23094588/125191719-2cab2800-e244-11eb-9852-7ec64bd5420d.png)
 
-Podemos abrir el Workbeanch y ver nuestra tabla desde allí. Cabe aclarar que el orden de los campos es alfabetico a excepción del id por ser clave primaria.
+Podemos abrir el Workbeanch y ver nuestra tabla desde allí. Cabe aclarar que el orden de los campos es alfabetico a excepción del **`id`** por ser clave primaria.
 
 `id   apellido   create_at   email   nombre`
 
-![04-11](images/04-11.png)
+![image](https://user-images.githubusercontent.com/23094588/125191824-b22ed800-e244-11eb-9470-28b840cc84a3.png)
 
 ## Añadiendo las clases Repository y Service de la Lógica de Negocio 11:48
 
