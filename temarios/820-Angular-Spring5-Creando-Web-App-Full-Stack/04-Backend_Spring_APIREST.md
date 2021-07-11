@@ -240,6 +240,9 @@ Pulsamos en **FINISH**
 
 Esto crea un nuevo repositorio Git en la carpeta indicada. Cambie a la perspectiva Git (o abra la vista Repositorios Git desde la opción **Window | Show View | Other**) y debería ver el proyecto listado en la vista Repositorios Git (vea la siguiente captura de pantalla):
 
+![image](https://user-images.githubusercontent.com/23094588/125186442-b9e18300-e22a-11eb-8846-60d0ad256d71.png)
+
+
 ![image](https://user-images.githubusercontent.com/23094588/125186320-ff518080-e229-11eb-8faf-41c79a1190b9.png)
 
 En Git, los archivos nuevos o modificados se preparan para la confirmación. Para ver los archivos organizados, haga clic en la pestaña **Git Staging** en la perspectiva de Git :
@@ -261,7 +264,8 @@ spring.jpa.hibernate.ddl-auto=create-drop
 logging.level.org.hibernate.SQL=debug
 ```
 
-* Con la propiedad `spring.jpa.hibernate.ddl-auto=create-drop` las tablas de la BD se crean automáticamente a partir de las clases Entity y en base a todas las antaciones, de la MetaData que vamos a crear con las anotaciones de persistencia, esto va a pasar cada que arranquemos la aplicación cada que se baja el servicio de eliminan las tablas, esto más que nada se usa cuando estamos desarrollando, en ambito de producción esta propiedad no la deberíamos tener, deberíamos tener las tablas creadas desde antes.
+* Con la propiedad **`spring.jpa.hibernate.ddl-auto=create-drop`** las tablas de la BD se crean automáticamente a partir de las clases Entity y en base a todas las anotaciones, de la MetaData que vamos a crear con las anotaciones de persistencia, esto va a pasar cada que arranquemos la aplicación cada que se baja el servicio de eliminan las tablas, esto más que nada se usa cuando estamos desarrollando, en ambito de producción esta propiedad no la deberíamos tener, deberíamos tener las tablas creadas desde antes.
+
 * Con la propiedad `logging.level.org.hibernate.SQL=debug` vamos a mostrar las sentencias SQL nativas que se generan por detrás.
  
 Es muy importante tener el Driver de MySQL en el pom.xml:
