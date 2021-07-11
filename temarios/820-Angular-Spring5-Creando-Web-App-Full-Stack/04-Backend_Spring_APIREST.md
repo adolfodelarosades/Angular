@@ -240,14 +240,32 @@ Pulsamos en **FINISH**
 
 Esto crea un nuevo repositorio Git en la carpeta indicada. Cambie a la perspectiva Git (o abra la vista Repositorios Git desde la opción **Window | Show View | Other**) y debería ver el proyecto listado en la vista Repositorios Git (vea la siguiente captura de pantalla):
 
-![image](https://user-images.githubusercontent.com/23094588/125186442-b9e18300-e22a-11eb-8846-60d0ad256d71.png)
-
+![image](https://user-images.githubusercontent.com/23094588/125186666-011c4380-e22c-11eb-810f-e08899a8b21d.png)
 
 ![image](https://user-images.githubusercontent.com/23094588/125186320-ff518080-e229-11eb-8faf-41c79a1190b9.png)
 
 En Git, los archivos nuevos o modificados se preparan para la confirmación. Para ver los archivos organizados, haga clic en la pestaña **Git Staging** en la perspectiva de Git :
 
-![image](https://user-images.githubusercontent.com/23094588/125186336-2f991f00-e22a-11eb-8767-d6afc55a26d0.png)
+![image](https://user-images.githubusercontent.com/23094588/125186690-214c0280-e22c-11eb-9974-17573435b777.png)
+
+Si no desea agregar un archivo al repositorio de Git, haga clic con el botón derecho en ese archivo (o selección de varios archivos) y seleccione la opción **Ignore**. Antes de enviar(**commit**) archivos a Git, ***debe mover Unstaged Changes a Staged Changes***, hay un Icono de `+` que nos ayuda a hacerlo. 
+
+![image](https://user-images.githubusercontent.com/23094588/125186750-7b4cc800-e22c-11eb-8ba4-7318542c20cb.png)
+
+
+Vamos a agregar todos los archivos a Git. Así que ***selecciona todos los archivos de la vista Unstaged Changes y vamos a usar Icono de `+` para pasarlos a la vista Staged Changes***. 
+
+![image](https://user-images.githubusercontent.com/23094588/125186790-a6371c00-e22c-11eb-82ca-9c45fdc1c8d6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125186823-cd8de900-e22c-11eb-96fb-9c13a9a38deb.png)
+
+El siguiente paso es realizar un **Commit**, se recomienda establecer el nombre del autor y el committer . Suele estar en formato `Name <email>`. 
+
+***Para configurar esta opción a nivel global en Eclipse (para que no tenga que configurar estos campos en cada confirmación), vaya a Eclipse Preferences y busque Git. Entonces ve a la página Team | Git | Configuration y haga clic en el Add Entry... button (Ver [link](https://github.com/adolfodelarosades/Java/blob/master/temarios/90001_Java_EE_8_Development_with_Eclipse/03_Source_Control_Management_in_Eclipse.md) si hay algula duda)*** 
+
+Volviendo a la vista Git Staging, introducir Author, Committer, and Commit Message. Luego haga clic en el botón Commit.
+
+![image](https://user-images.githubusercontent.com/23094588/125186953-776d7580-e22d-11eb-92e2-ae7826ebe9b4.png)
 
 ## 💻 Configurando el Datasource a MySQL en el proyecto backend 06:46
 
