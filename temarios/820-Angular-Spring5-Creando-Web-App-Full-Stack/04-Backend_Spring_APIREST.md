@@ -95,7 +95,7 @@ java version "1.8.0_231"
 
 Debemos descargar [Eclipse IDE for Enterprise Java Developers](https://www.eclipse.org/downloads/packages/release/2019-12/r/eclipse-ide-enterprise-java-developers)
 
-## Instalación y configuración del IDE Eclipse 06:40
+## 💻 Instalación y configuración del IDE Eclipse 06:40
 
 Debemos descomprimir el ZIP descargado y ejecutar el archivo **eclipse.exe**. Nos pide el lugar de nuestro workspace.
 
@@ -298,14 +298,14 @@ Es muy importante tener el Driver de MySQL en el pom.xml:
 </dependency> 
 ```
 
-## Instalando MySQL 04:12
+## 💻 Instalando MySQL 04:12
 
 Ir a [MySQL](https://www.mysql.com/), vamos a [MySQL Community (GPL) Downloads](https://dev.mysql.com/downloads/) Seleccionamos MySQL Community Server 8.0.18 y descargamos la versión completa para nuestro Sistema Operativo. 
 Ejecutarlo para instalar:
 * MySQL Server
 * Workbeanch
 
-## Creando la Base de Datos 03:11
+## 💻 Creando la Base de Datos 03:11
 
 Vamos a crear la BD `db_springboot_backend` con comandos seria así:
 
@@ -346,7 +346,7 @@ Podemos abrir la BD creada en Workbeanch, actualmente no tendra tablas pero ya l
 
 ![04-09](images/04-09.png)
 
-## Añadiendo la clase Entity Cliente al Backend 08:20
+## 💻 Añadiendo la clase Entity Cliente al Backend 08:20
 
 Vamos a crear la clase **Entity Cliente**, la idea es que esta clase este mapeada a la tabla Clientes y represente la persistencia o datos de los clientes por el lado del servidor. Vamos a seguir los siguientes pasos:
 
@@ -533,23 +533,31 @@ Podemos abrir el Workbeanch y ver nuestra tabla desde allí. Cabe aclarar que el
 
 ![image](https://user-images.githubusercontent.com/23094588/125191824-b22ed800-e244-11eb-9470-28b840cc84a3.png)
 
+![image](https://user-images.githubusercontent.com/23094588/125191981-96780180-e245-11eb-8f61-3eb935608d33.png)
+
 ## Añadiendo las clases Repository y Service de la Lógica de Negocio 11:48
 
-Vamos a comenzar creando la clase de acceso a datos, DAO o Repository la cual tiene como función acceder a los datos para realizar consultas y todo tipo de operaciones en la BD. 
+Vamos a comenzar creando la clase de acceso a datos, **DAO o Repository** la cual tiene como función acceder a los datos para realizar consultas y todo tipo de operaciones en la BD. 
 
-Después crearemos la clase Service que en el fondo puede contener a las clases DAO que interactuan todas bajo una misma transacción, el objetivo principal del Service es evitar ensuciar el Controlador con las clases DAO, simplemente se desacopla y se lleva a una fachada.
+Después crearemos la clase Service que en el fondo puede contener a las clases DAO que interactuan todas bajo una misma transacción, ***el objetivo principal del Service es evitar ensuciar el Controlador con las clases DAO***, simplemente se desacopla y se lleva a una fachada.
 
-Hay diferentes formas de implementar un DAO, podemos crear una clase, podemos trabajar directamente con el Entity manager con JPA implementar todo de forma manual pero Spring tiene un componente bastante potente, robusto que se llama **Spring Data JPA** y esto nos ahorra un montón de trabajo de tener que estar implementando todos métodos y consultas de JPA de forma manual.
+***Hay diferentes formas de implementar un DAO, podemos crear una clase, podemos trabajar directamente con el Entity Manager con JPA implementar todo de forma manual pero Spring tiene un componente bastante potente, robusto que se llama Spring Data JPA y esto nos ahorra un montón de trabajo de tener que estar implementando todos métodos y consultas de JPA de forma manual***.
 
-Simplemente se implementa una interfaz, heredamos de la interfaz CRUD repositor y prácticamente estamos listos ya trae todos los métodos básicos para un CRUD, para poder listar, para buscar, para modificar, para guardar y para eliminar.
+Simplemente se implementa una interfaz, heredamos de la ***interfaz CRUD repositor*** y prácticamente estamos listos ya trae todos los métodos básicos para un CRUD, para poder listar, para buscar, para modificar, para guardar y para eliminar.
 
-Y además si queremos podemos implementar nuestros propios métodos customizados usando la notación `@Query` o también utilizando el nombre el método cosa que vamos a ver un poco en esta clase.
+Y además si queremos podemos implementar nuestros propios métodos customizados usando la notación **`@Query`** o también utilizando el nombre el método cosa que vamos a ver un poco en esta clase.
+
+
+AQUIIIIIIIIIIIII
+
 
 ### Crear la Clase Repository o DAO
 
 Pero vamos a implementar primero la interfaz DAO:
 
 * Crear el package **`models.dao`** dentro del package principal.
+
+   
 * Clic derecho en el package `models.dao` y damos `New / Interface`
 * Name: **IClienteDao**
 
