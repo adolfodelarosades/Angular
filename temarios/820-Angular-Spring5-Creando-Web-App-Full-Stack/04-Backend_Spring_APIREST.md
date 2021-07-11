@@ -223,10 +223,11 @@ Nos marcara algún error por que aún falta configurar el proyecto.
 
 ## 💻 Incluir Git en el Proyecto
 
+### PRIMER FORMA DE HACER EL GIT(FALLO)
+
 Para agregar este proyecto a Git, haga clic derecho en el proyecto en Package Explorer o Navigator y seleccione **Team | Share Project...**:
 
 ![image](https://user-images.githubusercontent.com/23094588/125186087-974e6a80-e228-11eb-92c8-301465000625.png)
-
 
 ![image](https://user-images.githubusercontent.com/23094588/125186125-c95fcc80-e228-11eb-9f84-7f01967653ca.png)
 
@@ -252,7 +253,6 @@ Si no desea agregar un archivo al repositorio de Git, haga clic con el botón de
 
 ![image](https://user-images.githubusercontent.com/23094588/125186750-7b4cc800-e22c-11eb-8ba4-7318542c20cb.png)
 
-
 Vamos a agregar todos los archivos a Git. Así que ***selecciona todos los archivos de la vista Unstaged Changes y vamos a usar Icono de `+` para pasarlos a la vista Staged Changes***. 
 
 ![image](https://user-images.githubusercontent.com/23094588/125186790-a6371c00-e22c-11eb-82ca-9c45fdc1c8d6.png)
@@ -267,15 +267,17 @@ Volviendo a la vista Git Staging, introducir Author, Committer, and Commit Messa
 
 ![image](https://user-images.githubusercontent.com/23094588/125186953-776d7580-e22d-11eb-92e2-ae7826ebe9b4.png)
 
+![image](https://user-images.githubusercontent.com/23094588/125187053-f95d9e80-e22d-11eb-84de-277b9e3b3827.png)
+
 ## 💻 Configurando el Datasource a MySQL en el proyecto backend 06:46
 
 Ir a **application.properties** e insertar el siguiente codigo:
  
 ```
 #spring.datasource.url=jdbc:mysql://localhost/db_springboot_backend?usesSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
-spring.datasource.url=jdbc:mysql://localhost/db_springboot_backend?usesSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+spring.datasource.url=jdbc:mysql://localhost:3306/db_springboot_backend?usesSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
 spring.datasource.username=root
-spring.datasource.password=
+spring.datasource.password=root
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.database-platform=org.hibernate.dialect.MySQL57Dialect
 spring.jpa.hibernate.ddl-auto=create-drop
@@ -321,8 +323,19 @@ MySQL [(none)]> show databases;
 Una vez creada la BD podemos crear la conexión ejecutando la aplicación. `Run As / Spring Boot Ass`. 
 Se levanta el servidor sin errores y en la **consola** podemos ver el dialecto que esta utilizando **Using dialect: org.hibernate.dialect.MySQL57Dialect** es el que configuramos.
 
-![04-07](images/04-07.png)
-![04-08](images/04-08.png)
+Al intentar probar la aplicación nos presenta el siguiente error:
+
+![image](https://user-images.githubusercontent.com/23094588/125187452-0d0a0480-e230-11eb-82bd-f4d0ba10f5eb.png)
+
+Esto es por que hemos hecho algo con el repositorio GIT y no encuentra la carpeta **`target`** donde estan todos los archivos **`.class`**.
+
+Vamos a ver como arreglamos esto.
+
+La siguiente opción ayudo:
+
+![image](https://user-images.githubusercontent.com/23094588/125190126-d0dca100-e23b-11eb-9b63-0e924ea97729.png)
+
+![image](https://user-images.githubusercontent.com/23094588/125190185-19945a00-e23c-11eb-94f8-a9879690caac.png)
 
 ### Abrir la BD en Workbeanch
 
