@@ -915,6 +915,10 @@ Así que vamos a probar nuestra aplicación, nos vamos al navegador y ejecutamos
 
 ![image](https://user-images.githubusercontent.com/23094588/125205771-318fcc00-e284-11eb-93e1-d6cd8eea1390.png)
 
+Si revisamos la BD vemos que tiene todos los registros insertados.
+
+![image](https://user-images.githubusercontent.com/23094588/125206014-386b0e80-e285-11eb-8608-87eb6c185f02.png)
+
 ![image](https://user-images.githubusercontent.com/23094588/125205871-acf17d80-e284-11eb-84c1-36cfc237e3f3.png)
 
 
@@ -1068,12 +1072,15 @@ Vamos a implementar Cors en nuestra API REST Controller de una forma bastante si
 
 * Lo primero es ir a **ClienteRestController** y debemos anotar la clase con la anotación **@CrossOrigin** y entre parentesis ponemos los origenes que tienen acceso a este recurso, en este caso será nuestro dominio de Angular, pero se puede colocar un arreglo de origenes:
 
-`@CrossOrigin(origins = {"http://localhost:4200"})`
+   **`@CrossOrigin(origins = {"http://localhost:4200"})`**
+   
+   ![image](https://user-images.githubusercontent.com/23094588/125206155-f2627a80-e285-11eb-8a5b-e593869fc9b8.png)
 
-Se indica el dominio o la IP del servidor y puede soportar un arreglo. Acá pueden indicar como restricción que puede soportar una lista de dominios permitidos.
 
-Además también podemos especificar los métodos permitidos en un arreglo. Por defecto vamos a dejar todos así que no lo vamos a incluir nada.
+   Se indica el dominio o la IP del servidor y puede soportar un arreglo. Acá pueden indicar como restricción que puede soportar una lista de dominios permitidos.
 
-También podríamos incluir la cabecera permitida, restricciones sobre los Headers. 
+   Además también podemos especificar los métodos permitidos en un arreglo. Por defecto vamos a dejar todos así que no lo vamos a incluir nada.
+
+   También podríamos incluir la cabecera permitida, restricciones sobre los Headers. 
 
 Ahora si que la aplicación Angula se va a poder conectar sin ningún problema y va poder realizar peticiones, le vamos a poder entregar el listado cliente.
