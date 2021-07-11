@@ -223,6 +223,28 @@ Nos marcara algún error por que aún falta configurar el proyecto.
 
 ## 💻 Incluir Git en el Proyecto
 
+Para agregar este proyecto a Git, haga clic derecho en el proyecto en Package Explorer o Navigator y seleccione **Team | Share Project...**:
+
+![image](https://user-images.githubusercontent.com/23094588/125186087-974e6a80-e228-11eb-92c8-301465000625.png)
+
+
+![image](https://user-images.githubusercontent.com/23094588/125186125-c95fcc80-e228-11eb-9f84-7f01967653ca.png)
+
+Vamos a crear el proyecto en una carpeta separada del Workspace, en **/Users/adolfodelarosa/Documents/REPOSITORIOS-GIT**
+
+![image](https://user-images.githubusercontent.com/23094588/125186231-67ec2d80-e229-11eb-939a-93e1e90101fd.png)
+
+Pulsamos en **FINISH**
+
+![image](https://user-images.githubusercontent.com/23094588/125186264-a71a7e80-e229-11eb-8de4-031d4fa60b10.png)
+
+Esto crea un nuevo repositorio Git en la carpeta indicada. Cambie a la perspectiva Git (o abra la vista Repositorios Git desde la opción **Window | Show View | Other**) y debería ver el proyecto listado en la vista Repositorios Git (vea la siguiente captura de pantalla):
+
+![image](https://user-images.githubusercontent.com/23094588/125186320-ff518080-e229-11eb-8faf-41c79a1190b9.png)
+
+En Git, los archivos nuevos o modificados se preparan para la confirmación. Para ver los archivos organizados, haga clic en la pestaña **Git Staging** en la perspectiva de Git :
+
+![image](https://user-images.githubusercontent.com/23094588/125186336-2f991f00-e22a-11eb-8767-d6afc55a26d0.png)
 
 ## 💻 Configurando el Datasource a MySQL en el proyecto backend 06:46
 
