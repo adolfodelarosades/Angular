@@ -333,6 +333,9 @@ Vamos a ver como arreglamos esto.
 
 La siguiente opción ayudo:
 
+![image](https://user-images.githubusercontent.com/23094588/125190320-bf47c900-e23c-11eb-8625-f3d3d97b8275.png)
+
+
 ![image](https://user-images.githubusercontent.com/23094588/125190126-d0dca100-e23b-11eb-9b63-0e924ea97729.png)
 
 ![image](https://user-images.githubusercontent.com/23094588/125190185-19945a00-e23c-11eb-94f8-a9879690caac.png)
