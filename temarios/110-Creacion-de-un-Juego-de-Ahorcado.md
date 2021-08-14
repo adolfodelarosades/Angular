@@ -406,7 +406,7 @@ Vamos a meter una propiedad en nuestra clase que representa un array de letras, 
             'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 ```
 
-### Uso de la directiva `*ngFor`
+### Uso de la directiva `*ngFor` e *Interpolación de Strings*
 
 Vamos a usar la directiva **`*ngFor`** para pintar todos los botones de las letras contenidas en la propiedad **`letras`** declarada anteriormente. Esto lo vamos a hacer en el archivo **`app.component.html`**.
 
