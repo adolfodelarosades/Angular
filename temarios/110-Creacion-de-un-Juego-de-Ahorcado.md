@@ -6,7 +6,6 @@
 * Introducción a la sección 2 min
 * Demostración de lo que realizaremos al final de la sección 2 min
 * Etiquetas comunes del HTML 1 min
-* Etiquetas comunes del HTML 6 min
 * Instalaciones adicionales 6 min
 * Inicio de nuestro juego 5 min
 * Estilo de nuestra aplicación 5 min
@@ -49,19 +48,7 @@ Abrir el siguiente enlace y tenerlo a la mano
 
 [Mozilla Developer - Elementos HTML](https://developer.mozilla.org/es/docs/Web/HTML/Element)
 
-## Etiquetas comunes del HTML 6 min
-
-### Creación de la Carpeta de los Proyectos Angular
-
-Creamos la carperta ***110-Juego-de-Ahorcado** dentro la carpeta ***PROYECTOS-ANGULAR***
-
-
-
-
-
-
 ## Instalaciones adicionales 6 min
-
 
 ### Instalación de Node
 
@@ -133,7 +120,6 @@ Con Angular CLI podemos generar la estructura de nuestro proyecto, abrimos la te
 
 ### Creación del Proyecto `110-Juego-de-Ahorcado`
 
-
 Para crear el nuevo proyecto usamos el comando de Angular CLI:
 
 ```sh
@@ -168,7 +154,71 @@ Vemos todo lo que se ha creado dentro de la carpeta **`Juego-de-Ahorcado`**
 
 ![image](https://user-images.githubusercontent.com/23094588/129444547-d203ba47-c3db-4d69-8617-bc1b866f91c3.png)
 
+### Ejecutar la APP creada
+
+```sh
+ng serve -o
+```
+
+La APP se ejecuta se carga un LiveServer
+
+![image](https://user-images.githubusercontent.com/23094588/129444970-89a0188e-fa9e-41cd-af07-5c544f921b12.png)
+
+y abre el navegador en la URL http://localhost:4200
+
+![image](https://user-images.githubusercontent.com/23094588/129445005-7ddee797-f2e8-433e-a301-b8f7be9fa6fe.png)
+
+Se muestra el aspecto generar de todas las APP nuevas que se crean. Podemos abrir las Herramientas de Desarrollo para ir viendo posibles errores.
+
+![image](https://user-images.githubusercontent.com/23094588/129445044-3839c59e-9c44-4015-bbbd-4592d82aac06.png)
+
 ## Estilo de nuestra aplicación 5 min
+
+### Imágenes 
+
+Contamos con una serie de imagenes (**`0.png`** a **`9.png`**) en el material de apoyo del proyecto en una carpeta **`img`**, la cual vamos a copiar dentro de el proyecto creado en la carpeta **`src/assets`** 
+
+![image](https://user-images.githubusercontent.com/23094588/129444797-b6635916-e10f-4c98-ad07-6df71db66cbe.png)
+
+En la carpeta **`src/assets`** se colocan todos los recursos estáticos 
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/129445253-0362c7e6-3d7b-4d17-9b5f-d8db0827c5b8.png)
+
+### Aplicar Bootstrap a nuestro proyecto
+
+Abrir https://getbootstrap.com/ 
+
+![image](https://user-images.githubusercontent.com/23094588/129445088-c16848f7-d7b0-44d3-b2ae-65158cc17e1a.png)
+
+Pulsamos en ***Download***
+
+![image](https://user-images.githubusercontent.com/23094588/129445115-8172d449-ef04-4cf1-9b6e-6fe8fa1b5a1f.png)
+
+Vamos a copiar el enlace de los estilos CSS
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+```
+
+Abrimos en VSC el archivo **`index.html`**
+
+![image](https://user-images.githubusercontent.com/23094588/129445170-978da127-fb75-4e77-8102-efb79b987067.png)
+
+Después del tag **`<link ...`** copíamos la línea copiada de Bootstrap
+
+![image](https://user-images.githubusercontent.com/23094588/129445305-fa63b83e-08b8-48b4-84fc-56d326a40a53.png)
+
+Vemos como cambia la apariciencia, tenemos el original:
+
+![image](https://user-images.githubusercontent.com/23094588/129445143-a0724918-30dc-470a-9c15-fa49ec162ff6.png)
+
+Y el que tiene los estilos de Bootstrap
+
+![image](https://user-images.githubusercontent.com/23094588/129445342-45582297-0dc6-43da-a2a0-cb5a9997c0a4.png)
+
+
 ## Estructura HTML de nuestro juego 9 min
 ## Creando letras de forma dinámica 8 min
 ## Lógica de la palabra oculta y la palabra hasta el momento 5 min
