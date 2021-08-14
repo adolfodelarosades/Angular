@@ -224,8 +224,222 @@ Y el que tiene los estilos de Bootstrap
 
 ## Estructura HTML de nuestro juego 9 min
 
+Si observamos el código del archivo **`index.html`** vemos el siguiente tag:
+
+```html
+<app-root></app-root>
+```
+
+Este tag representa un ***componente*** que es el que contiene todo lo que se visualizo cuando ejecutamos la APP y que deberíamos modificar para que en lugar de eso, se muestre nuestro Juego del Ahorcado, este ***componente*** esta contenido en ***src/app***
+
+![image](https://user-images.githubusercontent.com/23094588/129453203-f3c82c5f-224b-428a-be02-bce808b45dfe.png)
+
+En especial dentro del archivo **`app.component.html`**, el cual contiene 501 líneas de código es el contiene todo lo que se ve al ejecutar la APP.
+
+![image](https://user-images.githubusercontent.com/23094588/129453263-386387fb-830e-4cdc-bc67-1e2e2ff0adb5.png)
+
+Vamos a eliminarlo todo y en su lugar vamos a poner:
+
+```html
+<h1>Hola Mundo</h1>
+```
+
+La aplicación se sercarga y ahora vemos:
+
+![image](https://user-images.githubusercontent.com/23094588/129453339-e0a2909b-be85-4cc5-94ca-c7d0dafd661e.png)
+
+Vamos a aplicar un estilo de Bootstrap en el archivo **`index.html`** para que el texto no este tan pegado a los bordes vamos a poner:
+
+```html
+<body class="container">
+  <app-root></app-root>
+</body>
+```
+
+Y esto hace que la APP se vea así:
+
+![image](https://user-images.githubusercontent.com/23094588/129453384-77027778-c881-4fef-b807-8ae2a5c226b3.png)
+
+Ahora que ya vimos que pasa al modificar el archivo **`app.component.html`**, vamos a meter el siguiente código en el archivo en lugar del **`Hola Mundo`**:
+
+```html
+<div class ="row">
+  <div class="col text-center">
+    <img src="assets/img/9.png">
+    <h3>Intentos <small>3 / 9</small></h3>
+  </div>
+</div>
+```
+
+La APP se ve así:
+
+![image](https://user-images.githubusercontent.com/23094588/129453564-426277d1-60a0-413d-be3c-5ad0ac86e7c9.png)
+
+Como la imagen se ve muy grande vamos a crear una clase personalizada que aplicaremos sobre la imagen para modificar su aspecto, modificamos la línea:
+
+```html
+    . . .
+    <img src="assets/img/9.png">
+    . . .
+```
+
+Por 
+
+```html
+    . . .
+    <img src="assets/img/9.png" class="ahorcado-img">
+    . . .
+```
+
+`class="ahorcado-img"` representa un estilo que aún no existe en ningún lugar, pero que vamos a insertar a continuación, contamos con el archivo **`styles.css`** en la raíz del proyecto.
+
+![image](https://user-images.githubusercontent.com/23094588/129454581-420cee3a-d7e9-42a0-89bc-6fcb5a80bac1.png)
+
+Y que podemos modificar para insertar estilos personalizados, vamos a crear el estilo para las imágenes:
+
+```css
+.ahorcado-img {
+  height: 400px;
+}
+```
+
+La APP se recarga para apreciar los cambios:
+
+![image](https://user-images.githubusercontent.com/23094588/129454772-514375f9-02af-4623-bc1e-7ac67ea2d84e.png)
+
+Vamos a añadir el siguiente código a **`app.component.html`** para que nos quede así:
+
+```html
+<div class ="row">
+  <div class="col text-center">
+    <img src="assets/img/9.png" class="ahorcado-img">
+    <h3>Intentos <small>3 / 9</small></h3>
+  </div>
+</div>
+<div class ="row">
+  <div class="col text-center">
+    <h3> _ _ _ _ _ _ _ _ _ _ </h3>
+  </div>
+</div>
+<div class ="row">
+  <div class="col text-center">
+    <button class="btn btn-primary">A</button>
+    <button class="btn btn-primary">A</button>
+    <button class="btn btn-primary">A</button>
+  </div>
+</div>
+```
+
+La APP se recarga:
+
+![image](https://user-images.githubusercontent.com/23094588/129454961-8da4aa9b-c054-4252-bfe1-98677d9a76e1.png)
+
+Como podemos ver los botones salen todos pegados, vamos aplicarle un estilo en **`styles.css`**:
+
+```css
+button {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+```
+
+La APP se ve así:
+
+![image](https://user-images.githubusercontent.com/23094588/129455034-b1cf1cec-b1fb-4c0e-8f8e-b5fdd15533b7.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/129455098-7ebf3c2a-e886-4fa2-93d0-94cacf55d2f1.png)
 
 ## Creando letras de forma dinámica 8 min
+
+En esta sección vamos a crear todos botones de las letras de forma dinámica, para realizar estas tareas lo haremos en el archivo **`app.component.ts`**
+
+![image](https://user-images.githubusercontent.com/23094588/129455185-403140da-e1aa-481c-9602-514de6818998.png)
+
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'Juego-de-Ahorcado';
+}
+```
+
+Este archivo representa una clase la cual tiene un ***Decorador*** **`@Component`** el cual es propio de **TypeScript**, esto le agrega funcionalidades a la clase de forma externa, 
+
+* Lo primero que me dice es que tengo un selector llamado **`app-root`** en la primer línea del decorador **`selector: 'app-root',`**, que si recordamos es lo que tenemos en nuestro archivo **`index.html`** en la línea **`<app-root></app-root>`**. Esto significa es que cuando alguien llame a **`<app-root></app-root>`**, realmente lo que quiere es renderizar todo lo que hay en este componente, especificamente en el archivo **`app.component.html`**.
+
+* La parte **`templateUrl: './app.component.html',`** sirve para indicar cual es el archivo que contiene el código HTML que en este caso es **`app.component.html`** que es el archivo que hemos estado modificando para cambiar la apariencia de nuestra APP.
+
+* Finalmente tenemos **`styleUrls: ['./app.component.css']`** para aplicar estilos personalizados que solo se apliquen al HTML contenido en **`app.component.html`**, que es diferente a lo que hace **`styles.css`** que se aplica a todos los archivos HTML. En este caso no lo vamos a ocupar y podríamos eliminar esta línea y el archivo **`app.component.css`**, pero lo vamos a dejar.
+
+* La palabra **`export`** nos sirve para indicar que podemos usar esta clase en otros sitios, sino la marcamos como **`export`** no lo podríamos hacer.
+
+* **`title`** es una propiedad de la clase que en este caso representa el título de la APP.
+
+Una vez visto el código de **`app.component.ts`** que se nos creo por default, nosotros podemos modificarlo de acuerdo a nuestras necesidades, por ejemplo podemos crear un **`constructor`** para la clase, debajo de **`title`**:
+
+```ts
+  . . .
+  title = 'Juego-de-Ahorcado';
+  
+  constructor(){
+    console.log('Se acaba de crear el APP Component');
+  }
+  . . .
+```
+
+Esto nos mandará un mensaje a la consola cada que se cree este componente.
+
+![image](https://user-images.githubusercontent.com/23094588/129455700-30cca22d-6045-46ea-a9a2-6bc1684d3268.png)
+
+Vamos a meter una propiedad en nuestra clase que representa un array de letras, debajo de **`title`**::
+
+```ts
+ letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+            'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S',
+            'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+```
+
+### Uso de la directiva `*ngFor`
+
+Vamos a usar la directiva **`*ngFor`** para pintar todos los botones de las letras contenidas en la propiedad **`letras`** declarada anteriormente. Esto lo vamos a hacer en el archivo **`app.component.html`**.
+
+**`*ngFor`** lo que hace es clonar una línea N cantidad de veces, en este caso queremos que el botón se clone por cada elemento existente en el array  **`*letras`**, entonces la línea de código queda así:
+
+```html
+   . . .
+   <button *ngFor="let letra of letras" class="btn btn-primary">A</button>
+   . . .
+```
+
+La APP se recarga:
+
+![image](https://user-images.githubusercontent.com/23094588/129455967-51d28098-c952-4705-8c7c-29d59aa452f4.png)
+
+Para indicar que en cada botón aparezca la letra que le corresponde vamos a usar la ***Interpolación de Strings*** que se representa con **`{{ }}`**:
+
+```html
+   . . .
+   <button *ngFor="let letra of letras" class="btn btn-primary">
+      {{ letra }}
+    </button>
+   . . .
+```
+
+La APP se recarga:
+
+![image](https://user-images.githubusercontent.com/23094588/129456057-017ee416-2b8b-4b74-8d74-0a990a029edb.png)
+
+#### GIT 
+
+![image](https://user-images.githubusercontent.com/23094588/129456088-11ff5b5b-46f7-465e-8649-d3b9066319ed.png)
+
 ## Lógica de la palabra oculta y la palabra hasta el momento 5 min
 ## Mostrar letras correctas en la palabra oculta 8 min
 ## Cambiar la imagen y contar los intentos fallidos 6 min
