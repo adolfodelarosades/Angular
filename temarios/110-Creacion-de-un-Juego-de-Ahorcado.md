@@ -218,8 +218,13 @@ Y el que tiene los estilos de Bootstrap
 
 ![image](https://user-images.githubusercontent.com/23094588/129445342-45582297-0dc6-43da-a2a0-cb5a9997c0a4.png)
 
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/129445389-3144318d-4629-4c66-a8fb-c90b9c5a3ff1.png)
 
 ## Estructura HTML de nuestro juego 9 min
+
+
 ## Creando letras de forma dinámica 8 min
 ## Lógica de la palabra oculta y la palabra hasta el momento 5 min
 ## Mostrar letras correctas en la palabra oculta 8 min
