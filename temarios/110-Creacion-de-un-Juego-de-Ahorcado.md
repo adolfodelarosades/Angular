@@ -441,6 +441,18 @@ La APP se recarga:
 ![image](https://user-images.githubusercontent.com/23094588/129456088-11ff5b5b-46f7-465e-8649-d3b9066319ed.png)
 
 ## Lógica de la palabra oculta y la palabra hasta el momento 5 min
+
+Vamos a añadir dos propiedades a nuestra clase:
+
+```ts
+   . . .
+   palabra = 'AGUACATE';
+   palabraOculta = '';
+   . . .
+```
+
+En el constructor vamos a 
+
 ## Mostrar letras correctas en la palabra oculta 8 min
 ## Cambiar la imagen y contar los intentos fallidos 6 min
 ## Verificar si el usuario gana o pierde 6 min
