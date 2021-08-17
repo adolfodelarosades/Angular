@@ -451,9 +451,151 @@ Vamos a añadir dos propiedades a nuestra clase:
    . . .
 ```
 
-En el constructor vamos a 
+* **`palabra`** Contiene la palabra a averiguar.
+* **`palabraOculta`** Va a contener los guiones bajos de la palabra a adivinar y las letras que se van descubriendo.
+
+En el constructor vamos a meter la lógica, primero dinámicamente vamos a pintar los guiones adecuados de las letras a adivinar.
+
+```ts
+   . . .
+   constructor(){
+      this.palabraOculta = '_ '.repeat( this.palabra.length);
+   }
+   . . .  
+```
+
+En **`app.component.html`** vamos a cambiar
+
+```html
+   . . .
+   <h3> _ _ _ _ _ _ _ _ _ _ </h3>
+   . . . 
+```
+
+por 
+
+```html
+   . . .
+   <h3>{{ palabraOculta }} </h3>
+   . . . 
+```
+
+La APP se actualiza
+
+![image](https://user-images.githubusercontent.com/23094588/129767080-46840db3-b15f-42a3-93de-7689d90a6a1a.png)
+
+Vemos 8 guiones que representan las ocho letras de la palabra AGUACATE **`app.component.html`**, vamos cambiar:
+
+### Crear Evento en el Botón
+
+Ahora lo que vamos a crear es un Evento para cuando el usuario hace click en algún botón, para evaluar si la letra del botón pulsada se encuentra dentro de la palabra a adivinar en este caso AGUACATE. Si la palabra existe vamos a tener que mostrar la letra en su correspondiente posición.
+
+Para añadir un evento al botón modificaremos el código del botón en **`app.component.html`** 
+
+```html
+   . . .
+   <button *ngFor="let letra of letras" class="btn btn-primary">
+      {{ letra }}
+    </button>
+   . . . 
+```
+
+por 
+
+```html
+   . . .
+   <button (click)="comprobar(letra)" *ngFor="let letra of letras" class="btn btn-primary">
+      {{ letra }}
+    </button>
+   . . . 
+```
+
+* **`(click)`** indica el evento a escuchar
+* **`comprobar(letra)`** indica el método que se va a invocar cada que hagamos un click en el botón, le pasa como parámetro la **`letra`** del botón.
+
+En **`app.component.ts`** vamos a crear ese método después del constructor como sigue:
+
+```ts
+   . . .
+   comprobar(letra: string){
+      console.log('Pulsaste la letra: ' + letra);
+   }
+   . . .   
+```
+
+* **NOTA:** En la versión 6 de Angular no era necesario indicar el tipo de la variable
+
+Probando la APP:
+
+![image](https://user-images.githubusercontent.com/23094588/129769794-eb8823a2-caa6-452d-8685-d44ccb8e3a93.png)
+
+Hemos pulsado unas letras y se va viendo en la consola. Con esto hemos comprobado que el Evento funciona. 
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/129767407-85e26226-d32c-43d6-a937-8d383ddc3232.png)
+
 
 ## Mostrar letras correctas en la palabra oculta 8 min
+
+Ahora vamos a meter la la lógica para validar que la letra que se pulse esta contenida en la palabra, el código es el siguiente:
+
+```ts
+   comprobar(letra: string){
+      const palabraOcultaArr = this.palabraOculta.split(' ');
+      console.log(palabraOcultaArr);
+   }  
+```
+
+* Lo que estamos haciendo es crear un Array en base a **`palabraOculta`**, usar este Array auxiliar nos va a ayudar a buscar la letra de una forma más facil dentro de la palabra, cada uno de los elementos es lo que se encuentre separado por un **`' '`** espacio en blanco, en este caso son los guiones. Observece que al final hay un **`""`** que no debería esar, esto es por que al final de **`palabraOculta`** hay un espacio en blanco. Ya vemos como lo quitamos.
+* Observese que **`palabraOcultaArr`** es una variable a diferencia de **`palabraOculta`** o **`palabra`** que son propiedades de la clase, a las variables hay que declararlas con **`let`** o con **`const`** si su valor no va a cambiar, por lo que en lugar de variable sería una constante.
+
+![image](https://user-images.githubusercontent.com/23094588/129771406-02c212ad-2bc0-4572-99c3-e2714b2b4372.png)
+
+La idea es que cuando localice una letra sustituya el guío por la letra en la posición correspondiente.
+
+Lo siguiente que vamos a hacer es recorrer las letras dentro de la palabra y si una de ellas es igual a la letra pulsada vamos a sustituir el guíon en esa posición por la letra pulsada.
+
+Al final de todo vamos a reconstruir la **`palabraOculta`** en base a **`palabraOcultaArr`** usando el método contrario a **`split`** que es  **`join`** el cual une los elementos de un array separandolos por el caracter que se indique como parametro:
+
+
+```ts
+   comprobar(letra: string){
+      const palabraOcultaArr = this.palabraOculta.split(' ');
+
+      for( let i = 0; i < this.palabra.length; i++){
+
+         if( this.palabra[i] === letra ){
+            palabraOcultaArr[i] = letra;
+         }
+      }
+
+      this.palabraOculta = palabraOcultaArr.join(' ');
+   } 
+```
+
+Probando la APP
+
+![image](https://user-images.githubusercontent.com/23094588/129773363-9419e6d3-b651-4d2f-906e-9ea094b9dd89.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129773536-bde03f15-c02c-4aed-8a1f-76d2c032be49.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129773596-31923283-9d47-443d-8855-6dac1ab16c0d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129773621-6883e148-e125-4d0e-a218-20e7dde80a96.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129773682-45f7a26d-27ce-4a50-ae48-0a91d5c3407d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129773735-2ed2ccb9-6a4e-4110-a903-9e71b43d94ae.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129773773-821147a0-a991-4b8c-90fb-6a39d8e3a30b.png)
+
+Al pulsar letras existentes van apareciendo en su correspondiente posición, si pulso letras que no existen por ahora no pasa nada, ya veremos que debe hacer en ese caso.
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/129775507-02c1bdb0-98a1-4580-b5b2-59d1a48847d7.png)
+
 ## Cambiar la imagen y contar los intentos fallidos 6 min
 ## Verificar si el usuario gana o pierde 6 min
 ## Mostrar mensaje de victoria o derrota 5 min
