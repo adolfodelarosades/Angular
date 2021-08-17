@@ -594,6 +594,8 @@ Al pulsar letras existentes van apareciendo en su correspondiente posición, si 
 
 #### GIT
 
+Hay un fallo en el mensaje deberia ser ""
+
 ![image](https://user-images.githubusercontent.com/23094588/129775507-02c1bdb0-98a1-4580-b5b2-59d1a48847d7.png)
 
 ## Cambiar la imagen y contar los intentos fallidos 6 min
@@ -692,8 +694,259 @@ Por otro lado podemos cambiar la imagen que se muestre, ahora siempre mostramos 
    . . .
 ```
 
+lo vamos a cambiar por:
+
+
+```html
+   . . .
+   <img src="assets/img/{{ intentos }}.png" class="ahorcado-img">
+   . . .
+```
+
+![image](https://user-images.githubusercontent.com/23094588/129784106-fd2f7b95-9bac-40de-a28a-fc21a5038276.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129784141-903134f1-4456-4317-a944-f6c1aa684ca6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129784173-a77d31e1-dd7f-45b4-9375-55f761db6747.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129784211-e4532192-2462-4d72-88f6-5b299fbf1e7d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129784259-a16f8af5-3b43-418f-a37e-f0da0ea34e52.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129784304-7b60af03-f6ec-4b8c-96ad-b72681150814.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129784347-c052c5c7-c18c-4a07-a671-e6610b3ff891.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129784383-b2c47e34-89ac-4076-a33d-96940784cb5e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129784412-fdb52f2e-eca1-4dfb-8e43-29c4b6c67aeb.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129784454-559f8d38-b309-4a55-9eb1-c1e818afc888.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129784807-27ed541b-b21d-4266-bec8-9c4c0326306c.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129785020-f2e6e0e4-1539-413b-871e-a1e95d84ec03.png)
+
+En caso de que siga pulsando letras incorrectas vamos a tener errores en la Imagen ya que empieza a buscar imágenes que no existen como **`10.png`**, **`11.png`**, etc. Debemos controlar esto.
+
+#### GIT
+
+Hay un fallo en el mensaje del Commit debería haber sido "Cambiar la imagen y contar los intentos fallidos"
+
+![image](https://user-images.githubusercontent.com/23094588/129785408-13d2b355-d055-4b84-a140-aef13cb3682c.png)
+
 ## Verificar si el usuario gana o pierde 6 min
+
+Aquí vamos a verificar si el usuario gana o pierde, si llega al Intento 9 el usuario PIERDE, si adivina la palabra antes de los 9 intentos GANA!.
+
+Vamos a añadir dos propiedades a la clase:
+
+```ts
+ gano = false;
+ perdio = false;
+```
+
+Vamos a crear un nuevo método **`verificaGane()`** el cual llamaremos al final del método **`comprobar(letra: string)`**, después de la sentencia **`this.palabraOculta = palabraOcultaArr.join(' ');`** y por ahora lo que vamos a hacer en el método **`verificaGane()`** es imprimir en consola el valor de **`this.palabraOculta`**, para ver algo que puede ser que no percibamos, el código es el siguiente:
+
+```ts
+   . . .
+   comprobar(letra: string){
+
+      this.existeLetra(letra);
+
+      const palabraOcultaArr = this.palabraOculta.split(' ');
+
+      for( let i = 0; i < this.palabra.length; i++){
+
+         if( this.palabra[i] === letra ){
+            palabraOcultaArr[i] = letra;
+         }
+      }
+
+      this.palabraOculta = palabraOcultaArr.join(' ');
+      this.verificaGane();
+   }
+
+   verificaGane(){
+      console.log(this.palabraOculta);
+   }
+   . . .  
+```
+![image](https://user-images.githubusercontent.com/23094588/129787579-15eb9138-cadd-46a5-ac9a-205d1f0c72e5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129787618-453d85af-15af-40ca-9991-1c96d7be2a7c.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129787654-613c08d2-5c3f-422f-a655-647af84501ef.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129787803-76c822ae-6ceb-4d0b-abd2-e54f55cd5333.png)
+
+
+Como podemos ver la palabra oculta tiene espacios en blanco entre cada carácter, aún teniendo la palabra completa.
+
+Lo que nosotros debemos hacer es quitar todos esos espacios en blanco entre caracteres, existen varias formas de hacerlo una sería con **Expresiones Regulares**, pero lo vamos a hacer de otro forma por la complejidad de las ExR. Vamos a meter el siguiente código en nuestfro método:
+
+```ts
+   . . .
+   verificaGane(){
+      const palabraArr = this.palabraOculta.split(' ');
+      console.log(palabraArr);
+   }
+   . . .
+```
+
+La salida es:
+
+![image](https://user-images.githubusercontent.com/23094588/129788403-b82cefae-f4aa-4cb1-b35e-e00a39ed1aab.png)
+
+Lo que tenenos es un Array con cada letra como elemento, lo que debemos hacer es unir esos elementos para eliminar el espacio en blanco, eso lo logramos con:
+
+```ts
+   . . .
+   verificaGane(){
+      const palabraArr = this.palabraOculta.split(' ');
+      const palabraEvaluar = palabraArr.join('');
+      console.log(palabraEvaluar);
+   }
+   . . .
+```
+
+![image](https://user-images.githubusercontent.com/23094588/129788928-13a0e274-a957-432a-a9a2-6f0e74f82aaf.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129788985-040f4bc1-e72d-4870-a893-3a66cd5db4d2.png)
+
+Vemos que ya tenemos la palabra sin espacios.
+
+Ahora si vamos a poner las validaciones para ver si se gana o se pierde.
+
+```ts
+   . . .
+   verificaGane(){
+      const palabraArr = this.palabraOculta.split(' ');
+      const palabraEvaluar = palabraArr.join('');
+
+      if ( palabraEvaluar === this.palabra ){
+         this.gano = true;
+         console.log('Usuario GANO!!!');
+      }
+
+      if( this.intentos >= 9 ){
+         this.perdio = true;
+         console.log('Usuario PERDIO!!!');
+      }
+   }
+   . . .
+```
+
+Probar la APP
+
+Cuando GANA
+
+![image](https://user-images.githubusercontent.com/23094588/129789862-1c0f5582-a9e1-4562-b7cf-0a8688ec4197.png)
+
+Cuando Pierde
+
+![image](https://user-images.githubusercontent.com/23094588/129789951-b489add1-acb5-4e06-be92-5db9995cb658.png)
+
+Pero nada me impide seguir pulsando letras en caso de que Gane o Pierda
+
+![image](https://user-images.githubusercontent.com/23094588/129791042-fed414fc-c9ea-40e3-a574-eed6ea350d22.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/129791242-9c04d7d4-edfd-402c-96a8-6afd388e2f33.png)
+
 ## Mostrar mensaje de victoria o derrota 5 min
+
+Vamos a hacer que los menajes de Ganar o Perder salgan en la página del Navegador y no en la consola. En **`app.component.html`** vamos a añadir lo siguiente, después de la división de los botones:
+
+```html
+   . . .
+   <div class ="row">
+      <div class="col text-center">
+         <h1> Felicidades Ganaste!!! </h1>
+         <h4> :D </h4>
+      </div>
+   </div>
+   <div class ="row">
+      <div class="col text-center">
+         <h1> Lo siento, Perdiste :( </h1>
+         <h4> La palabra oculta es: {{ palabra }} </h4>
+      </div>
+   </div>
+   . . .
+```
+
+![image](https://user-images.githubusercontent.com/23094588/129792073-2e69db4c-f040-4120-bb5f-7913b730c42c.png)
+
+Pero estos mensajes los tengo que mostrar en base a si se gano o se perdio y ese dato lo tenemos almacenado en las propiedades(banderas) **`gano`** y **`perdio`** y usando la directiva **`*ngIf`** de la siguiente manera:
+
+```html
+   . . .
+   <div class ="row" *ngIf="gano">
+      <div class="col text-center">
+         <h1> Felicidades Ganaste!!! </h1>
+         <h4> :D </h4>
+      </div>
+   </div>
+   <div class ="row" *ngIf="perdio">
+      <div class="col text-center">
+         <h1> Lo siento, Perdiste :( </h1>
+         <h4> La palabra oculta es: {{ palabra }} </h4>
+      </div>
+   </div>
+   . . .
+```
+
+
+![image](https://user-images.githubusercontent.com/23094588/129792790-b6954e21-5be0-4ae0-9541-9f9066c964e3.png)
+
+Cuando Pierde
+
+![image](https://user-images.githubusercontent.com/23094588/129792887-81026dbf-0474-4930-b5f5-18d7088607ed.png)
+
+Pero puedo seguir pulsando letras
+
+![image](https://user-images.githubusercontent.com/23094588/129792965-aad58414-2aee-42d2-b453-b5732575511e.png)
+
+
+Cuando Gana
+
+![image](https://user-images.githubusercontent.com/23094588/129793036-8052ca08-5bcc-41f0-a87d-eafb5e074d27.png)
+
+Pero puedo seguir pulsando letras
+
+![image](https://user-images.githubusercontent.com/23094588/129793098-343b97dc-b483-4543-a210-089426ee213d.png)
+
+Lo último que falta es ocultar el teclado en caso de ganar o perder, o diciendo de otra forma mientras no gane y mientras no pierda el teclado se muestra en otro caso se oculta eso lo logramos con:
+
+```ts
+   . . .
+   <div class ="row" *ngIf="!gano && !perdio">
+      <div class="col text-center">
+         <button (click)="comprobar(letra)" *ngFor="let letra of letras" class="btn btn-primary">
+            {{ letra }}
+         </button>
+      </div>
+   </div>
+   . . .
+```
+
+Probando la APP
+
+![image](https://user-images.githubusercontent.com/23094588/129794275-1d224f07-cc99-4fc0-9400-59ea0013ff3b.png)
+
+Cuando Gana, vemos que ya desaparece el teclado:
+
+![image](https://user-images.githubusercontent.com/23094588/129794357-d84261e9-b981-45f8-8e78-0f7ac5b0c29d.png)
+
+Cuando Pierde, vemos también que desaparece el teclado:
+
+![image](https://user-images.githubusercontent.com/23094588/129794442-ad8f38d2-a238-4b63-b0b8-ab82c58724f8.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/129794578-903e8706-4840-46f3-8ebc-4fed397c4393.png)
+
 ## Códigos fuente de todo el curso 1 min
 
 
