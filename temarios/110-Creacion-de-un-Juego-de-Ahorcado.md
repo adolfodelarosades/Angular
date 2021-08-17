@@ -597,6 +597,101 @@ Al pulsar letras existentes van apareciendo en su correspondiente posición, si 
 ![image](https://user-images.githubusercontent.com/23094588/129775507-02c1bdb0-98a1-4580-b5b2-59d1a48847d7.png)
 
 ## Cambiar la imagen y contar los intentos fallidos 6 min
+
+En el caso de que el usuario introduzca una letra que no se encuuentra en la palabra el número de intentos debe incrementarse y la imagen debe ir cambiando si no acierta.
+
+Vamos a declarar una nueva propiedad **`intentos`** en la clase:
+
+```ts
+intentos = 0;
+```
+
+En **`app.component.html`** vamos a cambiar el código Harcodeado que tenemos:
+
+```html
+   . . . 
+   <h3>Intentos <small>3 / 9</small></h3>
+   . . . 
+```
+
+por
+
+```html
+   . . .
+   <h3>Intentos <small> {{ intentos }} / 9</small></h3>
+   . . . 
+```
+
+La APP se actualiza para mostrar un 0.
+
+![image](https://user-images.githubusercontent.com/23094588/129776427-d5218cd6-39a9-4eff-960d-c54deab105dc.png)
+
+
+En **`app.component.ts`** vamos a crear un nuevo metodo llamado **`existeLetra(letra)`** que nos servira para saber si existe o no una letra, en caso de que la letra no exista lo que vamos a hacer es incrementar en q el número de intentos.
+
+```ts
+   . . .
+   existeLetra( letra: string){
+      if( this.palabra.indexOf( letra ) >= 0 ){
+         console.log('La letra ' + letra + ' existe');
+      }else{
+         console.log('La letra ' + letra + ' NO existe');
+         this.intentos++;
+      }
+   }
+   . . .  
+```
+
+Esta función la vamos a llamar al inicio de nuestro método **``**
+
+```ts
+   . . . 
+   comprobar(letra: string){
+
+      this.existeLetra(letra);
+    
+      const palabraOcultaArr = this.palabraOculta.split(' ');
+
+      for( let i = 0; i < this.palabra.length; i++){
+
+         if( this.palabra[i] === letra ){
+            palabraOcultaArr[i] = letra;
+         }
+      }
+
+      this.palabraOculta = palabraOcultaArr.join(' ');
+   }
+   . . .   
+```
+
+Probar la APP
+
+![image](https://user-images.githubusercontent.com/23094588/129778049-c0d85bda-0f78-405a-a05a-47a1fca630a4.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129778090-fe18a2d3-acd2-4098-b6da-42cf92e666dc.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129778135-40c05200-a378-405d-ae39-97d16437016d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129778169-2035cbd8-21ed-451b-b761-3306cdb77095.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129778211-ccbdc44f-0324-4091-b630-1af3b13f943f.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129778250-5d99b3f5-6497-4a99-961a-5d406dcc2578.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129778280-abdd2d96-6eb8-41b3-8dac-51f3eefc945e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/129778328-a26baf29-7f83-4c89-8ad6-c3ee1e1ae731.png)
+
+Por cada letra que pulsemos y que no se encuentre en la palabra a adivinar se va incrementando en 1 los intentos, aquí debemos controlar que no pasemos del total de letras de la palabra que sería lo que marca el fin del juego.
+
+Por otro lado podemos cambiar la imagen que se muestre, ahora siempre mostramos la imagen 9, que es la que marca el final del juego eso pasa por que en **`app.component.html`** tenemos:
+
+```html
+   . . .
+   <img src="assets/img/9.png" class="ahorcado-img">
+   . . .
+```
+
 ## Verificar si el usuario gana o pierde 6 min
 ## Mostrar mensaje de victoria o derrota 5 min
 ## Códigos fuente de todo el curso 1 min
