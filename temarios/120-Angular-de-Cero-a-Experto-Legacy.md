@@ -93,7 +93,7 @@ Anímate e inscríbete, te veo adentro.
 
 #### 25 secciones • 375 clases • 35h 37m de duración total
 
-## Introducción al curso de Angular 7 clases • 23m
+### 01 Introducción al curso de Angular 7 clases • 23m
 
 * Introducción 02:25
 * Nota de actualización sobre el curso 02:22
@@ -103,7 +103,7 @@ Anímate e inscríbete, te veo adentro.
 * Instalaciones y configuraciones mínimas necesarias 08:58
 * Instalaciones adicionales 00:36
 
-## Gentil introducción a TypeScript y ES6 - 25 clases • 2h 35m
+### 02 Gentil introducción a TypeScript y ES6 - 25 clases • 2h 35m
 
 * Introducción a la sección 01:28
 * ¿Qué aprenderemos en esta sección? 00:29
@@ -132,7 +132,7 @@ Anímate e inscríbete, te veo adentro.
 * Examen teórico #1 - 10 preguntas
 * Código fuente de la sección 00:19
 
-### Aplicación #1 Hola Mundo - 14 clases • 1h 26m
+### 03 Aplicación #1 Hola Mundo - 14 clases • 1h 26m
 
 * Introducción a la sección 00:43
 * ¿Qué aprenderemos en esta sección? 00:21
@@ -150,7 +150,7 @@ Anímate e inscríbete, te veo adentro.
 * Examen teórico - de la sección Hola Mundo - 10 preguntas
 * Código fuente de la sección 00:23
 
-### Aplicación #2: Aplicación de una sola página (SPA) - 26 clases • 2h 24m
+### 04 Aplicación #2: Aplicación de una sola página (SPA) - 26 clases • 2h 24m
 
 * Introducción a la sección 00:55
 * ¿Qué veremos en esta sección? 00:30
@@ -179,7 +179,7 @@ Anímate e inscríbete, te veo adentro.
 * Arreglar detalles de la búsqueda 05:50
 * Código fuente de la sección 00:24
 
-## Pipes - Transforman los valores mostrados en pantalla - 17 clases • 1h 11m
+## 05 Pipes - Transforman los valores mostrados en pantalla - 17 clases • 1h 11m
 
 * Introducción a la sección 01:39
 * ¿Qué aprenderemos en esta sección? 00:18
@@ -199,7 +199,7 @@ Anímate e inscríbete, te veo adentro.
 * Resolución de la tarea de Pipes 03:14
 * Código fuente de la sección 00:07
 
-### Aplicación #3: SpotiApp - 23 clases • 2h 26m
+### 06 Aplicación #3: SpotiApp - 23 clases • 2h 26m
 
 * Introducción a la sección 01:13
 * ¿Qué aprenderemos en esta sección? 00:18
@@ -226,7 +226,7 @@ Anímate e inscríbete, te veo adentro.
 * Examen teórico: SpotiApp - 8 preguntas
 * Código fuente de la sección 00:18
 
-### Aplicación #4: Lista de deseos - IONIC App - 24 clases • 2h 43m
+### 07 Aplicación #4: Lista de deseos - IONIC App - 24 clases • 2h 43m
 
 * Introducción a la sección 00:50
 * ¿Qué aprenderemos en esta sección? 00:26
@@ -253,7 +253,7 @@ Anímate e inscríbete, te veo adentro.
 * Editar el título de la lista 08:47
 * Código fuente de la sección 00:23
 
-### Componentes, directivas de atributos, ciclo de vida y más... - 16 clases • 1h 33m
+### 08 Componentes, directivas de atributos, ciclo de vida y más... - 16 clases • 1h 33m
 
 * Introducción a la sección 01:03
 * ¿Qué aprenderemos en esta sección? 00:21
@@ -272,7 +272,7 @@ Anímate e inscríbete, te veo adentro.
 * Ciclo de vida completo de un componente 01:58
 * Demostración del ciclo de vida de un componente 05:51
 
-### Aplicación #5: Aplicación con autenticación Auth0 - 11 clases • 1h
+### 09 Aplicación #5: Aplicación con autenticación Auth0 - 11 clases • 1h
 
 * Introducción a la sección 00:50
 * ¿Qué aprenderemos en esta sección? 00:22
@@ -286,7 +286,7 @@ Anímate e inscríbete, te veo adentro.
 * Obteniendo el perfil del usuario que inició sesión 09:16
 * Código fuente de la aplicación - AuthApp 00:13
 
-### Bonus: Login tradicional y manejo de tokens - Firebase - 19 clases • 1h 40m
+### 10 Bonus: Login tradicional y manejo de tokens - Firebase - 19 clases • 1h 40m
 
 * Introducción a la sección 01:42
 * Temas puntuales de la sección 00:11
@@ -308,7 +308,7 @@ Anímate e inscríbete, te veo adentro.
 * Mejorar la validación del token 07:15
 * Código fuente de la sección 00:06
 
-### Formularios en Angular - 29 clases • 2h 34m
+### 11 Formularios en Angular - 29 clases • 2h 34m
 
 * Introducción a la sección 01:19
 * ¿Qué aprenderemos en esta sección? 00:18
@@ -341,7 +341,7 @@ Anímate e inscríbete, te veo adentro.
 * Examen teórico sobre formularios - 10 preguntas
 * Código fuente de los formularios 00:08
 
-### Aplicación #6: Uso del HTTP - CRUD - Firebase - 16 clases • 1h 35m
+### 12 Aplicación #6: Uso del HTTP - CRUD - Firebase - 16 clases • 1h 35m
 
 * Introducción a la sección 00:55
 * ¿Qué aprenderemos en esta sección? 00:07
@@ -361,7 +361,7 @@ Anímate e inscríbete, te veo adentro.
 * Examen teórico sobre HTTP 5 preguntas
 * Código fuente de la sección 00:11
 
-### Aplicación #7: FireChat - AngularFire2 - 13 clases • 1h 27m
+### 13 Aplicación #7: FireChat - AngularFire2 - 13 clases • 1h 27m
 
 * Introducción a la sección 00:39
 * ¿Qué aprenderemos en esta sección? 00:26
@@ -377,7 +377,7 @@ Anímate e inscríbete, te veo adentro.
 * Toques finales a nuestro chat 05:47
 * Código de la sección 00:10
 
-### Aplicación #8: PelículasApp - 27 clases • 3h 04m
+### 14 Aplicación #8: PelículasApp - 27 clases • 3h 04m
 
 * Introducción a la sección y objetivo de la misma 01:39
 * Temas puntuales de la sección 00:16
@@ -407,14 +407,14 @@ Anímate e inscríbete, te veo adentro.
 * Agregando animaciones y FadeIn 04:05
 * Código fuente de la sección 00:06
 
-### Applicación #8: PeliculasApp - 3 clases • 30m
+### 15 Applicación #8: PeliculasApp - 3 clases • 30m
 
 * Búsqueda del Navbar 06:40
 * Pantalla de película 16:01
 * Detalles finales de la aplicación de películas 07:47
 * Examen teórico sobre la aplicación de películas 7 preguntas
 
-### Aplicación #9: Uso de Google Maps - 16 clases • 1h 28m
+### 16 Aplicación #9: Uso de Google Maps - 16 clases • 1h 28m
 
 * Introducción a la sección 00:56
 * ¿Qué aprenderemos en esta sección? 00:17
@@ -433,7 +433,7 @@ Anímate e inscríbete, te veo adentro.
 * Actualizar marcador con la información del dialog 04:02
 * Código fuente de la sección 00:21
 
-### Aplicación #10: Canal de Youtube - 12 clases • 1h 05m
+### 17 Aplicación #10: Canal de Youtube - 12 clases • 1h 05m
 
 * Introducción a la sección 01:30
 * ¿Qué aprenderemos en esta sección? 00:19
@@ -448,7 +448,7 @@ Anímate e inscríbete, te veo adentro.
 * Cargar siguientes videos 05:38
 * Código fuente de la sección 00:09
 
-### Desplegando las aplicaciones a producción. - 6 clases • 27m
+### 18 Desplegando las aplicaciones a producción. - 6 clases • 27m
 
 * Introducción a la sección 01:04
 * ¿Qué aprenderemos en esta sección? 00:15
@@ -457,7 +457,7 @@ Anímate e inscríbete, te veo adentro.
 * Generar una aplicación para desplegar en un servidor Apache 08:03
 * Desplegando la aplicación en un hosting apache 09:54
 
-### Documentaciones útiles - 8 clases • 5m
+### 19 Documentaciones útiles - 8 clases • 5m
 
 * Introducción a la sección 01:41
 * ¿Qué aprenderemos en esta sección? 00:20
@@ -468,7 +468,7 @@ Anímate e inscríbete, te veo adentro.
 * Angular Material 00:11
 * Tour of Heroes - Tutorial oficial de Angular 2 00:09
 
-### Bonus - Fileupload hacia Firebase - 15 clases • 1h 22m
+### 20 Bonus - Fileupload hacia Firebase - 15 clases • 1h 22m
 
 * ¿Qué aprenderemos en esta sección? 00:13
 * Demostración de lo que realizaremos en esta sección 01:23
@@ -486,7 +486,7 @@ Anímate e inscríbete, te veo adentro.
 * Mostrar las imágenes subidas a Firebase 04:32
 * Código fuente de la App de subida de archivos a Firebase 00:15
 
-### Actualización sobre Angular 4,5 ,6 y Angular-CLI - 6 clases • 20m
+### 21 Actualización sobre Angular 4,5 ,6 y Angular-CLI - 6 clases • 20m
 
 * Puntos importantes sobre Angular 00:20
 * Breve introducción al tema de Angular 4 04:12
@@ -495,7 +495,7 @@ Anímate e inscríbete, te veo adentro.
 * Actualizando un proyecto del Beta de Angular-CLI a @Angular/CLI 05:13
 * Nuevo: ngIf - else - then. Angular 4 > 06:21
 
-### Gráficas Dinámicas en Angular - 8 clases • 29m
+### 22 Gráficas Dinámicas en Angular - 8 clases • 29m
 
 * ¿Qué aprenderemos en esta sección? 00:11
 * Inicio del proyecto - Gráficos Dinámicos 02:55
@@ -506,7 +506,7 @@ Anímate e inscríbete, te veo adentro.
 * Gráfico de Radar 02:58
 * Código fuente de la sección - Gráficos Dinámicos 00:09
 
-### Virtual Scroll y Drag-Drop nuevo en Angular 7 - 10 clases • 36m
+### 23 Virtual Scroll y Drag-Drop nuevo en Angular 7 - 10 clases • 36m
 
 * Introducción a la sección 02:15
 * Temas puntuales de la sección 00:21
@@ -519,7 +519,7 @@ Anímate e inscríbete, te veo adentro.
 * Más información sobre el Virtual Scroll y Drag & Drop de Angular 00:10
 * Código fuente de la sección 00:05
 
-### Bonus: Angular, Firestore, Firebase functions, deployment y más - 22 clases • 3h 14m
+### 24 Bonus: Angular, Firestore, Firebase functions, deployment y más - 22 clases • 3h 14m
 
 * Introducción a la sección 01:58
 * Demostración del programa que haremos al final de la sección 02:05
@@ -544,7 +544,7 @@ Anímate e inscríbete, te veo adentro.
 * Desplegar la aplicación de Angular a Firebase Hosting 09:50
 * Código fuente de la sección 00:12
 
-### Cierre del curso - despedida - 2 clases • 2m
+### 25 Cierre del curso - despedida - 2 clases • 2m
 
 * Más sobre mis cursos 00:30
 * Despedida del curso 01:18
