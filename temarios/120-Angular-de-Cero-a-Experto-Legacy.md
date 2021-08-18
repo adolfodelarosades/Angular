@@ -272,11 +272,11 @@ Anímate e inscríbete, te veo adentro.
 * Ciclo de vida completo de un componente 01:58
 * Demostración del ciclo de vida de un componente 05:51
 
-###  - 16 clases • 1h 33m
+### Aplicación #5: Aplicación con autenticación Auth0 - 11 clases • 1h
 
 * Introducción a la sección 00:50
-*Vista previa 00:22
-* Vista previa 02:49
+* ¿Qué aprenderemos en esta sección? 00:22
+* Demostración de lo que lograremos al finalizar la sección 02:49
 * Aplicación con autenticación Auth0 - Inicio del proyecto 05:09
 * Creando la interfaz de nuestra aplicación 10:13
 * Comenzando con Auth0 - Componentes y servicios 08:38
@@ -286,7 +286,7 @@ Anímate e inscríbete, te veo adentro.
 * Obteniendo el perfil del usuario que inició sesión 09:16
 * Código fuente de la aplicación - AuthApp 00:13
 
-###  - 16 clases • 1h 33m
+### Bonus: Login tradicional y manejo de tokens - Firebase - 19 clases • 1h 40m
 
 * Introducción a la sección 01:42
 * Temas puntuales de la sección 00:11
@@ -308,11 +308,11 @@ Anímate e inscríbete, te veo adentro.
 * Mejorar la validación del token 07:15
 * Código fuente de la sección 00:06
 
-###  - 16 clases • 1h 33m
+### Formularios en Angular - 29 clases • 2h 34m
 
 * Introducción a la sección 01:19
 * ¿Qué aprenderemos en esta sección? 00:18
-* Vista previa 02:03
+* Demostración de lo que lograremos al finalizar la sección 02:03
 * Inicio del proyecto de formularios - Material adjunto incluido 03:28
 * Creación de componentes - Formularios y Rutas 06:38
 * Template: ngModel - ngSubmit - Referencias locales a los elementos HTML 06:52
@@ -341,11 +341,11 @@ Anímate e inscríbete, te veo adentro.
 * Examen teórico sobre formularios - 10 preguntas
 * Código fuente de los formularios 00:08
 
-###  - 16 clases • 1h 33m
+### Aplicación #6: Uso del HTTP - CRUD - Firebase - 16 clases • 1h 35m
 
 * Introducción a la sección 00:55
-* Vista previa 00:07
-* Vista previa 01:58
+* ¿Qué aprenderemos en esta sección? 00:07
+* Demostración de lo que lograremos al finalizar la sección 01:58
 * Inicio del proyecto - CRUD - Firebase 10:27
 * Diseño de la página de héroes 06:48
 * Diseño de la página de héroe 08:12
@@ -361,11 +361,11 @@ Anímate e inscríbete, te veo adentro.
 * Examen teórico sobre HTTP 5 preguntas
 * Código fuente de la sección 00:11
 
-###  - 16 clases • 1h 33m
+### Aplicación #7: FireChat - AngularFire2 - 13 clases • 1h 27m
 
 * Introducción a la sección 00:39
-* Vista previa 00:26
-* Vista previa 02:33
+* ¿Qué aprenderemos en esta sección? 00:26
+* Demostración de lo que lograremos al finalizar la sección 02:33
 * Iniciando el proyecto - FireChat 04:33
 * Instalación del AngularFire2 - Uso de la librería 11:36
 * Componente del Chat 09:39
@@ -377,7 +377,7 @@ Anímate e inscríbete, te veo adentro.
 * Toques finales a nuestro chat 05:47
 * Código de la sección 00:10
 
-###  - 16 clases • 1h 33m
+### Aplicación #8: PelículasApp - 27 clases • 3h 04m
 
 * Introducción a la sección y objetivo de la misma 01:39
 * Temas puntuales de la sección 00:16
@@ -406,16 +406,19 @@ Anímate e inscríbete, te veo adentro.
 * RXJS - CombineLatest 05:07
 * Agregando animaciones y FadeIn 04:05
 * Código fuente de la sección 00:06
+
+### Applicación #8: PeliculasApp - 3 clases • 30m
+
 * Búsqueda del Navbar 06:40
 * Pantalla de película 16:01
 * Detalles finales de la aplicación de películas 07:47
 * Examen teórico sobre la aplicación de películas 7 preguntas
 
-###  - 16 clases • 1h 33m
+### Aplicación #9: Uso de Google Maps - 16 clases • 1h 28m
 
 * Introducción a la sección 00:56
-* Vista previa 00:17
-* Vista previa 01:36
+* ¿Qué aprenderemos en esta sección? 00:17
+* Demostración del proyecto de GoogleMaps + Material 01:36
 * Inicio del proyecto - GoogleMap + Material + VSC 09:11
 * Utilizar componentes de Angular Material 07:26
 * Módulos personalizados 07:07
@@ -430,11 +433,11 @@ Anímate e inscríbete, te veo adentro.
 * Actualizar marcador con la información del dialog 04:02
 * Código fuente de la sección 00:21
 
-###  - 16 clases • 1h 33m
+### Aplicación #10: Canal de Youtube - 12 clases • 1h 05m
 
 * Introducción a la sección 01:30
-* Vista previa 00:19
-* Vista previa 01:20
+* ¿Qué aprenderemos en esta sección? 00:19
+* Demostración de la sección 01:20
 * Enlaces de el API de YouTube 00:11
 * Inicio del proyecto - YouTubeApp 09:21
 * Configurar el API de YouTube - Postman 12:53
@@ -445,19 +448,19 @@ Anímate e inscríbete, te veo adentro.
 * Cargar siguientes videos 05:38
 * Código fuente de la sección 00:09
 
-###  - 16 clases • 1h 33m
+### Desplegando las aplicaciones a producción. - 6 clases • 27m
 
 * Introducción a la sección 01:04
-* Vista previa 00:15
+* ¿Qué aprenderemos en esta sección? 00:15
 * Generando la carpeta dist ( No es para producción ) 03:58
 * Generando el archivo de distribución para producción 03:20
 * Generar una aplicación para desplegar en un servidor Apache 08:03
 * Desplegando la aplicación en un hosting apache 09:54
 
-###  - 16 clases • 1h 33m
+### Documentaciones útiles - 8 clases • 5m
 
 * Introducción a la sección 01:41
-* Vista previa 00:20
+* ¿Qué aprenderemos en esta sección? 00:20
 * Código fuente de todos los programas realizados 02:24
 * Guía de estilos oficial de Angular 00:14
 * Nota: Más información sobre Angular-CLI 00:04
@@ -465,10 +468,10 @@ Anímate e inscríbete, te veo adentro.
 * Angular Material 00:11
 * Tour of Heroes - Tutorial oficial de Angular 2 00:09
 
-###  - 16 clases • 1h 33m
+### Bonus - Fileupload hacia Firebase - 15 clases • 1h 22m
 
-* Vista previa 00:13
-* Vista previa 01:23
+* ¿Qué aprenderemos en esta sección? 00:13
+* Demostración de lo que realizaremos en esta sección 01:23
 * Inicio del proyecto y archivos adjuntos 04:45
 * Componentes y rutas 07:21
 * Modelo de datos 03:33
@@ -483,16 +486,16 @@ Anímate e inscríbete, te veo adentro.
 * Mostrar las imágenes subidas a Firebase 04:32
 * Código fuente de la App de subida de archivos a Firebase 00:15
 
-###  - 16 clases • 1h 33m
+### Actualización sobre Angular 4,5 ,6 y Angular-CLI - 6 clases • 20m
 
 * Puntos importantes sobre Angular 00:20
 * Breve introducción al tema de Angular 4 04:12
 * Puntos adicionales sobre Angular-CLI 00:38
-* Vista previa 03:27
+* Actualizar Angular CLI 03:27
 * Actualizando un proyecto del Beta de Angular-CLI a @Angular/CLI 05:13
-* Vista previa 06:21
+* Nuevo: ngIf - else - then. Angular 4 > 06:21
 
-###  - 16 clases • 1h 33m
+### Gráficas Dinámicas en Angular - 8 clases • 29m
 
 * ¿Qué aprenderemos en esta sección? 00:11
 * Inicio del proyecto - Gráficos Dinámicos 02:55
@@ -503,12 +506,12 @@ Anímate e inscríbete, te veo adentro.
 * Gráfico de Radar 02:58
 * Código fuente de la sección - Gráficos Dinámicos 00:09
 
-###  - 16 clases • 1h 33m
+### Virtual Scroll y Drag-Drop nuevo en Angular 7 - 10 clases • 36m
 
 * Introducción a la sección 02:15
 * Temas puntuales de la sección 00:21
 * Inicio de proyecto - Virtual Scroll y Drag & Drop 03:28
-* Vista previa 09:28
+* Virtual Scroll 09:28
 * Mover al inicio, fin y a la mitad el ViewPort 06:25
 * Drag básico 03:11
 * Nota: Material para la siguiente clase 00:12
@@ -516,7 +519,7 @@ Anímate e inscríbete, te veo adentro.
 * Más información sobre el Virtual Scroll y Drag & Drop de Angular 00:10
 * Código fuente de la sección 00:05
 
-###  - 16 clases • 1h 33m
+### Bonus: Angular, Firestore, Firebase functions, deployment y más - 22 clases • 3h 14m
 
 * Introducción a la sección 01:58
 * Demostración del programa que haremos al final de la sección 02:05
@@ -541,7 +544,7 @@ Anímate e inscríbete, te veo adentro.
 * Desplegar la aplicación de Angular a Firebase Hosting 09:50
 * Código fuente de la sección 00:12
 
-###  - 2 clases • 1h 33m
+### Cierre del curso - despedida - 2 clases • 2m
 
 * Más sobre mis cursos 00:30
 * Despedida del curso 01:18
