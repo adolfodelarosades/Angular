@@ -93,7 +93,7 @@ Anímate e inscríbete, te veo adentro.
 
 #### 25 secciones • 375 clases • 35h 37m de duración total
 
-### 01 Introducción al curso de Angular 7 clases • 23m
+### [01 Introducción al curso de Angular](https://github.com/adolfodelarosades/Angular/blob/main/temarios/120-Angular-de-Cero-a-Experto-Legacy/01-Introduccion-al-curso-de-Angular.md) 7 clases • 23m
 
 * Introducción 02:25
 * Nota de actualización sobre el curso 02:22
