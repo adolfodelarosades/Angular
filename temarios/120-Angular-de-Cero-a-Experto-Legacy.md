@@ -93,7 +93,7 @@ Anímate e inscríbete, te veo adentro.
 
 #### 25 secciones • 375 clases • 35h 37m de duración total
 
-### [01 Introducción al curso de Angular](https://github.com/adolfodelarosades/Angular/blob/main/temarios/120-Angular-de-Cero-a-Experto-Legacy/01-Introduccion-al-curso-de-Angular.md) 7 clases • 23m
+### [01 Introducción al curso de Angular](120-Angular-de-Cero-a-Experto-Legacy/01-Introduccion-al-curso-de-Angular.md) 7 clases • 23m
 
 * Introducción 02:25
 * Nota de actualización sobre el curso 02:22
@@ -103,7 +103,7 @@ Anímate e inscríbete, te veo adentro.
 * Instalaciones y configuraciones mínimas necesarias 08:58
 * Instalaciones adicionales 00:36
 
-### 02 Gentil introducción a TypeScript y ES6 - 25 clases • 2h 35m
+### [02 Gentil introducción a TypeScript y ES6](120-Angular-de-Cero-a-Experto-Legacy/02-Gentil-introduccion-a-TypeScript-y-ES6.md) - 25 clases • 2h 35m
 
 * Introducción a la sección 01:28
 * ¿Qué aprenderemos en esta sección? 00:29
