@@ -137,7 +137,157 @@ En la realidad estamos algo como por este lado y esto conlleva a muchos, muchos 
 Pero la ventaja es que TypeScript pueden utilizar características nuevas de JavaScript y trabajarlas con confianza porque TypeScript se va a encargar de pasarlo al estándar de JavaScript que nosotros especificamos y no haber que hacer ninguna modificación a nuestro código para que sea compatible con versiones muy viejas de JavaScript.
 
 ## Demostración de TypeScript 09:26
+
+Para trabajar con TypeScript vamos a tener una carpeta llamada **`typescript`** con dos archivos **`index.html`** y **`app.js`**.
+
+![image](https://user-images.githubusercontent.com/23094588/130276997-c32335cc-bd7f-434a-aa08-9529e4f1e016.png)
+
+Vamos a abrir esa carpeta en VSC.
+
+![image](https://user-images.githubusercontent.com/23094588/130277121-2148d5a1-fea7-4e5c-88d8-61b96e0b85e6.png)
+
+El contenido de estos archivos es el siguiente:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Introducción</title>
+</head>
+
+<body>
+
+   <script src="app.js"></script>
+</body>
+
+</html>
+```
+
+```js
+function saludar( nombre ) {
+   console.table( 'Hola ' + nombre ); // Hola Logan
+}
+
+const wolverine = {
+   nombre: 'Logan'
+};
+
+saludar(  );
+```
+
+Vamos a abrir el archivo **`index.html`** con el navegador y abrimos las herramientas del desarrollador.
+
+![image](https://user-images.githubusercontent.com/23094588/130278304-24595790-6254-490e-852e-24d860240cfc.png)
+
+Nos aparece **`Hola undefined`**. Si vemos el código JS que escribimos
+
+![image](https://user-images.githubusercontent.com/23094588/130278541-8b7302e4-f16c-4e17-9327-0fdcc007ae64.png)
+
+tenemos que invocamos el método **`saludar(  );`** sin ningún argumento y la función **`function saludar( nombre )`** espera un parámetro para mandar a consola el saludo **`console.table( 'Hola ' + nombre );`**, como no mandamos nada nos sale **`Hola undefined`**, por que en **JS cualquier variable que no esta definida tiene el valor `undefined`**.
+
+Como vemos VSC no me manda ningún aviso de que me falta el argumente para evitar resultados no esperados, ***nos damos cuenta del fallo hasta que ejecutamos la APP**.
+
+Para evitar estos errores vamos a usar **TypeScript** en lugar de **JavaScript** para lo cual vamos a renombrar nuestro archivo **`app.js`** por **`app.ts`**, tan solo con hacer esto notaremos que en el VSC ya nos esta marcando un error.
+
+![image](https://user-images.githubusercontent.com/23094588/130279530-7cdee582-6b6f-4dc6-ba79-c3e3a326ee4b.png)
+
+Si pongo el cursor encima me indica el error concreto **`Expected 1 arguments, but got 0.`**, se esperaba un argumento pero se mandarón 0, **`An argument for 'nombre' was not provided.`** nos indica que el argumento para **`'nombre'`** no lo hemos proporcionado.
+
+![image](https://user-images.githubusercontent.com/23094588/130279646-b5cfc596-eaf1-43c7-b832-eb9439ca56f8.png)
+
+De esta manera sin ejecutar la aplicación ya estamos viendo el error que tenemos cosa que no pasaba con JS.
+
+Vamos a mandar en el argumento lo siguiente:
+
+```js
+saludar( wolverine );
+```
+
+El error desaparece:
+
+![image](https://user-images.githubusercontent.com/23094588/130280275-ee9b7609-6123-49a0-ab78-8feeeae29588.png)
+
+Si abrimos el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130280364-b416954e-c772-49ee-a7d0-f0a40a3d0b29.png)
+
+Podría pensarse que en nuestro archivo **`index.html`**
+
+![image](https://user-images.githubusercontent.com/23094588/130280442-9b842895-856e-4646-9e19-4c70016aa35e.png)
+
+Deberíamos cambiar **`app.js`** por **`app.ts`**, si lo hacemos y abrimos la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130280549-0ffac686-a498-4503-ab64-820e85581aef.png)
+
+
+***Funcionó***, NO debería de funcionar, pero lo que pasa es que intentó cargar el archivo de TypeScript **`app.ts`** como si fuera JavaScript y como el código que tengo no tiene nada de TypeScript por eso es que en teoría lo aceptó, pero si ahora en la funcion de saludar ponemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130281358-d149ae25-937f-47cf-ab8d-f7c6d9ff81c3.png)
+
+Por un lado estamos tipando el parámetro de la función saludar:
+
+```js
+function saludar( nombre:string ) {
+```
+
+Esto nos marca un error el la invocación de la función saludar por que nos indica que lo que debemos mandar el un **`string`** por lo que reamente lo debemos invocar así:
+
+![image](https://user-images.githubusercontent.com/23094588/130281570-a818ca5e-a8be-4261-806f-7ca4d11cbe10.png)
+
+ya no tenemos ningún error en nuestro código, recargamos el navegador y tenemos el error:
+
+![image](https://user-images.githubusercontent.com/23094588/130281680-bf91292d-7366-43dd-92b8-9ee60aa2a3fc.png)
+
+El problema es que en nuestro **`index.html`** estamos invocando a **`app.ts`** y por el momento los navegadores no soportan archivos de TypeScript. Lo primero que hacemos es cambiar nuevamente a **`app.js`** y lo que tenemos que hacer es que en base a nuestro **`app.ts`** generar un  **`app.js`**, esta es la razón de que nosotros instalamos TypeScript en el ordenador.
+
+Abrimos la terminal y damos **`tsc --version`**:
+
+![image](https://user-images.githubusercontent.com/23094588/130282150-c20da65c-b137-4501-acee-315c0effd1fd.png)
+
+Vemos la versión instalada de TypeScript, ahora para compilar nuestro archivo **`app.ts`** damos el comando **`tsc app.ts`**
+
+![image](https://user-images.githubusercontent.com/23094588/130282413-4ba32fea-e9ad-4e77-81d0-14eba7940392.png)
+
+
+No nos dice nada pero si vemos el contenido de la carpeta nos genero el archivo **`app.js`**
+
+![image](https://user-images.githubusercontent.com/23094588/130282487-2d96ab3b-7ad5-4049-a5cf-5a29e4ad1112.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130282587-26b5ea3b-66ae-49ad-8697-32b6ca926ec0.png)
+
+Lo genero tal cual lo teniamos originalmente sin el tipado.
+
+Si cargamos la APP ahora ya vemos el resultado:
+
+![image](https://user-images.githubusercontent.com/23094588/130282885-034b8052-7a37-4668-9342-f0ec1eb6be06.png)
+
+Solo un detalle, cuando tenemos abiertos ambos archivos **`app.js`** y **`app.ts`** nos marca un error
+
+![image](https://user-images.githubusercontent.com/23094588/130283165-97d2f920-5189-49b1-b901-618ba9118162.png)
+
+esto es por que TypeScript trabaja con Módulos y en teoría junta todo en un mismo archivo y como en ambos archivos tenemos los mismos nombres de las funciones existe un conflicto.
+
+Vamos a poner lo siguiente en **`app.ts`** para evitar dicho error:
+
+![image](https://user-images.githubusercontent.com/23094588/130283661-7d7df732-d8b8-4323-ba4a-74f945eaaf97.png)
+
+Hemos metido todo nuestro código en una ***Función Anonima Autoinvocada***, es la base del ***Patrón Módulo*** de JS. El error ha desaparecido pero como hemos cambiado el archivo **`app.ts`** debemos volver a ejecutar el comando **`tsc app.ts`**, lo hacemos y recargamos la APP.
+
+El archivo **`app.js`** generado quedo así:
+
+![image](https://user-images.githubusercontent.com/23094588/130284061-0bb7a63a-cea6-4444-b5a4-3943f3931003.png)
+
+Si recargamos el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130284222-e79f424d-386a-4606-8342-fac50337552b.png)
+
+Todo perfecto!!!
+
 ## Configuración de TypeScript 07:20
+
+
 ## Variables let y const 07:30
 ## Introducción a los tipos de datos 07:56
 ## Excluir archivos a traducir 02:22
