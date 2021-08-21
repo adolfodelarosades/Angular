@@ -287,8 +287,128 @@ Todo perfecto!!!
 
 ## Configuración de TypeScript 07:20
 
+Es muy tedioso estar compilando el archivo TypeScript **`app.ts`** para generar el archivo JavaScript **`app.js`** debería haber una manera un poco más rápida de hacer eso y si lo hay.
 
-## Variables let y const 07:30
+Abramos la consola y vamos a escribir el siguiente comando:
+
+```sh
+tsc --init
+```
+
+![image](https://user-images.githubusercontent.com/23094588/130315592-e409bfd8-9bae-4130-adff-67871aa7a417.png)
+
+Nos indica que se a creado el archivo **`tsconfig.json`** que es un archivo de configuración de TypeScript.
+
+![image](https://user-images.githubusercontent.com/23094588/130315631-01f93fd9-2f31-440f-8174-bc03e8052b2a.png)
+
+Con **`"target": "es5",`** especifica que estamos usando ES5 que es la versión universalmente aceptada por todos los navegadores, pero podemos poner la versión que nosotros necesitemos, esa es otra ventaja de TypeScript que podemos utilizar características nuevas de JavaScript y él se va a encargar de transformarlo a la versión compatible de la versión que seleccioné en el Target de JavaScript en este caso ES5, no hace falta tocar mucha cosa acá pero podemos descomentar las opciones deseadas para activarlas.
+
+En la sección **`Strict Type-Checking Options`** hay opciones para verificar el Tipado Estricto. Por ejemplo si activamos la opción **`"noImplicitAny": true, `** lo que estamos indicando es que ninguna variable la podemos declarar como **`any`** que es tipo por default si no ponemos el tipo de la variable, esto puede probocar varios problemas por que una variable de tipo **`any`** puede recibir números, strings, objetos, etc.
+
+Pero la importancia de tener este archivo para nosotros independientemente de activar varias características podemos ejecutar el siguiente comando en la terminal:
+
+```sh
+tsc -w 
+```
+
+o 
+
+```sh
+tsc --watch 
+```
+
+Con esto TypeScript entra en un modo de observación
+
+![image](https://user-images.githubusercontent.com/23094588/130316183-df1792f1-680b-48a0-9034-ae541dbbda5c.png)
+
+Con esto compila todo el TS a JS automáticamente cada que hacemos un cambio en el archivo **`app.ts`** y salvar el archivo se compila todo automáticamente.
+
+![image](https://user-images.githubusercontent.com/23094588/130316372-9d877214-00eb-468f-9d44-a83aa788c9ef.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/130316471-20c9ba96-dcc9-41a4-a997-0829ca6c2d10.png)
+
+
+## Variables `let` y `const` 07:30
+
+### Variables `var` y `let`
+
+Normalmente con JS definimos las variables así:
+
+```js
+var mensaje = 'Hola';
+
+console.log( mensaje );
+```
+
+![image](https://user-images.githubusercontent.com/23094588/130316585-2143a2f8-68d8-4f43-84d1-46ceed0e1ac1.png)
+
+Recordar que tenemos TypeScript en modo Observador
+
+Al recarcar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130316598-73b02425-d74c-4113-8340-898578c0d9fe.png)
+
+Solo una cosa a observar en la Consola nos dice que el mensaje se imprime en la línea 4 pero en el código tenemos la insrtrucción en la línea 8, esto es importante tenerlo en cuenta para cuando se depure la APP.
+
+Si nosotros eliminamos la palabra **`var`** en nuestro archivo **`app.ts`** tenemos lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/130316650-8cb76376-2b72-455f-b3c0-05c0e6132b8b.png)
+
+Por un lado en TS me esta marcando un error pero al salvar el archivo se compila automáticamente el archivo y se genera el archivo JS. Si recargamos la aplicación tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130316703-bb9ff169-69d7-4725-bcd7-8918604cb3e0.png)
+
+En ES6 surge una nueva forma de declarar variables que es usando **`let`**.
+
+![image](https://user-images.githubusercontent.com/23094588/130316967-f0f6b9fa-b7e2-4edc-8a81-b7a5e730ce79.png)
+
+Pero vemos que al compilarlo y por tener en nuestro archivo de configuración **`"target": "es5"`** en el archivo JS nos pone **`var mensaje = 'Hola';`**. Si recargamos el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130317048-d8c6767b-f069-4eab-8684-966760e61a07.png)
+
+Donde usemos un **`var`** podemos usar **`let`**, que nos sirve para definir un lugar en memoría para las variables. Pero hay una diferencia de usar una u otra veamos el siguiente ejemplo para verlo más claro:
+
+![image](https://user-images.githubusercontent.com/23094588/130317164-395088bb-9e38-4cac-9dd0-9a9c76ec23c3.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130317173-da058f79-6cf8-4ccb-85ec-ae9c5d1835b7.png)
+
+Imprime **`Mundo`** que es lo que se esperaba. Si ponemos **`let`** a la variable que se encuentra dentro del **`if`** vamos a tener:
+
+![image](https://user-images.githubusercontent.com/23094588/130317223-9a6f1923-b715-4a16-a48c-554d1f8d5451.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130317231-5415394f-a101-4198-b1d0-0410fef9d50b.png)
+
+En este caso imprime **`Hola`**, esto pasa por que al usar **`let`** lo que se hace es declarar una nueva variable en el scope donde se encuentre, en este caso la variable **`mensaje`** definida dentro del **`if`** solo es válida dentro del propio **`if`**, observar que en el caso del archivo JS generado por la compilación a esa variable le pone el nombre **`mensaje_1`** para diferenciarla de **`mensaje`** por que realmente son dos variables diferentes. 
+
+Si en lugar de usar **`let`** usamos **`var`** tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130317354-a3c649d1-13c6-441f-8d6b-2718d934d1d8.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130317362-407c99d6-c90a-4392-aac7-1507edbf567d.png)
+
+Cuando usamos **`var`** ***Redefinimos*** el mismo espacio de memoría, por lo que lo que estamos realmente es cambiar el valor de la variable, y en el archivo JS compilado vemos que solo se esta usando la variable **`mensaje`**.
+
+Otra cosa a tener en cuenta al usar **`let`** es que no podemos definir en el mismo scope dos variables con el mismo nombre, con **`var`** si que lo podemos hacer.
+
+![image](https://user-images.githubusercontent.com/23094588/130317562-d98d8abe-5572-4db5-86c4-a0f5ca08a34a.png)
+
+Con TS debemos acostumbrarnos a usar **`let`** ya que nos permite evitar posibles errores que podemos tener al usar **`var`**. 
+
+### Constantes `const`
+
+Cuando usemos una variable que no vaya a cambiar su valor más adelante es mejor declararla con **`const`** en lugar de usar **`let`**, esto es por que ***ocupa menor espacio*** por que no tienen funciones para establecer valores en ellas, como su nombre lo dice no la vamos a poder modificar. Es común que las constantes se declaren en mayúsculas.
+
+![image](https://user-images.githubusercontent.com/23094588/130317814-5dfc811e-f9f4-45b6-a478-489ddef11630.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130317824-b3f79753-87d0-4b83-82ae-b8c9e4bae3df.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/130317890-8dc35f86-1516-4b88-a633-e77fbcfb6b16.png)
+
+
 ## Introducción a los tipos de datos 07:56
 ## Excluir archivos a traducir 02:22
 ## Template literales del ES6 08:03
