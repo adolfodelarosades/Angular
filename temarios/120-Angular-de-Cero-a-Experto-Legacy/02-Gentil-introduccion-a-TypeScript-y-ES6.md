@@ -408,8 +408,85 @@ Cuando usemos una variable que no vaya a cambiar su valor más adelante es mejor
 
 ![image](https://user-images.githubusercontent.com/23094588/130317890-8dc35f86-1516-4b88-a633-e77fbcfb6b16.png)
 
-
 ## Introducción a los tipos de datos 07:56
+
+En esta lección vamos a ver los ***Tipos de Datos***, vamos a ver el siguiente código:
+
+![image](https://user-images.githubusercontent.com/23094588/130318927-e4addcf3-18c3-4af8-a062-d846e2e83cdc.png)
+
+Si nos ponemos en el primer **`mensaje`** nos pone:
+
+![image](https://user-images.githubusercontent.com/23094588/130318948-2a6b7a9f-c059-436e-af31-61c559704149.png)
+
+Indica que **`mensaje`** que es de tipo **`string`**, TS esta infiriendo el tipo. Y si nos ponemos en el error que nos marca:
+
+![image](https://user-images.githubusercontent.com/23094588/130318989-d2b2d23d-937a-464f-8e0d-4bf2b9a4cc96.png)
+
+Nos indica **`Type 'number' is not assignable to type 'string'`**, ***con JavaScript esto sería totalmente valída, pero con TypeScript no lo es***. Para que la asignación fuera valida tendríamos que asignar un **`string`**.
+
+![image](https://user-images.githubusercontent.com/23094588/130319080-e511b564-fa6c-44a0-bc74-613aeb764d96.png)
+
+Ahora si definimos e inicializamos un número e intentamos asignarle un **`string`** tendremos el mismo problema.
+
+![image](https://user-images.githubusercontent.com/23094588/130319133-cb06ebc1-439c-4fbe-a822-416488b1b92a.png)
+
+En lugar de que TS infiera el tipo podemos indicar el tipo de dato:
+
+![image](https://user-images.githubusercontent.com/23094588/130319188-7245304b-216d-4d12-8788-1f9abbb6b3bb.png)
+
+aunque esto suele estar de más, suele ser más conveniente cuando no inicializmos la variable, el tipo por default es **`any`**:
+
+![image](https://user-images.githubusercontent.com/23094588/130319239-a24cb547-685b-441f-9ac4-49a7475113f0.png)
+
+**`any`** es un tipo especial de TS que acepta cualquier tipo pero deberíamos evitar este tipo de dato.
+
+Otros tipos son **`boolean`** o **`Date`** que ya es una clase :
+
+![image](https://user-images.githubusercontent.com/23094588/130319326-b6adba9e-ae0e-4c9b-9211-79c2587107cf.png)
+
+Podemos ver que la variable de tipo **`any`** puede aceptar cualquier tipo que se le asigne.
+
+También podemos indicar que una variable acepte por ejemplo dos o más tipos tipos de datos:
+
+![image](https://user-images.githubusercontent.com/23094588/130319403-5ea98cbe-c72c-4022-890f-ce1c891c8163.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130319414-15d8dae3-4f4d-4361-a023-d06e782bc5ef.png)
+
+TS hace algo muy interesante con los Objetos.
+
+![image](https://user-images.githubusercontent.com/23094588/130319474-bc9176ed-1547-4e59-b7de-4b258ee9f818.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130319496-8a554031-f097-4f34-b4cf-66c1dcc42a79.png)
+
+Vemos como TS infiere los tipos de las propiedades del objeto, pero además sirve como una especie de candado, esto sirve por si queremos modificar el objeto **`spiderman`**
+
+![image](https://user-images.githubusercontent.com/23094588/130319554-5d33ca17-4546-4bca-bf68-f0642b650069.png)
+
+nos va a indicar que nos faltan las dos propiedades declaradas inicialmente.
+
+![image](https://user-images.githubusercontent.com/23094588/130319621-3895c495-96ae-4c55-a620-a67acabd8783.png)
+
+el error desaparece, pero si meto tipos diferentes me indicara un error.
+
+![image](https://user-images.githubusercontent.com/23094588/130319639-03578d37-c8f0-444d-9387-b440a013e272.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130319653-f952fce5-721a-4b1e-bfa3-40b8dd355117.png)
+
+Tampoco me va a permitir nuevas propiedades en el objeto:
+
+![image](https://user-images.githubusercontent.com/23094588/130319682-494ebb23-c421-428d-9c8e-b10f6e77479c.png)
+
+Finalmente vamos a ver el archivo JS que se genera a partir del TS.
+
+![image](https://user-images.githubusercontent.com/23094588/130319733-4f74b1a3-46f7-4f1e-bb78-7d9e5aac2b92.png)
+
+En el archivo JS no tenemos nada tipado.
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/130319773-9c7d788e-d60c-42ea-af19-170c01fb1ed7.png)
+
+
 ## Excluir archivos a traducir 02:22
 ## Template literales del ES6 08:03
 ## Funciones: Parámetros opcionales, obligatorios y por defecto 06:49
