@@ -488,8 +488,211 @@ En el archivo JS no tenemos nada tipado.
 
 
 ## Excluir archivos a traducir 02:22
+
+En todos nuestros ejemplos estamos modificando el archivo **`app.ts`** y estamos perdiendo los ejemplos anteriores, para que no pase esto vamos a crear una nueva carpeta **`typescript`** y allí vamos a ir respaldando lo que vayamos haciendo solo por si lo queremos consultar después.
+
+Dentro de la carpeta **`typescript`** vamos a copiar el archivo **`app.ts`** y le vamos a renombrar por **`03-tipos-de-datos.ts`**, pero vemos que apenas copiamos el archivo **`app.ts`** se genera su **`app.js`**, esto sucede por que tenemos activa el observador(watch) de TS.
+
+![image](https://user-images.githubusercontent.com/23094588/130328164-f701eafc-b20b-4980-8e1a-4f23a7b5b33f.png)
+
+Pero realmente no queremos que haga esto, la carpeta **`typescript`** nos sirve solo de respaldo no vamos a usar nada de lo que haya allí por lo que no queremos que sea compilado, vamos a ir al archivo de configuración de TS para agregar la siguiente línea:
+
+```sh
+"exclude": ["typescript"],
+```
+
+![image](https://user-images.githubusercontent.com/23094588/130328292-1acd7fb2-8abb-4f31-8afe-6cf7bf29bb35.png)
+
+De esta manera si borramos el contenido de la carpeta **`typescript`** y volvemos a copiar el archivo **`app.ts`** ya no se genera el **`app.js`** por que esta carpeta a sido excluida para que compile su contenido.
+
+![image](https://user-images.githubusercontent.com/23094588/130328357-91124372-c47f-4d95-9f27-21cc804a4509.png)
+
+Ahora simplemente renombramos el archivo **`app.ts`** por **`03-tipos-de-datos.ts`**
+
+![image](https://user-images.githubusercontent.com/23094588/130328393-b98dcf1b-1ea0-4305-94db-fca6dcfa08b4.png)
+
+De esta manera vamos a ir respaldando nuestro código e ir modificando el archivo **`app.ts`** para futuros ejemplos.
+
+#### GIT 
+
+![image](https://user-images.githubusercontent.com/23094588/130328440-60e6c824-3277-42f1-9683-6210ae247e4d.png)
+
+
 ## Template literales del ES6 08:03
-## Funciones: Parámetros opcionales, obligatorios y por defecto 06:49
+
+En esta lección vamos a ver que son los ***Templates Literales***.
+
+Vamos a suponer que tenemos las siguientes constantes y queremos mostrar en la consola las constantes concatenadas:
+
+```js
+   const nombre   = 'Adolfo';
+   const apellido = 'De la Rosa'
+   const edad     = '20';
+
+   // Adolfo De la Rosa(Edad: 20)
+```
+
+Para concatenar las constantes y mostrar el mensaje de salida lo haríamos así:
+
+```js
+   const nombre   = 'Adolfo';
+   const apellido = 'De la Rosa'
+   const edad     = '20';
+
+   // Adolfo De la Rosa(Edad: 20)
+   const salida = nombre + ' ' + apellido + '(Edad: ' + edad + ')';
+   console.log(salida);
+```
+
+Si recargamos la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130328724-ada649b1-a5f3-4723-afa6-1a9edf83363d.png)
+
+Existe otra forma de hacer esto mismo pero más sencillo con los ***Templates Literales*** en los cuales se usan los "BackTicks" y la inyección de variables con **`$ { VARIABLE }`**. El código es:
+
+![image](https://user-images.githubusercontent.com/23094588/130328956-2eea7f7f-e909-45da-bdd6-688f7522e4a9.png)
+
+Si recargamos la APP tenemos el mismo resultado pero usando los ***Templates Literales*** en lugar de la ***Concatenación***:
+
+![image](https://user-images.githubusercontent.com/23094588/130328724-ada649b1-a5f3-4723-afa6-1a9edf83363d.png)
+
+Los ***Templates Literales*** los podemos usar en multíples líneas pero tenemos que tener cuídado con los Enters y Espacios en Blanco que pongamos por que los toma en cuenta:
+
+![image](https://user-images.githubusercontent.com/23094588/130329076-87e5e647-5c95-4644-940a-108d1fbc6745.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130329090-af9a920f-6b05-4d41-8133-df77c8a30133.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130329109-a0fa305d-eef3-41a6-87fb-dcf40ce201b6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130329116-da10dd3b-520c-48e4-ab80-bd4f5a0c9c51.png)
+
+Otra cosa interesante que tienen los ***Templates Literales*** es que dentro de **`$ {  }`** se pueden hacer operaciones por ejemplo podemos tener **`$ { edad + 100 }`**
+
+![image](https://user-images.githubusercontent.com/23094588/130329218-fbd398e3-ea2f-4303-8719-e0d13be29365.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130329223-b3b167f2-c5d3-499a-802c-0ec853e9826d.png)
+
+También dentro de **`$ {  }`** podemos invocar una función:
+
+![image](https://user-images.githubusercontent.com/23094588/130329321-bd3945cc-7ffd-4cb1-ac19-b70036aaed7e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130329338-3b92a4c7-c45e-41d4-80e6-b2d89a24b36a.png)
+
+Los ***Templates Literales*** se implementarón en ES6, por lo que si vemos como hace la compilación a ES5 que es lo que tenemos configurado en el archivo de Configuración de TS, tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130329433-a9d59461-e4d2-441b-80bc-52cc8399def3.png)
+
+Hasta aquí lo de ***Templates Literales*** vamos a respaldar el archivo **`app.ts`** y lo llamaremos **`04-template-literal.ts`** y borras el contenido **`app.ts`** para la siguiente lección.
+
+#### GIT 
+
+![image](https://user-images.githubusercontent.com/23094588/130329570-50bd4d98-af80-4b96-8f9c-a5743f2d85a7.png)
+
+
+## Funciones: Parámetros obligatorios, opcionales y por defecto 06:49
+
+### Parámetro Obligatorios
+
+En esta lección vamos a hablar sobre los ***Parámetros Opcionales, Obligatorios y Parámetros por Defecto***.
+
+Vamos a crear una función tradicional.
+
+![image](https://user-images.githubusercontent.com/23094588/130329673-9d6afe65-3928-4b56-9a21-0d93e9f9b1b3.png)
+
+Tenemos una función que requiere un parámetro ***Obligatorio*** y al invocarla se lo estamos pasando, hasta aquí nada nuevo.
+
+### Parámetros por Defecto
+
+Si tenemos lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/130329794-d0090226-b3a2-4001-8e02-68419ae58f77.png)
+
+Tenemos una función con dos parámetros obligatorios por eso al invocarla nos manda un error, pero para hacer que el segundo parámetro tenga un valor por defecto podemos hacer lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/130329856-787d9cfd-fc8a-4eff-8e6c-5c0058b2ada8.png)
+
+Si le damos cuerpo a la función podemos tener:
+
+![image](https://user-images.githubusercontent.com/23094588/130329914-86a8eefa-a6a1-4d47-a0d1-6a0adb07f58d.png)
+
+Al cargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130329937-9e7c5664-b5d0-4ed7-8353-073fa5f71ab1.png)
+
+Como vemos estamos recibiendo el primer parámetro y usando el valor por defecto del segundo parámetro. Pero podríamos mandar el segundo parámetro en la invocación de la función:
+
+![image](https://user-images.githubusercontent.com/23094588/130330032-ff4ed834-54f8-4e44-9541-240a379f9e3c.png)
+
+Al cargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130330047-9ddfc1c8-185d-4dbd-a5cb-7d38f0021fb3.png)
+
+
+Observamos que si pasamos el segundo parámetro ya no toma su valor por default sino lo que le pasemos.
+
+### Parámetro Opcional
+
+Vamos a meter un tercer parámetro en la función
+
+![image](https://user-images.githubusercontent.com/23094588/130330140-1aa4f195-fdfb-407c-8307-d755c5aea078.png)
+
+En este caso el nuevo parámetro **`momento`** es obligatorio, en una función los parámetros de los diferentes **tienen un orden recomendado**:
+
+1. Obligatorios
+2. Opcionales
+3. Por Defecto
+
+![image](https://user-images.githubusercontent.com/23094588/130330383-f1eb47ad-c246-4e82-93f8-c6b114b82535.png)
+
+En este caso tenemos un parámetro obligatorio, otro por default, y otro obligatorio y estamos intentando pasar el 1er y 3er parámetro, para que tome el segundo por default pero nos marca un error en la invocación, esto es por que el por default esta en medio y en este caso es necesario mandar su valor aun que sea el mismo que el por default para que entienda que va a recibir.
+
+![image](https://user-images.githubusercontent.com/23094588/130330483-a515b345-c3be-424c-8ed4-4085dbea4213.png)
+
+Al recargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130330495-363c0776-da3a-4045-bbd1-eca21fc2b2cb.png)
+
+Pero para hacer el parámetro **`momento`** sea opcional debemos añadir un **`?`**, es decir **`momento?`**.
+
+![image](https://user-images.githubusercontent.com/23094588/130330658-9151625f-9768-4ca9-9f96-0e48505d2e46.png)
+
+Dependiendo si **`momento`** existe o no mandaremos uno u otro mensaje, veamos que pasa al recargar la APP:
+
+![image](https://user-images.githubusercontent.com/23094588/130330684-e92d3086-0cbb-4f67-87c8-09fe4c15d834.png)
+
+Vamos a mandar el **`momento`**, para lo cual también tenemos que pasar el **`objeto`**:
+
+![image](https://user-images.githubusercontent.com/23094588/130330728-e91eb294-8079-4d91-81dd-bedadb1f1f26.png)
+
+Al recargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130330736-6bfa56e7-967c-433e-8eab-ddf5f457f33b.png)
+
+Finalmente vamos a ordenar los parámetros de la función de acuerdo a su tipo Obligatorios, Opcionales y por Default, con esto tendremos la ventaja que ya no tenemos que mandar el parámetro por default sino que use el valor por defecto.
+
+![image](https://user-images.githubusercontent.com/23094588/130330802-91296bbe-cd9c-47f6-872c-88a036e6fb34.png)
+
+Al recargar la APP tenemos la misma salida:
+
+![image](https://user-images.githubusercontent.com/23094588/130330828-e38ce265-84e9-4598-8f61-d9614d80c8b5.png)
+
+pero tenemos la ventaja de no enviar los parámetros por default si no es necesario.
+
+Si no mandamos el parámetro opcional tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/130330934-493b9f06-74f1-4e09-823e-1ae181ce91c5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/130330930-28b51e1f-fec0-48a6-b2f8-59a3ef60441e.png)
+
+
+
+
+
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/130330885-d1fa73df-7b0a-4c51-a5ea-c6260990aa1e.png)
+
 ## Funciones de Flecha 11:00
 ## Desestructruación de Objetos y Arreglos 10:56
 ## Promesas 07:37
