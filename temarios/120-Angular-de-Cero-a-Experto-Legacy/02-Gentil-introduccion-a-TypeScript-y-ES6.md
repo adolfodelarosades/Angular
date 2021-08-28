@@ -684,16 +684,89 @@ Si no mandamos el parámetro opcional tenemos:
 
 ![image](https://user-images.githubusercontent.com/23094588/130330930-28b51e1f-fec0-48a6-b2f8-59a3ef60441e.png)
 
-
-
-
-
-
 #### GIT
 
 ![image](https://user-images.githubusercontent.com/23094588/130330885-d1fa73df-7b0a-4c51-a5ea-c6260990aa1e.png)
 
 ## Funciones de Flecha 11:00
+
+En esta lección vamos a ver las **Funciones de Flecha** que aparecierón en ES6 las cuales se deberían usar hasta donde sea posible. Vamos a crear unas funciones normales y luego vamos a ver como se escribiran como funciones de fecha.
+
+![image](https://user-images.githubusercontent.com/23094588/131213465-2910d4d5-6103-48dd-b9e4-d229faa2cb65.png)
+
+Las funciones de flecha se aplican sobre las funciones asignadas a variables o constantes, no tanto a una función tradicional pura. Veamos como es la representación de la función de fecha:
+
+![image](https://user-images.githubusercontent.com/23094588/131213626-863dfdaf-bd5a-4732-a385-0cd66273e8bf.png)
+
+A primera vista son muy similares en la función de flecha ya no sea la palabra **`function`** pero lo que si se usa es **`=>`**, fuera de eso no más diferencias.
+
+Pero las funciones de flecha tienen una característica interesante que es que si ustedes sólo tienen una línea de código y esa línea de código es lo que ustedes quieren retornar pueden ahorrarse las llaves **`{ }`** y el **`return`**, el código quedaría así:
+
+![image](https://user-images.githubusercontent.com/23094588/131213819-2e79f8ec-50f3-4cf4-96ff-0b7b2fe2b40e.png)
+
+Vamos a ver como se invocan estas funciones:
+
+![image](https://user-images.githubusercontent.com/23094588/131214044-80981a03-6066-4de5-918c-70eaf211c327.png)
+
+La salida de la APP es:
+
+![image](https://user-images.githubusercontent.com/23094588/131214056-2abe6248-64d0-4c87-9760-a7c0d52e7f63.png)
+
+Inclusive podemos aplicar "algo" en el valor que se retorna:
+
+![image](https://user-images.githubusercontent.com/23094588/131214137-3ce4e38e-b4fe-4cdc-a466-1b1303ba414e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131214126-f7252d40-020a-4350-8d88-35313336979a.png)
+
+Empezamos a apreciar que la función de flecha es considerablemente más compacta. 
+
+Vamos a ver otro ejemplo de función.
+
+![image](https://user-images.githubusercontent.com/23094588/131214322-311dce54-4886-4176-bd0d-0791522e47c6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131214332-55c4c99b-ec21-4f24-8b15-428c3a8c047d.png)
+
+Veamos como ha compilado el archivo TS.
+
+![image](https://user-images.githubusercontent.com/23094588/131214863-217235ca-59a4-4f94-9e6b-08a5d3cacc92.png)
+
+Recordemos que estamos usando ES5 en nuestro archivo de configuración, podríamos cambiarlo a ES6 y la compilación sería diferente.
+
+Ahora lo que vamos a hacer es crear un Objeto con una propiedad y un método e invocaremos ese método para mostrar el valor de la propiedad:
+
+![image](https://user-images.githubusercontent.com/23094588/131215150-043fe1ba-1a4e-4243-8040-ed32e0ba0650.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131215166-698051ae-be04-4312-a78d-5b2cdb859458.png)
+
+### `setTimeout(...)`
+
+Vamos a cambiar un poco el código para insertar un **`setTimeout(...)`** ***es una función que permite ejecutar un `callback` (una función) en determinado tiempo(ms)***
+
+![image](https://user-images.githubusercontent.com/23094588/131215315-1973ca79-fa90-4ad4-b181-48ed53d074ff.png)
+
+Aquí se nos esta detectando un problema con **`this`**.
+
+![image](https://user-images.githubusercontent.com/23094588/131215342-e3581dde-9791-4507-8c05-3bb2dc2b1b26.png)
+
+Aquí **`this`** ya no apunta al objeto como antes por que lo hemos metido dentro de la función **`setTimeout(...)`**, en este caso estamos apuntando a la función anonima autoinvocada. Vamos a ejecutar la APP y ver la salida:
+
+![image](https://user-images.githubusercontent.com/23094588/131215453-e14e316b-8092-4f4c-bc5d-b4c8f99f6d4f.png)
+
+Después de 1 segundo aparece el mensaje **`undefined smash!!!`** el **`undefined`** aparece por que no esta reconociendo el **`this`** como el objeto. Vamos a ver que pasa si la función la usamos como una función de flecha:
+
+![image](https://user-images.githubusercontent.com/23094588/131215513-aed15e03-7eb1-4b31-a646-130aeb898b01.png)
+
+La APP nos muestra:
+
+![image](https://user-images.githubusercontent.com/23094588/131215532-37a0200b-2605-4458-9733-5c9a2016a181.png)
+
+
+**Esta es otra característica propia de las funciones de flecha. Las funciones de flecha no modifican a lo que apunta `this`**. En este caso aun que **`this`** este dentro del **`setTimeout`** apunta al objeto gracias a que esta dentro de una función de flecha.
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/131215693-bed4ec94-9fe5-4c64-94da-beaf8fc41ea2.png)
+
 ## Desestructruación de Objetos y Arreglos 10:56
 ## Promesas 07:37
 ## Promesas y su tipado en TypeScript 09:06
