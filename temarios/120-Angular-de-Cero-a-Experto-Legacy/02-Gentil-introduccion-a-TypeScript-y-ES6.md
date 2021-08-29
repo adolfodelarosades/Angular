@@ -763,11 +763,110 @@ La APP nos muestra:
 
 **Esta es otra característica propia de las funciones de flecha. Las funciones de flecha no modifican a lo que apunta `this`**. En este caso aun que **`this`** este dentro del **`setTimeout`** apunta al objeto gracias a que esta dentro de una función de flecha.
 
+Respaldamos nuestro ejemplo en **`06-Funciones-de-Flecha.ts`** y limpiamos el archivo **`app.ts`** el cual nos queda así:
+
+![image](https://user-images.githubusercontent.com/23094588/131243596-b5232f66-003f-49fa-8758-5bd2e56ed5cb.png)
+
+
+Incluso esta función anónima autoinvocada la podemos convertir a una función de flecha.
+
+![image](https://user-images.githubusercontent.com/23094588/131243645-384487bb-b6b5-4c6a-9f43-601f187ecfd9.png)
+
+
 #### GIT
 
 ![image](https://user-images.githubusercontent.com/23094588/131215693-bed4ec94-9fe5-4c64-94da-beaf8fc41ea2.png)
 
 ## Desestructruación de Objetos y Arreglos 10:56
+
+### Desestructuración de Objetos
+
+En esta lección vamos a hablar sobre la desestructuración de Objetos y Arreglos. Vamos a crear el siguiente objeto:
+
+![image](https://user-images.githubusercontent.com/23094588/131243789-5881dd88-2867-49d5-ac20-7c934512e977.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131243802-ef10c9d9-5dda-44ce-b0d9-67f2265e8c72.png)
+
+El Objeto tiene ciertas propiedades y vemos como obtener el valor de las misma. Estamos usando la palabra **`avenger`** en cada una de las propiedades.
+
+Con la ***Desestructruación de Objetos*** podemos extraer las propiedades del objeto que nos interesen y crear variables inmediatamente. Por ejemplo (podemos usar **`let`** o **`const`**).
+
+```js
+const { nombre, clave, poder } = avenger;
+```
+
+Básicamente lo que digo es que del objeto **`avenger`** extrae las propiedades y las asigna a las variables que indicamos, con lu cual ya no necesito usar **`avenger`** en la salida a la consola. ***Es importante que las variables tengan en mismo nombre que las propiedades***
+
+![image](https://user-images.githubusercontent.com/23094588/131244157-78791ab1-364c-4901-ba28-8190c6dec6c5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131244163-d89c5071-7346-4999-aea7-cafeda8e86de.png)
+
+Cabe indicar que no importa el orden en que se coloquen los nombres de las variables.
+
+![image](https://user-images.githubusercontent.com/23094588/131244409-67718e2c-fa21-4bbb-979b-73fceeb05dfa.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131244163-d89c5071-7346-4999-aea7-cafeda8e86de.png)
+
+O inclusive no es necesario extraer todas las propiedades, podemos extraer solo las que necesitemos.
+
+![image](https://user-images.githubusercontent.com/23094588/131244471-c4dbf431-fe4d-4b7d-b331-1228d2875382.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131244476-91f310db-d62d-4b74-974a-ab04715fc9d0.png)
+
+Esto también funciona en los argumentos de una función. Primero vamos a crear una función de extraer.
+
+![image](https://user-images.githubusercontent.com/23094588/131244591-b9bb0571-ddb7-4d2a-8031-3d40f9fcbc9e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131244606-0f6615af-561b-41c3-acd9-d455f61ad8d0.png)
+
+Aquí simplemente creamos la función y dentro extraemos las propiedades, aquí no hay nada nuevo de lo visto anteriormente, realmente lo interesante es que en lugar de recibir directamente el objeto **`avenger`** vamos a extraer las propiedades directamente:
+
+![image](https://user-images.githubusercontent.com/23094588/131244689-386e97b4-f64f-428a-9a54-b534f3b8d7d2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131244606-0f6615af-561b-41c3-acd9-d455f61ad8d0.png)
+
+Como vemos nos ahorramos la sentencia de extraerlos nosotros, ***la desestructuración se ha hecho en la pasada del argumento***.
+
+### Desestructuración de Arreglos
+
+Vamos a crear un array de Strings e imprimir sus valores a la consola.
+
+![image](https://user-images.githubusercontent.com/23094588/131244962-27fe6348-ff3b-4fd5-97ba-a205afb415ac.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131244954-bee66d3e-8ab4-48eb-827c-87f5c2ab1616.png)
+
+Al igual que desestructurabamos un Objeto podemos desestructurar un Array de la siguiente forma. Cabe aclarar que con los arreglos si se debe especificar el orden y aquí los nombres de las variables son los que queramos poner ya que solo estan relacionados con el orden.
+
+![image](https://user-images.githubusercontent.com/23094588/131245147-1efcbbc9-ec52-41ba-8f8e-c5bcbd82f839.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131245156-f58e3386-d284-4899-a713-58cb2b25d61e.png)
+
+Si solo nos interesa la última propiedad lo tendríamos que hacer así:
+
+![image](https://user-images.githubusercontent.com/23094588/131245181-5d65c0c6-b78a-414b-91e8-6ac7a48b601d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131245192-e440764d-2010-4d44-937e-2113a4f25f76.png)
+
+Vamos a crear la función extraer arreglo.
+
+![image](https://user-images.githubusercontent.com/23094588/131245388-397ef6d9-b549-469b-b9a0-83bf797fb7a5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131245255-c8505e19-18d6-4972-8ab7-8c08821d1189.png)
+
+De igual forma como lo haciamos con los Objetos podemos hacer la desestructuración en el paso de parámetros de la siguiente forma:
+
+![image](https://user-images.githubusercontent.com/23094588/131245430-4f0c71ca-0d93-4c4c-8d8a-60bc0cb485c2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131245462-2673a8d5-dce3-40f4-8d81-08b97c9f7cea.png)
+
+Vamos a ver como es el archivo compilado JS ES5.
+
+![image](https://user-images.githubusercontent.com/23094588/131245512-c31001bb-db58-4b55-a9ef-6ff2999be85c.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/131245580-2d0c295c-10ee-421a-8de8-4908d2bc81a6.png)
+
 ## Promesas 07:37
 ## Promesas y su tipado en TypeScript 09:06
 ## Interfaces de TypeScript 07:52
