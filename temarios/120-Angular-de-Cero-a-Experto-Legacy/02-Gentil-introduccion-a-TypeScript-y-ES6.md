@@ -987,8 +987,55 @@ Salvemos los cambios y ejecutemos sigue trabajando igual pero ya tenemos la func
 
 ![image](https://user-images.githubusercontent.com/23094588/131248813-4455f9f9-de95-44ac-9593-c64756fbd3de.png)
 
-
 ## Interfaces de TypeScript 07:52
+
+Vamos a ver el siguiente código:
+
+![image](https://user-images.githubusercontent.com/23094588/131248914-620542ec-23fa-45fd-8ace-c57530fffec0.png)
+
+Como podemos ver hay varias cosas potencialmente inseguras aquí, como que en **`xmen`** nos manden cualquier tipo de dato, que no se mande el nombre, etc.
+
+Vamos a crear al objeto **`wolverine`** y lo mandamos a la misión:
+
+![image](https://user-images.githubusercontent.com/23094588/131249067-494a96dc-308a-460e-979b-87eb7738c23b.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131249085-3b97dd41-65c2-444a-9057-16e3177e3337.png)
+
+Todo trabaja como se esperaba.
+
+Pero que pasa si hacemos este pequeño cambio en  **`wolverine`**, cambiar el nombre de la propiedad **`nombre`**
+
+![image](https://user-images.githubusercontent.com/23094588/131249112-9630299a-5a95-4f5d-a17a-1bb092ad8e0b.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131249125-e9181d46-061a-49e7-bc01-b0657d870ca6.png)
+
+Como la función recibe **`any`** puedo mandar a **`wolverine`** con este cambio pero dentro de la función hace referencia a un atributo llamado **`nombre`** y como no lo encuentra nos manda el mensaje **`Enviando a undefined a la misión`**.
+
+Esto ya es un problema para la función **`enviarMision`**. ¿Qué podemos hacer para solucionarlo?. Hay una solución que se ve algo extraña pero que nos puede servir:
+
+![image](https://user-images.githubusercontent.com/23094588/131249262-512a7fd6-5f69-4ebd-8178-bf6b832fdb71.png)
+
+En lugar de poner **`any`** estamos poniendo **`{nombre: string}`** que simboliza que va a recibir un objeto y ese objeto por lo menos debe terer el atributo **`nombre`** de tipo **`string`**, se ve muy extraño pero para este caso nos puede servir. Por consecuencia TS nos marca el error ya que **`wolverine`** no cuenta con la propiedad **`nombre`**, si cambiamos la propiedad **`nombreXman`** por **`nombre`** y aunque tengamos más propiedades TS ya aceta a **`wolverine`** .
+
+![image](https://user-images.githubusercontent.com/23094588/131249353-5cf214a2-396b-4a57-8efd-b0783ab5aa1c.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131249363-f1f6605b-3917-4627-a3c9-382bb7d32f64.png)
+
+El problema de esto es que si tenemos otros métodos que reciban un **`xmen`** tendríamos que hacer lo mismo y si de repente quiero cambiar el nombre de una propiedad lo tengo que hacer entodos los objetos y todos los métodos que los usen, ademas si quiero meter más propiedades se hace más engorroso.
+
+![image](https://user-images.githubusercontent.com/23094588/131249466-e8991e65-ce5f-4935-8a65-9b0d923fa2e7.png)
+
+Este código para el mantenimiento se vuelve algo inmanegable, para esto suguieron las **Interfaces**
+
+### Interfaces
+
+
+
+
+
+
+
+
 ## Introducción a las Clases de la POO 07:52
 ## Definición de una clase básica en TypeScript 04:49
 ## Constructores de una clase en TypeScript 10:03
