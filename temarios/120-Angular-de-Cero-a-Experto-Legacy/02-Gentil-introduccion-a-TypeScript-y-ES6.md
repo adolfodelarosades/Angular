@@ -959,9 +959,33 @@ Hay un pequeño detalle con nuestra función **`retirarDinero`** y es que no sab
 
 ![image](https://user-images.githubusercontent.com/23094588/131247811-b73e87e5-63a2-44e6-b27c-5ba0120347be.png)
 
+Lo que vemos es que la función **`retirarDinero`** nos esta retornando una **`Promise<unknown>`** que "resuelve" asi se leen los **`<...>`** un **`unknown`**, es decir no sabe cual es el tipo de resolución de la Promesa, nosotros como construimos la Promesa sabemos que va a retornar un **`number`** por que **`dineroActual`** es un número. 
 
+Podría pensarse que podríamos tipar el **`saldo`** dentro del **`then`**, pero nos marca el siguiente error:
 
+![image](https://user-images.githubusercontent.com/23094588/131248354-9b87ed6f-567d-4d45-b9e1-89bfc8749b7a.png)
 
+lo que nos dice que el tipo **`unknown`** no es asignable al tipo **`number`**, por lo que esto no es la solución. Si vamos a la definicón de la función tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/131248437-74479f71-2b66-4db6-8708-9e442af51e8a.png)
+
+practicamente es lo mismo que ya habiamos visto, recibe un **`number`** y retorna **`Promise<unknown>`** una Promesa que resuelve el **`unknown`**, lo que nos hace falta es cambiar este **`unknown`** por el tipo de dato que yo se que la Promesa va a resolver (si lo hace correctamente, cuando lo hace mal siempre retorna un error), para definir el tipo de retorno vamos a colocarlo después de los argumentos que recibe:
+
+![image](https://user-images.githubusercontent.com/23094588/131248620-cb95e348-2ebd-45c5-b8ce-3f60ece446ba.png)
+
+Al hacerlo así ya sabe que el **`saldo`** que recibo en el **`then`** es un **`number`**, esto tiene como ventaja que puedo usar todos los métodos asociados a los **`number`** sobre mi **`saldo`**.
+
+![image](https://user-images.githubusercontent.com/23094588/131248672-873056cf-82a8-43bf-8bb2-b70c498712f0.png)
+
+Salvemos los cambios y ejecutemos sigue trabajando igual pero ya tenemos la función tipada.
+
+![image](https://user-images.githubusercontent.com/23094588/131248776-4b72867e-9716-4d33-aa1b-0e0e4b4a503c.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131248791-bde77c06-898e-4b53-89be-d2830e93a8ee.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/131248813-4455f9f9-de95-44ac-9593-c64756fbd3de.png)
 
 
 ## Interfaces de TypeScript 07:52
