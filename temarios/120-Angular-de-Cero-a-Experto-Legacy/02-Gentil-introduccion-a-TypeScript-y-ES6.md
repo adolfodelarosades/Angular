@@ -868,7 +868,102 @@ Vamos a ver como es el archivo compilado JS ES5.
 ![image](https://user-images.githubusercontent.com/23094588/131245580-2d0c295c-10ee-421a-8de8-4908d2bc81a6.png)
 
 ## Promesas 07:37
+
+El tema de las Promesas es un tema muy amplio aquí solo veremos algo muy básico. ***Las Promesas sirven para ejecutar un código sin bloquear la aplicación***. Vamos a ver el siguiente ejemplo:
+
+**NOTA:** TS no puede compilar las Promesas a ES5 por que no existe nada a lo que lo pueda convertir. Se necesitaría implementar una librería de terceros para que sea posible. 
+
+Para este ejercicio vamos a cambiar el archivo de configuración **`tsconfig.json`** de **`es5`** a **`es6`**. El ES6 es el que incluyo las promesas por lo cual vamos a poder trabajar con ellas directamente.
+
+Las Promesas son muy usadas cuando hacemos peticiones a Servicios Web.
+
+### Sintaxis de la Promesa 
+
+Una Promesa contiene una función que recibe dos argumentos, **`resolve`** y **`reject`** las cuales a su vez son dos funciones. **`resolve`** es lo que vamos a retornar cuando todo funciona correctamente y **`reject`** lo llamaremos en caso de algún error. Vamos a meter el siguiente código:
+
+![image](https://user-images.githubusercontent.com/23094588/131246745-3249bdfe-88d8-408f-993f-a32731acdba8.png)
+
+
+Cuando usamos una promesa esta tiene los siguientes métodos:
+
+![image](https://user-images.githubusercontent.com/23094588/131246645-419b537d-ab49-43fc-a1c6-4b153b2870a4.png)
+
+Usaremos la parte del **`then`** cuando se realiza todo exitosamente y el **`catch`** nos va a servir para ejecutar "algo" cuando sucede un error.
+
+Vamos a insertar la parte del **`then`**, en el que vamos a recibir el mensaje que se manda en el **`resolve`**, 
+
+![image](https://user-images.githubusercontent.com/23094588/131246891-6fa7d6fe-727c-4cd2-bc3d-9aa094f8d98b.png)
+
+El **`.then`** se va a disparar cuando se resuelva la promesa. Al ejecutar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/131246898-7a55ad92-b922-4ba3-91cc-90d147d313db.png)
+
+Después de 1 segundo sale el mensaje **`se terminó el timeout`**. Con esto apreciamos que la ejecución de la Promesa no es bloqueante, ejecuta el código que le sigue y cuando se resuelve la Promesa ejecuta su código, por eso el orden en que se despliegan los mensajes de salida.
+
+***¿Qué pasaría si en logar de llamar al `resolve` llamo al `reject`?***.
+
+![image](https://user-images.githubusercontent.com/23094588/131247006-1e3e7c78-3b4a-495e-88d6-c7f6786d5f19.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131247021-5e125db2-61b3-4c8e-b930-c24d2b5e1f11.png)
+
+Nos marca **`Uncaught`** por que no estamos atrapando el error, el no manejar errores en las promesas puede detener la ejecución del programa por lo que es importante manejar el **`.catch`**, es decir lo que queremos que haga cuando existe un error. Vamos a incluirlo:
+
+![image](https://user-images.githubusercontent.com/23094588/131247126-e79306d3-e6b1-495b-9e58-6704ae988a24.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131247138-100b6eed-61da-492c-85fc-0028cc078240.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/131247200-339866fa-944e-4952-a1cc-5eaa521af532.png)
+
 ## Promesas y su tipado en TypeScript 09:06
+
+Vamos a realizar otro ejemplo de promesas para comprenderlas mejor. Vamos a insertar la siguiente función que retorna una promesa:
+
+![image](https://user-images.githubusercontent.com/23094588/131247352-0bea3b7e-7209-49ff-bf3f-0a84a0bfd116.png)
+
+Si cargamos la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/131247366-27c73fb2-19c9-48f1-9e9c-e4a0a9213944.png)
+
+que aparentemente no pasa nada, esto es realmente por que no estamos haciendo nada en caso de que la promesa sea correcta o incorrecta, es decir nos falta implementar **`.then`** y **`.catch`**, hagamoslo.
+
+![image](https://user-images.githubusercontent.com/23094588/131247472-e9687a01-9b95-4a2b-aa95-d36c38b2fcba.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131247478-c16d286f-c6d1-4e84-b67c-72a67bbf8c3d.png)
+
+Vamos a poner que queremos retirar 1500 en lugar de 500 y ejecutamos:
+
+![image](https://user-images.githubusercontent.com/23094588/131247490-5e22af3e-e115-4413-8f98-7a878f5d6f11.png)
+
+
+Nos pone que tenemos un error y que no lo estamos tratando **`Uncaught`**, no falta implementar el **`.catch`**.
+
+![image](https://user-images.githubusercontent.com/23094588/131247537-d6bc3705-bccd-41d9-9665-02a7cf9dfe04.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131247547-cefff243-df8c-4a96-93de-0038a48a62dc.png)
+
+Ahora si ya estamos tratando el error.
+
+Cuando en una función de flecha se recibe solo un parámetro y es el que vamos a imprimir, podemos simplificar la función de flecha de la siguiente forma:
+
+![image](https://user-images.githubusercontent.com/23094588/131247590-5ca27c14-fa31-4f07-b34a-a2f6b42244dd.png)
+
+El resultado sigue siendo el mismo:
+
+![image](https://user-images.githubusercontent.com/23094588/131247547-cefff243-df8c-4a96-93de-0038a48a62dc.png)
+
+### Tipo de Retorno
+
+Hay un pequeño detalle con nuestra función **`retirarDinero`** y es que no sabemos que tipo de retorno esta devolviendo, lo sabemos por que nosotros la hicimos pero TS no lo sabe como marca erl siguiente mensaje:
+
+![image](https://user-images.githubusercontent.com/23094588/131247811-b73e87e5-63a2-44e6-b27c-5ba0120347be.png)
+
+
+
+
+
+
 ## Interfaces de TypeScript 07:52
 ## Introducción a las Clases de la POO 07:52
 ## Definición de una clase básica en TypeScript 04:49
