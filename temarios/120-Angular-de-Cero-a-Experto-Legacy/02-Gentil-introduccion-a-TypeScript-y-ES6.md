@@ -1075,8 +1075,47 @@ Aquí en teoría deberíamos añadir la nueva propiedad al objeto de tipo **`Xme
 
 ## Introducción a las Clases de la POO 07:52
 
+Una Clase es una abstracción de algún objeto de la vida real. Una Clase puede tener:
+
+* Propiedades
+* Métodos
+
+Herencia: Consiste en que cuando una clase que desciende de otra, hereda todos sus propiedades y meétodos.
 
 ## Definición de una clase básica en TypeScript 04:49
+
+Vamos a ver un ejemplo de clases en TS. Los nombres de las clases comienzan con mayúscula por convención. Vamos a crear la clase **`Avenger`**.
+
+![image](https://user-images.githubusercontent.com/23094588/131317002-c18ec8c6-c853-4f36-909f-22aa97f8551d.png)
+
+La clase **`Avenger`** tiene 3 propiedades y dos métodos. 
+
+Si abrimos el archivo compilado JS tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/131318163-dcf6b6b7-99d8-45db-9b5a-0e099db0afed.png)
+
+En el archivo compilado JS se crea una clase vacía, realmente solo definimos las propiedades y métodos pero como no los hemos usado para JS es como si no existieran. Pero en TS si tenemos todo.
+
+Ahora lo que vamos es a crear un objeto en base a la Clase y lo sacamos a la consola:
+
+![image](https://user-images.githubusercontent.com/23094588/131319031-893246a1-32aa-452c-877b-7152070926d2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131319211-602cc0a4-c4b4-476a-9d7f-ea104dd073c3.png)
+
+Tenemos un Objeto **`Avenger`** sin propiedades ni métodos. 
+
+Como vemos nos esta marcando errores en las propiedades y en los métodos, esto es por que no estan inicializadas, vamos a inicializar la propiedad **`nombre`**:
+
+![image](https://user-images.githubusercontent.com/23094588/131319640-f65f02c7-182d-47f5-b2d2-77d7ae0915ab.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131319725-58e77f8d-785a-47f3-9df8-8158fc2fdc3f.png)
+
+Aquí ya nos pone un objeto con la Propiedad inicializada.
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/131319934-fde49b03-7e26-4d6f-aa3e-cab8b8edfd18.png)
+
 ## Constructores de una clase en TypeScript 10:03
 ## Importaciones - URL 07:44
 ## Decoradores de Clases 06:05
