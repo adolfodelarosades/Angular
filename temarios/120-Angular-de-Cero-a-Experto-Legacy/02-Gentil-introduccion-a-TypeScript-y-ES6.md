@@ -1029,14 +1029,53 @@ Este código para el mantenimiento se vuelve algo inmanegable, para esto suguier
 
 ### Interfaces
 
+Las **Interfaces** son parecidas a las **Clases**, pero son Clases tontas, una interface no le pueden definir lo que va a hacer, no tiene Constructores, ***simplemente son las reglas que quiere que cumpla un Objeto para poderlo usar como un tipo***, es como crearse un tipo de dato.
 
+Vamos a crear la Interface **`Xmen`** 
 
+![image](https://user-images.githubusercontent.com/23094588/131309539-899ebaeb-6b6a-494b-99f6-b2937f152f22.png)
 
+Si abrimos el archivo compilado JS tenemos:
 
+![image](https://user-images.githubusercontent.com/23094588/131309773-a316f2c7-33c3-492c-8c82-1f8056dfc112.png)
 
+Observamos que en el archivo compilado JS no existe la Interface, ***No hay una representación física de una Interface en JS***.
 
+Ahora lo que vamos a hacer es cambiar el tipo **`{nombre: string}`** por la Interface **`Xmen`**.
+
+![image](https://user-images.githubusercontent.com/23094588/131310362-c1a46ead-ab40-41de-9d9c-b8da748e042b.png)
+
+Si el objeto **`wolverine`** no cumple con lo definido en la Interface, TS se quejara cuando invoquemos los métodos que necesiten un parámetro de tipo **`Xmen`**.
+
+![image](https://user-images.githubusercontent.com/23094588/131310727-42b5c5a3-d091-49df-97b7-6e02b83334a6.png)
+
+Para forzar un poco más el tipado podemos tipar a **`wolverine`** con **`Xmen`** y así TS nos indicará los posibles fallos:
+
+![image](https://user-images.githubusercontent.com/23094588/131312421-6091f65d-0bf0-4f09-abdd-4ad370b810a8.png)
+
+De esta forma nos ponemos una especie de reglas para que nosotros mismos las cumplamos. En este caso vamos a crear un Objeto que cumpla las condiciones establecidas en la Interface. 
+
+![image](https://user-images.githubusercontent.com/23094588/131313835-3d70dc00-a168-4ced-b55f-2c0e778ff72f.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131313904-de6122aa-24b1-4364-9b90-5b6b79f658ca.png)
+
+Esto ayuda mucho al mantenimiento.
+
+Si en la Interface agregamos una nueva propiedad TS nos lo va a indicar:
+
+![image](https://user-images.githubusercontent.com/23094588/131314215-b424099d-1a35-48dd-92d1-ab6143164282.png)
+
+Aquí en teoría deberíamos añadir la nueva propiedad al objeto de tipo **`Xmen`**, pero también podemos indicar que esta nueva propiedad es opcional, es decir los objetos creados pueden tenerla o no.
+
+![image](https://user-images.githubusercontent.com/23094588/131314631-21ffecbe-c8f2-4a11-a310-4f76e302b5b8.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/131315135-817c79fb-a6a9-42dd-9b21-dca85976324a.png)
 
 ## Introducción a las Clases de la POO 07:52
+
+
 ## Definición de una clase básica en TypeScript 04:49
 ## Constructores de una clase en TypeScript 10:03
 ## Importaciones - URL 07:44
