@@ -1385,7 +1385,77 @@ Vamos a responer algo en la Promesa:
 ![image](https://user-images.githubusercontent.com/23094588/131668402-4eb06e76-43e8-48a2-9d11-548ff6f5e444.png)
 
 ## Exámen práctico #1 00:52
+
+Instrucciones: Descargue el material adjunto, el cual es un archivo de TypeScript.
+
+Se requiere que sea lo más especifico posible en cuanto a los tipos y uso de lo aprendido en esta sección (como es el ES6)
+
+Sea lo más explícito posible y siga las instrucciones que se encuentran en los comentarios del mismo.
+
+Por si acaso tienen problemas con la descarga (por alguna razón) Les dejo aquí el código. Lean todos los comentarios y vean el siguiente video.
+
+```ts
+// Uso de Let y Const
+var nombre = "Ricardo Tapia";
+var edad = 23;
+var PERSONAJE = {
+  nombre: nombre,
+  edad: edad
+};
+ 
+ 
+// Cree una interfaz que sirva para validar el siguiente objeto
+var batman = {
+  nombre: "Bruno Díaz",
+  artesMarciales: ["Karate","Aikido","Wing Chun","Jiu-Jitsu"]
+}
+ 
+ 
+// Convertir esta funcion a una funcion de flecha
+function resultadoDoble( a, b ){
+  return (a + b) * 2
+}
+ 
+ 
+// Función con parametros obligatorios, opcionales y por defecto
+// donde NOMBRE = obligatorio
+//       PODER  = opcional
+//       ARMA   = por defecto = "arco"
+function getAvenger( nombre, poder, arma ){
+  var mensaje;
+  if( poder ){
+     mensaje = nombre + " tiene el poder de: " + poder + " y un arma: " + arma;
+  }else{
+     mensaje = nombre + " tiene un " + poder
+  }
+};
+ 
+ 
+// Cree una clase que permita manejar la siguiente estructura
+// La clase se debe de llamar rectangulo,
+// debe de tener dos propiedades:
+//   * base
+//   * altura
+// También un método que calcule el área  =  base * altura,
+// ese método debe de retornar un numero.
+```
+
+Recursos de esta clase
+app.ts.zip
+
 ## Explicación de la tarea 01:34
+
+![image](https://user-images.githubusercontent.com/23094588/131669777-81b72e18-a2c9-4690-82bb-62926fdc5919.png)
+
 ## Resolución del examen práctico #1 05:17
+
+![image](https://user-images.githubusercontent.com/23094588/131671534-5c3087f4-55b2-47be-85ad-09a8df33713b.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131671606-6933fe1a-fde3-4c9f-a2ed-f8d3f1129d42.png)
+
+
 ## Examen teórico #1 - 10 preguntas
+
+![image](https://user-images.githubusercontent.com/23094588/131671641-a6d45171-1040-4419-bfc9-d91634913797.png)
+
 ## Código fuente de la sección 00:19
