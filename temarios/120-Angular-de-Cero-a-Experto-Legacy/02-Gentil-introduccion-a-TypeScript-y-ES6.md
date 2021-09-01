@@ -1202,10 +1202,89 @@ Abrimos la terminal y ejecutamos el comando:
 npm install
 ```
 
+![image](https://user-images.githubusercontent.com/23094588/131652992-5978522e-cd12-4282-a1f3-61005bf8678d.png)
 
+Descarga todas las librerías de Node que necesita.
 
+![image](https://user-images.githubusercontent.com/23094588/131653114-a4dd8413-de16-49ab-8306-0f1b1ca04157.png)
 
+Todo lo que aparece en **`node_modules`** no es que se va a ir a la versión de producción, son dependencias de mi proyecto para desarrollarlo.
 
+Vamos a abrir **`src/index.ts`**
+
+![image](https://user-images.githubusercontent.com/23094588/131653543-40b3bb46-5415-4d7d-9f04-788359114fa6.png)
+
+Para ver esto funcionando vamos a ejecutar 
+
+```sh
+npm start
+```
+
+![image](https://user-images.githubusercontent.com/23094588/131654344-2be9ce77-225f-47b3-88c6-16d7f602f552.png)
+
+Esto abre el enlace http://localhost:8080 y vemos lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/131654583-76d500f4-81de-4d39-b955-563a7a39b9f3.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131654716-f294aed0-c9a8-44d2-a721-bb46a01f8e5a.png)
+
+En la consola vemos el mensaje **`Hola Mundo!`**.
+
+La ventaja de trabajar con **WebPack** es que cuando hacemos un cambio en el código y los guardamos no es necesario actualizar el navegador, se actualiza automáticamente.
+
+Vamos a empezar con el tema de esta lección que son las **Importaciones**, vamos a crear la clase **`xmen.class.ts`** en la carpeta **`src/classes`** con el siguiente código.
+
+![image](https://user-images.githubusercontent.com/23094588/131655809-51d8f62b-e392-4f11-b599-2466cb23d160.png)
+
+Vamos a regresar a **`index.ts`** borramos todo, y vamos a asumir que queremos crear una instancia de la clase **`Xmen`**.
+
+![image](https://user-images.githubusercontent.com/23094588/131656275-f88dcbac-9616-4008-a013-bba6d43f1fb9.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131656370-dd282d2e-da9d-42a4-b590-9b23eed9e9d7.png)
+
+En teoría dice de que no puede encontrar **`Xmen`** y tiene mucho sentido por que **`Xmen`** esta en otra carpeta y otro archivo, vamos a ejecutar la APP. 
+
+![image](https://user-images.githubusercontent.com/23094588/131656743-ad6f6ed5-f569-4ed5-a714-ddd553554ddb.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131656778-badd9c29-741b-489f-a553-de2f0fb5dd5c.png)
+
+De alguna manera debemos importar la clase donde esta definido **`Xmen`** para poderlo usar.
+
+Lo primero que debemos hacer es indicar que la clase se puede exportar con la palabra **`export`**.
+
+![image](https://user-images.githubusercontent.com/23094588/131657649-d26c5654-1db7-4800-adfb-7c39061a17f3.png)
+
+Con **`export`** le estamos indicando que este archivo se podrá importar en otros archivos. Si no queremos que esta clase se use en otros lugares no ponemos **`export`**. 
+
+Vamos a importar la clase en **`index.ts`**
+
+![image](https://user-images.githubusercontent.com/23094588/131658349-95862cab-66e8-45a4-9f64-d7b1126cf0b5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131658386-fd5f9b92-0fa6-4dda-b8f7-a6d77af31865.png)
+
+Aquí ya no nos dice que no encuentra a **`Xmen`**.
+
+Lo que necesitamos es mandar **`new Xmen(nombre: string, clave: string)`**.
+
+![image](https://user-images.githubusercontent.com/23094588/131658692-06aaef76-97b8-4ef9-8d02-10e885d4334f.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131658745-e4defd7a-e725-47b8-9aea-53f072498b71.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131658936-d6dfce46-0cb4-45b4-a0ce-70d4ff538878.png)
+
+Ya tenemos el comportamiento esperado.
+
+En nuestra clase podemos añadir algún método:
+
+![image](https://user-images.githubusercontent.com/23094588/131659197-fb3aa912-42c1-49bd-b71e-554da6974455.png)
+
+Y lo podemos usar donde instanciamos la clase:
+
+![image](https://user-images.githubusercontent.com/23094588/131659349-a46144e0-caaf-4c80-8caa-35ff2611abab.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131659387-292b992d-5229-4b24-bd10-4be8d90fbff1.png)
+
+Hay muchas formas de hacer importaciones pero esta es una de las más comunes, las demás las vamos a utilizar conforme las necesitemos porque son casos específicos. Básicamente hemos cubierto casi todo lo que necesitamos en la parte de Angular.
 
 ## Decoradores de Clases 06:05
 ## Tipado del retorno de una función 05:29
