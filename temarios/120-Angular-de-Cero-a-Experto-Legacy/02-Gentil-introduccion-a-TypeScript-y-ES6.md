@@ -1117,7 +1117,96 @@ Aquí ya nos pone un objeto con la Propiedad inicializada.
 ![image](https://user-images.githubusercontent.com/23094588/131319934-fde49b03-7e26-4d6f-aa3e-cab8b8edfd18.png)
 
 ## Constructores de una clase en TypeScript 10:03
+
+Ya hemos visto en la lección anterior que en las propiedades no inicializadas nos marca error, podemos inicializar las propiedades para omitir el error e incluso podemos cambiar el valor de la propiedad una vez instanciado el Objeto.
+
+![image](https://user-images.githubusercontent.com/23094588/131641318-c84c70b0-0aef-4257-bbdf-a117cfa8f72d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131641470-b1993874-8486-4f3e-8ce7-82e52007fc27.png)
+
+Esta es una forma de inicializar las propiedades de una Clase, pero existe una alternativa mejor los Constructores.
+
+### Constructor
+
+El constructor es básicamente una función que se ejecuta cuando creamos una nueva instancia de la clase y en este constructor podemos hacer las inicializaciones y todo lo que necesitemos.
+
+![image](https://user-images.githubusercontent.com/23094588/131642308-55d4cb75-d36d-4d0a-b722-dba39aa26afc.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131642408-33408ad8-8968-43e0-9b34-38085de91d10.png)
+
+Aquí en el constructor estamos solo inicializando a **`nombre`**, que es la unica propiedad que no nos marca error, por que la estamos inicializando en el constructor.
+
+Otra cosa importante de observar es que cuando se construye el Objeto hay que pasar el parámetro declarado en el constructor si no nos marca error:
+
+![image](https://user-images.githubusercontent.com/23094588/131642894-f521138d-131f-41e7-852b-46877d7d6c7e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131643083-50d79811-7e29-42a0-93a4-d89d4ee60a2b.png)
+
+Como no estamos pasando nada nos muestra **`Avenger {nombre: undefined}`**.
+
+TS asume que nosotros sabemos lo que estamos haciendo, nos muestra el error pero nos deja ejecutar la APP. Pero no es bueno ignorar los errores de TS pq son potencialmente causantes de errores en JS.
+
+Podemos poner otra propiedad en el Constructor:
+
+![image](https://user-images.githubusercontent.com/23094588/131643812-9701ab18-1ba0-4164-a899-d3a58ec4d5e2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131643874-601898d7-03b7-40b6-8b9c-7a7e1e950a00.png)
+
+Podríamos meter todas las propiedades pero estaríamos obligadas a pasarlas todas a la hora de construir al Objeto, también podemos optar por inicializar las propiedades directamente o declararlas como opcionales con **`?`**.
+
+Existe otra alternativa más para definir el Constructor que nos puede simplificar cosas.
+
+![image](https://user-images.githubusercontent.com/23094588/131645482-fe56d22a-4b21-448e-83d1-7648af7b5c6a.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131645580-cd30925e-1a8b-4c54-a389-0aba50223618.png)
+
+Al momento de construir el Objeto y no mandar todos los parámetros, se nos sigue indicando que tenemos un error. Podemos poner los parámetros opcionales.
+
+![image](https://user-images.githubusercontent.com/23094588/131646389-012c7779-2911-4e08-a153-2d1e2c1f2a5a.png)
+
+Con esto ya no nos marca error pero la salida es la misma:
+
+![image](https://user-images.githubusercontent.com/23094588/131646516-da537d0f-9bc9-4ae6-babc-b51c3fa09bb5.png)
+
+O podemos inicializar algunos de los parámetros:
+
+![image](https://user-images.githubusercontent.com/23094588/131646708-d893d021-aabc-4986-9e31-023de2499b95.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131646804-a1814139-7d1d-4c2a-82fa-9e33fc0a6214.png)
+
+Esta forma de declarar las propiedades es la forma en que trabaja Angular.
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/131647402-64013104-5903-4f70-b45d-7ab731cd6dfc.png)
+
 ## Importaciones - URL 07:44
+
+Descargar el proyecto https://github.com/Klerith/webpack-starter-typescript (Proyecto desarrollado en el curso de JS Avanzado)
+
+Una vez que lo hemos desempaquetado lo renombraremos como **`typescript-importer`** y la abrimos en VSC y vemos lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/131651294-9b801b6a-a9d0-40d1-962e-f6abe1bfd024.png)
+
+### GIT
+
+Inicializamos GIT
+
+![image](https://user-images.githubusercontent.com/23094588/131651689-8faf421c-0016-479e-a2c1-69da684e5612.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131651802-33afaefa-5440-4596-806d-a581c1ecafd8.png)
+
+Abrimos la terminal y ejecutamos el comando:
+
+```sh
+npm install
+```
+
+
+
+
+
+
 ## Decoradores de Clases 06:05
 ## Tipado del retorno de una función 05:29
 ## Exámen práctico #1 00:52
