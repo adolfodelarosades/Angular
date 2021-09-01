@@ -1286,8 +1286,104 @@ Y lo podemos usar donde instanciamos la clase:
 
 Hay muchas formas de hacer importaciones pero esta es una de las más comunes, las demás las vamos a utilizar conforme las necesitemos porque son casos específicos. Básicamente hemos cubierto casi todo lo que necesitamos en la parte de Angular.
 
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/131660397-da27ea7f-239b-478e-9557-c8633dfd42ad.png)
+
 ## Decoradores de Clases 06:05
+
+En nuestra clase vamos a crear la siguiente función.
+
+![image](https://user-images.githubusercontent.com/23094588/131660761-cc62c9a5-0023-4ff2-bb98-b5e55fbce401.png)
+
+Es una función que recibe como parámetro una función y la muestra en consola.
+
+### Decoradores
+
+Un decorador es algo que se le pone a la clase antes de su definición. Para poder usarlos en nuestro archivo **`tsconfig.json`** vamos a activar la opción **`"experimentalDecorators": true,`**.
+
+![image](https://user-images.githubusercontent.com/23094588/131661399-326aa5de-a36f-4944-9472-0a2cde8ab7f8.png)
+
+**NOTA:** Cuando se modifica **`tsconfig.json`** es posible que tengamos que reiniciar la termianal.
+
+Vamos a añadir el decorador **`@imprimirConsola`** a nuestra clase:
+
+![image](https://user-images.githubusercontent.com/23094588/131661960-da3fe287-2255-4db1-bb4b-ecb295b4f6e4.png)
+
+Comentamos los mensajes a la consola:
+
+![image](https://user-images.githubusercontent.com/23094588/131662226-4d24e77a-c361-4617-8e7d-23ce1df0d40d.png)
+
+Solo estamos instanciando la clase.
+
+![image](https://user-images.githubusercontent.com/23094588/131662175-9d61b3c7-d184-46fa-8a36-38ffb991ef79.png)
+
+En la Consola tenemos la definición de la CLase, observamos que con la anotación **`@imprimirConsola`** estamos añadiendo la función a nuestra clase, en resumen ***un decorador nos permite añadir funcionalidad a la clase***. Existen decoradores para indicar que una clase es un ***Componente*** o un ***Servicio***, etc. 
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/131663198-747b1a57-f968-42c9-8320-fcc06f5cfec6.png)
+
 ## Tipado del retorno de una función 05:29
+
+Vamos a regresar al Proyecto TypeScript, recordemos activar **`tsc -w`** para que nos compilen los cambios, y vamos a definir la siguiente función:
+
+![image](https://user-images.githubusercontent.com/23094588/131663763-9af702a6-af27-440a-9ac0-a38bd47f5efe.png)
+
+Aquí estamos tipando los parámetros y tipando el valor de retorno, con esto lo que retornemos debe ser un **`number`** de lo contrarío indicara un error.
+
+Otra forma de escribir la misma función es:
+
+![image](https://user-images.githubusercontent.com/23094588/131664223-414cf824-e298-4951-bf80-1267c592888c.png)
+
+incluso se puede quitar el tipado de retorno ya que TS lo puede inferir.
+
+![image](https://user-images.githubusercontent.com/23094588/131664408-0517dbd7-9ebf-4217-9411-b3655d3bfbd3.png)
+
+Pero lo vamos a dejar.
+
+Podemos tener la siguiente función que retorna un String inferido por TS.
+
+![image](https://user-images.githubusercontent.com/23094588/131664648-f882c5e9-183a-4186-bf97-c0d03c142f3a.png)
+
+Pero podemos tiparla para más claridad.
+
+![image](https://user-images.githubusercontent.com/23094588/131664784-006fa066-56bb-4ef3-b3c6-c36f6a49fc86.png)
+
+Hay algunos casos donde TS no puede inferir el Tipo.
+
+![image](https://user-images.githubusercontent.com/23094588/131665090-5290c7bd-57c0-4213-94d4-1bb2f404ea96.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131665127-5c8e1887-0a9d-44d0-ae25-481f24b5c016.png)
+
+En este caso la función nos regresa una Promesa pero no se sabe el Tipo de salida.
+
+Vamos a usar esta función.
+
+![image](https://user-images.githubusercontent.com/23094588/131665504-a265f7a8-5e5b-4265-8721-fb2cd098c816.png)
+
+Aquí por un lado recibimos el parámetro **`a`** y lo mandamos a consola, pero no sabemos que estamos recibiendo podría ser un  **`number`**, un  **`string`**, etc., podríamos pensar que vamos a recibir un  **`string`**, entonces podemos usar los métodos de los  **`string`**.
+
+![image](https://user-images.githubusercontent.com/23094588/131665787-808a5d48-0fde-421f-b038-ad740b5d33ad.png)
+
+Pero TS tiene sus dudas que llegue un  **`string`**.
+
+Para definir el tipo de la Promesa tenemos que tiparla.
+
+![image](https://user-images.githubusercontent.com/23094588/131666355-256386e6-f866-45e8-872b-56ee97252098.png)
+
+Con esto ya detecta que lo que esta llegando es un **`string`**
+
+Vamos a responer algo en la Promesa:
+
+![image](https://user-images.githubusercontent.com/23094588/131666640-250f2ee4-f235-4bdb-acc1-2924cfb69a21.png)
+
+![image](https://user-images.githubusercontent.com/23094588/131668255-c4c513a4-abf8-40ce-b98d-80c06867002c.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/131668402-4eb06e76-43e8-48a2-9d11-548ff6f5e444.png)
+
 ## Exámen práctico #1 00:52
 ## Explicación de la tarea 01:34
 ## Resolución del examen práctico #1 05:17
