@@ -1453,6 +1453,9 @@ app.ts.zip
 
 ![image](https://user-images.githubusercontent.com/23094588/131671606-6933fe1a-fde3-4c9f-a2ed-f8d3f1129d42.png)
 
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/131672450-560d84b2-eb15-4fe7-b56c-ed27dc2bf8f4.png)
 
 ## Examen teórico #1 - 10 preguntas
 
