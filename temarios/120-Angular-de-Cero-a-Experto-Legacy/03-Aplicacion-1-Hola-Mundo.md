@@ -204,13 +204,13 @@ Ya nos crea el repositorio GIT.
 
 Dentro dentro de nuestra carpeta **`PROYECTOS-ANGULAR`** vemos la carpeta **`my-app`** que contiene todo el proyecto Angular, la vamos a renombrar por **`01-Hola-Mundo`**.
 
-![image](https://user-images.githubusercontent.com/23094588/132104873-b0f095d9-344b-4148-b626-ba4f4c9250e3.png)
-
-
-
 ![image](https://user-images.githubusercontent.com/23094588/132104831-720430c6-840f-4cef-92ff-ca2f39f07513.png)
 
+![image](https://user-images.githubusercontent.com/23094588/132104873-b0f095d9-344b-4148-b626-ba4f4c9250e3.png)
 
+Vamos a abrir nuestro proyecto **`01-Hola-Mundo`** dentro de VSC.
+
+![image](https://user-images.githubusercontent.com/23094588/132104994-5f9d7ace-be40-4a08-9e9d-aa82a5b38af9.png)
 
 
 ## Estructura del proyecto 13:12
