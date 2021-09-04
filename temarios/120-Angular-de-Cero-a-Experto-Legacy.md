@@ -93,7 +93,7 @@ Anímate e inscríbete, te veo adentro.
 
 #### 25 secciones • 375 clases • 35h 37m de duración total
 
-### [01 Introducción al curso de Angular](120-Angular-de-Cero-a-Experto-Legacy/01-Introduccion-al-curso-de-Angular.md) 7 clases • 23m
+### [01 Introducción al curso de Angular](120-Angular-de-Cero-a-Experto-Legacy/01-Introduccion-al-curso-de-Angular.md) 7 clases • 23m 👍
 
 * Introducción 02:25
 * Nota de actualización sobre el curso 02:22
@@ -103,7 +103,7 @@ Anímate e inscríbete, te veo adentro.
 * Instalaciones y configuraciones mínimas necesarias 08:58
 * Instalaciones adicionales 00:36
 
-### [02 Gentil introducción a TypeScript y ES6](120-Angular-de-Cero-a-Experto-Legacy/02-Gentil-introduccion-a-TypeScript-y-ES6.md) - 25 clases • 2h 35m
+### [02 Gentil introducción a TypeScript y ES6](120-Angular-de-Cero-a-Experto-Legacy/02-Gentil-introduccion-a-TypeScript-y-ES6.md) - 25 clases • 2h 35m 👍
 
 * Introducción a la sección 01:28
 * ¿Qué aprenderemos en esta sección? 00:29
@@ -132,7 +132,7 @@ Anímate e inscríbete, te veo adentro.
 * Examen teórico #1 - 10 preguntas
 * Código fuente de la sección 00:19
 
-### 03 Aplicación #1 Hola Mundo - 14 clases • 1h 26m
+### [03 Aplicación #1 Hola Mundo](120-Angular-de-Cero-a-Experto-Legacy/03-Aplicacion-1-Hola-Mundo.md) - 14 clases • 1h 26m
 
 * Introducción a la sección 00:43
 * ¿Qué aprenderemos en esta sección? 00:21
