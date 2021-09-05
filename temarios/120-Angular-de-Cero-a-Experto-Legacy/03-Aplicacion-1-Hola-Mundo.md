@@ -212,6 +212,33 @@ Vamos a abrir nuestro proyecto **`01-Hola-Mundo`** dentro de VSC.
 
 ![image](https://user-images.githubusercontent.com/23094588/132104994-5f9d7ace-be40-4a08-9e9d-aa82a5b38af9.png)
 
+### Ejecutar la APP 
+
+En la terminal debemos estar dentro de la carpeta **`01-Hola-Mundo`**, y vamos a escribir el comando:
+
+```sh
+ng serve
+```
+
+Esto va a levantar un servidor local en el puerto **`4200`** por defecto, también podemos indicar otro puerto como por ejemplo:
+
+```sh
+ng serve -p 4201
+```
+
+Por si tenemos ocupado el puerto por default.
+
+Podemos también pulsar:
+
+```sh
+ng serve -o
+```
+
+Y esto nos va  a abrir el navegador por defecto una vez se levante la aplicación. Vamos a pulsar esta última opción.
+
+
+
+
 
 ## Estructura del proyecto 13:12
 ## Utilizando Bootstrap 4 10:03
