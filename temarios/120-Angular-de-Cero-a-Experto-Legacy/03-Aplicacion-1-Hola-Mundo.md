@@ -234,11 +234,47 @@ Podemos también pulsar:
 ng serve -o
 ```
 
-Y esto nos va  a abrir el navegador por defecto una vez se levante la aplicación. Vamos a pulsar esta última opción.
+Y esto nos va  a abrir el navegador por defecto una vez se levante la aplicación en http://localhost:4200/. Vamos a pulsar esta última opción.
 
+![image](https://user-images.githubusercontent.com/23094588/132140521-d9b63a63-c9b5-402a-b9cd-98f8be97b279.png)
 
+Podemos abrir las **Herramientas de Desarrollo** para ver posibles errores mientras desarrollamos.
 
+![image](https://user-images.githubusercontent.com/23094588/132140557-a93921da-4b7b-4403-bcff-e605256a4ff1.png)
 
+### Modificar la Aplicación.
+
+Vamos a ir al archivo **`app.component.html`** y vamos a borrar todo el contenido sustituyendolo por:
+
+![image](https://user-images.githubusercontent.com/23094588/132140612-31a03414-14ac-4627-b958-6aee136ed3fd.png)
+
+Y la APP cambia, gracias al **Live Server**:
+
+![image](https://user-images.githubusercontent.com/23094588/132140623-83649680-5d64-4e26-b71d-3b6d3865f299.png)
+
+Vamos a añadir más código, pero ahora en **`app.component.ts`** que actualmente se encuentra así:
+
+![image](https://user-images.githubusercontent.com/23094588/132140702-f236fe24-75bf-4196-a623-36e1dde60386.png)
+
+Vamos a cambiarla por:
+
+![image](https://user-images.githubusercontent.com/23094588/132140724-7b38fa43-3160-408d-864d-ec0536a93b48.png)
+
+Simplemente estamos colocando dos propiedades a la clase e inicializando su valor, no las hemos tipado ya que TS infiere el tipo de la propiedad.
+
+Ahora en **`app.component.html`** vamos a poner lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/132140828-c9afce23-2fb4-49a4-be6f-5ac13d22c95c.png)
+
+Estamos usando la **Interpolación** para mostrar los valores de la propiedad dentro del HTML. En una Interpolación podemos poner cualquier tipo de código de JS, funciones, operaciones, etc. y lo procesa Angular para que su valor aparezca renderizado en el Navegador.
+
+La APP se actualiza para mostrar:
+
+![image](https://user-images.githubusercontent.com/23094588/132140845-18fe1cc3-1707-4774-96c0-b216f8a82917.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/132140946-bfc458ab-e2f8-4403-9eca-ed60a06a8f66.png)
 
 ## Estructura del proyecto 13:12
 ## Utilizando Bootstrap 4 10:03
