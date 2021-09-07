@@ -371,6 +371,14 @@ Para comparar con lo que tengo instalado en mi MAC y ver la relación entre ello
 
 ### Carperta `src`
 
+En la carpeta **`app`** tenemos nuestra primer aplicación de Angular.
+
+![image](https://user-images.githubusercontent.com/23094588/132388025-c12def41-19a2-4682-b7f8-bd4a223d04c3.png)
+
+El **`app.component`**
+
+
+
 * **``**
 * **``**
  
