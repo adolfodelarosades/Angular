@@ -518,7 +518,106 @@ Ya se ve un poco mejor.
 
 ![image](https://user-images.githubusercontent.com/23094588/132956141-e1996567-a6ab-4599-88ec-bc5154661478.png)
 
-## Creando el **`footer.component`** 10:32
+## Creando el **`footer.component`** con Angular CLI 10:32
+
+Vamos a crear el componente **`footer.component`** pero en este caso vamos a usar **Angular CLI** escribiendo el siguiente comando:
+
+```sh
+ng generate component components/footer
+```
+
+Le estamos diciendo que genere el componente en la carpeta **`components`** y que se va a llamar **`footer`**, el comando anterior lo podemos abreviar como sigue:
+
+```sh
+ng g c components/footer
+```
+
+![image](https://user-images.githubusercontent.com/23094588/132959361-0165fe78-0f41-4542-9175-c177b2d95801.png)
+
+Al ejecutar este comando se nos han creado los archivos:
+
+* **`footer.component.css`**
+* **`footer.component.html`**
+* **`footer.component.spec.ts`**
+* **`footer.component.ts`**
+
+Y se a actualizado el archivo:
+
+* **`app.module.ts`**
+
+![image](https://user-images.githubusercontent.com/23094588/132959510-f7fb55d6-4d23-444e-8459-d1391b589d8b.png)
+
+Esto que antes lo habíamos creado a mano con este comando se han creado automáticamente aun que con pequeños matices ya que nosotros no ocupabamos los archivos **`footer.component.css`** y **`footer.component.spec.ts`**.
+
+El archivo **`footer.component.spec.ts`** nos ayuda a realizar las prueba pero no lo vamos a cubrir en este curso por lo que lo vamos a eliminar.
+
+El archivo **`footer.component.css`** contiene estilos CSS que solo se van a aplicar sobre el archivo **`footer.component.html`**, por ahora ese archivo esta vacio, para poder utilizarlo se ha declarado dentro de **`footer.component.ts`**:
+
+![image](https://user-images.githubusercontent.com/23094588/132959522-4157e108-9642-4f8b-9b19-71aad7fdb7df.png)
+
+Vemos que en la anotación **`@Component`** hay un nuevo atributo **`styleUrls`** para indicar el archivo de estilos CSS a usar. Ademas de esto tenemos algo nuevo dentro de **`footer.component.spec.ts`** lo que es el **`constructor() { }`** que es el constructor de la clase  y **`ngOnInit(): void {   }`** que es un método del ciclo de vida de las clases, ya veremos más en detalle para que sirven.
+
+En nuestro archivo **`footer.component.html`** solo tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/132959850-188bd93a-edbe-4a7f-b853-d49c2a98ad13.png)
+
+Mientras que en **`app.module.ts`** vemos como se a incluido automáticamente el componente **`FooterComponent`** para que podamos utilizarlo.
+
+![image](https://user-images.githubusercontent.com/23094588/132959646-6028e34a-9d41-4f01-824a-483a83c769e5.png)
+
+**NOTA**: En caso que por alguna necesidad eliminemos un componente debemos también la referencia hecha de el en el **`app.module.ts`**. 
+
+Vamos a modificar el contenido del **`footer.component.html`** con el siguiente código:
+
+![image](https://user-images.githubusercontent.com/23094588/132959903-ac8ba849-46c9-4aac-bf91-23a282af0f7a.png)
+
+Y vamos a incluirlo en **`app.component.html`** para que sea renderizado.
+
+![image](https://user-images.githubusercontent.com/23094588/132959930-8aa3c6c5-7e59-4711-9f9f-40599e1f24a8.png)
+
+![image](https://user-images.githubusercontent.com/23094588/132959945-2ea3e0a1-33db-4f7e-824c-aa195ff9573c.png)
+
+Vemos que este footer no aparece como esperabamos, vamos a insertar algunos estilos para que luzca mejor, lo podemos a hacer a nivel del componente o a nivel general que es la opción que vamos a usar por lo que vamos a modificar el archivo **`styles.css`**
+
+![image](https://user-images.githubusercontent.com/23094588/132960248-44c05ca0-921c-4ece-8eec-605ef552e6f2.png)
+
+Al recargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/132960264-6ac1158f-fb44-4889-8df1-8e9fc231021a.png)
+
+Luce mejor pero no del todo, falta centrar el texto pero esto lo haremos dentro del **`footer.component.html`** añadiendo la clase **`text-center`** al tag **`footer`**.
+
+![image](https://user-images.githubusercontent.com/23094588/132960321-c987170b-81f6-4de5-8e09-4e6d583be7cf.png)
+
+Al recargar la APP tenemos que el aspecto a mejorado.
+
+![image](https://user-images.githubusercontent.com/23094588/132960325-fd3e667d-7eea-4ae4-9cea-773a7dac0595.png)
+
+Aun podemos mejorar cosas ya que el año lo tenemos Harcodeado, podemos que esto se calcule automáticamente para que no lo tengamos que cambiar cada que el año cambia, esta lógica la debemos incluir en **`footer.component.ts`**, vamos a iniciar por quitar el **`constructor() { }`** y **`ngOnInit(): void {   }`**, para que la clase quede como la habíamos estado trabajando con los otros componentes.
+
+![image](https://user-images.githubusercontent.com/23094588/132960409-b710e286-3753-4cbd-900c-063d43e6f72b.png)
+
+Lo que vamos a hacer es declarar una propiedad **`anio`*** que contendra el año actual.
+
+![image](https://user-images.githubusercontent.com/23094588/132960443-e5d25092-e4bb-40c2-9efc-74aafe796ac9.png)
+
+Esta es una forma de declarar la propiedad, pero existe otra forma que es un poco más adecuada y consiste en declarar la propiedad y asignarle el valor dentro del constructor como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/132960487-b0913865-e2f0-4d83-92ae-be3683ff8410.png)
+
+Ya tenemos la propiedad con el valor del año, ahora vamos a usarla dentro de **`footer.component.html`** de la siguiente manera:
+
+![image](https://user-images.githubusercontent.com/23094588/132960554-988edbf9-a63f-447c-a1f7-55eccb4dff48.png)
+
+Al cargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/132960564-7ac6ca62-bbb0-4636-b3e1-203c98ccb85c.png)
+
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/132960664-5a326142-832d-4ece-8269-94a2c87ffcd9.png)
+
 ## Estructura del body component 04:56
 ## Directivas estructurales: **`*ngFor`** y el **`*ngIf`** 10:01
 ## Examen teórico - de la sección Hola Mundo - 10 preguntas
