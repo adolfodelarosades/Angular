@@ -371,11 +371,11 @@ Para comparar con lo que tengo instalado en mi MAC y ver la relación entre ello
 
 ### Carperta `src`
 
+![image](https://user-images.githubusercontent.com/23094588/132953008-bd04d1f8-d498-419f-8162-915b4ecfbc67.png)
+
 En la carpeta **`app`** tenemos nuestra primer aplicación de Angular.
 
 ![image](https://user-images.githubusercontent.com/23094588/132388025-c12def41-19a2-4682-b7f8-bd4a223d04c3.png)
-
-
 
 * **`app`**: Contiene el componente principal el **`app.component`** que se descompone en los siguientes elementtos:
    * **`app.component.css`**: Estilos CSS que se aplican sobre nuestro **`app.component.html`**
@@ -396,7 +396,13 @@ En la carpeta **`app`** tenemos nuestra primer aplicación de Angular.
 * **`test.ts`**: Este archivo es requerido por **`karma.conf.js`** y carga recursivamente todos los archivos **`.spec`** y **`framework`**.
 
 ## Utilizando Bootstrap 4 10:03
-## TemplateUrl: Separando el HTML el componente 09:32
+
+Vamos a aplcar 
+
+![image](https://user-images.githubusercontent.com/23094588/132953093-5ceb43f7-3afd-4c36-b27a-9551f9318d5c.png)
+
+
+## TemplateUrl: Separando el HTML del componente 09:32
 ## Creando el **`footer.component`** 10:32
 ## Estructura del body component 04:56
 ## Directivas estructurales: **`*ngFor`** y el **`*ngIf`** 10:01
