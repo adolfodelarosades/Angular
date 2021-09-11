@@ -446,6 +446,78 @@ De esta manera estamos incluyendo el contenido del **`header.component`** dentro
 ![image](https://user-images.githubusercontent.com/23094588/132954064-4a5136e8-7fd3-4537-81d6-e9664532c515.png)
 
 ## TemplateUrl: Separando el HTML del componente 09:32
+
+### Incluir un Navbar de Bootstrap en el `header`
+
+Vamos a buscar en Bootstrap un Navbar y lo copiamos para incluirlo en el `header`.
+
+![image](https://user-images.githubusercontent.com/23094588/132954288-89c0053a-a466-431b-86fb-55be65194633.png)
+
+Y vamos a sustituir el texto que tenemos en **`template`** por lo que hemos copiado:
+
+![image](https://user-images.githubusercontent.com/23094588/132954316-c22a771f-2fc0-4e0e-ba36-0a2c06e7437c.png)
+
+Al cargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/132954342-5f51f1b7-9cd4-488f-828d-f52cb6729b77.png)
+
+Nuestro componente **`header`** ahora lo que renderiza es una barra de navegación, el **`Dropdown`** no funciona por que solo incluimos los estilos de Bootstrap y faltan los JS para que funcionenen, ya lo veremos más adelante.
+
+El estilo blanco del Navbar es gracias a los atributos **`navbar-light bg-light`** del tag **`<nav`** vamos a cambiarlos por **`navbar-dark bg-dark`** y la veremos así:
+
+![image](https://user-images.githubusercontent.com/23094588/132954571-ab81e997-3584-469c-914a-a38ec11b9763.png)
+
+### Separar el Template del Componente
+
+Por ahora nuestro componente **`header`** solo consta del archivo TS donde estamos mezclando código HTML y JS, cuando el código HTML va creciendo como en este caso es mejor manejarlo en un archivo independiente, por lo cual vamos a crear el archivo **`header.component.html`** donde vamos a mover nuestro NavBar.
+
+![image](https://user-images.githubusercontent.com/23094588/132954842-aa5f8859-54d2-490b-b4c5-3eba72606b08.png)
+
+Ahora al componente **`header`** hay que indicarle que use este código en lugar del **`template`** que estaba usando, eso se hace usando el **`templateUrl`** al cual le indicamos la ruta del archivo **`header.component.html`**.
+
+Por lo que al cargar la APP tenemos lo mismo.
+
+![image](https://user-images.githubusercontent.com/23094588/132955479-9eced40d-c13f-4ca3-a4b7-be4ab84c6497.png)
+
+Pero hemos separado el código TS y el código HTML en archivos independientes.
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/132955814-87522988-f70a-4dc3-b94c-b63b45517339.png)
+
+
+### Creación del componente `body`.
+
+De la misma forma que creamos el componente **`header`** vamos a crear el componente **`body`**, siguiendo los siguientes pasos:
+
+1. Crear carpeta **`body`** dentro de la carpeta **`components`**
+2. Crear el archivo **`body.components.ts`** con nombre de selector **`app-body`**
+3. Crear el archivo **`body.components.html`** para que muestre **`Body Component`**
+4. Incluir el componente **`body`** dentro del **`app.module.ts`**
+5. Renderizar **`body`** dentro de **`app.component.html`** 
+
+![image](https://user-images.githubusercontent.com/23094588/132955925-1d2dedd7-e36d-43f2-b8a2-8a6cb18f5185.png)
+
+![image](https://user-images.githubusercontent.com/23094588/132955934-8cc005c8-0d25-4d54-b069-e4babbe0615d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/132955949-775e15d7-1842-4b01-a594-192e138e0a02.png)
+
+![image](https://user-images.githubusercontent.com/23094588/132955961-966bc97f-5a73-4a0f-b6da-3823233d8861.png)
+
+![image](https://user-images.githubusercontent.com/23094588/132955971-4d34b659-4afc-430f-a2ab-7baf24f70be3.png)
+
+Para que el Body no este tan pegado al NavBar vamos a meterle una clase a nuestra etiqueta **`<app-body`**
+
+![image](https://user-images.githubusercontent.com/23094588/132956079-638eab2d-5dfc-4e84-9710-5c105fdd66b0.png)
+
+![image](https://user-images.githubusercontent.com/23094588/132956082-822aa91b-32ee-4e10-9cd2-56825112c5ff.png)
+
+Ya se ve un poco mejor.
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/132956141-e1996567-a6ab-4599-88ec-bc5154661478.png)
+
 ## Creando el **`footer.component`** 10:32
 ## Estructura del body component 04:56
 ## Directivas estructurales: **`*ngFor`** y el **`*ngIf`** 10:01
