@@ -395,12 +395,55 @@ En la carpeta **`app`** tenemos nuestra primer aplicación de Angular.
 * **`styles.css`**: Archivo de estilos globales a la aplicación.
 * **`test.ts`**: Este archivo es requerido por **`karma.conf.js`** y carga recursivamente todos los archivos **`.spec`** y **`framework`**.
 
-## Utilizando Bootstrap 4 10:03
+## Utilizando Bootstrap 10:03
 
-Vamos a aplcar 
+Vamos a aplcar Bootstrap v5.1.1 al proyecto
 
-![image](https://user-images.githubusercontent.com/23094588/132953093-5ceb43f7-3afd-4c36-b27a-9551f9318d5c.png)
+![image](https://user-images.githubusercontent.com/23094588/132953154-b66a2735-a053-44ac-8748-990415ade3a8.png)
 
+Pulsamos en el botón **Get started** y vamos a copiar lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/132953171-502a60e4-4483-4f46-9af7-8967fadf9fc6.png)
+
+que son los estilos CSS de Bootstrap los cuales los vamos a copiar en el archivo **`index.html`**.
+
+![image](https://user-images.githubusercontent.com/23094588/132953238-e9751851-b4c1-4284-bdf5-4c37906a1662.png)
+
+Al cargar la APP se ve un poco diferente por los estilos que se le estan aplicando.
+
+![image](https://user-images.githubusercontent.com/23094588/132953272-c2c9636a-f6fa-4380-9a5b-a1fa8e67e5d6.png)
+
+### Creación del Componente `header` Manualmente
+
+Dentro de la carpeta **`app`** vamos a crear la carpeta **`components`** y dentro de esta la carpeta **`header`**, dentro de  **`header`** vamos a crear el archivo **`header.component.ts`**
+
+![image](https://user-images.githubusercontent.com/23094588/132953450-cd4b7618-aac6-49bc-a405-80d507cfb79e.png)
+
+Este archivo vacio va a contener la clase **`HeaderComponent`** y para decirle a Angular que es un componente le vamos a poner un decorador de tipo **`@Component`** con su respectivo **`selector`** que llamaremos **`app-header`** e ira acompañado de su **`template`** que es un pequeño código HTML que se desplegara al renderizar este componente . El código completo del componente **`header`** es el siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/132953709-d41a9247-c1c3-4434-b9c0-2d3451833cb5.png)
+
+#### Incluir el componente **`header`** dentro de **`app.module.ts`**
+
+En el archivo **`app.module.ts`** indicamos a Angular que componentes o servicios tiene, en este caso los componentes se incluyen dentro de **`declarations`** y gracias a que al componente le indicamos que puede ser exportado cono la palabra **`export`**, aquí podemos importarlo para poder incluirlo dentro de **`declarations`** de la siguiente manera:
+
+![image](https://user-images.githubusercontent.com/23094588/132953812-5adbeac7-7165-4700-95b8-007c58d03778.png)
+
+#### Renderizar el componente **`header`**
+
+Finalmente para renderizar el componente **`header`** debemos incluirlo en algún archivo **`html`**, en este caso lo vamos a incluir en **`app.component.html`**:
+
+![image](https://user-images.githubusercontent.com/23094588/132953939-1c52cf35-a4d7-42bc-b076-17f02dd826bd.png)
+
+Al recargar la APP tenemos.
+
+![image](https://user-images.githubusercontent.com/23094588/132953952-776c7d60-f331-4614-8313-2d413e69481a.png)
+
+De esta manera estamos incluyendo el contenido del **`header.component`** dentro del **`app.component`**.
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/132954064-4a5136e8-7fd3-4537-81d6-e9664532c515.png)
 
 ## TemplateUrl: Separando el HTML del componente 09:32
 ## Creando el **`footer.component`** 10:32
