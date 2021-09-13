@@ -619,6 +619,34 @@ Al cargar la APP tenemos:
 ![image](https://user-images.githubusercontent.com/23094588/132960664-5a326142-832d-4ece-8269-94a2c87ffcd9.png)
 
 ## Estructura del body component 04:56
+
+En esta clase vamos a trabajar un poco en el diseño del Body Component, para lo cual vamos a regresar a la página de Bootstrap y vamos a buscar un elemento llamado **Card**.
+
+![image](https://user-images.githubusercontent.com/23094588/133122402-17e7c3d3-620f-4090-b484-cbf937ea69dd.png)
+
+Esto lo ocuparemos en el diseño de nuestro Body Component, vamos por pasos, vamos a insertar lo siguiente en el **`body.component.html`**.
+
+![image](https://user-images.githubusercontent.com/23094588/133123137-3c477fd0-e767-4d37-a62b-1363a389d81a.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133123214-dbe18816-a4ee-4aaf-a91e-41c453cabf79.png)
+
+Esto aparece un poco pegado a los bordes, vamos a modificar el **`app.component.html`** que actualmente lo tenemos así:
+
+![image](https://user-images.githubusercontent.com/23094588/133123423-b2654014-3acb-4003-95af-8f6be630e2ae.png)
+
+Y vamos a ponerlo como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/133123621-2b7e0766-b274-49b1-8b0b-cac52dfcdad6.png)
+
+
+![image](https://user-images.githubusercontent.com/23094588/133123776-f0f2564d-45fa-4211-8e24-cba2acfe4151.png)
+
+
+
+
+
+
+
 ## Directivas estructurales: **`*ngFor`** y el **`*ngIf`** 10:01
 ## Examen teórico - de la sección Hola Mundo - 10 preguntas
 ## Código fuente de la sección 00:23
