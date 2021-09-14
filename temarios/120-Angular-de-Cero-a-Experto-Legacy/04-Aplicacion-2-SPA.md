@@ -405,14 +405,87 @@ Si no le ponemos esta etiqueta **`<base href="/">`** (comentarla) y no estamos u
 
 ![image](https://user-images.githubusercontent.com/23094588/133308007-aa92ff3c-28df-4ad2-9c8b-5fb8b381ffa0.png)
 
-POr ahora lo vamos a dejar sin el **`#`** y ya más adelante veremos donde es donde falla.
+Por ahora lo vamos a dejar sin el **`#`** y ya más adelante veremos donde es donde falla.
 
 #### GIT
 
 ![image](https://user-images.githubusercontent.com/23094588/133308405-a1e7d89d-b864-4e1c-b317-e0f7056fd393.png)
 
-### Modificar el Componente `Home`.
 ## RouterLink y RouterLinkActive - Completando las rutas 09:10
+
+Vamos a añadir las dos rutas para los dos componentes adicionales que tenemos **`AboutComponent`** y **`HeroesComponent`**.
+
+![image](https://user-images.githubusercontent.com/23094588/133308986-f3b300f1-3a89-44f6-a718-a84584879e5b.png)
+
+Ya tenemos las rutas a dichos componentes, ahora nos vamos a **`navbar.component.html`** que es donde va estar el cambio entre las diferentes páginas. Primero vamos a insertar las dos opciones para nuestras dos páginas.
+
+![image](https://user-images.githubusercontent.com/23094588/133309603-a8701431-1f9c-4449-92a6-59ed30608e6f.png)
+
+Observese que en la etiqueta **`<a class="nav-link" href="#">`** tenemos el atributo **`href="#"`**, antes se usaba **`<a class="nav-link" href="#/home">`** pero en lugar de eso vamos a usar un elemento llamado **RouterLink** el cual recibe como valor un array y cada elemento del array es como un segmento de la ruta, en nuestro caso solo tenedremos un elemento en la ruta como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/133312460-ed441c48-b806-44e3-8d5d-f8bced097772.png)
+
+Los nombres que estamos poniendo en los elementos del array son los que asignamos en las rutas **`path`**.
+
+Al recargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/133312667-025d4e24-e737-48cc-ad50-d1d1f8d5f29b.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133312696-2569d0ce-e7d6-4666-a031-2a0e1eed61e3.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133312722-a23dd77d-7310-417a-b8b8-f5d99ef8b32b.png)
+
+Ya esta trabajando nuestro sistema de rutas llevandonos a nuestros diferentes "páginas".
+
+Vamos a dar un poco de estilo a los componentes empezamos metiendo un margen para que no queden muy pegados el Navbar y los componentes.
+
+![image](https://user-images.githubusercontent.com/23094588/133313349-e93eb708-a6c7-42c0-af8c-a4b7fdc04656.png)
+
+En el Componente About metemos lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/133313879-cf1c5ded-f39b-4077-a51f-bd4b90323c37.png)
+
+En el Componente Heroes metemos lo siguiente:
+
+### Incluir los Estilos de Animación
+
+En el archivo **`styles.css`** vamos a copiar el contenido del archivo **`animate.css`** que nos descargamos en los recursos.
+
+![image](https://user-images.githubusercontent.com/23094588/133314731-5bc9aa51-d915-4d41-bbd3-5ec41b48fb66.png)
+
+
+### Meter la Animación en el Componente `About` y `Home`
+
+![image](https://user-images.githubusercontent.com/23094588/133315250-2578445a-70f6-4119-9645-9d7b894feed7.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133315406-1bc4aa18-147c-4106-a391-a31ac82f2b1b.png)
+
+Al recargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/133315591-d240052a-8f57-4c0a-9d06-3b7499ef585b.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133315619-2c3be6ec-693b-42a5-93ee-9ba09152e9b1.png)
+
+En la imagen no se ve pero juro que existe una animación al cargar las páginas.
+
+### Marcar la Página seleccionada como Activa con `routerLinkActive`
+
+Para marcar una página como activa se usa la propiedad **`routerLinkActive`**, vamos al Navbar y vamos a colocar ese atributo:
+
+![image](https://user-images.githubusercontent.com/23094588/133316300-f957b767-823e-40ec-bdc0-e00e314494e3.png)
+
+Al recargar la APP tenemos:
+
+
+
+
+
+![image](https://user-images.githubusercontent.com/23094588/133313838-1a9cc6b6-a2bc-497e-be4a-1652ecb75e29.png)
+
+
+
+
+
 ## Componente Heroes - diseño 05:31
 ## Introducción a los Servicios 02:39
 ## Creando nuestro primer servicio - HeroesService 10:55
