@@ -269,11 +269,13 @@ La APP esta tomando Bootstrap del Node Modules.
 
 La ventaja de usar esta forma es que si creamos otro proyecto simplemente instalamos Bootstrap con el **`npm`** y copiamos lo que hemos insertado en el **`angular.json`** y ya estaría listo Bootstrap para usarse. Pero tiene la desventaja de que todas estas librerías van a formar parte del Bundled y si estas son librerías comunes podría hacer que la aplicación pese algo más.
 
+***De esta misma forma se pueden instalar otras librerías con el NPM***
+
 #### GIT
 
 ![image](https://user-images.githubusercontent.com/23094588/133255020-4d780216-c315-4bf3-9d11-989e8cee9112.png)
 
-## Configurando el navbar y otros componentes 06:34
+## Configurando el Navbar y otros componentes 06:34
 
 Este proyecto necesita que nos descarguemos los recursos de la sección que necesitaremos para realizar la sección.
 
@@ -281,8 +283,135 @@ Este proyecto necesita que nos descarguemos los recursos de la sección que nece
 
 Son imagenes de super heroes, un favicon, estilos css y datos de los super heroes.
 
+Dentro de la carpeta **`assets/img`** vamos a copiar todos los archivos **`.png`**. El favicon lo vamos a copiar en la carpeta **`src`** para reemplazar el existente y con esto ya se cargara el favicon.
+
+![image](https://user-images.githubusercontent.com/23094588/133256291-6a1118f5-6a90-4a37-b1d2-b286d29bcd33.png)
+
+### Modificar el Componente `Navbar`.
+
+Vamos a insertar el siguiente código en el archivo **`navbar.component.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/133258082-223c0c37-f11e-4ebb-9a23-79b5580cba72.png)
+
+Y vamos a cargar este componente en **`app.component.html`** borramos todo lo que tiene y lo reemplazamos por:
+
+![image](https://user-images.githubusercontent.com/23094588/133258306-ddb75c8a-6a48-41d6-97ac-7d0744219c58.png)
+
+La APP se visualiza así:
+
+![image](https://user-images.githubusercontent.com/23094588/133258380-e8a1f8af-e498-4a73-9c7c-e2f86b7bfe6f.png)
+
+### Modificar el Componente `Home`
+
+En el componente **`Home`** vamos a insertar el siguiente código que representa un Jumbotrom de Bootstrap:
+
+![image](https://user-images.githubusercontent.com/23094588/133304346-f6193efa-4668-48b1-92af-fca4f5e70a7f.png)
+
+### Crear el Componente `About`.
+
+Vamos a crear el componente `about` con el comando
+
+```sh
+ng g c components/about
+```
+
+![image](https://user-images.githubusercontent.com/23094588/133260071-58db27d0-1974-4121-ad2c-6d07131c2be6.png)
+
+Eliminamos el css y el spec y hacemos los ajustes necesarios.
+
+### Crear el Componente `Heroes`.
+
+Vamos a crear el componente `heroes` con el comando
+
+```sh
+ng g c components/heroes -is
+```
+
+Con **`-is`** no me crea el archivo de estilos.
+
+![image](https://user-images.githubusercontent.com/23094588/133260284-73c8d5ce-023d-4ce5-bae1-4f3297187dac.png)
+
+Eliminamos el spec y hacemos los ajustes necesarios.
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/133261151-f06c221a-fc67-418a-8e8a-a748bb25277a.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133261365-442940f6-f648-4fb7-870d-fe30694cae3d.png)
 
 ## Rutas en Angular 08:23
+
+Las **Rutas** nos permiten navegar a diferentes ***Componentes*** o ***Páginas*** ***sin hacer Refresh del Navegador***, solo se carga lo que se necesita para poder cargar esa página.
+
+En la carpeta **`app`** vamos a crear el archivo **`app.routes.ts`** con el siguiente contenido:
+
+![image](https://user-images.githubusercontent.com/23094588/133301998-10b80711-09b8-4658-8f9a-c11a7cfa34ce.png)
+
+**`APP_ROUTES`** es un arreglo de ruta, cada una de las rutas tiene un **`path`** y tiene un **`component`**, la ruta **`{ path: '**', pathMatch: 'full', redirectTo: '' }`** es una ruta especial por si a caso no hace match con ninguna de las rutas que la preceden.
+
+Vamos a personalizar nuestra primer ruta hacia el componente **`Home`** de la siguiente manera:
+
+![image](https://user-images.githubusercontent.com/23094588/133302559-b78f8abf-5018-4561-bdc2-3def7d8cccd4.png)
+
+Para indicarle a Angular que ya dispone de este sistema de rutas debemos incluirlo en el **`app.module.ts`** de esta forma:
+
+![image](https://user-images.githubusercontent.com/23094588/133303386-b70d054e-6ada-4faf-b0b2-49a2f6b7cd7e.png)
+
+Lo importamos y lo incluimos en la sección de los **`imports`**.
+
+Si cargamos la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/133303602-fd83c813-f074-4bf5-bddd-6e6b0fd55535.png)
+
+Vemos que ya nos carga la ruta **`http://localhost:4200/home`** pero no vemos el contenido del componente **`Home`**, este es por que no le hemos indicado donde lo debe renderizar, nos vamos a **`app.component.html`** y lo incluimos:
+
+![image](https://user-images.githubusercontent.com/23094588/133304750-6ec8c847-a91c-4711-894e-e72b2363b6cc.png)
+
+Al recargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/133304804-9b42e72b-2c66-4d13-9a26-14cf2b9da4c9.png)
+
+Por ahora solo tenemos una ruta y esta esta asociada al componente **`Home`**.
+
+### Formas en que trabajan las Rutas
+
+Hay varias maneras de manejar las rutas en Angular la primera es la que ya vimos usando un ***Path Relativo*** 
+
+* **`http://localhost:4200/home`**: Esto es como si tuviera un folder home y dentro un **`index.html`**, esto es gracias al HTML 5, esto funciona bien pero cuando ya se mandan parámetros y hacemos refresh perdemos la referencia.
+
+Existe una forma antigua donde se usa el caracter **`#`** que es una manera mas eficiente de manejar las rutas y soportado por la mayoría de los navegadores Web, para poder manejarlo necesitamos indicarselo en el **`app.routes.ts`**:
+
+![image](https://user-images.githubusercontent.com/23094588/133306382-a35f8d78-7622-4f22-8f40-580e26684988.png)
+
+Al recargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/133306514-5c20193d-bf30-41bf-92a3-b98b35cdbd17.png)
+
+De esta manera la ruta qie se carga es:
+
+* **`http://localhost:4200/#/home`**
+
+***Si no usamos el caracter `#` en las rutas cuando usemos parámetros en las rutas puede fallar y hay que volver a recargar la aplicación por que pierde el estado*** para eso necesitaríamos hacer una pequeña configuración en el servidor para que redireccione siempre al Home y después a la página que debe ir, pero eso es un poco más de trabajo en el Backend que no veremos en este curso.
+
+Otra cosa importante que el Angular CLI hace de forma automática, es que cuando no estamos utilizando el routing con **`#`**, 
+
+![image](https://user-images.githubusercontent.com/23094588/133307516-2a7dc1a8-eac3-4d3f-a28f-b819de33c1ab.png)
+
+el **`index.html`** debe contar con la etiqueta **`<base href="/">`**.
+
+![image](https://user-images.githubusercontent.com/23094588/133307649-415e3fa6-7b6a-401d-8e47-02f30b3aca68.png)
+
+Si no le ponemos esta etiqueta **`<base href="/">`** (comentarla) y no estamos usando el routing con **`#`** la aplicación nos fallará:
+
+![image](https://user-images.githubusercontent.com/23094588/133308007-aa92ff3c-28df-4ad2-9c8b-5fb8b381ffa0.png)
+
+POr ahora lo vamos a dejar sin el **`#`** y ya más adelante veremos donde es donde falla.
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/133308405-a1e7d89d-b864-4e1c-b317-e0f7056fd393.png)
+
+### Modificar el Componente `Home`.
 ## RouterLink y RouterLinkActive - Completando las rutas 09:10
 ## Componente Heroes - diseño 05:31
 ## Introducción a los Servicios 02:39
