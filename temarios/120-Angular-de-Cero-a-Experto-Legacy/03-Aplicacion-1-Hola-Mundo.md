@@ -638,15 +638,138 @@ Y vamos a ponerlo como sigue:
 
 ![image](https://user-images.githubusercontent.com/23094588/133123621-2b7e0766-b274-49b1-8b0b-cac52dfcdad6.png)
 
-
 ![image](https://user-images.githubusercontent.com/23094588/133123776-f0f2564d-45fa-4211-8e24-cba2acfe4151.png)
 
+Para que no aparezca tan pegado agregamos **`m-5`**:
 
+![image](https://user-images.githubusercontent.com/23094588/133124053-5dbd43db-3f12-4c3b-b9c7-8b093e9d8e82.png)
 
+![image](https://user-images.githubusercontent.com/23094588/133124113-cc764405-e02f-41d2-8c27-891110414c43.png)
 
+Ahora si vamos a ocupar el código de las Card de Bootstrap dentro de **`body.component.html`**
 
+```html
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title">Primary card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+```
+
+![image](https://user-images.githubusercontent.com/23094588/133124610-92bcb7df-f2aa-483a-a6a3-915a0ccca403.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133124640-91d3a123-b843-42bb-9cb9-10932b50fae2.png)
+
+Vamos a quitar el **`Header`** por que no lo vamos a ocupar aquí.
+
+![image](https://user-images.githubusercontent.com/23094588/133124791-38cc3024-4276-40c5-a044-71562987befe.png)
+
+Ahora debajo de la Card vamos a añadir un botón.
+
+![image](https://user-images.githubusercontent.com/23094588/133125318-cfd6bccf-ae88-4843-aaf9-e8327950094f.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133125360-ce0a8b38-4f87-4836-87e0-02a70aa46d5a.png)
+
+Por ahora el lado izquierdo correspondiente al **`*ngIf`** ya esta listo, vamos a pasar al lado del **`*ngFor`**, vamos a buscar en Bootstrap las **List**.
+
+![image](https://user-images.githubusercontent.com/23094588/133125704-2cf4629f-5857-4a99-a64e-f3f71b2a71b7.png)
+
+El primer ejemplo que sale nos vale, lo copiamos y lo pegamos debajo del **`*ngFor`**.
+
+![image](https://user-images.githubusercontent.com/23094588/133125853-cb2fc629-ccf5-4ca6-99be-0d50fb5a3910.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133125910-3da2acee-8877-4478-abbc-dcc8ce519d0e.png)
+
+Vamos a hacer que la Card se muestre al 100% y que el botón use también todo el ancho del área donde se pinta, con Bootstrap se usaba la clase **`btn-block`** pero eso a cambiado con Bootstrap 5 que es el que estamos usando.
+
+![image](https://user-images.githubusercontent.com/23094588/133127226-6f032917-c796-472a-93f5-595c14e318f0.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133127267-754204a0-9a2f-44d3-bd6b-90906c97d71b.png)
+
+Cuando nos colocamos sobre el botón cambia su color.
+
+![image](https://user-images.githubusercontent.com/23094588/133127360-f39eb5a4-09d7-4b53-8a8b-158d20aea1c6.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/133127733-c8148c70-5733-47bc-8036-66c5174c9dd2.png)
 
 
 ## Directivas estructurales: **`*ngFor`** y el **`*ngIf`** 10:01
+
+Vamos a personalizar los textos que tenemos en Body Component, vamos **`body.component.ts`** y vamos a insertar la propiedad **`frase`**.
+
+![image](https://user-images.githubusercontent.com/23094588/133128709-7c0b6258-910c-45f0-a10a-40ce90be62fc.png)
+
+Vamos a usar este objeto **`frase`** dentro de nuestra Card de la siguiente forma:
+
+![image](https://user-images.githubusercontent.com/23094588/133129057-25e93523-25e6-4ce5-910f-bd1168778eb2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133129106-3e895f28-bcd5-4773-b98a-abbfd242fa2b.png)
+
+### Directivas estructural **`*ngIf`**
+
+Ahora vamos a darle funcionalidad al Botón cuando lo pulsemos ocultará la Card y cuando lo volvamos a pulsar mostrará la Card nuevamente. Esto se logra con la directivas estructural **`*ngIf`** la cual se coloca en el elemento a Ocultar/Mostrar (el cual es realmente destruido por HTML o construido por HTML según sea el caso), en este caso la Card y debe contener una expresión booleana si es verdadera se mostrara el elemento y si es falsa se ocultara.
+
+Vamos a insertar una nueva propiedad en nuestro **`body.component.ts`** llamada **`mostrar`** inicializada a **`true`**.
+
+![image](https://user-images.githubusercontent.com/23094588/133130350-1c2431cb-cb8f-416b-87e3-cea387daf12a.png)
+
+Y en nuestro **`body.component.html`** vamos a insertar la directiva **`*ngIf`** en nuestra Card, además de esto cada que pulsemos el botón el valor de **`mostrar`** se debe cambiar por su opuesto esto se logra sustituyendo su valor por su negativo, el código nos queda así:
+
+![image](https://user-images.githubusercontent.com/23094588/133130934-96fd5715-6dd4-43c6-8c7d-a15430812bda.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133130977-3dd8f6dc-8acc-4a52-80f3-5b9334cfbc0d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133131024-8313e603-a8bc-4a94-b7d0-a66cdeee16e7.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133130982-101a4bd7-6e23-4567-bce5-412f901b5b46.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/133131222-01a23b7b-43d1-471f-9da6-e9f0800ae01c.png)
+
+
+### Directivas estructural **`*ngFor`**
+
+El **`*ngFor`** trabaja a base de Arreglos para recorrererlos y hacer algo con ellos por ejemplo pintar sus valores. Para empezar vamos a declarar una nueva propiedad de tipo Array llamado **`personajes`** dentro de **`body.component.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/133131794-b8fa8250-cc2b-46b6-9f40-832cccdf6022.png)
+
+Como esta es una propiedad de la clase puedo interpolar su valor dentro del HTML de la siguiente forma:
+
+![image](https://user-images.githubusercontent.com/23094588/133131943-bf5ac93b-b47c-46ce-bce4-ec1f2536222c.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133132064-e5b5492b-3a34-46a8-b8a0-c72dc99cf759.png)
+
+Aparecen al final, pero yo quiero que aparezcan como opciones de la lista ordenada que se encuentra debajo del título **`*ngFor`**, eso lo logramos usando precisamente la directivas estructural **`*ngFor`** como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/133132689-c0ca3950-f3f5-4ee0-89de-afb6a090bdb0.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133132729-d3c59143-188c-463c-b09a-1e818bc5f84a.png)
+
+Como vemos usamos el **`*ngFor`** sobre el elemento a repetir, usamos la propiedad **`personajes`** y por cada iteracción la vamos guardando en **`personaj`** y ese valor es el que interpolamos por eso se van renderizando los nombres.
+
+**`*ngFor`** tiene un atributo llamado **`*index`** el cual podemos usar para saber en que iteracción se encuentra, se usa así:
+
+![image](https://user-images.githubusercontent.com/23094588/133133948-8812b1f6-a3de-412e-aa10-f2aeb50ef45e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133133881-ef122da5-d342-413d-869e-5cd82cc26775.png)
+
+Podemos sumarle **`1`** a **`i`** para enumerar mejor la lista.
+
+![image](https://user-images.githubusercontent.com/23094588/133134121-662280c2-0c0b-4e9d-9899-9d42e52e1a21.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133134256-35156a67-d6e5-488d-aaf3-3edd4b8f5350.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/133134618-97c9c177-3e87-42de-8cf0-7cfa7638dd03.png)
+
 ## Examen teórico - de la sección Hola Mundo - 10 preguntas
+
+![image](https://user-images.githubusercontent.com/23094588/133134444-58c1f99f-f56e-4ac0-9cfa-6c0377a15b93.png)
+
 ## Código fuente de la sección 00:23
