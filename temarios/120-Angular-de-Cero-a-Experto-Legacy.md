@@ -150,7 +150,7 @@ Anímate e inscríbete, te veo adentro.
 * Examen teórico - de la sección Hola Mundo - 10 preguntas
 * Código fuente de la sección 00:23
 
-### 04 Aplicación #2: Aplicación de una sola página (SPA) - 26 clases • 2h 24m
+### [04 Aplicación #2: Aplicación de una sola página SPA](https://github.com/adolfodelarosades/Angular/blob/main/temarios/120-Angular-de-Cero-a-Experto-Legacy/04-Aplicacion-2-SPA.md) - 26 clases • 2h 24m
 
 * Introducción a la sección 00:55
 * ¿Qué veremos en esta sección? 00:30
