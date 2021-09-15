@@ -620,7 +620,39 @@ Al recargar la APP tenemos:
 
 ![image](https://user-images.githubusercontent.com/23094588/133386889-20b7c956-fb8f-4a05-b4b7-23785b8b83fc.png)
 
+La interpolación es una forma de poner el valor de la imagen, pero existe otra forma de indicarlo para que lo maneje Angular, como sigue:
 
+![image](https://user-images.githubusercontent.com/23094588/133483745-b0a78bb1-3f3d-445d-b934-c5449a005617.png)
+
+El resultado es el mismo:
+
+![image](https://user-images.githubusercontent.com/23094588/133386851-03d733fc-0f21-445e-8b94-bcc403532b0c.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133386889-20b7c956-fb8f-4a05-b4b7-23785b8b83fc.png)
+
+Vamos a cargar los demás datos, en algunos de ellos no nos queda más que usar la interpolación.
+
+![image](https://user-images.githubusercontent.com/23094588/133484560-dd845c7b-bc97-4f6e-9fe9-1d068a581fcf.png)
+
+El resultado es el siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/133484627-5146c06e-0d3e-4a30-9f4f-ffabc6d792b7.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133484681-21d2bd00-27db-4a62-a6e4-4f942ecbeb89.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133484728-be963739-521b-4b26-bb45-662fa95639bf.png)
+
+**`NOTA:`** Con Bootstrap v.4 se conseguia un efecto "Pinteres" en las tarjetas, con Bootstrap v.5 no lo he conseguido replicar.
+
+![image](https://user-images.githubusercontent.com/23094588/133485011-1eb32185-2c0e-473a-9090-2a9456de2533.png)
+
+Con la Vista de Móvil se ve así:
+
+![image](https://user-images.githubusercontent.com/23094588/133485371-529aa41f-1f1c-4f85-b26f-14559848d090.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/133485837-9d4c15d5-e265-4284-832a-6e7d9a59bdf5.png)
 
 
 ## Rutas con parametros - Router 09:12
