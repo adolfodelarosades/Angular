@@ -656,6 +656,56 @@ Con la Vista de Móvil se ve así:
 
 
 ## Rutas con parametros - Router 09:12
+
+En esta lección vamos a hacer que cuando pulsemos el botón de cada Heroe se vaya al detalle.
+
+### Creación del Componente `Heroe`
+
+Vamos a crear el componente que nos va a servir como detalle del Heroe.
+
+![image](https://user-images.githubusercontent.com/23094588/133487072-48abeb3c-9cff-4eaa-9e89-223a6c678c61.png)
+
+### Ruta hacía el Heroe
+
+Debemos añadir una ruta hacia el Heroe que desemos, por lo que para distingirlo necesitamos un parámetro para saber a que Heroe debemos ir, vamos al archivo **`app.routes.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/133487959-a12c274e-578b-41d6-80be-0394ae9b948f.png)
+
+Observese que con **`:id`** se pasan el parámetro.
+
+### Invocar la Ruta con Parámetros
+
+Existen dos formas de invocar las Rutas con un botón o con un enlace. Vamos a empezar por ver usando un enlace, por lo cual comentamos el botón que hemos puesto en **`heroes.component.html`** y ponemos el enlace como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/133491866-411b04bc-b838-419d-872a-72800b67622b.png)
+
+Como podemos observar la ruta que invocamos ya tiene dos partes y como habíamos hablado antes cada parte es un elemento del array que pasamos como parámetros. **`[routerLink]="['heroe', i]"`**, el primero es la ruta que definimos **`heroe`** y el segundo es el elemto a donde nos queremos ir **`i`**, en este caso estamos usando la **`i`** que tiene el valor del **`index`** y nos sirve para indiocar a que elemento deseamos movernos.
+
+En teoría ya debería funcionar, vamos a probarlo.
+
+![image](https://user-images.githubusercontent.com/23094588/133489265-311971b0-c35d-40b1-a2cc-752ac96e4e9f.png)
+
+Al pulsar sobre algún Heroe siempre se va a la página Home.
+
+![image](https://user-images.githubusercontent.com/23094588/133489741-4a164577-8cf1-48b8-aea4-1e96147786eb.png)
+
+**¿Por qué no me redirecciona bien?**
+
+Cuando usamos este tipo de sintaxis **`[routerLink]="['heroe', i]"`** y recordemos que estamos dentro de un **`Router Outlet`**, es decir estamos en una subpagina, ***necesitamos movernos a la raíz***, si yo cargo manualmente la ruta **`http://localhost:4200/heroe/1`** si se carga la página.
+
+![image](https://user-images.githubusercontent.com/23094588/133491959-55e1a693-270e-4c92-b062-838d2b4a649d.png)
+
+Una posible solución es indicar en la ruta toda la ruta completa que sigue para llegar a esta página.
+
+![image](https://user-images.githubusercontent.com/23094588/133492512-704b2f99-a24f-41a0-92d6-b26da2557ba5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133492599-b089e7e8-94e4-4ba0-a1fe-33accc7a6d4b.png)
+
+Así trabaja pero la ruta nos queda así **`http://localhost:4200/heroes/heroe/0`** por que le esta haciendo un append a la ruta por que ya estamos en ese lugar, existe otra opción que nos permite no movernos a una sub-página, primero dejamos la ruta como la teniamos inicialmente y en **`heroes.component.ts`** ponemos la ruta con una barra es decir **`[routerLink]="['/heroe', i]"`**.
+
+
+
+
 ## Recibiendo parámetros por URL - ActivatedRoute 06:53
 ## Tarea práctica #1 - Componente del héroe 02:50
 ## Resolución de la tarea práctica #1 - Componente del héroe 05:14
