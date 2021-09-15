@@ -609,6 +609,20 @@ Si recargamos la APP tenemos lo mismo
 
 
 ## Página de Heroes - Diseño con **`*ngFor`** 04:57
+
+Vamos a hacer que todos los datos de los Heroes se rendericen el componente Heroes, ya contamos en **`heroes.component.ts`** con la propiedad **`heroes`** que contiene sus valores, vamos a usarla dentro del HTML **`heroes.component.html`** usando la directiva **`*ngFor`**, empecemos por meterla y asignar la imagen.
+
+![image](https://user-images.githubusercontent.com/23094588/133386791-12d57cb6-9a41-45c2-9ba4-19602b11d0b3.png)
+
+Al recargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/133386851-03d733fc-0f21-445e-8b94-bcc403532b0c.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133386889-20b7c956-fb8f-4a05-b4b7-23785b8b83fc.png)
+
+
+
+
 ## Rutas con parametros - Router 09:12
 ## Recibiendo parámetros por URL - ActivatedRoute 06:53
 ## Tarea práctica #1 - Componente del héroe 02:50
