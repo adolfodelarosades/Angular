@@ -411,6 +411,7 @@ Por ahora lo vamos a dejar sin el **`#`** y ya más adelante veremos donde es do
 
 ![image](https://user-images.githubusercontent.com/23094588/133308405-a1e7d89d-b864-4e1c-b317-e0f7056fd393.png)
 
+
 ## RouterLink y RouterLinkActive - Completando las rutas 09:10
 
 Vamos a añadir las dos rutas para los dos componentes adicionales que tenemos **`AboutComponent`** y **`HeroesComponent`**.
@@ -476,19 +477,137 @@ Para marcar una página como activa se usa la propiedad **`routerLinkActive`**, 
 
 Al recargar la APP tenemos:
 
+![image](https://user-images.githubusercontent.com/23094588/133374233-cd04e904-c983-43a6-86dd-292815564e53.png)
 
-
-
+![image](https://user-images.githubusercontent.com/23094588/133374258-ab7958f9-3051-421e-83e3-1a8617ae998f.png)
 
 ![image](https://user-images.githubusercontent.com/23094588/133313838-1a9cc6b6-a2bc-497e-be4a-1652ecb75e29.png)
 
+En teoría se debería ver más blamco el título de la opción marcada, pero creo que no es del todo así.
 
+#### GIT
 
+![image](https://user-images.githubusercontent.com/23094588/133374478-6061efa4-97e2-4895-bcfd-cac7b9c5d9ba.png)
 
 
 ## Componente Heroes - diseño 05:31
+
+Para el diseño de los Heroes vamos a usar las Cards de Bootstrap.
+
+![image](https://user-images.githubusercontent.com/23094588/133374676-2d686f92-a28b-4ff1-b05b-54c86a06707c.png)
+
+En **`heroes.component.ts`** vamos a meter el siguiente código:
+
+![image](https://user-images.githubusercontent.com/23094588/133377620-acac9764-eea2-4f14-b0d7-0e60c910e262.png)
+
+Hemos metido en **`styles.css`** el estilo 
+
+![image](https://user-images.githubusercontent.com/23094588/133377724-5365af17-449f-46e6-b3e2-2272613a728c.png)
+
+para dejar un espacio en la parte de abajo.
+
+Al cargar la APP vemos:
+
+![image](https://user-images.githubusercontent.com/23094588/133377780-beee9c59-cf6a-4094-884f-523c19532c06.png)
+
+Vamos a cambiar el color del botón del Navbar a Azul en lugar de Verde como esta ahora.
+
+![image](https://user-images.githubusercontent.com/23094588/133377950-3487a706-fe40-4088-a201-d7d6d873fba0.png)
+
+La APP final nos queda así:
+
+![image](https://user-images.githubusercontent.com/23094588/133378018-d39fde72-dc11-49e2-ad7f-5718a1efb745.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/133378098-129d969f-622c-4461-a816-ade875e4a7c7.png)
+
 ## Introducción a los Servicios 02:39
+
+Atualmente nuestra aplicación la tenemos así
+
+![image](https://user-images.githubusercontent.com/23094588/133378178-4cc6e342-34b6-4bac-b737-e4ca2879d527.png)
+
+Estamos en el punto donde ya necesitamos ***Datos*** para manejar la información de nuestros Heroes que se va a desplegar en el Componente de Heroe, pudiera ser que esos ***Datos*** los tuvieramos directamente en el Componente de Heroe, pero que pasa si después tenemos otra pantalla que necesita la información de los heroes, no vamos a duplicar el código, no sería eficiente. Para eso existen los ***Servicios*** nosotros vamos a crear el servicio Heroes que sera el encargado de manejar la información referente a los Heroes de nuestra aplicación.
+
+Los servicios tienen las siguientes características:
+
+![image](https://user-images.githubusercontent.com/23094588/133378717-880be8b2-c1ec-48c2-88d8-b78f06a45164.png)
+
+Los servicios nos permiten compartir la información a todo aquel que se la solicite.
+
+![image](https://user-images.githubusercontent.com/23094588/133379040-dca66316-8503-4bdf-a331-8f2fd6f0e2f5.png)
+
 ## Creando nuestro primer servicio - HeroesService 10:55
+
+Vamos a crear manualmente nuestro Servicio de Heroes
+
+Vamos a crear en la carpeta **`app`** la carpeta **`servicios`** y dentro de ella vamos a crear el archivo **`heroes.service.ts`** con el siguiente código:
+
+![image](https://user-images.githubusercontent.com/23094588/133379618-4592a02b-45f9-4fba-9530-4b861577cf38.png)
+
+Los servicios van decorados con **`@Injectable()`**.
+
+Una vez creado el servicio hay que indicarle a Angular que dispone de este servicio en el **`app.module.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/133380051-93462e6d-e301-4be6-901a-5588d7cdce4b.png)
+
+Los servicios se deben incluir en la sección de **`providers`**.
+
+Ya lo unico que nos falta es usar ese servicio, esto lo haremos en la clase **`heroes.components.ts`**, el servicio lo tenemos que ***Inyectar*** en el constructor de la clase para poder usarlo
+
+![image](https://user-images.githubusercontent.com/23094588/133380503-59d86c1c-c6a9-461e-9400-67d1975968fc.png)
+
+Tan solo con hacer esto al recargar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/133380625-877b144f-1922-4999-9645-1da13712899b.png)
+
+Al inyectar el Servicio en el Componente Heroes y cargar este ultimo llama al Constructor del Servicio y nos muestra el mensaje que habíamos puesto en la consola.
+
+Ahora en los recursos del proyecto tenemos el archivo **`data.txt`** vamos a copiar su contenido y se lo vamos a asignar a una propiedad del Servicio llamada **`heroes`** el cual es array, el código queda así:
+
+![image](https://user-images.githubusercontent.com/23094588/133382142-82530047-c77c-437b-8c57-962619b503dd.png)
+
+Como la propiedad **`heroes`** es privada no podemos acceder a su contenido, nos vamos a crear un método público **`getHeroes()`** para que nos retorne su valor.
+
+![image](https://user-images.githubusercontent.com/23094588/133382194-e990c0d8-a5ef-4900-be20-4292ad68e63a.png)
+
+Ahora nos vamos a **`heroes.component.ts`** vamos a declarar una propiedad llamada **`heroes`** que será un array y será la encargada de recibir los datos que nos devuelva el servicio, y en el método **`ngOnInit()`** que se ejecuta después de que lo hace el constructor vamos a hacer la asignación de los heroes que recibimos del servicio y los asignamos a la propiedad y los mostramos en la consola.
+
+![image](https://user-images.githubusercontent.com/23094588/133383160-0f136282-6d68-4512-b5a2-d44a4e55de8e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133383205-8c39675a-3d29-41d5-b066-5bd0342a147f.png)
+
+### Crear la Interfaz de Heroes
+
+Si vemos los Heroes tienen una estructura determinada sería bueno definirla para que todos los heroes que se lleguen a añadir la cumplan, esto lo logramos realizando una Interfaz, la vamos a crear en el servicio.
+
+![image](https://user-images.githubusercontent.com/23094588/133383918-8c0326b3-a627-40c2-9dcf-cbdac4c77c49.png)
+
+Y vamos a indicar que la propiedad **`heroes`** es un array de **`Heroe`** y no de **`any`** como lo teniamos hasta ahora.
+
+![image](https://user-images.githubusercontent.com/23094588/133384127-69a392a0-e124-4fe6-8698-85125683145e.png)
+
+Incluso en la función que regresa los Heroes podemos ser más especificos e indicar que va a regresar un array de **`Heroes`** con:
+
+![image](https://user-images.githubusercontent.com/23094588/133384670-736e2e29-28fb-4dc6-a7a8-4cc30d6be6ff.png)
+
+En **`heroes.component.ts`** también vamos a cambiar la propiedad **`heroes`** de tipo **`Heroe`** (Hay que importar la Interfaz).
+
+![image](https://user-images.githubusercontent.com/23094588/133384402-9526000b-596e-4216-976d-e670809f05b8.png)
+
+Si recargamos la APP tenemos lo mismo
+
+![image](https://user-images.githubusercontent.com/23094588/133385452-0bf8581b-cc13-4c7d-a980-caa14f8c585d.png)
+
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/133385189-5897916b-efe7-440d-a3fc-ede5cc98de51.png)
+
+![image](https://user-images.githubusercontent.com/23094588/133385301-5cd81832-5cc5-4930-b75d-fa1643b01f81.png)
+
+
 ## Página de Heroes - Diseño con **`*ngFor`** 04:57
 ## Rutas con parametros - Router 09:12
 ## Recibiendo parámetros por URL - ActivatedRoute 06:53
