@@ -701,12 +701,79 @@ Una posible solución es indicar en la ruta toda la ruta completa que sigue para
 
 ![image](https://user-images.githubusercontent.com/23094588/133492599-b089e7e8-94e4-4ba0-a1fe-33accc7a6d4b.png)
 
-Así trabaja pero la ruta nos queda así **`http://localhost:4200/heroes/heroe/0`** por que le esta haciendo un append a la ruta por que ya estamos en ese lugar, existe otra opción que nos permite no movernos a una sub-página, primero dejamos la ruta como la teniamos inicialmente y en **`heroes.component.ts`** ponemos la ruta con una barra es decir **`[routerLink]="['/heroe', i]"`**.
+Así trabaja pero la ruta nos queda así **`http://localhost:4200/heroes/heroe/0`** por que le esta haciendo un append a la ruta por que ya estamos en ese lugar, existe otra opción que nos permite no movernos a una sub-página, primero dejamos la ruta como la teniamos inicialmente en **`app.routes.ts`** y en **`heroes.component.html`** ponemos la ruta con una barra es decir **`[routerLink]="['/heroe', i]"`**.
 
+![image](https://user-images.githubusercontent.com/23094588/134719124-499c68d1-dc33-4aac-b8db-e93107696d40.png)
 
+Ahora si cargamos http://localhost:4200/heroes vemos la lista de los Heroes donde podemos pulsar el botón de cada uno de ellos:
 
+![image](https://user-images.githubusercontent.com/23094588/134719261-59e70ed6-f1b9-4659-a975-c5d350ebadb4.png)
+
+![image](https://user-images.githubusercontent.com/23094588/134719301-ff4773b7-7b3b-446d-b21d-e98d2054416c.png)
+
+![image](https://user-images.githubusercontent.com/23094588/134719339-2d4524d6-4601-48f6-bb44-806abd4318cb.png)
+
+![image](https://user-images.githubusercontent.com/23094588/134719390-f04001e4-72db-49d5-9494-bd5cc9396f54.png)
+
+Como vemos se desplaza al heroe que pulsemos, falta el diseño de la página Heroe, ***esto lo hemos hecho mediante código de programación pero falta ver como lo hacemos mediante un `routerLink`***. 
+
+Si queremos usar el botón que debería invocar algún método de nuestro Controlador y llamarlo. Vamos a comentar el enlace y descomentar el botón con el siguiente código en **`heroes.component.html`**:
+
+![image](https://user-images.githubusercontent.com/23094588/134720307-0893a6a2-2e9d-4389-ba65-d55e85e81421.png)
+
+Ahora vamos a crear el método **`verHeroe(index)`** en el Componente **`heroes.component.ts`** con el siguiente código:
+
+![image](https://user-images.githubusercontent.com/23094588/134720668-df4bb804-74d5-4e78-9e1a-31db104c5290.png)
+
+Al llamar al Heroe en la consola nos imprime su indice:
+
+![image](https://user-images.githubusercontent.com/23094588/134720817-1f01f298-e3e2-4538-9152-f15bf42bfa8f.png)
+
+He presionado en los tres primeros heroes y vemos como nos indica el indice asociado a cada uno de ellos, lo que realmente tiene que hacer es redireccionar a cada uno de los heroes. Como esto ya tiene que ver con las rutas dentro del Componente **`heroes.component.ts`** debemos primero importar el **`Router`**, el cual para poderlo usar lo inyectamos en el Constructor y en nuestro método **`verHeroe(index)`** vamos a incluir la instrocción **`this.router.navigate( ['/heroe', index] );`**, con la cual estamos indicando que debemos navegar a la dirección que le pongamos como parámetro, recordemos que esta dirección se le indica como array en este caso es **`['/heroe', index]`** que formaran la parte final de la ruta **`http://localhost:4200/heroe/1`** es decir **`/heroe/1`**, recordemos cada elemento del array es una parte de la ruta marcada por la diagonal **`/`**.
+
+![image](https://user-images.githubusercontent.com/23094588/134722028-9a5c9d6a-2220-45e5-a19e-52446ec228a3.png)
+
+Ahora si pulsamos en el botón me redirecciona al Heroe seleccionado:
+
+![image](https://user-images.githubusercontent.com/23094588/134722123-ff94803e-a483-403c-a727-33679307e8eb.png)
+
+![image](https://user-images.githubusercontent.com/23094588/134722159-f9f4a566-b868-44ac-8a08-85a7a1433bf6.png)
+
+#### GIT 
+
+![image](https://user-images.githubusercontent.com/23094588/134722393-5f670b9c-5e37-4fc8-b4c7-a62f7470efd2.png)
 
 ## Recibiendo parámetros por URL - ActivatedRoute 06:53
+
+Ahora vamos a trabajar dentro del Componente **`heroe.component.ts`** que es el que debe hacer manejo del parámetro que se esta mandando en la URL. 
+
+Para recuperar el parámetro que viene en el URL necesitamos usar el **`ActivatedRoute`**, el cual importamos e inyectamos en el Constructor, y dentro del mismo constructor vamos a hacer la códificación para recuperar el parámetro usando **`this.activatedRoute.params`**, el cual regresa un **"Observador"**, para usarlo nosotros necesitamos suscribirnos a ese Observador con el método **`this.activatedRoute.params.subscribe`** dentro del cual ya nos regresa los parámetros (le ponemos el nombre que queremos por ejemplo **`params`**) y usamos una función de flecha para manipular los parámetros que recibamos.
+
+![image](https://user-images.githubusercontent.com/23094588/134723733-b014e832-e429-4b98-882a-6cc5ca8dd179.png)
+
+Si recargamos la APP y cargamos el primer Heroe vamos atener:
+
+![image](https://user-images.githubusercontent.com/23094588/134723848-c3be9a92-234c-445b-988c-6c5adc7f5e6d.png)
+
+Esta recuperando un **Objeto** el cual contiene **`{id: '0'}`** es el Cero que se recupera de la URL **`http://localhost:4200/heroe/0`** y el **`id`** aparece por que en el **`app.routes.ts`** pusimos **`{ path: 'heroe/:id', component: HeroeComponent },`**, ***tengan presente que siempre se van a recibir Strings***, para recuperar solo el valor del **`id`**, podemos hacerlo con **`params.id`**, pero como Angular no sabe que realmente el objeto **`params`** tiene un **`id`** una forma más segura es usar **`params['id']`**.
+
+![image](https://user-images.githubusercontent.com/23094588/134724329-337d3948-1661-472f-aeac-e292882df619.png)
+
+![image](https://user-images.githubusercontent.com/23094588/134724372-84c6a712-e9fa-4449-b63d-6636c5d9fb51.png)
+
+De esta manera ya solo recuperamos el valor **`0`** (como String).
+
+### Añadir `getHeroe` en el Servicio
+
+Para recuperar un Heroe por medio de su identificador o indice necesitamos tener un método que lo recupere en el Servicio, vamos a **`heroes.service.ts`** y vamos a añadir el método **``**:
+
+![image](https://user-images.githubusercontent.com/23094588/134725231-5a6d6f9e-d435-44a6-8ef1-3ceed0d839af.png)
+
+Se queja por que en el Array estoy poniendo como indice un tipo String, vamos a dejarlo así de momento, regresamos a 
+
+
+
+
 ## Tarea práctica #1 - Componente del héroe 02:50
 ## Resolución de la tarea práctica #1 - Componente del héroe 05:14
 ## Pipes: Transformación visual de la data. 03:20
