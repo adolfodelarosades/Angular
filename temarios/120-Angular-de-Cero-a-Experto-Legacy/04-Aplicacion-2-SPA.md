@@ -765,14 +765,25 @@ De esta manera ya solo recuperamos el valor **`0`** (como String).
 
 ### Añadir `getHeroe` en el Servicio
 
-Para recuperar un Heroe por medio de su identificador o indice necesitamos tener un método que lo recupere en el Servicio, vamos a **`heroes.service.ts`** y vamos a añadir el método **``**:
+Para recuperar un Heroe por medio de su identificador o indice necesitamos tener un método que lo recupere en el Servicio, vamos a **`heroes.service.ts`** y vamos a añadir el método **`getHeroe`**:
 
 ![image](https://user-images.githubusercontent.com/23094588/134725231-5a6d6f9e-d435-44a6-8ef1-3ceed0d839af.png)
 
-Se queja por que en el Array estoy poniendo como indice un tipo String, vamos a dejarlo así de momento, regresamos a 
+Se queja por que en el Array estoy poniendo como indice un tipo String, vamos a dejarlo así de momento, como hay error en la compilación lo he cambiado a:
 
+![image](https://user-images.githubusercontent.com/23094588/134901604-bd0d015c-815f-4067-a0c5-11cd4a371e30.png)
 
+regresamos al Componente **`heroes.component.ts`** , donde vamos a crear un atributo **`heroe`** por el momento de tipo **`any`** que será la variable local para mostrarla en el Template, tenemos que importar el servicio **`HeroesService`** para llamar al método **`getHeroe`** recien creado, lo inyectamos en el Constructor y ya podemos asignar al atributo **`heroe`** lo que nos retorne el método  **`getHeroe`** del Servicio, por ahora simplemente lo vamos a mostrar en la consola.
 
+![image](https://user-images.githubusercontent.com/23094588/134903156-efadad45-90b3-42cb-971b-6d8dea1be1e3.png)
+
+Al cargar alguno de los Heroes tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/134903409-f021dab1-7ac5-475a-83e8-3389d440b74d.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/134903790-92c17f03-44de-4b97-9298-ae0cab1a21cf.png)
 
 ## Tarea práctica #1 - Componente del héroe 02:50
 ## Resolución de la tarea práctica #1 - Componente del héroe 05:14
