@@ -816,8 +816,36 @@ Al probar la APP tenemos:
 
 ## Pipes: Transformación visual de la data. 03:20
 
+Los **Pipes** nos permiten transformar la forma en que visualizamos los datos, ***no cambian el valor***, simplemente se visualiza de forma diferente, los Pipes disponibles son:
+
+![image](https://user-images.githubusercontent.com/23094588/135751961-562a7650-ab5a-4088-ba13-3b4f02f214bb.png)
+
+Por ejemplo en el template del Heroe estamos mostrando el título así:
+
+![image](https://user-images.githubusercontent.com/23094588/135751814-b7c4da22-da41-4abf-b36b-da8ad9f41acf.png)
+
+Puede ser que queramos que el nombre del Heroe siempre se vea Capitalizado y en la fecha solo mostrar el año, lo realizamos apliacando los Pipes **` uppercase`** y **`date`** como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/135752140-ebbc171b-c3ab-400a-9b86-0af8dfcf0f27.png)
+
+Al visualizar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/135752157-368d1aec-82f1-4649-85db-50c6969f5c0c.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/135752177-ccbe5bc2-f89e-4c08-8e71-592c4b540913.png)
+
 
 ## Buscador de Héroes 06:14
+
+En esta lección vamos a aplicar la funcionalidad del Search o Buscador que tenemos en la cabecera. Nos vamos al Navbar Component **`navbar.component.html`** que esta dentro de la carpeta **`shared`**, lo primero que vamos a hacer es cambiar **`Search`** por **`Buscar`**.
+
+![image](https://user-images.githubusercontent.com/23094588/135752322-d613c8cd-1ce7-45a3-8744-85a919a06904.png)
+
+Lo que queremos es que cuando escribamos en el campo de texto se dispare un evento que vaya a buscar lo que escribimos a la lista de los Héroes para localizarlos. Como podemos observar el campo de texto y el botón estan dentro de un Formulario, por el momento no vamos a usar el Submit del formulario, por el momento solo queremos el valor de la caja de texto
+
+
 ## Tarea práctica #2: Crear la pantalla de búsqueda de héroes. 02:02
 ## Resolución de la tarea 2 - Buscador de Héroes 07:55
 ## Plus: Mostrando un mensaje cuando no hay resultados. 02:01
