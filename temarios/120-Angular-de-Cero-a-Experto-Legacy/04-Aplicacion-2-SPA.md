@@ -786,8 +786,37 @@ Al cargar alguno de los Heroes tenemos:
 ![image](https://user-images.githubusercontent.com/23094588/134903790-92c17f03-44de-4b97-9298-ae0cab1a21cf.png)
 
 ## Tarea práctica #1 - Componente del héroe 02:50
+
+Vamos a crear la página del Heroe donde pinte la información correspondiente a cada Heroe, debemos añadir dos imagenes que nos sirven para identificar la casa a la que pertenece cada heroe **`marvel-logo.png`** y **`dc-logo.jpg`**.
+
 ## Resolución de la tarea práctica #1 - Componente del héroe 05:14
+
+Vamos a ir al template del Heroe **`heroe.component.html`** y vamos a añadir el siguiente código:
+
+![image](https://user-images.githubusercontent.com/23094588/135751479-acaccd63-1716-4387-b572-d7b426312626.png)
+
+Estamos obteniendo la información del Heroe con las interpolaciones. Como las imágenes son de diferentes tamaños vamos a añadir un estilo en **`styles.css`**:
+
+![image](https://user-images.githubusercontent.com/23094588/135751541-97303d1b-1433-47cd-8fec-86e05d2cf2be.png)
+
+Al probar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/135751613-ccb498fc-05e7-4589-9289-83816bfac343.png)
+
+![image](https://user-images.githubusercontent.com/23094588/135751623-9ff1c8ae-3efb-4465-9afd-54b6b805f4de.png)
+
+![image](https://user-images.githubusercontent.com/23094588/135751632-fc193d0c-4644-495a-88af-c44d17760f4d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/135751644-ab25bda5-9d23-45bb-a5ab-beb563d1f5e5.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/135751674-b0d695a6-49aa-4df6-b59e-7270e3d5a226.png)
+
+
 ## Pipes: Transformación visual de la data. 03:20
+
+
 ## Buscador de Héroes 06:14
 ## Tarea práctica #2: Crear la pantalla de búsqueda de héroes. 02:02
 ## Resolución de la tarea 2 - Buscador de Héroes 07:55
