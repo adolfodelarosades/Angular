@@ -843,7 +843,9 @@ En esta lección vamos a aplicar la funcionalidad del Search o Buscador que tene
 
 ![image](https://user-images.githubusercontent.com/23094588/135752322-d613c8cd-1ce7-45a3-8744-85a919a06904.png)
 
-Lo que queremos es que cuando escribamos en el campo de texto se dispare un evento que vaya a buscar lo que escribimos a la lista de los Héroes para localizarlos. Como podemos observar el campo de texto y el botón estan dentro de un Formulario, por el momento no vamos a usar el Submit del formulario, por el momento solo queremos el valor de la caja de texto
+Lo que queremos es que cuando escribamos en el campo de texto se dispare un evento que vaya a buscar lo que escribimos a la lista de los Héroes para localizarlos. Como podemos observar el campo de texto y el botón estan dentro de un Formulario, por el momento no vamos a usar el Submit del formulario, solo queremos recuperar el valor de la caja de texto podemos hacer referencia al objeto usando la sintaxis: **`#textoABuscar`** y que cuando pulsemos algo en él se dispare un evento con **`(keyup.enter)=buscarHeroe(textoABuscar.value)`**.
+
+El botón lo cambiamos de un **`submit`** a un **`button`**
 
 
 ## Tarea práctica #2: Crear la pantalla de búsqueda de héroes. 02:02
