@@ -132,7 +132,7 @@ Anímate e inscríbete, te veo adentro.
 * Examen teórico #1 - 10 preguntas
 * Código fuente de la sección 00:19
 
-### [03 Aplicación #1 Hola Mundo](120-Angular-de-Cero-a-Experto-Legacy/03-Aplicacion-1-Hola-Mundo.md) - 14 clases • 1h 26m
+### [03 Aplicación #1 Hola Mundo](120-Angular-de-Cero-a-Experto-Legacy/03-Aplicacion-1-Hola-Mundo.md) - 14 clases • 1h 26m :+1:
 
 * Introducción a la sección 00:43
 * ¿Qué aprenderemos en esta sección? 00:21
