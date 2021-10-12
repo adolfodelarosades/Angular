@@ -843,9 +843,20 @@ En esta lección vamos a aplicar la funcionalidad del Search o Buscador que tene
 
 ![image](https://user-images.githubusercontent.com/23094588/135752322-d613c8cd-1ce7-45a3-8744-85a919a06904.png)
 
-Lo que queremos es que cuando escribamos en el campo de texto se dispare un evento que vaya a buscar lo que escribimos a la lista de los Héroes para localizarlos. Como podemos observar el campo de texto y el botón estan dentro de un Formulario, por el momento no vamos a usar el Submit del formulario, solo queremos recuperar el valor de la caja de texto podemos hacer referencia al objeto usando la sintaxis: **`#textoABuscar`** y que cuando pulsemos algo en él se dispare un evento con **`(keyup.enter)=buscarHeroe(textoABuscar.value)`**.
+Lo que queremos es que cuando escribamos en el campo de texto se dispare un evento que vaya a buscar lo que escribimos a la lista de los Héroes para localizarlos. Como podemos observar el campo de texto y el botón estan dentro de un Formulario, por el momento no vamos a usar el Submit del formulario, solo queremos recuperar el valor de la caja de texto podemos hacer referencia al objeto usando la sintaxis: **`#textoABuscar`** y que cuando pulsemos y soltemos el ***Enter*** se dispare un evento que invoca la función **`buscarHeroe(...)`** en la cual vamos a mandarle el contenido de la caja de texto con **`textoABuscar.value`** todo completo nos queda así: **`(keyup.enter)=buscarHeroe(textoABuscar.value)`**.
 
-El botón lo cambiamos de un **`submit`** a un **`button`**
+El botón lo cambiamos de un **`submit`** a un **`button`** normal para que no haga in submit involuntario.
+
+![image](https://user-images.githubusercontent.com/23094588/136665263-012fb2e4-4b6e-4be9-8e7e-b691651d815b.png)
+
+Ahora vamos a crear la función **`buscarHeroe(...)`** en **`navbar.component.ts`** 
+
+![image](https://user-images.githubusercontent.com/23094588/136665295-b0b65b86-562d-45c1-adbd-49c391a383a5.png)
+
+Si probamos en la APP tenemos:
+
+
+
 
 
 ## Tarea práctica #2: Crear la pantalla de búsqueda de héroes. 02:02
@@ -855,3 +866,4 @@ El botón lo cambiamos de un **`submit`** a un **`button`**
 ## `@Output` - Emitir un evento del hijo hacia el padre 05:40
 ## Arreglar detalles de la búsqueda 05:50
 ## Código fuente de la sección 00:24
+https://www.comunidad.madrid/servicios/salud/vacunacion-frente-coronavirus-comunidad-madrid
