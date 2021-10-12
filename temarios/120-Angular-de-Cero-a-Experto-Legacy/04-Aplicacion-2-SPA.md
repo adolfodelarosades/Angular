@@ -853,14 +853,127 @@ Ahora vamos a crear la función **`buscarHeroe(...)`** en **`navbar.component.ts
 
 ![image](https://user-images.githubusercontent.com/23094588/136665295-b0b65b86-562d-45c1-adbd-49c391a383a5.png)
 
-Si probamos en la APP tenemos:
+Si probamos la APP nos vamos a encontrar con ciertos problemas, ya que al pulsar Enter nos sigue submitando la página, hemos tenido que cambiar la **`form`** por una **`div`**, además de invocar el evento **`click`** en el botón para que funcione(esto también se hace si usamos **`form`**), el código nos queda así:
 
+![image](https://user-images.githubusercontent.com/23094588/136929140-856d2570-f6ad-4ff0-8ad6-8c98d8dfca27.png)
 
+Al probar la APP tenemos:
 
+![image](https://user-images.githubusercontent.com/23094588/136929450-c026e3de-d10f-4242-a419-0cb751c03ecd.png)
 
+Hemos probado dando Enter y después pulsando el botón y todo ha ido bien.
+
+Ahora tenemos que modificar el Servicio **`heroes.service.ts`** para que búsque el Heroe solicitado, tenemos que añadr un nuevo método que llamaremos **`buscarHeroes(...)`** con el siguiente código:
+
+![image](https://user-images.githubusercontent.com/23094588/136933104-7d549647-8506-4509-8bc6-207d286c3d29.png)
+
+Para probar este nuevo método del servicio lo vamos a invocar desde nuestro componente **`navbar.component.ts`**, como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/136934529-3d333919-0822-408c-bea0-1a650b15955b.png)
+
+Hemos tenido que importar el Servicio **`HeroesService`** y **`Heroe`**, inyectamos **`HeroesService`** en el constructor y apartir de allí ya podemos usar el nuevo método creado **`buscarHeroes(...)`** para el termino que introduzcamos. Al probar la APP tenemos lo siguiente con las diferentes búsquedas que hemos realizado **`a`**, **`spiderman`** y **`spider`**:
+
+![image](https://user-images.githubusercontent.com/23094588/136934888-4b3ee0fe-5601-41fa-852e-da387ca65e05.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/136935144-c1338c6c-62c3-432f-a386-3810f0f1dfc1.png)
 
 ## Tarea práctica #2: Crear la pantalla de búsqueda de héroes. 02:02
+
+En esta tarea vamos a crear un nuevo componente que será el encargado de leer el **`termino`** y en su método **`ngOnInit`** vamos a poner la lógica para ejecutar la función **`buscarHeroes(...)`**, es decir en nuestro **`navbar.component.ts`** en su función **`buscarHeroe(...)`** lo único que vamos a hacer es redireccionarlo a ese nuevo componente, por lo que todo el código que hicimos antes para probar el método **`buscarHeroes(...)`** realmente debe ir en el nuevo componente.
+
 ## Resolución de la tarea 2 - Buscador de Héroes 07:55
+
+Para crear el nuevo componente vamos a usar el comando:
+
+```sh
+ng g c components/buscador -is
+```
+
+El **`-is`** me sirve para que no cree el archivo de estilos.
+
+![image](https://user-images.githubusercontent.com/23094588/136936540-847815e9-efdb-4f6f-a992-1b7e9de47642.png)
+
+![image](https://user-images.githubusercontent.com/23094588/136936694-1454d570-f402-424d-b34b-1a3369a039cf.png)
+
+Podemos eliminar el archivo **`buscador.component.spec.ts`**.
+
+### Añadir la Nueva Ruta
+
+En el archivo **`app.routes.ts`** vamos a añadir la nueva ruta:
+
+![image](https://user-images.githubusercontent.com/23094588/136941485-2fac1710-9ef0-4bce-a635-e7b3eefba13a.png)
+
+### Capturar parámetro de la URL
+
+Vamos a nuestro componente **`buscador.component.ts`**, como queremos capturar el parámetro que viaja en la URL necesitamos importar el **`ActivatedRoute`** y lo inyectamos en el constructor, para recuperar su valor lo vamos a hacer dentro del método **`ngOnInit`** suscribiendonos a los parámetros del **`ActivatedRoute`** como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/136938437-a107e994-9cd2-4c3c-813f-66315aee6198.png)
+
+### Hacer Redirección al Componente `buscador.component.ts`
+
+Vamos a hacer la redirección desde el NavBar al nuevo Componente Buscardor, nos vamos a **`navbar.component.ts`** lo primero que vamos a hacer es quitar todo lo que habíamos puesto para invocar el Servicio de Buscar Heroes ya que esto ira en el nuevo componente Buscador. Una vemos hecho esto debemos importar el **`Router`** para podernos mover entre páginas y lo inyectamos en el Constructor.
+
+En el método **`buscarHeroe`** donde recibimos el termino a buscar vamos a hacer la redirección con **`this.router.navigate`** el cual recibe un arreglo de la ruta relativo a donde estamos por eso vamos a poner **`/`**, recordemos que en la Ruta **`app.routes.ts`** le pusimos **`buscar/:termino`** por lo que el array que tenemos que poner es **`['/buscar', termino]`**, todo completo queda así: **`this.router.navigate( ['/buscar', termino])`**, sería interesante hacer una validación de que el **`termino`** tiene al menos un carácter antes de hacer la redirección, pero esto es suficiente para disparar la búsqueda:
+
+![image](https://user-images.githubusercontent.com/23094588/136940657-53dc7511-3cb6-44e1-ac01-4798148c2088.png)
+
+Si probamos la APP tenemos que al buscar algún termino y pulsar Enter o Click sobre el botón nos redirigue al componente **`buscador`** cuya URL definimos como http://localhost:4200/buscar/Hulk, observar que el termino a buscar viaja en la URL y ese valor lo recuperamos en el componente **`buscador`** y lo imprimimos en la consola.
+
+![image](https://user-images.githubusercontent.com/23094588/136941554-f91b0fc9-4fc8-4ff1-98f9-4c820b34e541.png)
+
+![image](https://user-images.githubusercontent.com/23094588/136941593-f9b45d4b-14ae-485f-b51f-28ef8fb1eec6.png)
+
+### Usar el Servicio para recuperar la Busqueda de Heroes
+
+Vamos a importar el servicio **`HeroesService`** e inyectarlo en el constructor. 
+
+Vamos a crear una variable local **`heroes:any[] = []`** donde almacenemos los Hereos localizados según el termino de busqueda.
+
+![image](https://user-images.githubusercontent.com/23094588/136943105-2a028df5-c785-4bad-b657-fe1b3d199b5e.png)
+
+Al probar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/136943257-66fe3260-8ca8-4c4a-bf06-06cb52143ae1.png)
+
+![image](https://user-images.githubusercontent.com/23094588/136943299-06baea7b-a4ad-4298-9311-c105476632aa.png)
+
+Localiza los Heroes según el termino que introduzcamos.
+
+### Crear el HTML del componente `buscador`
+
+Para crear el template del componente **`buscador`** vamos practicamente a copiar el que tenemos en el componente **`heroes.component.html`**, solo tenemos que hacer pequeños cambios vamos a modificar **`<h1>Héroes <small>Marvel y DC</small></h1>`** por **`<h1>Buscando <small>{{ termino }}</small></h1>`**, por lo cual debemos añadir la propiedad **`termino`** a nuestro comoponente **`buscador.component.ts`**, además de esto nos esta marcando un error en evento **`(click)="verHeroe(i)"`** del botón ya que nosotros no tenemos implementada esa función en **`buscador.component.ts`** así que la copiamos de **`heroes.component.ts`**, por lo que el componente **`buscador.component.ts`** final nos queda así:
+
+![image](https://user-images.githubusercontent.com/23094588/136945526-348e7c66-1f61-49cb-bf0c-2bf04c6a7a73.png)
+
+![image](https://user-images.githubusercontent.com/23094588/136945670-8b9383f8-833a-45c6-a7b4-50c0695b3c3f.png)
+
+Al probar la APP tenemos:
+
+
+![image](https://user-images.githubusercontent.com/23094588/136945794-59129322-d8f4-483f-9eca-f76e076ec814.png)
+
+![image](https://user-images.githubusercontent.com/23094588/136945861-b29f4589-92fb-45db-ab99-37f4f1986846.png)
+
+![image](https://user-images.githubusercontent.com/23094588/136945944-85b9faca-72f4-4dba-8b40-7774e6e1465d.png)
+
+### Consideraciones
+
+Si no buscamos nada se presentan todos los Heroes.
+
+![image](https://user-images.githubusercontent.com/23094588/136946118-baf38406-aaf3-4e6d-af10-782f5d663a1a.png)
+
+Si buscamos un Heroe en particular y luego pulsamos en su Detalle nos lleva a otro diferente, esto es por que estamos usando los índices para movernos entre ellos y al hacer una búsqueda y recuperar menos heroes que el total los indices ya no coinciden y provoca este error.
+
+![image](https://user-images.githubusercontent.com/23094588/136946439-04052d6e-4fae-451c-88d0-d1b667b02666.png)
+
+![image](https://user-images.githubusercontent.com/23094588/136946504-ee32c7d6-cf6e-48a5-9b25-cf6bfe72af72.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/136946762-878fd4ae-fa53-410d-b2c3-e4a1c7afa744.png)
+
 ## Plus: Mostrando un mensaje cuando no hay resultados. 02:01
 ## `@Input` - Recibir información de un componente padre a un hijo 10:38
 ## `@Output` - Emitir un evento del hijo hacia el padre 05:40
