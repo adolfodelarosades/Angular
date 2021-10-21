@@ -975,7 +975,23 @@ Si buscamos un Heroe en particular y luego pulsamos en su Detalle nos lleva a ot
 ![image](https://user-images.githubusercontent.com/23094588/136946762-878fd4ae-fa53-410d-b2c3-e4a1c7afa744.png)
 
 ## Plus: Mostrando un mensaje cuando no hay resultados. 02:01
+
+Vamos a hacer que se muestre un aviso cuando no haya encontrado ningún Hereo con el termino de busqueda, en **`buscador.component.html`** vamos a añadir el siguiente código:
+
+![image](https://user-images.githubusercontent.com/23094588/136947877-a45c5e30-c938-4442-b2d4-1b38c0d32efc.png)
+
+Al probar la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/136947959-499d25fd-7f54-4c4c-b43c-998368999d96.png)
+
+#### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/136948126-7bb5700b-77bc-45e8-b0bc-f2e1e8a7a470.png)
+
 ## `@Input` - Recibir información de un componente padre a un hijo 10:38
+
+En esta lección vamos a crear un nu
+
 ## `@Output` - Emitir un evento del hijo hacia el padre 05:40
 ## Arreglar detalles de la búsqueda 05:50
 ## Código fuente de la sección 00:24
