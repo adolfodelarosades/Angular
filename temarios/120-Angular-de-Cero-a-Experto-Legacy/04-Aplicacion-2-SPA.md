@@ -222,11 +222,19 @@ Lo primero que vamos a hacer es eliminar del **`index.html`**, todo lo que habí
 
 ![image](https://user-images.githubusercontent.com/23094588/133248420-9c6365f9-758b-4dca-8c2d-1ee3baac3964.png)
 
-Vamos a pulsar el comando 
+Vamos a pulsar el comando e instala la versión más nueva de Bootstrap
 
 ```sh
 npm install bootstrap --save
 ```
+
+Para instalar una versión concreta de Bootstrap pulsamos el comando:
+
+```sh
+npm i bootstrap@4.1.1 --save
+```
+
+![image](https://user-images.githubusercontent.com/23094588/139531442-01a1a397-9e03-4be3-9ab1-a69947052651.png)
 
 El **`--save`** esto le indica a la APP que es una librería que va a necesitar, esto descarga Boostrap y los coloca en los Modulos de Node.
 
