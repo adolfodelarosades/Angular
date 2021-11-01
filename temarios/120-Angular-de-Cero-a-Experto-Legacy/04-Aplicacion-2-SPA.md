@@ -279,6 +279,27 @@ La ventaja de usar esta forma es que si creamos otro proyecto simplemente instal
 
 ***De esta misma forma se pueden instalar otras librerías con el NPM***
 
+### Instalando Bootstrap v 4.1.1
+
+Si usamos Bootstrap v 4.1.1 tenemos que insertar lo siguiente en el archivo **`angular.json`** 
+
+![image](https://user-images.githubusercontent.com/23094588/139532807-16fb3c0d-de3a-4756-9023-2699e4ff78cb.png)
+
+Al recargar la aplicación tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/139532845-024abc16-0fd0-48f9-8f61-da913e5aaa56.png)
+
+Se queja ya que para usar **`bootstrap.min.js`** necesita jquery y popper, los añadimos como sigue ya que la libreria que más dependencias tiene va al final:
+
+![image](https://user-images.githubusercontent.com/23094588/139533031-a141f5b4-3945-47e3-a50c-2c1ec2bb943d.png)
+
+Debemos usar el popper de la carpeta **`umd`** que es el que funciona correctamente.
+
+La ventaja de usar el tercer método es que ya en otros proyectos instalamos las librerias y copiamos esto mismo en el archivo **`angular.json`**, la desventaja es que todas estas librerías formaran parte del Boundle de la aplicación, por lo que la aplicación puede pesar un poco más.
+
+
+
+
 #### GIT
 
 ![image](https://user-images.githubusercontent.com/23094588/133255020-4d780216-c315-4bf3-9d11-989e8cee9112.png)
