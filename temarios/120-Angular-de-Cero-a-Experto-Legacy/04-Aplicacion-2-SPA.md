@@ -295,10 +295,10 @@ Se queja ya que para usar **`bootstrap.min.js`** necesita jquery y popper, los a
 
 Debemos usar el popper de la carpeta **`umd`** que es el que funciona correctamente.
 
+![image](https://user-images.githubusercontent.com/23094588/139648035-c51ea70c-2c96-4265-9d82-4105b366f1b1.png)
+
+
 La ventaja de usar el tercer método es que ya en otros proyectos instalamos las librerias y copiamos esto mismo en el archivo **`angular.json`**, la desventaja es que todas estas librerías formaran parte del Boundle de la aplicación, por lo que la aplicación puede pesar un poco más.
-
-
-
 
 #### GIT
 
@@ -329,6 +329,16 @@ Y vamos a cargar este componente en **`app.component.html`** borramos todo lo qu
 La APP se visualiza así:
 
 ![image](https://user-images.githubusercontent.com/23094588/133258380-e8a1f8af-e498-4a73-9c7c-e2f86b7bfe6f.png)
+
+#### Con Bootstrap v.4.1
+
+![image](https://user-images.githubusercontent.com/23094588/139652357-27ccbb38-c4b5-424c-b449-fbfff4559ea6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/139652401-0cf607f4-47dd-4b19-b9e5-fdad1c9a71e6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/139652441-c15c819c-80c7-4f9f-93cb-21c6b1ce8fd9.png)
+
+
 
 ### Modificar el Componente `Home`
 
