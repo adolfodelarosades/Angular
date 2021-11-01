@@ -339,12 +339,16 @@ La APP se visualiza así:
 ![image](https://user-images.githubusercontent.com/23094588/139652441-c15c819c-80c7-4f9f-93cb-21c6b1ce8fd9.png)
 
 
-
 ### Modificar el Componente `Home`
 
 En el componente **`Home`** vamos a insertar el siguiente código que representa un Jumbotrom de Bootstrap:
 
 ![image](https://user-images.githubusercontent.com/23094588/133304346-f6193efa-4668-48b1-92af-fca4f5e70a7f.png)
+
+#### Con Bootstrap v.4.1
+
+![image](https://user-images.githubusercontent.com/23094588/139653323-2b6996a0-f5ea-474f-a7a1-c3c39cf1bba6.png)
+
 
 ### Crear el Componente `About`.
 
@@ -386,7 +390,7 @@ En la carpeta **`app`** vamos a crear el archivo **`app.routes.ts`** con el sigu
 
 ![image](https://user-images.githubusercontent.com/23094588/133301998-10b80711-09b8-4658-8f9a-c11a7cfa34ce.png)
 
-**`APP_ROUTES`** es un arreglo de ruta, cada una de las rutas tiene un **`path`** y tiene un **`component`**, la ruta **`{ path: '**', pathMatch: 'full', redirectTo: '' }`** es una ruta especial por si a caso no hace match con ninguna de las rutas que la preceden.
+**`APP_ROUTES`** es un arreglo de ruta, cada una de las rutas tiene un **`path`** y tiene un **`component`**, la ruta **`{ path: '**', pathMatch: 'full', redirectTo: '' }`** es una ruta especial por si acaso no hace match con ninguna de las rutas que la preceden.
 
 Vamos a personalizar nuestra primer ruta hacia el componente **`Home`** de la siguiente manera:
 
@@ -426,7 +430,7 @@ Al recargar la APP tenemos:
 
 ![image](https://user-images.githubusercontent.com/23094588/133306514-5c20193d-bf30-41bf-92a3-b98b35cdbd17.png)
 
-De esta manera la ruta qie se carga es:
+De esta manera la ruta que se carga es:
 
 * **`http://localhost:4200/#/home`**
 
@@ -500,6 +504,11 @@ En el archivo **`styles.css`** vamos a copiar el contenido del archivo **`animat
 
 ![image](https://user-images.githubusercontent.com/23094588/133315406-1bc4aa18-147c-4106-a391-a31ac82f2b1b.png)
 
+#### Con Bootstrap v.4.1
+
+![image](https://user-images.githubusercontent.com/23094588/139660911-938ffc74-86d8-447c-8c7d-942f4700a218.png)
+
+
 Al recargar la APP tenemos:
 
 ![image](https://user-images.githubusercontent.com/23094588/133315591-d240052a-8f57-4c0a-9d06-3b7499ef585b.png)
@@ -522,7 +531,18 @@ Al recargar la APP tenemos:
 
 ![image](https://user-images.githubusercontent.com/23094588/133313838-1a9cc6b6-a2bc-497e-be4a-1652ecb75e29.png)
 
-En teoría se debería ver más blamco el título de la opción marcada, pero creo que no es del todo así.
+En teoría se debería ver más blanco el título de la opción marcada, pero creo que no es del todo así.
+
+#### Con Bootstrap v.4.1
+
+Con la Versión 4.1 de Bootstrap si se aprecia la página en la que estamos situados.
+
+![image](https://user-images.githubusercontent.com/23094588/139661230-b85a004f-3e61-4679-8c4d-57334a8f4646.png)
+
+![image](https://user-images.githubusercontent.com/23094588/139661261-d10ddc45-632b-4263-ab9c-402c21ab768b.png)
+
+![image](https://user-images.githubusercontent.com/23094588/139661289-0857acde-a402-4007-82f0-388b660845ea.png)
+
 
 #### GIT
 
@@ -639,6 +659,12 @@ Si recargamos la APP tenemos lo mismo
 
 ![image](https://user-images.githubusercontent.com/23094588/133385452-0bf8581b-cc13-4c7d-a980-caa14f8c585d.png)
 
+
+#### Con Bootstrap v.4.1
+
+![image](https://user-images.githubusercontent.com/23094588/139667632-6089d0dd-5808-4691-9aa6-fc694421bcaa.png)
+
+![image](https://user-images.githubusercontent.com/23094588/139667702-1c616301-ef20-4bba-98df-451b2a623077.png)
 
 #### GIT
 
