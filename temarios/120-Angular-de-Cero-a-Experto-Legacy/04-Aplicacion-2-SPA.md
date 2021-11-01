@@ -577,6 +577,19 @@ La APP final nos queda así:
 
 ![image](https://user-images.githubusercontent.com/23094588/133378018-d39fde72-dc11-49e2-ad7f-5718a1efb745.png)
 
+En Bootstrap v. 5.X no funciona como en la v 4.X y en la documentación indican la razón.
+
+![image](https://user-images.githubusercontent.com/23094588/139668256-542b5427-ae8e-42bc-8e88-3084cb74e8bd.png)
+
+#### Con Bootstrap v.4.1
+
+![image](https://user-images.githubusercontent.com/23094588/139668102-65869a3f-077a-45c9-a131-52637475ea32.png)
+
+![image](https://user-images.githubusercontent.com/23094588/139667632-6089d0dd-5808-4691-9aa6-fc694421bcaa.png)
+
+![image](https://user-images.githubusercontent.com/23094588/139667702-1c616301-ef20-4bba-98df-451b2a623077.png)
+
+
 #### GIT
 
 ![image](https://user-images.githubusercontent.com/23094588/133378098-129d969f-622c-4461-a816-ade875e4a7c7.png)
@@ -658,13 +671,6 @@ En **`heroes.component.ts`** también vamos a cambiar la propiedad **`heroes`** 
 Si recargamos la APP tenemos lo mismo
 
 ![image](https://user-images.githubusercontent.com/23094588/133385452-0bf8581b-cc13-4c7d-a980-caa14f8c585d.png)
-
-
-#### Con Bootstrap v.4.1
-
-![image](https://user-images.githubusercontent.com/23094588/139667632-6089d0dd-5808-4691-9aa6-fc694421bcaa.png)
-
-![image](https://user-images.githubusercontent.com/23094588/139667702-1c616301-ef20-4bba-98df-451b2a623077.png)
 
 #### GIT
 
