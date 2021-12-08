@@ -174,6 +174,11 @@ Eso es todo. Si lo que ustedes necesitan ya existe en Angular, muy probablemente
 Recuerden que no necesariamente el código de Angular es el que ustedes van a poder utilizar de terceros. Pueden utilizar librerías propias de JavaScript que no están escritas en Angular, porque realmente Angular es el mismo JavaScript, se va a poder hacer. Pero lo genial de esto es que si ustedes se encuentran el paquete y el paquete está soportado por Angular, van a ver un gran potencial ya incorporándome en sus aplicaciones.
 
 ## Crear un proyecto de Angular 07:21
+
+Vamos a crear nuestro primer proyecto usando **Angular CLI**, para ver la versión que tenemos instalada podemos pulsar el comando **`ng --version`**.
+
+
+
 ## Nota de actualización 00:19
 ## Explicación de cada archivo del proyecto 08:43
 ## Explicación de los archivos dentro del SRC 07:02
