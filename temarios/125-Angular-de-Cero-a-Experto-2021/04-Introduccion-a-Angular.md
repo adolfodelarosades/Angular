@@ -84,12 +84,11 @@ Eso sonara bastante complicado, pero realmente es el mismo código de Angular qu
 
 Angular es un **framework**, eso significa que es un marco de trabajo estandarizado. ¿A qué nos referimos con esto? Pues muy probablemente sitú ves el código de Angular de otra persona va a ser muy parecido al código de Angular que tú estás desarrollando, porque aquí vamos a seguir ciertos estándares que recomienda el mismo equipo de Angular para desarrollar aplicaciones.
 
-Vas a ver que los ***componentes*** se llaman igual o tienen nombres parecidos. Vas a ver que los ***servicios*** se llaman parecido, las directivas y otro montón de cosas.
+Vas a ver que los ***componentes*** se llaman igual o tienen nombres parecidos. Vas a ver que los ***servicios*** se llaman parecido, las ***directivas*** y otro montón de cosas.
 
-Otro punto es que Angular viene con todo lo que tú necesitas para trabajar. Es raro que tú digas Ok, necesito incorporar otro paquete de terceros. No digo que no pasa, pero usualmente con una aplicación de Angular ya tienes todo lo que necesitas para 
-comenzar. Obviamente, si ocupas **Google Maps**, obviamente se ocupás **Map Box**, obviamente si ocupas algo especializado de alguna otra librería con la cual quieras trabajar, probablemente si necesitas algo extra, pero por lo general ya viene bien completo con todo lo que vas a ocupar para trabajar.
+Otro punto es que Angular viene con todo lo que tú necesitas para trabajar. Es raro que tú digas Ok, necesito incorporar otro paquete de terceros. No digo que no pasa, pero usualmente con una aplicación de Angular ya tienes todo lo que necesitas para comenzar. Obviamente, si ocupas **Google Maps**, obviamente se ocupás **Map Box**, obviamente si ocupas algo especializado de alguna otra librería con la cual quieras trabajar, probablemente si necesitas algo extra, pero por lo general ya viene bien completo con todo lo que vas a ocupar para trabajar.
 
-Las aplicaciones de Angular son modulares. ¿A qué nos referimos con esto?, pues básicamente nosotros vamos a crear módulos, estos módulos van a servir o van a tener objetivos específicos.
+Las aplicaciones de Angular son ***modulares***. ¿A qué nos referimos con esto?, pues básicamente nosotros vamos a crear módulos, estos módulos van a servir o van a tener objetivos específicos.
 
 Y también, por si te lo preguntas, **Google** es quien mantiene hoy en día el framework de Angular.
 
@@ -98,7 +97,7 @@ Y también, por si te lo preguntas, **Google** es quien mantiene hoy en día el 
 
 Por otro lado, quiero hablar sobre los bloques fundamentales de Angular.
 
-Angular se compone de 5 bloques o pilares fundamentales que son:
+Angular se compone de ***5 bloques o pilares fundamentales*** que son:
 
 * Los componentes
 * Las rutas 
@@ -109,7 +108,7 @@ Angular se compone de 5 bloques o pilares fundamentales que son:
 
 ![image](https://user-images.githubusercontent.com/23094588/144291116-d1af6eda-db4f-4e97-b2a5-d93b93b731f8.png)
 
-Los componentes podrían verse como un bloque de código que tiene su segmento HTML y tiene una contraparte de TypeScript que usualmente es una clase. Esa clase de TypeScript es como las que vimos nosotros en la introducción, nada sorprendente. Una clase común y corriente que tiene un decorador, eso es todo.
+***Los componentes*** podrían verse como un bloque de código que tiene su segmento HTML y tiene una contraparte de TypeScript que usualmente es una clase. Esa clase de TypeScript es como las que vimos nosotros en la introducción, nada sorprendente. Una clase común y corriente que tiene un decorador, eso es todo.
 
 La parte del HTML es el HTML que tú estás acostumbrado, tiene divs, puede tener botones, puede tener span, puede tener textos en negrita, el código HTML que tú ya conoces, eso es básicamente un componente. 
 
@@ -117,11 +116,9 @@ También se busca que los componentes sean bloques pequeños de código y lo má
 
 ![image](https://user-images.githubusercontent.com/23094588/144291381-c0766b4a-5434-41b0-b558-84c49b70727b.png)
 
-Luego tenemos los servicios, los servicios son bastante interesantes porque es bastante fuerte lo que los servicios pueden hacer en Angular. Esto ha hecho de que la verdad no sea tan necesario que tú necesites entrar en **Redux**, no te preocupes si no sabes qué es eso, para las personas que conocen más de Redux, pues sabrán de lo que hablo.
+Luego tenemos ***los servicios***, los servicios son bastante interesantes porque es bastante fuerte lo que los servicios pueden hacer en Angular. Esto ha hecho de que la verdad no sea tan necesario que tú necesites entrar en **Redux**, no te preocupes si no sabes qué es eso, para las personas que conocen más de Redux, pues sabrán de lo que hablo.
 
-Pero para las personas que ya conocen un poco de Angular, sabrán que los servicios pueden utilizarse de tal manera que tú no vas a ocupar trabajar con Redux, **Blog** u otro tipo de ***Gestor de Estado*** claro, son opcionales.
-
-Siempre hay muchas alternativas y hay unos beneficios en cada uno de ellos.
+Pero para las personas que ya conocen un poco de Angular, sabrán que los servicios pueden utilizarse de tal manera que tú no vas a ocupar trabajar con Redux, **Blog** u otro tipo de ***Gestor de Estado*** claro, son opcionales, siempre hay muchas alternativas y hay unos beneficios en cada uno de ellos.
 
 Usualmente los servicios de Angular son ***singleton*** bastante fuertes que te van a permitir trabajar toda la aplicación con uno, bueno, con la información centralizada.
 
@@ -151,12 +148,12 @@ Luego tenemos las ***directivas de atributos*** que básicamente cambian la apar
 
 ![image](https://user-images.githubusercontent.com/23094588/144293417-16a60a5f-013f-449d-afdb-7d9e627b7afb.png)
 
-Luego tenemos las **rutas**, las rutas son básicamente diferentes componentes que ustedes pueden mostrar pasados en la URL del navegador web o el URL en el cual se encuentra el cliente.
+Luego tenemos las ***rutas***, las rutas son básicamente diferentes componentes que ustedes pueden mostrar pasados en la URL del navegador web o el URL en el cual se encuentra el cliente.
 
 
 ![image](https://user-images.githubusercontent.com/23094588/144293855-b94f3ef5-87e7-4e65-9c69-5687cf00f16a.png)
 
-Y por último, el último bloque que tenemos aquí para hablar son los **módulos**. Los módulos son geniales porque permiten agrupar todo lo que nosotros hemos hablado, inclusive otros módulos.
+Y por último, el último bloque que tenemos aquí para hablar son los ***módulos***. Los módulos son geniales porque permiten agrupar todo lo que nosotros hemos hablado, inclusive otros módulos.
 
 Podemos tener un módulo de productos en el cual va a estar todo lo relacionado a productos, por ejemplo, las formas de las pantallas para mostrar los productos, las pantallas para agregar productos, editar productos o servicios que estén relacionados a los productos. Todo puede estar ahí, en el mismo módulo.
 
