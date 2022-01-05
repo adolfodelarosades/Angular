@@ -395,6 +395,157 @@ Además de las carpetas anteriores, la carpeta **`src`** contiene los siguientes
 
 
 ## App Component 07:49
+
+Como ya hemos visto actualmente la aplicación se ve así:
+
+![image](https://user-images.githubusercontent.com/23094588/148247872-78e9c3cd-5900-47ba-9dbf-6dbce1798712.png)
+
+Vamos a realizar algunos cambios en el componente inicial que se creo automáticamente para modificar lo que se muestra actualmente. Vamos al archivo **`app.component.html`** vamos a eliminar todo su contenido y vamos a insertar lo siguiente:
+
+```html
+<h1>Hola Mundo</h1>
+```
+
+En el navegador ahora veremos:
+
+![image](https://user-images.githubusercontent.com/23094588/148248718-525245fb-2db7-4bba-8804-25906d33ec84.png)
+
+Ahora en el archivo **`styles.css`** vamos a insertar el siguiente código:
+
+```css
+* {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 200;
+}
+
+html, body {
+  
+  background: white;
+  margin: 20px;
+  color: #3e4144;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+dd {
+  font-weight: bold;
+}
+
+button {
+  background-color: black;
+  border-radius: 5px;
+  border: 0px;
+  color: white;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding: 5px 10px;
+}
+
+button:hover {
+  background-color: #3e4144;
+}
+
+button:focus{ 
+  outline: none;
+}
+
+.p-1 {
+  padding: 1px;
+}
+```
+
+Nuestra página se vera así:
+
+![image](https://user-images.githubusercontent.com/23094588/148249166-242b2302-85fc-4ef9-9abb-ae33a32c6e3f.png)
+
+Si abrimos el archivo **`app.componet.ts`** tenemos lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/148250539-d2c6a79b-613c-4e5f-b473-4072bc457886.png)
+
+Tenemos una importación del decorador **`Component`** que viene de **`@angular/core`**, el decorador **`Component`** tiene varias propiedades internas:
+
+```ts
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+```
+
+Una de las propiedades que tenemos es **`selector`** y sirve para indicar que nombre va a tener este componente, en este caso **`app-root`** por que es la aplicación principal. Si nosotros abrimos el archivo **`index.html`** tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/148251383-025742fb-b50d-4d24-b495-7d5652325967.png)
+
+dentro del **`<body>`** tenemos **`<app-root></app-root>`** que es el mismo nombre que le dimos al **`selector`** del componente **`app.componet.ts`**, en realidad lo que esta haciedo es que en la página **`index.html`** esta incrustando el componente **`app.componet.ts`**.
+
+Otra propiedad que tenemos en el decorador **`Component`** es **`templateUrl`** en donde vamos a indicar la plantilla HTML asociada al componente en este caso es **`'./app.component.html'`**.
+
+Ademas del **`templateUrl`** existe otra propiedad **`template`** donde podemos insertar directamente el HTML que deseemos sin necesidad de tener un archivo HTML especifico.
+
+![image](https://user-images.githubusercontent.com/23094588/148252834-8754f620-95f9-479c-a1bb-56cbda5b954a.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148252877-df88f340-3e60-4a8c-a515-93a3235a544e.png)
+
+Con **`template`** podemos usar los "Valds Tips" para tener un HTML más complejo.
+
+![image](https://user-images.githubusercontent.com/23094588/148253388-b073742d-0a57-4527-ada1-49ba55e0bce1.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148253441-ac315eb6-dea7-494f-9018-bab2789322cf.png)
+
+Finalmente tenemos la propiedad  **`styleUrls`** que nos sirve para indicar el archivo de estilos para el componente en este caso **`./app.component.css`**, en este caso este archivo esta vacío por lo que podriamos elminar esta propiedad y el archivo **`app.component.css`** o también lo que podríamos haber hecho es meter el código que insertamos en **`style.css`** en este archivo y tendríamos el mismo efecto. 
+
+En este caso vamos a borrar el archivo de Estilos y la propiedad y vamos a usar la plantilla HTML que teniamos inicialmente.
+
+![image](https://user-images.githubusercontent.com/23094588/148254429-19ff8083-6ec8-4351-8a30-6ceb2bbef8ba.png)
+
+
+### Clase **`AppComponent`**
+
+Dentro de la clase **`AppComponent`** tenemos definida una propiedad llamada **`title`** con valor **`bases`** el cual vamos a cambiar por **`Contador App`**,
+
+![image](https://user-images.githubusercontent.com/23094588/148255103-037f3c3e-b6f2-4767-8265-bbedb5183d84.png)
+
+
+para mostrar este valor en el HTML vamos a poner el siguiente código:
+
+![image](https://user-images.githubusercontent.com/23094588/148255234-588b6ecb-903c-43dd-9cb7-af3df3ce0e90.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148255337-906034e0-0b88-451c-b608-b0f28879c3dc.png)
+
+De esta forma podemos tener propiedades definidas en la clase e imprimirlas en el HTML para que el usuario vea su valor en el navegador.
+
+El uso de las **`{{ }}`** adems de imprimir propiedades de la clase también sirven para imprimir cualquier valor de una expresión JS como **`{{ 1 + 1 }}`**
+
+![image](https://user-images.githubusercontent.com/23094588/148255892-1ad2e230-ab34-4529-baff-077832a77687.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148255929-eed73aba-5d3b-4d01-8af1-4bba9da832f6.png)
+
+Vamos a eliminar esta última expresión ya que por el momento no nos va a ser útil, además en lugar de llamar a la propiedad **`title`** la llamaremos **`titulo`**
+
+![image](https://user-images.githubusercontent.com/23094588/148256209-fede1bdb-eacb-4ad0-a80d-59c31863d12c.png)
+
+Y si vemos el archivo HTML ya nos marca un error:
+
+![image](https://user-images.githubusercontent.com/23094588/148256350-268db50b-cd8e-4eb5-8727-95953968dd54.png)
+ 
+Esto es por que ya no tenemos esta propiedad, debemos cambiar el nombre:
+
+![image](https://user-images.githubusercontent.com/23094588/148256451-44465639-df13-401e-85bd-e0e5aeb3c533.png)
+
+Cuando definimos una propiedad esta es pública pero podemos indicarlo explicitamente si lo deseamos, además también podemos indicar el tipo de la propiedad aun que en este caso es muy facíl ver que se infiere su tipo.
+
+![image](https://user-images.githubusercontent.com/23094588/148257502-84515f9c-bd7d-46f8-b987-889203b4dfe9.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148257741-1fc8d947-9146-4e83-b6c4-5b344a4eeffc.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148257772-40ac7bf7-1346-4acf-b16b-9b3556d4dde5.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/148258233-adc101da-bec2-4b30-9f2a-36bdcd261a82.png)
+
+
 ## Contador App 06:54
 ## Métodos en el componente 05:12
 ## Tarea con el contador 03:42
