@@ -182,7 +182,7 @@ Para crear nuestros proyectos de Angular lo vamos a hacer dentro de un directori
 
 ![image](https://user-images.githubusercontent.com/23094588/148211812-e53faeb4-3592-4b29-8013-9a9e109c80bc.png)
 
-En la consola nos posicionamos en dicho directorio y vamos a pulsar el siguiente comando que nos permite crear un nuevo proyecto Angular:
+En la consola nos posicionamos en dicho directorio y vamos a pulsar el siguiente comando que nos permite **crear un nuevo proyecto Angular**:
 
 ```sh
 ng new bases
@@ -247,6 +247,79 @@ Ninguno de estos dos cambios afecta a la funcionalidad del curso, pueden seguirl
 
 
 ## Explicación de cada archivo del proyecto 08:43
+
+Vamos a explicar los diferentes archivos creados dentro del proyecto.
+
+![image](https://user-images.githubusercontent.com/23094588/148215464-a57740ad-741c-4e0e-9ae4-6ab316ae074d.png)
+
+
+*** ***`e2e`***: ***Deprecado en la versión 12 de Angular***. Nos permite hacer la configuración para las pruebas Unitarias End To End.
+
+* **`node_modules`**: Contiene una gran cantidad de Modulos, para ayudar a desarrollar la aplicación y otros necesarios para la APP en producción.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148221138-89d08234-dbce-483d-a387-f8304fe2ec2d.png)
+
+
+* **`src`**: Carpeta SRC que contiene varios archivos y que se expliaca en la siguiente sección.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148220831-720a6e1e-fb86-4def-824f-99a94a03bf6c.png)
+
+
+* **`.browserslistrc`**: El sistema de compilación utiliza este archivo para ajustar la salida de CSS y JS para admitir los navegadores especificados.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148220660-901520eb-b3db-47c4-9842-798ac1a8579b.png)
+
+* **`.editorconfig`**: Son configuraciones del Editor.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148220442-25679845-57e2-4de3-860d-ea30fd691c52.png)
+
+
+* **`.gitignore`**: Archivo para indicar que archivos no debe darle seguimiento GIT.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148220291-d14d87f3-f4d6-42ab-854d-6a4e6427b382.png)
+
+* **`angular.json`**: Este es un archivo importante para nuestra APP, contiene configuraciones importantes para la APP como el favicon de la APP, indica donde estan los assets de la aplicación, indica el archivo general de estilos CSS,  
+
+   ![image](https://user-images.githubusercontent.com/23094588/148219785-f31628a2-0377-4bff-89fd-1e40eae12854.png)
+
+   
+* **`karma.conf.js`**: Son las configuraciones para las pruebas unitarias e integración basadas en Karma. Esto se cubre en el Curso avanzadlo de Angular.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148219630-4aa87fb9-5e65-4e48-a1aa-478f49724155.png)
+
+* **`package-lock.json`**: Este archivo indica como se construyeron los modulos de node entre otras cosas, su contenido es enorme.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148219324-5f5097c9-f9bb-424f-9d27-2a9073a4b521.png)
+
+* **`package.json`**: Este archivo es algo delicado y no deberíamos hacer modificaciones en el y se si necesita modificar generalmete esto se hace mediante comandos. Contiene las dependencias de producción y las de desarrollo, comandos 
+
+   ![image](https://user-images.githubusercontent.com/23094588/148217936-fa832288-3d01-42b7-a533-2be6f17e23f1.png)
+
+
+* **`README.md`**: Archivo Mark Down para documentar la APP. En VSC podemos ver estos archivos formateados con la opción de menú Vista - Paleta de Comandos.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148217415-5fa29607-49e3-487a-8464-2392d75a85a2.png)
+
+   ![image](https://user-images.githubusercontent.com/23094588/148217475-35c0d319-77eb-4712-a38e-c218771e637a.png)
+
+   ![image](https://user-images.githubusercontent.com/23094588/148217538-5e6b0f69-b76a-4e80-a1b6-35d351553c1c.png)
+
+* **`tsconfig.app.json`**: Este archivo "extiende" del **`tsconfig.json`**. Esta enfocado más a la aplicación pero rara vez se modifica.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148218010-2d7bce09-7645-40d2-9cb0-bf46990e54c5.png)
+
+* **`tsconfig.json`**: Archivo de configuración de TypeScript, básicamente indica como se va a traducir el TypeScript a JavaScript o como quieren que funcione TypeScript en este proyecto. Por lo general este archivo no se modifica.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148218124-c977ad03-7ebf-468d-8362-9634f326975d.png)
+
+* **`tsconfig.spec.json`**: Este archivo "extiende" del **`tsconfig.json`** y añade características adicionales. Generarlmente los archivos `.spec` estan relacionados con las pruebas o test.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148218164-081b9bc8-7bba-4fca-a32f-1865ab1cd6ae.png)
+
+* ***`tslint.json`***: ***Deprecado en la versión 12 de Angular***. Todos los archivos con extensión **`.json`** son archivos de configuración. El **`tslint.json`** contiene reglas de TypeScript que nos ayudan a programar de cierta manera 
+
+
+
 ## Explicación de los archivos dentro del SRC 07:02
 ## App Component 07:49
 ## Contador App 06:54
