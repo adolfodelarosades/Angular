@@ -69,7 +69,7 @@ Este es un curso robusto y fuerte, que **contiene todo lo que necesitarás para 
 * Personas que quieran usar mapas, JWT, autenticación robusta
 * Personas que quieran aprender a desplegar aplicaciones de Angular en producción
 
-## Contenido del curso 27 secciones - • 407 clases • 41 h 29 m de duración total
+## Contenido del curso 28 secciones - • 433 clases • 44 h 9 m de duración total
 
 ### 01 Introducción al curso - • 5 clases • 28m
 
@@ -553,7 +553,33 @@ Este es un curso robusto y fuerte, que **contiene todo lo que necesitarás para 
 * Configurar ambiente de producción 07:31
 * Revisar logs de Heroku 04:32
 
-### 27 Fin del curso - • 3 clases • 5m
+### 27 Bonus: Mapas - Marcadores y Direcciones con Mapbox - • 23 clases • 2h 36m
+
+* Temas puntuales de la sección 00:13
+* Demostración del objetivo final 01:34
+* Inicio de proyecto - MapasApp 03:31
+* Configuraciones iniciales del proyecto 04:29
+* Obtener la geolocalización del usuario 11:28
+* Mostrar un mensaje de carga 06:42
+* Mostrar un mapa de Mapbox 11:59
+* Marcadores y Popups 04:02
+* Boton flotante y Logo de Angular 04:49
+* Servicio para controlar el mapa 07:45
+* Diseño de componentes de búsqueda y detalles 07:27
+* Debounce Manual 05:49
+* Realizar petición HTTP para obtener lugares 11:35
+* Custom Http Client - PlacesApiClient 13:47
+* Mostrar los resultados de la búsqueda 08:29
+* Agregar marcadores en los lugares encontrados 07:26
+* Ajustar el mapa para mostrar todos los marcadores encontrados 08:44
+* Obtener la ruta entre dos puntos 06:52
+* Obtener la distancia y duración del recorrido 11:54
+* Dibujar la polyline 06:28
+* Ocultar el menu de lugares 03:28
+* Desplegar la aplicación de mapas 07:16
+* Código fuente de la sección 00:13
+
+### 28 Fin del curso - • 3 clases • 5m
 
 * Documentos complementarios sobre Angular 00:16
 * Más sobre mis cursos 00:25
