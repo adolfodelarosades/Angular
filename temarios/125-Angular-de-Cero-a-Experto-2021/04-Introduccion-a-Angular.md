@@ -80,9 +80,9 @@ Eso sonara bastante complicado, pero realmente es el mismo código de Angular qu
 
 ![image](https://user-images.githubusercontent.com/23094588/144290593-2970fa62-ebb7-49e4-93f9-4dc2bfeaf0d0.png)
 
-¿Qué es Angular?
+**¿Qué es Angular?**
 
-Angular es un framework, eso significa que es un marco de trabajo estandarizado. ¿A qué nos referimos con esto? Pues muy probablemente sitú ves el código de Angular de otra persona va a ser muy parecido al código de Angular que tú estás desarrollando, porque aquí vamos a seguir ciertos estándares que recomienda el mismo equipo de Angular para desarrollar aplicaciones.
+Angular es un **framework**, eso significa que es un marco de trabajo estandarizado. ¿A qué nos referimos con esto? Pues muy probablemente sitú ves el código de Angular de otra persona va a ser muy parecido al código de Angular que tú estás desarrollando, porque aquí vamos a seguir ciertos estándares que recomienda el mismo equipo de Angular para desarrollar aplicaciones.
 
 Vas a ver que los ***componentes*** se llaman igual o tienen nombres parecidos. Vas a ver que los ***servicios*** se llaman parecido, las directivas y otro montón de cosas.
 
