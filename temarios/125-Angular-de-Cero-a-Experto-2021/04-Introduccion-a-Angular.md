@@ -174,9 +174,78 @@ Recuerden que no necesariamente el código de Angular es el que ustedes van a po
 
 Vamos a crear nuestro primer proyecto usando **Angular CLI**, para ver la versión que tenemos instalada podemos pulsar el comando **`ng --version`**.
 
+![image](https://user-images.githubusercontent.com/23094588/148211026-7ac74991-6d6e-4abf-9b44-68c881b899ef.png)
+
+Vamos a trabajar con la versión 12.2.1 de Angular. El paquete **`@schematics/update`** nos va a permitir actualizar de manera automática a versiones posteriores de Angular.
+
+Para crear nuestros proyectos de Angular lo vamos a hacer dentro de un directorio que contenga todos nuestros proyectos Angular en mi caso lo llamaré **`PROYECTOS-ANGULAR`**.
+
+![image](https://user-images.githubusercontent.com/23094588/148211812-e53faeb4-3592-4b29-8013-9a9e109c80bc.png)
+
+En la consola nos posicionamos en dicho directorio y vamos a pulsar el siguiente comando que nos permite crear un nuevo proyecto Angular:
+
+```sh
+ng new bases
+```
+
+Cuando damos Enter nos hace una serie de preguntas:
+
+![image](https://user-images.githubusercontent.com/23094588/148212205-0969803e-57c0-4db0-92d9-d5e3092bd734.png)
+
+Nos pregunta si deseamos incorporar el ***Angular routing*** es decir si crea de manera automática el archivo de rutas por nosotros, como estamos aprendiendo le vamos a indicar que NO.
+
+![image](https://user-images.githubusercontent.com/23094588/148212471-912883fb-fd6e-4b7d-981f-d4534c9871b6.png)
+
+Lo siguiente que me pregunta es que tipo estilo vamos a manejar, en este caso vamos a seleccionar CSS, basta presionar Enter para seleccionar la opción por defecto.
+
+![image](https://user-images.githubusercontent.com/23094588/148212646-4b13be97-0af2-4c64-bca8-b511ac92983c.png)
+
+Al presionar Enter se comienza a crear el proyecto Angular, esto puede llevar algunos minutos.
+
+![image](https://user-images.githubusercontent.com/23094588/148213296-29ae46dd-8344-43da-8a1c-91266a296e52.png)
+
+Una vez que termina de crear el proyecto podemos ver todo lo que ha descargado entre ellos la carpeta **NODE_MODULES**.
+
+![image](https://user-images.githubusercontent.com/23094588/148213415-494990cf-2300-4587-be15-66ceb39e1db0.png)
+
+Vamos a cambiar el nombre de la carpeta **bases** por **125-01-bases** para tener una notación de acuerdo al Curso y numero de proyecto que vamos creando. 
+
+![image](https://user-images.githubusercontent.com/23094588/148213493-bf19221c-5d7e-4e90-a7b4-b8a9affd215d.png)
+
+Una vez hecho esto lo abrimos dentro de VSC.
+
+![image](https://user-images.githubusercontent.com/23094588/148213761-1bd7e4b2-072c-45fb-9939-6589ab245b5a.png)
+
+#### Ejecutar la APP
+
+Para ejecutar la aplicación nos metemos dentro de la carpeta del proyecto y pulsamos el siguiente comando:
+
+```sh
+ng serve -o
+```
+
+Este comando toma todo el código, lo transpila a JS monta un servidor mediante WebPack y con **`-o`** lo abre tan pronto este disponible.
+
+![image](https://user-images.githubusercontent.com/23094588/148214394-cbf8562f-0599-45a3-9279-77c9113734b4.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148214821-18bd2c8d-f49a-43ac-9592-e525002a91af.png)
+
+Una vez que se levanta el servidor se abre el navegador con la APP.
+
+![image](https://user-images.githubusercontent.com/23094588/148214766-4acd5abd-28db-4638-a803-81aa02c14426.png)
 
 
 ## Nota de actualización 00:19
+
+En la siguiente clase vemos la estructura del proyecto de Angular, en las últimas versiones tenemos dos cambios:
+
+- Ya no trae TSLint, este fue deprecado. Si quieren usar un linter, actualmente pueden usar ESLint.
+
+- Actualmente la carpeta e2e no viene por defecto, ya que se está discutiendo el futuro de Protractor. Pueden leer más sobre esto en el blog: https://blog.angular.io/angular-v12-is-now-available-32ed51fbfd49.
+
+Ninguno de estos dos cambios afecta a la funcionalidad del curso, pueden seguirlo sin pasos adicionales.
+
+
 ## Explicación de cada archivo del proyecto 08:43
 ## Explicación de los archivos dentro del SRC 07:02
 ## App Component 07:49
