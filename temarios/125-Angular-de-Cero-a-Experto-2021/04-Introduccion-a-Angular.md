@@ -253,7 +253,7 @@ Vamos a explicar los diferentes archivos creados dentro del proyecto.
 ![image](https://user-images.githubusercontent.com/23094588/148215464-a57740ad-741c-4e0e-9ae4-6ab316ae074d.png)
 
 
-*** ***`e2e`***: ***Deprecado en la versión 12 de Angular***. Nos permite hacer la configuración para las pruebas Unitarias End To End.
+* ***`e2e`***: ***Deprecado en la versión 12 de Angular***. Nos permite hacer la configuración para las pruebas Unitarias End To End.
 
 * **`node_modules`**: Contiene una gran cantidad de Modulos, para ayudar a desarrollar la aplicación y otros necesarios para la APP en producción.
 
@@ -319,8 +319,81 @@ Vamos a explicar los diferentes archivos creados dentro del proyecto.
 * ***`tslint.json`***: ***Deprecado en la versión 12 de Angular***. Todos los archivos con extensión **`.json`** son archivos de configuración. El **`tslint.json`** contiene reglas de TypeScript que nos ayudan a programar de cierta manera 
 
 
-
 ## Explicación de los archivos dentro del SRC 07:02
+
+![image](https://user-images.githubusercontent.com/23094588/148240071-687334eb-ee28-485b-b1fa-d0f5a4350c11.png)
+
+Dentro de la carpeta **`src`** tenemos otra carpeta llamada **`app`**, dentro de esta carpeta tenemos nuestro componente inicial el cual consiste en 4 archivos:
+
+* **`app.component.css`**: Archivo de estilos del componente, inicialmente esta vacío.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148241517-ac0b1ce5-a4e1-4b27-b979-51f092174098.png)
+
+* **`app.component.html`**: Archivo de plantilla del componente.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148241626-1ce4cb0d-60fc-4a9b-80d1-b320f9605ad2.png)
+
+   Esta plantilla es la que pinta la aplicación.
+   
+   ![image](https://user-images.githubusercontent.com/23094588/148241768-272a9bb0-339a-49a3-b8cd-4b2a6e0d95a1.png)
+
+* **`app.component.spec.ts`**: Archivo de pruebas del componente.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148241890-f2147f89-f0d1-4ac6-87dd-619b8ae89325.png)
+   
+* **`app.component.ts`**: Archivo TypeScript del componente. Es una clase común y corriente.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148241993-2bf8294b-f8d5-4425-b27a-db71e51c3464.png)
+
+Además dentro de esta carpeta contamos con el archivo:
+
+* **`app.module.ts`**: Archivo donde se definen los modulos de la aplicación. Es una clase común y corriente con un decorador especial **`@NgModule`**
+
+   ![image](https://user-images.githubusercontent.com/23094588/148242073-970eb8fe-5d8f-4415-9844-4834947fd931.png)
+
+
+Dentro de la carpeta **`src`** también tenemos la carpeta llamada **`assets`**, donde colocamos recursos estáticos, usualmente son imágenes, videos, sonidos, etc. Actualmente esta carpeta solo contiene el archivo:
+
+* **`.gitkeep`**: Este archivo se coloca en una carpeta que esta vacía y para que GIT no la ignore se coloca este archivo.
+
+
+Dentro de la carpeta **`src`** también tenemos la carpeta llamada **`environments`**, donde tenemos dos archivos donde podemos tener nuestras variables de entorno de desarrollo y producción:
+
+* **`environment.prod.ts`**: Variables de entorno de producción.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148244238-fa30b82d-b2c1-4ff3-950d-3f68707a4060.png)
+
+* **`environment.ts`**: Variables de entorno de desarrollo.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148244319-95c68beb-3028-4077-bf01-19709a73f09d.png)
+
+Además de las carpetas anteriores, la carpeta **`src`** contiene los siguientes archivos:
+
+* **`favicon.ico`**: Favicon de la aplicación.
+ 
+   ![image](https://user-images.githubusercontent.com/23094588/148244981-4b366734-ac07-49c1-af4d-38e6e1587879.png)
+
+* **`index.html`**: Página inicial de la aplicación.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148245055-c14023d2-b302-4a3a-8188-890895528562.png)
+
+* **`main.ts`**: Este archivo usualmente no se toca, sirve para indicarle a Angular el ambiente donde se esta ejecutando la aplicación. 
+
+   ![image](https://user-images.githubusercontent.com/23094588/148245365-e8fef523-381a-4f85-a26a-8d0e7778ffe6.png)
+
+* **`polyfill.ts`**: Archivo que ayuda tener compatibilidad con otros navegadores web.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148245859-4bfb16a7-4352-46ab-86cf-ab092bd4a3c6.png)
+
+* **`styles.css`**: Archivo de estilos CSS global para toda la aplicación.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148245981-c6ff99c1-bc6a-4fcb-8d92-1d42e5334160.png)
+
+* **`test.ts`**: Configuración del ambiente de pruebas.
+
+   ![image](https://user-images.githubusercontent.com/23094588/148246349-34239386-c8b9-4c11-bea3-d904550d3af8.png)
+
+
 ## App Component 07:49
 ## Contador App 06:54
 ## Métodos en el componente 05:12
