@@ -5,6 +5,7 @@ Esta es una serie de varios cursos Java que se listan a continuación.
 
 * [110 Creación de un Juego de Ahorcado](https://github.com/adolfodelarosades/Angular/blob/main/temarios/110-Creacion-de-un-Juego-de-Ahorcado.md)
 * [120 Angular de Cero a Experto - Legacy](https://github.com/adolfodelarosades/Angular/blob/main/temarios/120-Angular-de-Cero-a-Experto-Legacy.md)
+* [125 Angular: De cero a experto - ( Edición 2021 )](https://github.com/adolfodelarosades/Angular/blob/main/temarios/125-Angular-de-Cero-a-Experto-2021.md)
 
 # Andrés José Guzmán
 
