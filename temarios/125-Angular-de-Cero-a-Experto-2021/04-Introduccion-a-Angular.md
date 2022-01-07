@@ -713,6 +713,53 @@ Vamos a dejar solo una instancia por el momento.
 
 
 ## Componente de Heroe y separación de directorios 08:01
+
+Al crear el componente **`contador.component`** lo hicimos en la carpeta **`app`** junto con el en componente **`app.component`** pero lo que se hace generalmente es tener una carpeta por cada uno de los componentes que se vayan creando, por lo que vamos a crear la carpeta **`contador`** dentro de **`app`** y vamos a mover el componente **`contador.component`** en ella.
+
+![image](https://user-images.githubusercontent.com/23094588/148533600-c71e42fd-a769-4c23-9cee-9cbc1600932d.png)
+
+Debemos tener cuidado de modificar **`app.module.ts`** (VSC lo hace automáticamente al mover el componente):
+
+![image](https://user-images.githubusercontent.com/23094588/148533418-807de111-6b3b-45c4-ae27-a6192024b829.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148533468-219b3ad6-56bf-4ff6-b50b-343b88fa831e.png)
+
+Todo funciona igual pero tenemos mejor estructurado nuestro código.
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/148533784-972e3b6e-802c-44ce-8d0e-bd5f34d65f12.png)
+
+### Componente Heroe
+
+En esta parte de la lección vamos a crear un nuevo componente manual llamado **`heroe.component`** pero como es posible que tengamos una carpeta que haga referencia a todo lo referente sobre los heroes vamos a crear una carpeta **`heroes`**, dentro de esta vamos a crear la carpeta **`heroe`** y dentro de esta crearemos el componete **`heroe.component`**.
+
+![image](https://user-images.githubusercontent.com/23094588/148535089-45f57cb0-d6d5-466a-b7c4-e42cecf90541.png)
+
+El contenido del componente **`heroe.component`** es el siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/148535487-9a1b8e4a-35f6-44fc-b92a-c035d10862a4.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148535556-0a1cdb5e-f8b1-4229-82ab-072560677f31.png)
+
+Recordemos que además de crear el componente debemos añadirlo en **`app.modules.ts`**:
+
+![image](https://user-images.githubusercontent.com/23094588/148535710-39d3c247-a0b2-46fe-8de2-010de2e35267.png)
+
+Ahora vamos a hacer que en el navegador se despliegue este componente. Recordemos que el **`app.component.html`** es el componente inicial y es aquí donde vamos a insertar lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/148536432-b7840194-ef90-428d-b459-f94707036583.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148536456-cd6ceb16-3b49-4c1e-8b4d-7d3273ac7e42.png)
+
+
+
+
+
+
+
+
+
 ## Cambios en el template del componente 06:51
 ## Concepto de one way data binding - enlazado en una sola vía 06:21
 ## Crear componente de forma automática 06:15
