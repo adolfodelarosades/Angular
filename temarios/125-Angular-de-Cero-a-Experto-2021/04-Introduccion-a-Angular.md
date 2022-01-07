@@ -623,6 +623,23 @@ Todo sigue trabajando bien.
 
 
 ## Tarea con el contador 03:42
+
+En esta lección vamos a poner una propiedad para que para parametrizar el valor que vamos a usar como incremento o decremento y que simplemente usando esa propiedad tengamos el valor definido.
+
+![image](https://user-images.githubusercontent.com/23094588/148520357-5cc89750-1cca-4d74-a19a-8226a44bd512.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148520398-ffc1594c-f231-44d4-b4ba-ba0f522770df.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148520431-cbe8cd22-a831-4a45-9acc-394ed2a77f88.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148520489-31cbddc1-130f-4f3d-92d7-7cc5cf548fe5.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/148520685-7a9ea357-958e-4433-9818-beff57467155.png)
+
+
+
 ## Crear un componente manualmente 09:41
 ## Componente de Heroe y separación de directorios 08:01
 ## Cambios en el template del componente 06:51
