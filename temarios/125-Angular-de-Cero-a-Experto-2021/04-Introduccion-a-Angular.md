@@ -639,8 +639,79 @@ En esta lección vamos a poner una propiedad para que para parametrizar el valor
 ![image](https://user-images.githubusercontent.com/23094588/148520685-7a9ea357-958e-4433-9818-beff57467155.png)
 
 
-
 ## Crear un componente manualmente 09:41
+
+En esta lección vamos a crear un componente manualmente que tenga toda la funcionalidad de nuestro Contador, de esta manera podemos tener varias instancias del contador en una misma página web con su valor independiente sin necesidad de duplicar código.
+
+Vamos a crear el archivo **`contador.component.ts`** dentro de la  carpeta **`app`**, la parte **`.component.`** es una notación que se utiliza para indicar que precisamente se trata de un componente.
+
+El contenido de este archivo es el siguiente:
+
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-contador',
+  template: `
+
+
+
+  `
+})
+export class ContadorComponent {
+  
+}
+```
+
+Es una clase común y corriente tiene la palabla **`export`** para que la podamos utilizar en otros lados. Tiene su correspondiente decorador con su selector y su template. En este caso el template va incrustado dentro del propio archivo TS es decir que no tenemos un HTML independiente. Lo que vamos a hacer es mover el código HTML que tenemos en **`app.component.html`** dentro del template.
+
+![image](https://user-images.githubusercontent.com/23094588/148528718-a365c67e-2e5d-4839-b983-a5962e70ff1a.png)
+
+Como vemos al mover este código nos esta marcando una serie de errores ya que no encuentra las propiedades a las que se hace referencia en el template, nos hace falta mover lo que se encuentra en **`app.component.ts`** dentro de **`contador.component.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/148529080-06e5cadb-b352-473d-92fa-3fde5f458b86.png)
+
+Si cargamos la aplicación tenemos que se muestra todo en blanco por que ya no existe nada en **`app.component.ts`** y **`app.component.html`**.
+
+![image](https://user-images.githubusercontent.com/23094588/148529168-f89302bb-33bf-41b8-8057-73f216ff2af6.png)
+
+La idea es insertar el componente **`contador.component`** dentro del **`app.component`** para que podamos visualizarlo, recordemos que le hemos dado de nombre **`selector: 'app-contador'`**, por lo que tenemos que colocor en **`app.component.html`** la siguiente etiqueta.
+
+![image](https://user-images.githubusercontent.com/23094588/148529658-ea659f61-d58b-4977-9588-7a3d5c8b74ab.png)
+
+Como vemos ya nos esta marcando un error, si vemos el navegador web vemos un error de compilación
+
+![image](https://user-images.githubusercontent.com/23094588/148529981-ba03b7e1-23c3-4025-8b5a-f09481ed7424.png)
+
+si vemos la consola de Angular nos indica más detalles del error:
+
+![image](https://user-images.githubusercontent.com/23094588/148529839-e52be79f-94e5-4138-a092-4e2b6d57c31b.png)
+
+Lo que nos indica es que el **`app-contador`** no es un elemento conocido, que si es un componente de Angular verificar que es parte del Modulo.
+
+Cada que se cree un Componente es necesario registrarlo en el archivo **`app.module.ts`** en la sección **`declarations`** (Podemos insertar el import automáticamente con **`CTRL + .`**):
+
+![image](https://user-images.githubusercontent.com/23094588/148531104-3cef948d-0550-4d7d-aeaa-fa5397d2ee62.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148531167-f5b332ac-5b08-4a03-8ee7-efbb08083c80.png)
+
+El error a desaparecido en la Consola Angular, si recargamos el navegador tenemos que ya funciona nuevamente pero ahora usando un componente:
+
+![image](https://user-images.githubusercontent.com/23094588/148531432-85c3a51b-ca0c-4cf5-b8fb-f1e9341454d4.png)
+
+Podemos insertar los componentes que deseemos y cada uno de ellos es una instancia diferenente:
+
+![image](https://user-images.githubusercontent.com/23094588/148531691-26fa9fdb-6af3-4701-b72f-00653a49b868.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148531749-1decfe1d-4d43-4708-aa43-e43f77023381.png)
+
+Vamos a dejar solo una instancia por el momento.
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/148531937-55d0064f-6e10-49e3-9bb3-6484253f6672.png)
+
+
 ## Componente de Heroe y separación de directorios 08:01
 ## Cambios en el template del componente 06:51
 ## Concepto de one way data binding - enlazado en una sola vía 06:21
