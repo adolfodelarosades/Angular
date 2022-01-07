@@ -547,6 +547,52 @@ Cuando definimos una propiedad esta es pública pero podemos indicarlo explicita
 
 
 ## Contador App 06:54
+
+En esta aplicación vamos a desplegar un contador que se va a ir incrementando o decrementando según sea el caso, para mantener el estado de este contador vamos a incluir una propiedad que va a contener su valor. Como ya hemos visto las propiedades por default sion ***públicas*** por lo mismo no lo indicaremos explicitamente, vamos a darle un valor inicial a la propiedad. Por otro lado en el HTML vamos a mostrar dicha propiedad.
+
+![image](https://user-images.githubusercontent.com/23094588/148507361-38db0e77-dafb-4e57-970b-9c902e062166.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148507414-c5c2da22-16bc-4b48-a70b-12d1328d8787.png)
+
+Ahora lo que vamos a incluir son los botones para incrementar y decrementar el contador.
+
+![image](https://user-images.githubusercontent.com/23094588/148507872-c97ba3f1-4d27-40de-a28e-173234cc0e4d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148507802-0ac0e9c4-19e8-45ef-aa19-32bdd24d38f0.png)
+
+Si pulsamos en los botones por ahora no pasa nada. Estos botones aparecen así por el estilo que incluimos en el archivo **`styles.css`**.
+
+Para darle funcionalidad a los botones vamos a incluir el evento **`click`** del botón. Los eventos en Angular se definen entre paréntisis **`(click)`** y después un **`=`** y entre comillas lo que queremos hacer. En este caso vamos a poner lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/148508611-ceb035e9-0716-45c2-b15e-cb6ce955b27e.png)
+
+En este caso estamos poniendo directamente la instrucción JS que queremos ejecutar.
+
+![image](https://user-images.githubusercontent.com/23094588/148508682-de6f574a-f22e-4395-9d5d-e7b891a453db.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148508721-55cd07ee-5eb1-4fe5-b428-0497a113166b.png)
+
+Al presionar los botones se va incrementando o decrementando el contador. Si vamos a a la pestaña **ELEMENTOS** y presionamos algún botón podemos apreciar en CHROME lo que se vuelve a renderizar al presionar el botón (Se remarca lo que cambia, en la imagen no se aprecia).
+
+![image](https://user-images.githubusercontent.com/23094588/148509332-0a477ea5-474a-4ecc-b338-de36fc922164.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148509495-6739eca7-9b52-4c1c-ad87-50b68253e5d2.png)
+
+En el template HTML hemos puesto la expresión **`(click)="numero = numero + 1;"`** y podríamos pensear ponerla así **`(click)="numero += 1;"`** pero al hacerlo esto nos indica un fallo:
+
+![image](https://user-images.githubusercontent.com/23094588/148510048-649c8ea9-9fdd-4f43-828d-dce6b4efb20a.png)
+
+A pesar de que es una expresión habitual de JS al usarla en el template HTML, generalmente solo se va a poner código JS muy sensillo dentro del template HTML pero generalmente no lo debemos hacer, ya veremos otra alternativa que es mejor.
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/148510317-fb2cb83a-c13e-4f39-8a99-9a8253afdfa2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148510791-38923ea3-2e3a-47c6-a657-82ded0b6e75a.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148510661-68f4ea20-f8ea-4392-8823-9327a427b5e9.png)
+
+
 ## Métodos en el componente 05:12
 ## Tarea con el contador 03:42
 ## Crear un componente manualmente 09:41
