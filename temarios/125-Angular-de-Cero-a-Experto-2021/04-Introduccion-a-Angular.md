@@ -574,9 +574,9 @@ En este caso estamos poniendo directamente la instrucción JS que queremos ejecu
 
 Al presionar los botones se va incrementando o decrementando el contador. Si vamos a a la pestaña **ELEMENTOS** y presionamos algún botón podemos apreciar en CHROME lo que se vuelve a renderizar al presionar el botón (Se remarca lo que cambia, en la imagen no se aprecia).
 
-![image](https://user-images.githubusercontent.com/23094588/148509332-0a477ea5-474a-4ecc-b338-de36fc922164.png)
-
 ![image](https://user-images.githubusercontent.com/23094588/148509495-6739eca7-9b52-4c1c-ad87-50b68253e5d2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148509332-0a477ea5-474a-4ecc-b338-de36fc922164.png)
 
 En el template HTML hemos puesto la expresión **`(click)="numero = numero + 1;"`** y podríamos pensear ponerla así **`(click)="numero += 1;"`** pero al hacerlo esto nos indica un fallo:
 
@@ -594,6 +594,34 @@ A pesar de que es una expresión habitual de JS al usarla en el template HTML, g
 
 
 ## Métodos en el componente 05:12
+
+En esta lección vamos a crear dos métodos para sumar y restar uno al contador, y vamos a usar estos métodos en lugar de colocar directamente el código en el template HTML, esto nos va a quedar así:
+
+![image](https://user-images.githubusercontent.com/23094588/148512191-cc24396f-8ef9-4713-a9a6-a304abbbb133.png)
+
+Observe que es necesario colocar la palabra **`this.`** antes de la propiedad que deseemos usar, en el el template HTML no es necesario hacerlo aun que podríamos. Ademas dentro del archivo TypeScript ya podemos usar sin problema la expresión condensada para incrementar o decrementar el contador sin problema.
+
+![image](https://user-images.githubusercontent.com/23094588/148512216-c27e2315-8dc5-444c-ab4e-a3f8bd4f4a5e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148512243-fcc01cc3-ab13-4aab-b742-0dcce51f2d61.png)
+
+Todo sigue funcionando igual. 
+
+Existe una mejora que podemos usar, usualmente los método **`sumar()`** y **`restar()`** hacen básicamente lo mismo pero al ponerlo por separado estamos de cierta manera duplicando el código. Vamos a crear un solo método el cual recibe un valor que nos servira para incrementar o decrementar el contador, de hecho el valor pasado podría ser uno diferente a 1 o -1.
+
+![image](https://user-images.githubusercontent.com/23094588/148513569-b0daa5a5-44bc-46d4-a8c4-cd0098685ee2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148513601-9ffdfad1-c070-40e1-bae0-0b9109f7e3e4.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148513621-5525091b-0874-45eb-bf3e-cb0d6f7da2d0.png)
+
+Todo sigue trabajando bien.
+
+### GIT 
+
+![image](https://user-images.githubusercontent.com/23094588/148514370-e23e56b4-2e3f-425d-b12a-4cd38bd1ddcb.png)
+
+
 ## Tarea con el contador 03:42
 ## Crear un componente manualmente 09:41
 ## Componente de Heroe y separación de directorios 08:01
