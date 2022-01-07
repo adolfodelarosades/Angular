@@ -753,14 +753,82 @@ Ahora vamos a hacer que en el navegador se despliegue este componente. Recordemo
 ![image](https://user-images.githubusercontent.com/23094588/148536456-cd6ceb16-3b49-4c1e-8b4d-7d3273ac7e42.png)
 
 
+### GIT
 
-
-
-
-
+![image](https://user-images.githubusercontent.com/23094588/148536857-7caa2f29-53ff-4bd5-92e6-c31c52b89345.png)
 
 
 ## Cambios en el template del componente 06:51
+
+En esta lección vamos a trabajar sobre el aspecto del componente **`heroe.component`**:
+
+En este caso tenemos definidas dos propiedades que mostramos en el navegador.
+
+![image](https://user-images.githubusercontent.com/23094588/148538944-4bd3a2f1-55d9-4433-b4d8-b185d8e2704e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148538981-07da53d3-4d99-4fa4-b62e-3f32f9a082a2.png)
+
+
+También podemos tener un método e invocarlo desde el HTML.
+
+![image](https://user-images.githubusercontent.com/23094588/148539260-5b53c3a9-19f5-471b-902b-77cdbaa699b4.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148539296-b799ccf3-073e-48d5-b6dd-9f99ad6c0c53.png)
+
+Podemos usar los "balds tips" para retornar la cadena de salida:
+
+![image](https://user-images.githubusercontent.com/23094588/148539417-fd8fc285-b624-49ed-9c6f-c54fbc56a287.png)
+
+El resultado es el mismo:
+
+![image](https://user-images.githubusercontent.com/23094588/148539455-bc1e90b3-af55-4eb4-b4ce-fd5eaa2017e1.png)
+
+#### **`get`** y **`set`**
+
+Otra cosa interesante que tiene Angular son los **`get`** y **`set`** dentro de una clase, en este caso vamos a crear un **`get`** que es como tener una propiedad y que se procesa cuando se invoca, observe que al invocarlo el nombre no lleva los paréntesis como en los métodos.
+
+![image](https://user-images.githubusercontent.com/23094588/148540068-b5e7f5a6-1cee-42a1-b669-515b698dcb47.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148540095-d43af02b-e7e1-4943-b53e-0070aaadbb71.png)
+
+Observe como aparecen los **`gets`** a la hora de usarlo, es como una propiedad más pero realmente es un **`getter`**:
+
+![image](https://user-images.githubusercontent.com/23094588/148540283-41fb01af-4cfc-4fde-9ef9-639ab40d3e6a.png)
+
+Finalmente vamos a colocoar dos botones:
+
+![image](https://user-images.githubusercontent.com/23094588/148540671-81ead4bf-5094-437f-81ba-0037de1e2939.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148540700-33bff492-68fe-4556-b119-0edf281b6048.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/148540826-c861c7e1-d6ea-4603-9230-13a28fab69bb.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Concepto de one way data binding - enlazado en una sola vía 06:21
 ## Crear componente de forma automática 06:15
 ## Directiva `*ngFor` 12:36
