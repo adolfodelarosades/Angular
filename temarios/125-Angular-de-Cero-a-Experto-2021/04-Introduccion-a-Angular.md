@@ -825,7 +825,31 @@ Al presionar el botón **`Cambiar Héroe`** tenemos:
 
 ![image](https://user-images.githubusercontent.com/23094588/148691219-73f918d3-c44e-4211-b19c-81b23179b3e1.png)
 
+Observemos en la pestaña **`Elements`** nos indica donde esta cambiando, donde se redibuja el nuevo nombre del héroe lo demás lo deja tal cual.
+
 ![image](https://user-images.githubusercontent.com/23094588/148691260-c0a2740b-4141-4854-804e-26510562459a.png)
+
+Así de facíl estamos cambiando información del DOM.
+
+Ahora vamos a hacer otro método llamado **`cambiarEdad()`** también de tipo **`void`** para cambiar el valor de la propiedad **`edad`**:
+
+![image](https://user-images.githubusercontent.com/23094588/148692228-8a3fe497-54dc-4a86-bd0f-10274b147f90.png)
+
+Al recargar el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/148692245-59d125e0-fcd6-4a8e-b8b1-cd9d84145254.png)
+
+Y al presionar el botón **`Cambiar Edad`** tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/148692275-0fb957d8-a9c8-459a-847d-111222ee82c1.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148692321-b2acdf06-aa05-4462-8722-2c65c58bec7a.png)
+
+
+
+
+
+
 
 
 
