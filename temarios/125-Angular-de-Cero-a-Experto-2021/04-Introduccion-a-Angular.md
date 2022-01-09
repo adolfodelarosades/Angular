@@ -929,11 +929,142 @@ En este ejemplo no vamos a usar ni el **`constructor`** ni el **`OnInit`** por l
 
 ## Directiva `*ngFor` 12:36
 
+En el componente **`ListadoComponent`** vamos a definir un listado de héroes es decir un **`array`** de **`string`** los valores los podemos poner entre corchetes:
 
-```sh
+```js
+heroes: string[] = ['Spiderman', 'Ironman', 'Hulk', 'Thor'];
 ```
 
+En nuestro archivo de Template HTML vamos a pintar algo como lo que sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/148694174-6b74b204-5606-4432-b8c2-98a88da91c80.png)
+
+En el navegador se ve así:
+
+![image](https://user-images.githubusercontent.com/23094588/148694188-1034dc16-efe8-4413-9dc3-93f5f1068c95.png)
+
+Queremos algo así pero que en lugar de **`item 1`** nos pinte cada uno de los nombres de los Héroes. Una forma de hacerlo es así:
+
+![image](https://user-images.githubusercontent.com/23094588/148694267-6aff8ca8-57be-4cec-a1fe-390baea780bf.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148694273-ec9db05b-a9d0-4abd-b1fc-e756260092f1.png)
+
+Esto puede ser valido pero en el caso de que tuviéramos 1000 héroes tendríamos que repetir la sentencia 1000 veces. Gracias a Angular y sus ***Directivas*** podemos escribir el código como sigue para obtener el mismo resutaldo:
+
+![image](https://user-images.githubusercontent.com/23094588/148694467-01d08d61-d284-4f68-b3ae-b3a53d2f79c2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148694475-10b2fdf1-31af-43e8-9297-4ad72c57920b.png)
+
+Si agregamos un héroe más en el **`array`** no es necesario modificar nada en el template HTML:
+
+![image](https://user-images.githubusercontent.com/23094588/148694517-ed09e80f-caeb-4837-a15c-e8a17a53bee6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148694525-6130987f-14e1-4b69-b60f-092d3ab7cb48.png)
+
+Incluso podríamos númerar los datos usando el **`index`** del **`*ngFor`** como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/148694617-36f3e52c-e8c9-4162-be24-b398e0a40490.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148694622-3da604b0-7bf0-4eb7-b195-bfba9bcdd292.png)
+
+Si quisieramos que la lista empezara en uno lo ponemos así:
+
+![image](https://user-images.githubusercontent.com/23094588/148694661-406a3d7b-d85a-4a2a-8d83-ec8ff15eece2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148694666-eab39367-ef75-4d27-96f3-3ed67c1611c9.png)
+
+### Tarea Borrar un Héroe
+
+Vamos a colocar un botón después del listado que diga **`Borrar Héroe`** y al pulsarlo debe eliminar un héroe del listado.
+
+![image](https://user-images.githubusercontent.com/23094588/148695007-e3539554-1ec8-4303-9e8c-faccc94825cf.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695023-705fd74e-18c3-42a4-afec-c09b3f15f5a7.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695029-3e3b1598-1695-4069-830d-05ef658d6d09.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695034-52aaf9ed-c247-4f2c-9fc1-acf934e84ae4.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695038-d0de244b-06c8-4512-b3f3-b5a5dfaf76ab.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695044-b0707dca-649d-483e-8888-60c14583e20a.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695049-0121d4f8-58d7-4e8f-abb8-9cfc9c99b77f.png)
+
+Con el método **`pop()`** se va eliminando el último elementoo del **`array`**, al hacerlo sucesivamente vamos borrando todos los elmementos del array pero el botón persiste aun ya no haya ningún héroe.
+
+Con el método **`shift()`** se va eliminando el primer elemento del **`array`**.
+
+Tanto el método **`pop()`** como  **`shift()`** devuelven el héroe que se elimino, (devuelve **`string`** o **`undefined`**) por lo que vamos a hacer una mejora a nuestro código cada que pulsemos el botón **`Borrar Héroe`** vamos a pintar el nombre del héroe que estemos borrando, para este ejercicio usemos el método **`shift()`**.
+
+
+Hemos visto que el método **`shift()`** devuelve **`string`** o **`undefined`** y si lo ponemos simplemente así nos muestra un error: 
+
+![image](https://user-images.githubusercontent.com/23094588/148695567-c940a7cf-dcba-4b05-af84-16dbc099f186.png)
+
+por lo que hay dos posibles soluciones que podemos tener:
+
+![image](https://user-images.githubusercontent.com/23094588/148695591-d911ad04-3fd4-41cd-b361-a2e8c4b52324.png)
+
+O la que vamos a usar:
+
+![image](https://user-images.githubusercontent.com/23094588/148695611-a36598a2-bb51-4f94-9d4d-8357e29c25af.png)
+
+En caso de que no elimine ningún héroe retorna un espacio en blanco.
+
+![image](https://user-images.githubusercontent.com/23094588/148695639-09f3347b-b46e-468b-93ff-f718b33d6661.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695646-7d9a525a-c7ff-4d98-926d-cc6d5d29939f.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695649-5fe1a587-67b9-475c-a75c-c76a79047141.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695653-ea26c24d-066e-44d0-b975-5732ae3d3ddf.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695657-d3b766b6-c058-406e-b949-17243f84f138.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695662-b2d2161a-b617-4888-b174-0a133c336184.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695671-3b0bc438-9e40-4266-9d96-06039fac60d8.png)
+
+Como vemos al eliminar un elemento de la lista el botón se desplaza vamos a hacer un pequeño cambio en el código como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/148695807-e4476467-60e3-4fb6-b852-cd9b9897f1b5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695859-5589cbd1-c0c7-4225-b65d-1910a4bb5293.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695876-b075d303-1089-4eab-aa79-8b6f1b683227.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695884-fe4f9c75-1b6d-48d6-a63b-c0e45fb6f55e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695887-311b19ab-192d-4f35-98ef-56954bfaba8d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695892-86835798-3c6d-460c-b24e-e8302591e3b5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695900-d173036c-5f17-445b-92f4-fca09c0e3df5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148695906-6322a731-8651-4a0e-af6c-4b5a0795fb8d.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/148695932-bf3eeb4e-2907-4974-8690-978ba7ef94a6.png)
+
+
 ## Directiva `*ngIf` 04:51
+
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+
 ## `ng-Template` y el `ngIf-else` 04:32
 ## Módulos 10:09
 ## Módulos - segunda parte 08:16
