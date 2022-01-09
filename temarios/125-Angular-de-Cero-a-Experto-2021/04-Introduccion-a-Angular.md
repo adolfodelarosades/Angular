@@ -805,31 +805,39 @@ Finalmente vamos a colocoar dos botones:
 
 ![image](https://user-images.githubusercontent.com/23094588/148540826-c861c7e1-d6ea-4603-9230-13a28fab69bb.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Concepto de one way data binding - enlazado en una sola vía 06:21
+
+En esta lección vamos a darle funcionalidad a los dos botones que habiamos incluido en la lección anterior, el de **`Cambiar Héroe`** lo que va a hacer cuando lo pulsemos es cambiar en nombre **`Ironman`** por **`Spideman`** en todos los lugares donde aparece, y el  **`Cambiar Edad`** va a cambiar el **`45`** por **`39`** en todos los sitios donde aparezca.
+
+Vamoa a crear el método **`cambiarNombre()`** como este método no retorna nada podemos ponerle **`: void`** que indica que no retorna nada, en la sección anterior no le pusimos nada al método **`get nombreCapitalizado`** podemos ponerle **`: string`** por que en este caso lo que retorna es un **`string`**.
+
+Lo que vamos a hacer en el método **`cambiarNombre()`** es cambiar el valor de la propiedad **`nombre`**, en lugar de **`Ironman`** le vamso a asignar **`Spideman`**.
+
+Ahora en nuestro template HTML vamos a colocar el evento **`(click)`** al botón correspondiente para que llame al método **`cambiarNombre()`**:
+
+![image](https://user-images.githubusercontent.com/23094588/148691138-294aa54b-e622-4e43-a43b-8c91b8a2521c.png)
+
+Si cargamos la aplicación.
+
+![image](https://user-images.githubusercontent.com/23094588/148691190-10126863-e7f6-4ef3-a923-b17ec61b0b49.png)
+
+Al presionar el botón **`Cambiar Héroe`** tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/148691219-73f918d3-c44e-4211-b19c-81b23179b3e1.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148691260-c0a2740b-4141-4854-804e-26510562459a.png)
+
+
+
+
+
+
+
+
+
+
+
+
 ## Crear componente de forma automática 06:15
 ## Directiva `*ngFor` 12:36
 ## Directiva `*ngIf` 04:51
