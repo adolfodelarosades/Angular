@@ -833,7 +833,7 @@ Así de facíl estamos cambiando información del DOM.
 
 Ahora vamos a hacer otro método llamado **`cambiarEdad()`** también de tipo **`void`** para cambiar el valor de la propiedad **`edad`**:
 
-![image](https://user-images.githubusercontent.com/23094588/148692228-8a3fe497-54dc-4a86-bd0f-10274b147f90.png)
+![image](https://user-images.githubusercontent.com/23094588/148692357-ebe031e7-c79c-405a-8547-eae377958a25.png)
 
 Al recargar el navegador tenemos:
 
@@ -841,29 +841,98 @@ Al recargar el navegador tenemos:
 
 Y al presionar el botón **`Cambiar Edad`** tenemos:
 
-![image](https://user-images.githubusercontent.com/23094588/148692275-0fb957d8-a9c8-459a-847d-111222ee82c1.png)
+![image](https://user-images.githubusercontent.com/23094588/148692366-750c9bd7-b00d-4088-9780-2204f99a8e75.png)
+
+En la pestaña **`Elements`** vemos claramente lo que se esta renderizando:
 
 ![image](https://user-images.githubusercontent.com/23094588/148692321-b2acdf06-aa05-4462-8722-2c65c58bec7a.png)
 
+**NOTA: Si volvemos a pulsar nuevamente alguno de los botones el código se ejecuta pero la información no se reenderiza nuevamete ya que los valores no cambian.**
 
+Esto es parte del concepto **ONE WAY DATA BINDING** o **ENLAZADO EN UNA SOLA VÍA**, es decir si las propiedades cambian en el componente del archivo **TS** se reedibujan en el template HTML, pero no hay manera (hasta el momento) que si cambiamos algo en el template HTML cambie el valor dentro del archivo **TS**.
 
+### GIT
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+![image](https://user-images.githubusercontent.com/23094588/148692630-13118c0f-5783-4fad-9b8f-415939cfb0e9.png)
 
 ## Crear componente de forma automática 06:15
+
+En esta lección vamos a crear un nuevo componente pero vamos a usar **Angular CLI** para su creación, desde la consola vamos a pulsar el siguiente comando:
+
+
+```sh
+ng generate component heroes/listado
+```
+
+De una forma abreviada se puede escribir:
+
+```sh
+ng g c heroes/listado
+```
+
+![image](https://user-images.githubusercontent.com/23094588/148692927-448d24de-9cde-4275-ae83-bd73b8289f09.png)
+
+Como podemos apreciar se crean cuatro archivos y se actualiza un archivo. Creo los archivos CSS, de pruebas, HTML y el TS.
+
+![image](https://user-images.githubusercontent.com/23094588/148692951-8dc40f0d-fd7f-412d-8096-8971faed041a.png)
+
+además actualizo el archivo **`/app.module.ts`** para incluir el nuevo componente. 
+
+![image](https://user-images.githubusercontent.com/23094588/148693067-3d6c7a86-f3bb-4c95-889e-ab082f446c2e.png)
+
+ Todo lo que haciamos antes manualmente lo ha hecho Angular CLI por nosotros.
+
+Para pintar en el navegador el nuevo componente lo que vamos a hacer es modificar el archivo **`app.component.html`**:
+
+![image](https://user-images.githubusercontent.com/23094588/148693166-e13ec4b3-c690-4d54-947b-bc2c7c848a77.png)
+
+Y al recargar el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/148693175-c88041c9-48a3-4e54-a073-56c67d4abaa8.png)
+
+Que es lo que tenemos en el archivo **`listado.component.html`**:
+
+![image](https://user-images.githubusercontent.com/23094588/148693294-16c47c7a-76c9-4bcc-9789-04e5a13e799e.png)
+
+En este caso para el componente Listado no vamos a usar ni el archivo CSS ni el de Pruebas por lo que los eliminamos:
+
+![image](https://user-images.githubusercontent.com/23094588/148693367-0612f773-73dd-42ee-b0ac-d7ed5a4fbbd1.png)
+
+Al hacer esto debemos cambiar algo en **`listado.component.ts`**, como ya no existe el archivo CSS nos esta marcando un error:
+
+![image](https://user-images.githubusercontent.com/23094588/148693397-e83bf05d-730e-4f13-9ea6-0e0dd7d22183.png)
+
+Una vez corregido nos queda así:
+
+![image](https://user-images.githubusercontent.com/23094588/148693455-275f4c10-8021-4524-86f6-414fb1e263fd.png)
+
+Como podemos ver Anglura en la clase esta ***implementando*** **`OnInit`** y para usarlo crea el método **`ngOnInit()`** esto corresponde al ***Ciclo de Vida de Angular***, a su vez también crea un **`constructor`**, tanto el  **`constructor`** como el **`OnInit`** son cosas que dispara Angular de manera automática, solo para ver en que orden se ejecutan estos dos "métodos" vamos a poner un mensaje dentro de ellos:
+
+![image](https://user-images.githubusercontent.com/23094588/148693660-19ceb981-47c4-4a2f-9319-572ff2396835.png)
+
+Al recargar el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/148693671-7621a4fb-b66d-4ae2-a10e-11607ab10922.png)
+
+Como se puede observar se ejecuta primero el **`constructor`** antes que el componente se renderice y posteriormente el **`OnInit`**, usualmente **`OnInit`** se usa para iniciar cosas, por ejemplo un servicio que recupera datos del servidor y son necesarios pintar en una pantalla inicial.
+
+En este ejemplo no vamos a usar ni el **`constructor`** ni el **`OnInit`** por lo que podemos eliminarlos para simplificar nuestro código. Vamos a dejar los archivos como se muestra en la imagen:
+
+![image](https://user-images.githubusercontent.com/23094588/148693878-2ac7c71c-6c77-4420-8ff8-53daadec0b59.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148693885-3ec13ac2-44df-4413-afb6-812b673c72e8.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/148693926-666bd32a-d9a3-4ce3-80f3-0ff9f5e91f5d.png)
+
+
 ## Directiva `*ngFor` 12:36
+
+
+```sh
+```
+
 ## Directiva `*ngIf` 04:51
 ## `ng-Template` y el `ngIf-else` 04:32
 ## Módulos 10:09
