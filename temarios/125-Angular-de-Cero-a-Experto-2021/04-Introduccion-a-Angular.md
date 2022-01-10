@@ -1155,6 +1155,22 @@ Si borramos cambia el contenido:
 
 ## Módulos 10:09
 
+Actualmente en nuestra aplicación tenemos un solo módulo el cual se encuentra en el archivo **`app.module.ts`** 
+
+![image](https://user-images.githubusercontent.com/23094588/148809335-10f6f855-7104-4b06-8ec1-83473443eb4d.png)
+
+Generalment en este archivo se modifican las secciones **`declarations`** donde se van añadiendo los componente nuevos que vamos creando, si tenemos 100 componentes tendremos que insertar los 100 componentes,  la seccion **`imports`** ya veremos para que sirve, la seccion **`bootstrap`** indica el componente inicial que generalmente no se modifica, la seccion **`providers`** nos va a servir para insertar los servicios de la aplicación.
+
+
+Este módulo se carga en el archivo **`main.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/148809393-fa3b1341-ccb8-42e0-aaa1-62d192dc6a3b.png)
+
+**El objetivo de los Módulos es ayudarnos a agrupar componentes y piezas  de nuestra aplicación  que tienen sentido entre sí. Otro de los objevos de los módulos es Encapsular las cosas, y otro muy importante es ayudarnos con la CARGA PEREZOSA (Lazy load)**. 
+
+
+
+
 ```js
 ```
 
