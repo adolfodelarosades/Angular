@@ -1075,8 +1075,6 @@ Al recargar el navegador tenemos:
 
 ![image](https://user-images.githubusercontent.com/23094588/148801159-11d668a6-78ee-47b8-a0fa-d9f59ce9f72e.png)
 
-![image](https://user-images.githubusercontent.com/23094588/148801173-c9536ebb-ab3b-47a1-b8f2-edbff21aa64f.png)
-
 ![image](https://user-images.githubusercontent.com/23094588/148801207-8a8b0df9-3755-4958-a366-8cd6c8d8ad5b.png)
 
 Una alternativa interesante es colocor simplemente el código así:
@@ -1098,19 +1096,78 @@ Esto funciona por que el **`*ngIf`** es lo suficientemente inteligente para anal
 
 ## `ng-Template` y el `ngIf-else` 04:32
 
-```js
-```
+Con la directiva **`*ngIf`** ya vimos que pinta algo cuando la condición es **`true`**, pero también podemos hacer que se pinte algo cuando es **`falso`**, por ejemplo veamos el siguiente código:
 
-```js
-```
+![image](https://user-images.githubusercontent.com/23094588/148804112-c8ebd4c7-b9b1-44ff-a89f-d77a6ba3dd70.png)
 
-```js
-```
+![image](https://user-images.githubusercontent.com/23094588/148804147-74c0ffb2-8f44-41f8-ad75-c52eddbb1da2.png)
 
-```js
-```
+![image](https://user-images.githubusercontent.com/23094588/148804171-6bf8f771-87b3-449f-881f-98a95bf41136.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148804194-467c7773-564d-443f-ae33-811ae369ff64.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148804224-9f53cc61-e7d0-492a-8252-99bf32d7043f.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148804251-974c7b70-ca9e-4457-9a01-04f7e755bf91.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148804294-e08a0d00-34b4-4b2f-b9a5-c5ac96cdd3dd.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148804312-4567a220-332c-4839-bbca-f95537f05dfe.png)
+
+Dependiendo el caso se pinta uno u otro bloque usando la directiva **`*ngIf`**.
+
+Estamos usando una especie de **"else"** usando dos **`*ngIf`** pero existe otra alternativa para cuando tenemos dos casos.
+
+![image](https://user-images.githubusercontent.com/23094588/148806175-fdeaeced-2ef8-47f0-b851-7b3966356fa6.png)
+
+Esmos usando una combinación de un **`else`** una **etiqueta** y un **`*ng-template`**, la **etiqueta** la ponemos en caso de un  **`else`** y en el **`*ng-template`** esta el código que se va a ejecutar en dicho caso.
+
+Los resultados son los mismos:
+
+![image](https://user-images.githubusercontent.com/23094588/148804147-74c0ffb2-8f44-41f8-ad75-c52eddbb1da2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148804171-6bf8f771-87b3-449f-881f-98a95bf41136.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148804194-467c7773-564d-443f-ae33-811ae369ff64.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148804224-9f53cc61-e7d0-492a-8252-99bf32d7043f.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148804251-974c7b70-ca9e-4457-9a01-04f7e755bf91.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148804294-e08a0d00-34b4-4b2f-b9a5-c5ac96cdd3dd.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148804312-4567a220-332c-4839-bbca-f95537f05dfe.png)
+
+Si vemos la pestaña **Elements** vemos como lo maneja Angular por atrás:
+
+![image](https://user-images.githubusercontent.com/23094588/148808146-88a7436a-bc3d-4d8f-b2d9-5baa2e969c3b.png)
+
+Si borramos cambia el contenido:
+
+![image](https://user-images.githubusercontent.com/23094588/148808223-eaeb5a3e-3e42-40c0-80ac-3c824ebd4a45.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148808264-16102540-cb7a-4257-8e40-0cf2af04798f.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/148808409-c237f6e9-b259-4395-b37a-f7813d474a79.png)
+
 
 ## Módulos 10:09
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+
 ## Módulos - segunda parte 08:16
 ## Bonus: Hacer respaldo de nuestro proyecto en GitHub 07:35
 ## Código fuente de la sección 00:17
