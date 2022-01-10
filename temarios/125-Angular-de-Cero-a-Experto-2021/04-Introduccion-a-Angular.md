@@ -1051,21 +1051,65 @@ Como vemos al eliminar un elemento de la lista el botón se desplaza vamos a hac
 
 ## Directiva `*ngIf` 04:51
 
+En esta lección vamos a ver otra directiva que nos va a ayudar a ser selectivos con lo que se muestra en el navegador y con lo que no queremos que se muestre. En nuestra aplicación actual siempre mostramos el texto **`Heroe Borrado`** y realmente esto solo se debería ver una vez que eliminamos a un Héroe, sino lo presionamos el botón no debería mostrar el texto. 
 
-```js
-```
+![image](https://user-images.githubusercontent.com/23094588/148799176-22b8edf7-9b37-45c8-8cfd-92a9c22f2474.png)
 
-```js
-```
+A la directiva **`*ngIf`** se le asigna una expresión booleana y si esta expresión es **`true`** se mostrará toda la etiqueta donde hayamos colocado la  directiva **`*ngIf`** si la expresión es **`false`** no se mostrará.
 
-```js
-```
+Aquí la cuestión es saber cuando un Héroe se borra y esto pasa cuando **`this.heroeBorrado`** es diferente de **`''`** de una cadena vacía y a que cuando borramos el Héreo recuperamos un nombre a menos que no se haya borrado ningún heroe.
 
-```js
-```
+El código nos queda así:
+
+![image](https://user-images.githubusercontent.com/23094588/148800673-1188efc4-1fb0-40b8-b99a-c883cf1553d7.png)
+
+Al recargar el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/148801062-83f0a063-3cfe-41d2-a12c-d5147446ee3d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148801098-d548a42a-a10f-4d43-aaac-bf08b31662dd.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148801116-e5c169fa-bcda-4213-a098-7e64c723c2d9.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148801134-bd2f7afc-bcbb-47f4-9273-57516acaed8a.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148801159-11d668a6-78ee-47b8-a0fa-d9f59ce9f72e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148801173-c9536ebb-ab3b-47a1-b8f2-edbff21aa64f.png)
+
+![image](https://user-images.githubusercontent.com/23094588/148801207-8a8b0df9-3755-4958-a366-8cd6c8d8ad5b.png)
+
+Una alternativa interesante es colocor simplemente el código así:
+
+![image](https://user-images.githubusercontent.com/23094588/148801376-2072038f-aa87-41df-8c77-58a6f5e1dff7.png)
+
+El resultado es exactamente el mismo. 
+
+¿Pór qué esto funciona?
+
+Esto funciona por que el **`*ngIf`** es lo suficientemente inteligente para analizar que un **`string`** vacío **`''`** o un **`false`** o un **`null`** o un **`undefined`** representan falta de valor y representan un valor **`false`**.
+
+![image](https://user-images.githubusercontent.com/23094588/148802260-0e13d78f-0689-4bd5-b47f-37c2f6c7b561.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/148802417-a153da9f-7b04-4b15-9aee-9b32105e876b.png)
 
 
 ## `ng-Template` y el `ngIf-else` 04:32
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
 ## Módulos 10:09
 ## Módulos - segunda parte 08:16
 ## Bonus: Hacer respaldo de nuestro proyecto en GitHub 07:35
