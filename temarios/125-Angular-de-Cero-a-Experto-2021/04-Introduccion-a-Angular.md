@@ -1169,21 +1169,102 @@ Este módulo se carga en el archivo **`main.ts`**.
 **El objetivo de los Módulos es ayudarnos a agrupar componentes y piezas  de nuestra aplicación  que tienen sentido entre sí. Otro de los objevos de los módulos es Encapsular las cosas, y otro muy importante es ayudarnos con la CARGA PEREZOSA (Lazy load)**. 
 
 
+### CARGA PEREZOSA o Lazy load
 
+Imaginemos que tenemos un módulo de Productos pero el usuario jamas entra a dicho módulo, entonces no deberíamos cargar toda la información de los componentes y demás referente al módulo de Productos si no lo vamos a usar, es justo lo que hace la **CARGA PEREZOSA** cargarlos bajo demanda.
 
-```js
+La idea es que creemos un módulo referente a todo lo relacionado a HEROES por eso lo creamos de esta manera:
+
+![image](https://user-images.githubusercontent.com/23094588/149730734-a00c8256-6a7e-4ffe-a8e7-9447ec43f3aa.png)
+
+En HEROES estamos agrupando un HEROE en particular además de un LISTADO DE HEROES.
+
+Para crear un nuevo modulo referente a los HEROES dentro de la carpeta **`heroes`** vamos a crear el archivo **`heroes.module.ts`**
+
+![image](https://user-images.githubusercontent.com/23094588/149731126-cce6ca66-eb7c-4dfd-b18a-96a70fa2873f.png)
+
+Vamos a meter todo su código manualmente:
+
+```ts
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { HeroeComponent } from './heroe/heroe.component';
+import { ListadoComponent } from './listado/listado.component';
+
+@NgModule({
+  declarations: [
+    HeroeComponent,
+    ListadoComponent
+  ],
+  exports: [
+    ListadoComponent
+  ],
+  imports: [
+    CommonModule
+  ]
+})
+export class HeroesModule {}
 ```
 
-```js
-```
+* Un módulo es una clase común y corriente que como la vamos a usar en otros lados le indicamos que la vamos a exportar con **`export`**.
+* Un módulo tiene el decorador **`@NgModule`**.
+* Dentro de **`declarations`** vamos a definir los dos componentes que tenemos en HEROES.
+* Otra cosa importante es indicar las cosas que quiero que sean visibles fuera de este módulo es decir que cosas quiero hacer públicas y esto lo hacemos en la sección **`exports`** en este caso es el **`ListadoComponent`** que es lo que estamos usando en el archivo **`app.component.html`** (**`<app-listado></app-listado>`**).
+* Otra sección que podemos crear son los **`imports`** que es donde se definen módulos que se vayan a ocupar en este caso vamos a ocupar el **`CommonModule`** que ya veremos para que sirve.
 
-```js
-```
+Ya que tenemos definido el **`heroes.module.ts`** podemos cerrarlo y abrir el archivo **`app.module.ts`** que es el modulo principal y donde vamos a añadir el modulo creado. Pero lo primero que vamos a hacer es que vamos a eliminar los dos componentes de Heroes que tenemos importados dentro de **`app.module.ts`** y lo que tenemos definido en **`declarations`**
 
-```js
-```
+![image](https://user-images.githubusercontent.com/23094588/149733717-33ac7bb5-d9a4-463b-b3f5-56601237eec5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/149733889-f5844482-dd39-4676-b267-dc9d6485ed8b.png)
+
+Si grabamos los cambios en la consola y en el navegador nos muestra error:
+
+![image](https://user-images.githubusercontent.com/23094588/149733995-afc9618e-6f5f-46e9-b6de-82e32939a968.png)
+
+![image](https://user-images.githubusercontent.com/23094588/149734053-d7970183-106b-4878-ba1f-a915d50d1d07.png)
+
+![image](https://user-images.githubusercontent.com/23094588/149734135-eba0fabe-893e-4919-9022-1e9dae81411d.png)
+
+Esto esta pasando por que en **`app.component.html`**  estoy usando **`<app-listado></app-listado>`** y como lo he quitado ya no va la aplicación.
+
+![image](https://user-images.githubusercontent.com/23094588/149734289-fd3c5442-4160-4b14-9365-28e4e6222639.png)
+
+El componente **`ListadoComponent`** este definido en el nuevo módulo **`heroes.module.ts`**, entonces lo que nos esta faltando es indicar que se debe usar este nuevo módulo, esto lo vamos a hacer en los **`imports`** dentro de **`app.module.ts`**
+
+![image](https://user-images.githubusercontent.com/23094588/149734886-b2c44637-c5d6-43a5-947f-c413a00b949f.png)
+
+El error desaparece en **`app.component.html`**.
+
+![image](https://user-images.githubusercontent.com/23094588/149734993-2c5fa22c-6709-4128-903c-1bf1052ef82d.png)
+
+Y la aplicación nuevamente funciona.
+
+![image](https://user-images.githubusercontent.com/23094588/149735220-fb26c5bd-af6a-4b3a-8720-0f12dffb0d39.png)
+
+La ventaja es que ya tenemos un módulo independiente **`HeroesModule`** donde vamos a tratar todo sobre los héroes, de esta manera ya no tendríamos que modificar para nada el **`app.module.ts`**, cuando hagamos modificaciones sobre los HEROES se hara en **`heroes.module.ts`** dentro de la carpeta **`heroes`**.
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/149737090-c8f82822-fcf8-45ea-b132-07d33055ce95.png)
 
 
 ## Módulos - segunda parte 08:16
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+
+
 ## Bonus: Hacer respaldo de nuestro proyecto en GitHub 07:35
+
 ## Código fuente de la sección 00:17
