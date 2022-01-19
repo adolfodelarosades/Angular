@@ -1273,21 +1273,91 @@ Aunque si entramos en el archivo no nos indica nada (al profe si).
 
 **Siempre que usemos directivas debemos importar el `CommonModule` que ofrece las directivas entre otras cosas** 
 
+En el archivo **`heroe.component.html`** no usamos ninguna directiva por lo tanto en este archivo no deberíamos tener ningún fallo si no hemos incluido el módulo **`CommonModule`** 
 
-```js
-```
+![image](https://user-images.githubusercontent.com/23094588/150190281-a4e0d027-1025-4545-864a-6bf240ecf3f0.png)
 
-```js
-```
+Vamos a descomentar el **`CommonModule`** para que la aplicación no nos marque errores.
 
-```js
-```
+### Crear módulo Contador
 
-```js
-```
+Actualmente tenemos el componente Contador como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/150190957-e8274cc1-30b5-4e76-b158-82dc38365c63.png)
+
+Vamos a cambiarlo para que nos quede de la siguiente forma:
+
+![image](https://user-images.githubusercontent.com/23094588/150191187-e3a47fbf-bad8-4c75-94a4-94e9ddf99ac7.png)
+
+Creamos una carpeta adicional **`contador`** y dentro metimos el archivo **`contador.component.ts`**, esto implica una modificación en el archivo **`app.module.ts`** para indicar la nueva ubicación del componente:
+
+![image](https://user-images.githubusercontent.com/23094588/150191519-2221190c-a976-487f-b154-28af3c95450a.png)
+
+Para usar este componente Contador en lugar del del Héroe vamos a cambiar el archivo **`app.component.html`** 
+
+![image](https://user-images.githubusercontent.com/23094588/150192358-e34722f4-d533-40f7-ba97-bf98fc38a5ba.png)
+
+Por
+
+![image](https://user-images.githubusercontent.com/23094588/150192427-2d9ab060-19c2-4ec5-b8f9-291f0dd04d87.png)
+
+![image](https://user-images.githubusercontent.com/23094588/150192480-80eb0e74-e6e6-4cdb-9e02-da2b37e329ee.png)
+
+Recordemos que en el archivo **`contador.component.ts`** tenemos integrada la plantilla.
+
+![image](https://user-images.githubusercontent.com/23094588/150192631-5f686e0b-86b2-4ae5-a39c-acd433524361.png)
+
+### Tarea Crear Módulo Contador
+
+Esta tarea consta en modificar el archivo **`app.module.ts`** para que no haga referencia al componente **`contador.component`** sino más bien haga referencia a un **`contador.module`** que debemos crear para que la aplicación siga funcionando pero usando un modulo para Contador.
 
 
+Lo primero que vamos a hacer es crear el archivo **`contador.module.ts`** en la siguiente ubicación
+
+![image](https://user-images.githubusercontent.com/23094588/150198123-85e3b642-e82a-46ec-aec9-cac5badf8820.png)
+
+con el siguiente contenido:
+
+![image](https://user-images.githubusercontent.com/23094588/150197826-25457ed4-085d-4fcf-872a-565aa2ab6b3c.png)
+
+Obsérvese que como en el HTML no usamos directivas no es necesario incluir el **`CommonModule`**.
+
+Ahora vamos a cambiar el archivo **`app.module.ts`** que actualmente lo tenemos así:
+
+![image](https://user-images.githubusercontent.com/23094588/150193537-07c8af18-1b2f-4001-8ba7-c91fcc22155d.png)
+
+Por
+
+![image](https://user-images.githubusercontent.com/23094588/150198304-a5629d34-a1e3-4e68-990e-3eb2dd00e118.png)
+
+La aplicación sigue trabajando perfectamente
+
+![image](https://user-images.githubusercontent.com/23094588/150198427-159a0a58-d02b-45a5-9d48-aec1cea4e7b6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/150198460-581f3e11-9bde-4a3b-b97a-00e16a97a732.png)
+
+Pero ya tenemos una aplicación totalmente **MODULARIZADA**.
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/150198748-72049b2d-61d5-451c-8833-011151313b6f.png)
 
 ## Bonus: Hacer respaldo de nuestro proyecto en GitHub 07:35
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+
+
+
 
 ## Código fuente de la sección 00:17
