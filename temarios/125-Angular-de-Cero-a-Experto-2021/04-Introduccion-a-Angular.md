@@ -1251,6 +1251,29 @@ La ventaja es que ya tenemos un módulo independiente **`HeroesModule`** donde v
 
 ## Módulos - segunda parte 08:16
 
+Los módulos es un tema avanzado, lo estamos viendo muy pronto en este curso ya que tienen mucha importancia ya que si la aplicación va a creecer mucho siempre es importante tenerla modularizada, de esta manera también podemos usar estos módulos en otra aplicación diferente, existen muchas razones por las que trabajar en módulos es muy buena idea.
+
+Recordemos que en la lección anterior en el archivo **`heroes.module.ts`** incluimos la el módulo **`CommonModule`**:
+
+![image](https://user-images.githubusercontent.com/23094588/149793956-f1f54b54-2ee6-4859-98f6-416f122b1cfb.png)
+
+vamos a comentarla para ver que pasa:
+
+![image](https://user-images.githubusercontent.com/23094588/149794056-2f2a2bb4-6117-4cf5-b1c4-c136bce871bd.png)
+
+al comentar esta línea es como si este módulo no existiera, si vamos al navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/149794550-2745d57a-5f9c-47e4-9f11-6e0bd1157832.png)
+
+Nos esta dando errores en las directivas del archivo  **`listado.component.html`**:
+
+![image](https://user-images.githubusercontent.com/23094588/149794818-1fb8c3fa-2cb1-47ea-89ed-f9e1cd8b2f8d.png)
+
+Aunque si entramos en el archivo no nos indica nada (al profe si).
+
+**Siempre que usemos directivas debemos importar el `CommonModule` que ofrece las directivas entre otras cosas** 
+
+
 ```js
 ```
 
