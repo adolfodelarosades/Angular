@@ -1344,16 +1344,166 @@ Pero ya tenemos una aplicación totalmente **MODULARIZADA**.
 
 ## Bonus: Hacer respaldo de nuestro proyecto en GitHub 07:35
 
-```js
+En esta lección vamos a subir nuestro proyecto a **GitHub** mediante comandos **Git** por lo que por una parte debemos haber instalado **Git** en nuestro ordenador por un lado y contar con una cuenta de **GitHub** por otro lado.
+
+Hasta el momento hemos ido subiendo a **Git** nuestro código al final de cada lección en un ***repositorio local***, lo que vamos a hacer ahora es subir nuestro código a un ***repositorio remoto*** ubicado en **GitHub**, por lo que tenemos que preparar el espacio en **GitHub** para poder hacerlo.
+
+Accedemos en el navegar a nuestra cuenta de **GitHub**.
+
+![image](https://user-images.githubusercontent.com/23094588/150813214-e0787557-3366-45c1-89eb-058ecdd79892.png)
+
+Y vamos a entrar donde dice **Repositories**
+
+![image](https://user-images.githubusercontent.com/23094588/150813337-32b9cf82-2fad-4b91-8e9d-b6e660a59b79.png)
+
+Vemos un botón verde con la palabra **`New`** que vamos a presionar.
+
+![image](https://user-images.githubusercontent.com/23094588/150813512-d2af28d3-d41f-4c02-9f64-a9979beb5e91.png)
+
+Nos pide un nombre vamos a ponerle el mismo que tiene nuestro proyecto **`125-01-bases`**
+
+Nos pide una descripción donde vamos a poner ****`Primer proyecto Angular del curso 125-Angular-de-Cero-a-Experto-2021`****
+
+Dejamos la opción **`Public`** para que cualquier persona lo pueda ver y damos en el botón **`Create repository`**.
+
+![image](https://user-images.githubusercontent.com/23094588/150814376-4e3686fc-b4a1-41d3-9275-ec6e1bfcf7db.png)
+
+Casi de inmediato nos presenta la siguiente pantalla:
+
+![image](https://user-images.githubusercontent.com/23094588/150814539-0bf49430-690c-4a12-9ebf-702f426636ca.png)
+
+La cual contiene el URL:
+
+```sh
+https://github.com/adolfodelarosades/125-01-bases.git
 ```
 
-```js
+Y también tiene una serie de opciones con diferentes comandos **Git** que podemos utilizar.
+
+El primer grupo de comandos incluye algunos comandos para inicializar **Git** en nuestro proyeyecto, pero con la versión actual de Angular ya inicializa **Git** al crear un proyecto. Después estan los comandos para realizar los comados de **`commit`** en nuestro proyecto, cosa que hemos estado haciendo a lo largo de cada fin de lección de este módulo. Enseguida hay un comando para renombrar nuestra rama **`master`** por **`main`**, despúes tenemos el comando **`git remote add origin https://github.com/adolfodelarosades/125-01-bases.git`** que nos va a permitir enlazar el proyecto local con el repositorio remoto y finalmente el comando para hacer un **`push`** del contenedor local al remoto.
+
+```sh
+…or create a new repository on the command line
+echo "# 125-01-bases" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/adolfodelarosades/125-01-bases.git
+git push -u origin main
 ```
 
-```js
+En este segúndo grupo tenemos solo los comandos necesarios para subir nuestro coódigo al repositorio remoto.
+
+```sh
+…or push an existing repository from the command line
+git remote add origin https://github.com/adolfodelarosades/125-01-bases.git
+git branch -M main
+git push -u origin main
 ```
 
-```js
+Esta ultima opción nos dice muy claramente lo que hace.
+
+```sh
+…or import code from another repository
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+```
+
+En este caso vamos a ejecutar los comandos del segundo grupo en nuestra consola, los poodemos compiar y ejecutar.
+
+![image](https://user-images.githubusercontent.com/23094588/150817599-372c766d-0068-47fe-b07b-bf83e2d389c7.png)
+
+Si es la primera vez que se ejecuta pide usuario y contraseña de **`GitHub`**, este procedimiento sube el código al repositorio remoto, si retornamos a **`GitHub`** en el navegador y lo refrescamos vamos a tener lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/150818132-21276ef7-788e-46a6-8e7e-45bea391a479.png)
+
+Ya tenemos todo nuestro código en el repositorio de **`GitHub`**.
+
+Adicionalmente vamos a crear un **Release Tag** que nos permite tener una versión del código que esta en este momento y poder descargarlo. El comando **Git** que vamos a usar es:
+
+```sh
+git tag -a v0.1.0 -m "Fin sección 4"
+```
+
+Este comando crea un **Tag** el atributo **`-a`** significa que es "anotado" con el texto **`v0.1.0`** que es una forma de nombrar nuestras versiones y con **`-m`** le damos el título de **`Fin sección 4`**
+
+Si después de pulsar el comando anterior pulsamos:
+
+```sh
+git tag
+```
+
+vamos a tener:
+
+![image](https://user-images.githubusercontent.com/23094588/150819762-52dd80d3-103f-4a6c-acd6-b957151daf2d.png)
+
+Si retornamos al navegar en **GitHub** no vamos a ver ninguna diferencia.
+
+![image](https://user-images.githubusercontent.com/23094588/150819991-b9097fc0-4703-4f03-9d0f-dbb605e85939.png)
+
+Para subir el  **Tag** a **GitHub** lo hacemos con el comando:
+
+```sh
+git push --tags
+```
+
+![image](https://user-images.githubusercontent.com/23094588/150820305-d3179530-a3da-4088-8bcd-70f1c2966691.png)
+
+Esto simplemente nos sube un **Tag** a **GitHub** no un **Release Tag**.
+
+![image](https://user-images.githubusercontent.com/23094588/150820569-0647ad60-1450-4d49-aba5-0bcffaed259d.png)
+
+Ya podemos ver que nos sale 1 tag si pulsamos en **Releases** vemos los detalles:
+
+![image](https://user-images.githubusercontent.com/23094588/150820905-e3fe364e-cb22-4304-9c5e-b83bd43eeab5.png)
+
+Como podemos ver en **Releases** no tenemos nada y en **Tags** tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/150821099-2d66a7d9-2b09-4273-a6e6-e02249edf60c.png)
+
+Si pulsamos en el **Tag v0.1.0**  nos lleva a los detalles:
+
+![image](https://user-images.githubusercontent.com/23094588/150821401-efe6c50f-b486-462c-98ce-c2377e3dd5aa.png)
+
+En esta pantalla podemos crear un **Release** a partir de un **Tag** pulsando en el botón **`Create release from tag`**.
+
+![image](https://user-images.githubusercontent.com/23094588/150821786-643962bc-d936-460e-b945-85a41e7399b0.png)
+
+Metemos la información que nos solicita:
+
+![image](https://user-images.githubusercontent.com/23094588/150822068-b4dc1283-3551-4c7b-9983-3ada65d603d9.png)
+
+Y podemos pulsar en el botón verde **`Public release`**
+
+![image](https://user-images.githubusercontent.com/23094588/150822341-0f082087-1c4d-4810-9f03-e208633e88eb.png)
+
+Ahora si ya tenemos un **Release**
+
+
+
+
+
+
+```sh
+```
+
+```sh
+```
+
+```sh
+```
+
+
+
+
+
+
+
+
+```sh
+```
+
+```sh
 ```
 
 
