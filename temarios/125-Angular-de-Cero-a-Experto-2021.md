@@ -108,7 +108,7 @@ Este es un curso robusto y fuerte, que **contiene todo lo que necesitarás para 
 * Encadenamiento opcional 08:02
 * Código fuente de la sección 00:12
 
-### [04 Introducción a Angular](https://github.com/adolfodelarosades/Angular/blob/main/temarios/125-Angular-de-Cero-a-Experto-2021/04-Introduccion-a-Angular.md) - • 23 clases • 2h 24m
+### [04 Introducción a Angular](https://github.com/adolfodelarosades/Angular/blob/main/temarios/125-Angular-de-Cero-a-Experto-2021/04-Introduccion-a-Angular.md) - • 23 clases • 2h 24m 👍
 
 * Introducción a la sección 03:00
 * Temas puntuales de la sección 00:11
