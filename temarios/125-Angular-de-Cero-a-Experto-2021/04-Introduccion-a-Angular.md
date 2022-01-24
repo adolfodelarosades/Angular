@@ -1419,6 +1419,24 @@ Si es la primera vez que se ejecuta pide usuario y contraseña de **`GitHub`**, 
 
 Ya tenemos todo nuestro código en el repositorio de **`GitHub`**.
 
+Es importante notar que la carpeta **`node_modules`** no se sube al repositorio, entre otras cosas, gracias a lo que tenemos incluido en el archivo **`.gitignore`** del proyecto.
+
+![image](https://user-images.githubusercontent.com/23094588/150824068-1b37f288-448e-4161-becc-e174e9742b1a.png)
+
+La carpeta **`node_modules`** es importante para nuestro proyecto pero ocupa mucho espacio para subirlo al repositorio y lo podemos recuperar gracias a lo que tenemos en el archivo **`package.json`**.
+
+![image](https://user-images.githubusercontent.com/23094588/150824767-d0bc9cf0-996e-47fc-9dc4-9535584a7bbb.png)
+
+Si nosotros tenemos la necesidad de pasar este proyecto a alguien más lo descargamos del repositorio y simplemente ejecutamos el comando 
+
+```sh
+npm install
+```
+
+para que reconstruya todos los módulos de Node, ya lo veremos al final de esta sección.
+
+### Creación de un Tag y Release
+
 Adicionalmente vamos a crear un **Release Tag** que nos permite tener una versión del código que esta en este momento y poder descargarlo. El comando **Git** que vamos a usar es:
 
 ```sh
@@ -1479,35 +1497,58 @@ Y podemos pulsar en el botón verde **`Public release`**
 
 Ahora si ya tenemos un **Release**
 
+Como podemos ver en el **Release** tenemos la sección **Assets** donde podemos descargar el código fuente, vamos a pulsar en **`Source code (zip)`** el código se descarga:
+
+![image](https://user-images.githubusercontent.com/23094588/150823290-1b0711c0-c86a-4a69-8639-4b5c33da1ad0.png)
+
+![image](https://user-images.githubusercontent.com/23094588/150823386-ef432452-2ada-4d79-bb9b-efbc0f5bb98a.png)
 
 
+### Usar el proyecto Descargado
 
+Vamos a copiar el ZIP descargado dentro de nuestra carpeta de Proyectos Angular y lo descomprimimos.
+
+![image](https://user-images.githubusercontent.com/23094588/150835726-834f4a60-b282-4126-a275-ad60f77c01cd.png)
+
+Observamos que al contrario de nuestro proyecto orignal este no tiene el **`node_modules`**.
+
+![image](https://user-images.githubusercontent.com/23094588/150836031-b7e6fe95-de6b-4520-90d6-a64941f83eea.png)
+
+En la consola vamosa meternos a la carpeta del proyecto descargado y para reconstruir los modulos de Node bastaría pulsar el comando:
+
+```sh
+npm install
+```
+
+![image](https://user-images.githubusercontent.com/23094588/150836447-2ecdbd08-df81-499d-b3c9-45347667a60f.png)
+
+![image](https://user-images.githubusercontent.com/23094588/150838107-31ffd910-65e8-40ee-9a56-ada902f44726.png)
+
+Si listamos los archivos en la carpeta veremos que ya aparece el **`node_modules`**.
+
+![image](https://user-images.githubusercontent.com/23094588/150838560-34dd92cb-d961-4779-b3fb-1cf5fcb9e1c5.png)
+
+Vamos a levantar el servidor con:
 
 
 ```sh
+ng serve -o
 ```
 
-```sh
-```
+Como ya tenia el puerto **4200** ocupado me pregunta si quiero abrir la APP en un puerto diferente, respondo **Y** y carga la aplicación en un nuevo puerto.
 
-```sh
-```
+`http://localhost:64904/`
 
+![image](https://user-images.githubusercontent.com/23094588/150839565-bb5e444b-428e-4f85-add7-db5db7ca8790.png)
 
+La aplicación funciona con lo último que subimos al repositorio.
 
-
-
-
+![image](https://user-images.githubusercontent.com/23094588/150839913-8fc60f19-577c-4764-84ea-3f0122a201b4.png)
 
 
-```sh
-```
-
-```sh
-```
-
-
-
+Con esto hemos demostrado como descargar una APP del repositorio, la hemos generado o instalado y finalmente la hemos arrancado.
 
 
 ## Código fuente de la sección 00:17
+
+https://github.com/adolfodelarosades/125-01-bases/releases/tag/v0.1.0
