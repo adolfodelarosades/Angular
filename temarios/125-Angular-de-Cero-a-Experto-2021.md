@@ -134,7 +134,7 @@ Este es un curso robusto y fuerte, que **contiene todo lo que necesitarás para 
 * Bonus: Hacer respaldo de nuestro proyecto en GitHub 07:35
 * Código fuente de la sección 00:17
 
-### 05 Expandiendo nuestras bases - • 17 clases • 1h 54m
+### [05 Expandiendo nuestras bases](https://github.com/adolfodelarosades/Angular/blob/main/temarios/125-Angular-de-Cero-a-Experto-2021/05-Expandiendo-nuestras-Bases.md) - • 17 clases • 1h 54m
 
 * Introducción a la sección 03:00
 * Temas puntuales de la sección 00:21
