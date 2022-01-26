@@ -51,6 +51,87 @@ En esta lección se ve como descargar el proyecto del repositorio y ejecutarlo, 
 
 ## Módulo DBZ (Dragon Ball Z) 10:39
 
+En esta lección vamos a trabajar con un nuevo módulo llamado **Módulo DBZ(Dragon Ball Z)**, será una nueva funcionalidad que vamos a añadir a nuestro proyecto con cosas de Dragon Ball Z, esta nueva funcionalidad incluye mostrar un listado, agragar Héroes, personajes de Dragon Ball, jugar con el poder que tienen entre otras cosas, todo esto esta relacionado con Dragon Ball Z por lo que lo lógico es crearnos un módulo que nos agrupe todo lo que tiene que ver con Dragon Ball Z.
+
+Para crear este módulo lo vamos a hacer mediante el Angular CLI ya que los módulos anteriores los ccreamos manualmente, ahora lo haremos de una forma más automatizada.
+
+Desde la consola vamos a colocarnos en el directorio que contiene nuestro proyecto y vamos a pulsar el siguiente comando:
+
+```sh
+ng g m dbz
+```
+
+El anterior comando es la forma simplificada de poner:
+
+```sh
+ng generate module dbz
+```
+
+Al comando se le pueden agregar otros atributos como **`--flag`** para complementar lo que se va a acrear. 
+
+Al pulsar el comando tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/150937535-2c573cd0-60f5-4003-a90d-47ac37afde65.png)
+
+![image](https://user-images.githubusercontent.com/23094588/150944546-e22b0cf4-5da6-4afe-8f23-07d6bd090304.png)
+
+Lo que ha hecho es crear el módulo **`dbz.module.ts`** dentro del directorio **`dbz`**.
+
+El contenido de **`dbz.module.ts`** es:
+
+![image](https://user-images.githubusercontent.com/23094588/150944944-3208564c-1144-47ce-a025-ee747b0b3b6f.png)
+
+En el archivo nos a importado los módulos **`NgModule`** y **`CommonModule`** este último se nos a agregado por que usualmente vamos a utilizar las directivas **`*ngIf`** y **`*ngIf`**, en **`declarations`** no tenemos nada por que es un módulo vacío por el momento y en **`imports`** ya incluye el **`CommonModule`**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```sh
+```
+
+```sh
+```
+
+```sh
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Diseño de la pantalla a trabajar 04:39
 ## **`FormsModule`** 08:37
 ## **`ngModel`** 09:03
