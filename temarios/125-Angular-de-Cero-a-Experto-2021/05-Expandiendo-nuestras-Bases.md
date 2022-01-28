@@ -412,7 +412,7 @@ En el HTML en lugar de Hardcodear el valor al Input vamos a indicarle que lo lea
 
 ![image](https://user-images.githubusercontent.com/23094588/151547080-7ec29acb-9211-46ca-9a64-8c2f26e4fff0.png)
 
-Lo que estamos haciendo con clos corchetes en **`value`**, es decir **`[value]`** estamos indicandole que en nuestro componente hay alguna propiedad que queremos enlazar al valor del Input, si no ponemos el valor de la propiedad sino una valor cualquiera como teniamos antes nos marcara un error.
+Lo que estamos haciendo con los corchetes en **`value`**, es decir **`[value]`** estamos indicandole que en nuestro componente hay alguna propiedad que queremos enlazar al valor del Input, si no ponemos el valor de la propiedad sino un valor cualquiera como teniamos antes nos marcara un error.
 
 ![image](https://user-images.githubusercontent.com/23094588/151547835-c7c3d9e3-a0e3-4f45-83ea-0d860eca2f7b.png)
 
@@ -485,36 +485,78 @@ y sustituila por:
 
 ```js
   ...
-  [ngModel]= "nuevo.nombre"
+  name="nombre"
+  [(ngModel)]= "nuevo.nombre"
   ...
 ```
 
+Incluso podemos eliminar el método **`cambiarNombre( event: any )`** del **`main-page.component.ts`** ya que no lo vamos a invocar más.
 
+Cuando usemos **`ngModel`** es requisito usar el atributo **`name`**, si no nos marcara un error.
 
+![image](https://user-images.githubusercontent.com/23094588/151596945-96512439-d9bd-4068-b9d4-d8aafc2a3f73.png)
 
+Observese que estamos usando **`[(ngModel)]`** los corchetes son para que podamos ***establecer el valor***, podríamos tener solamente **`[ngModel]`** para asignarle el valor,  pero si además queremos que escuche el evento (que actualice el valor de **`nuevo.nombre`**) son necesarios los parentesis es decir **`[(ngModel)]`**. Si simplemente ponemos **`(ngModel)= "nuevo.nombre"`** no marca error, no asigna valor inicial, ni cambia el valor de la propiedad, no hace nada, no sirve de nada.
 
+Este es el concepto de **Two Way Data Mining** tanto "Emite" o "Recibe" valores para las propiedades.
 
+El código para el Input de Nombre nos queda así:
 
+![image](https://user-images.githubusercontent.com/23094588/151597082-0c3b1b1a-ecef-45af-bed1-4efd8ef909ec.png)
 
+En el navegador tenemos:
 
+![image](https://user-images.githubusercontent.com/23094588/151597186-f16a5f76-a7ec-4a36-a94a-34107ef9b810.png)
 
+Al insertar texto en el Input de Nombre y pulsar el botón Agregar vamos a tener lo siguiente en la consola:
 
+![image](https://user-images.githubusercontent.com/23094588/151597303-dbde890e-5f4c-4710-8ad2-e4dd95825863.png)
 
+Observese que ya no se esta invocando ningún evento cada que cambia el contenido del Input Nombre, pero el valor de la propiedad se esta cambiando cada que modificamos el valor del Input, solo que hasta que no presionamos el botón Agregar que es el que hace que se Submita el Formulario e invoque el método que pinta en Consola el valor no vemos el cambio. Para comprobar que el cambio se hace en tiempo real vamos a hacer que pinte el valor de la propiedad en el título de la columna:
 
+![image](https://user-images.githubusercontent.com/23094588/151599834-2aee8954-5b4a-4921-8791-5d2df952976a.png)
 
+En el navegador vemos el cambio en tiempo real:
 
+![image](https://user-images.githubusercontent.com/23094588/151599971-8a0c9086-a9b2-444a-be3b-9b3fad71f79e.png)
 
+![image](https://user-images.githubusercontent.com/23094588/151600009-2b80e005-431a-4418-929c-77e250924c93.png)
 
+![image](https://user-images.githubusercontent.com/23094588/151600231-e5aa21c0-83b0-42ac-9109-af9481ff03d0.png)
 
+![image](https://user-images.githubusercontent.com/23094588/151600267-374431dc-390b-4d84-9912-0070b2699261.png)
 
-    poder: 0*
-    poder: 0
+Y al presionar el botón Agregar:
 
-**``**
+![image](https://user-images.githubusercontent.com/23094588/151600356-c1098dd5-1aae-4a12-a487-5712a2154a2f.png)
 
+se invoca al método que muestra el mensaje en la consola.
+
+Vamos a hacer lo mismo en el Input del Poder.
+
+![image](https://user-images.githubusercontent.com/23094588/151600744-7b6c8969-3b07-44b5-90cc-659b0394b2e5.png)
+
+En el navegador:
+
+![image](https://user-images.githubusercontent.com/23094588/151600860-694dc7e7-4346-4627-8aef-9b686776401f.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151600920-87ed482b-c118-4ee4-8faf-494f5ad098f9.png)
+
+El código final de nuestros archivos quedo así:
+
+![image](https://user-images.githubusercontent.com/23094588/151601538-5640a3f6-54b1-45ef-919a-573eb1c1794d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151601661-20c69233-b635-43ac-9ef8-49d4a841e2db.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/151601801-a8dc9de4-51bf-455b-8d12-a71c40de41da.png)
 
 
 ## Mostrar listado de personajes 06:54
+
+**``**
+
 ## Crear componentes hijos 05:47
 ## **`@Input`** 06:55
 ## Tarea con inputs y módulos 12:46
