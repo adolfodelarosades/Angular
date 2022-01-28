@@ -267,6 +267,8 @@ En la lección pasada creamos el diseño de nuestra pantalla, tenemos el problem
 
 ¿Cómo podemos prevenir el refrescamiento de la pantalla y manejar el Submit del Formulario?
 
+### Uso de JS Tradicional
+
 Lo primero que vamos a hacer es que cuando pulsemos el botón Agregar muestre un mensaje en la consola para comprobar que lo estamos pulsando, esto lo hacemos añadiendo el evento **`(click)`** en el botón y que este invoque un método que va  a hacer el que pinte el mensaje en la pantalla.
 
 
@@ -324,10 +326,11 @@ Podemos sacar en la consola el valor de **`event`**
 
 ![image](https://user-images.githubusercontent.com/23094588/151530736-21614143-de43-4570-8762-6296077f8e0a.png)
 
-### GIT
+#### GIT
 
 ![image](https://user-images.githubusercontent.com/23094588/151530161-9447a9a2-8e2d-405d-944b-f79d921f2412.png)
 
+### Uso de **`FormsModule`**
 
 Gracias a que Angular es un Framework podemos hacer lo anterior de una forma más simplificada gracias a que cuenta con el módulo **`FormsModule`** que nos permite trabajar con Formularios (Formularios normales por que también existen los Formularios Reactivos).
 
@@ -351,11 +354,161 @@ No refresca la pantalla y tenemos un código bastante más simple gracias a usar
 
 **NOTA: Si por alguna razón el código no hace lo anterior, es posible que tengamos que reiniciar el Servidor ya que modificamos código en los módulos y cuando se hace esto algunas veces si no coge el nuevo código será necesario reiniciar el servidor.**
 
-### GIT
+#### GIT
 
 ![image](https://user-images.githubusercontent.com/23094588/151533735-b269a4ec-45d4-4fa4-9c0c-d4cee509203f.png)
 
 ## **`ngModel`** 09:03
+
+En esta lección vamos a ver como podemos recuperar la información de las cajas de texto (**`inputs`**) de una forma sencilla.
+
+En nuestro archivo **`main-page.component.ts`** vamos a definir una propiedad **`nuevo`** que será un objeto que contiene dos propiedades **`nombre`** y **`poder`**
+
+```js
+nuevo = {
+    nombre: '',
+    poder: 0
+}
+```
+
+Siempre será recomendable que en lugar de crear un simple objeto tengamos una Interface que nos describa como se debe construir el objeto, como el objeto representa un Personaje así llamaremos a la Interface.
+
+```js
+interface Personaje {
+  nombre: string;
+  poder: number;
+}
+```
+
+Al tener la Interface definida podemos indicar el tipo del objeto **`nuevo`*:
+
+![image](https://user-images.githubusercontent.com/23094588/151535761-f88476cb-e263-4cf1-9e29-49d5f6dfdfbf.png)
+
+Si en el objeto no definimos todo lo que tengamos en la Interface nos indicará un error:
+
+![image](https://user-images.githubusercontent.com/23094588/151536143-5afa3411-e505-4bf3-bdcf-74e6f17b0626.png)
+
+**Esa es la importancia de tener definida la Interface, nos ayuda a controlar errores. En este caso hemos definido la Interface dentro del código de la Clase pero podría estar en un archivo independiente.**
+
+Vamos a descomentar la propiedad **`poder`** para eliminar el error.
+
+### Asignar Valores Iniciales a los **`Inputs`** en el HTML
+
+En **`main-page.component.html`** podemos asignar un valor inicial a los **`inputs`** con la propiedad **`value`** de la siguiente forma:
+
+![image](https://user-images.githubusercontent.com/23094588/151546233-d5f7072a-e7a3-43aa-be15-9c977b5dddc4.png)
+
+En el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151546305-0ccd1591-93a3-4a32-8a44-9864ff80ea69.png)
+
+### Asignar Valores Iniciales a los **`Inputs`** en el HTML con valores de Propiedades en el TS
+
+Ahora lo que vamos a hacer es inicializar las propiedades del objeto **`nuevo`** como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/151546706-b31e3f50-032a-4641-8eb2-decd6b9b7530.png)
+
+En el HTML en lugar de Hardcodear el valor al Input vamos a indicarle que lo lea los valores de la Propiedad **`nuevo`** como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/151547080-7ec29acb-9211-46ca-9a64-8c2f26e4fff0.png)
+
+Lo que estamos haciendo con clos corchetes en **`value`**, es decir **`[value]`** estamos indicandole que en nuestro componente hay alguna propiedad que queremos enlazar al valor del Input, si no ponemos el valor de la propiedad sino una valor cualquiera como teniamos antes nos marcara un error.
+
+![image](https://user-images.githubusercontent.com/23094588/151547835-c7c3d9e3-a0e3-4f45-83ea-0d860eca2f7b.png)
+
+Es necesario poner alguna propiedad definida en la clase.
+
+En el navegador tendremos:
+
+![image](https://user-images.githubusercontent.com/23094588/151548055-31f24e6b-01b4-41f9-ae70-864ab070709b.png)
+
+Ahora lo que vamos a hacer es que al pulsar el botón Agregar muestre en la consola el objeto **`nuevo`**.
+
+![image](https://user-images.githubusercontent.com/23094588/151548802-5938b1fc-448f-4265-9949-d0518cac5e7b.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151548842-fcfee937-daa0-4531-b8c9-50afd63bc16e.png)
+
+Si nosotros añadimos algo en los Inputs y presionamos el botón Agregar, en la consola se sigue mostrando el objeto **`nuevo`** definido en la clase, ignora lo que pusimos en los Inputs.
+
+![image](https://user-images.githubusercontent.com/23094588/151549110-231b282d-0b21-46b3-815b-24c8ddf2664b.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151547174-433cf1bc-2942-436e-8b1f-66c84347429c.png)
+
+Este es el concepto de **One Way Data Mining**, del TS al HTML pero no a la inversa.
+
+### Cambiar Valor de la Propiedad a través de los Inputs
+
+Para cambiar el valor de la propiedad de acuerdo a lo que ingresemos en los Inputs lo vamos a hacer de una forma muy elemental invocando un evento cuando cambie el valor del Input.
+
+![image](https://user-images.githubusercontent.com/23094588/151550024-8051672f-269d-4b56-b312-6fa62c7ce281.png)
+
+Con el evento **`(input)`** estamos detectando cambios en el Input y dispara el método **`cambiarNombre( $event )`** que aún no hemos definido.
+
+Vamos a definir el método **`cambiarNombre`**.
+
+![image](https://user-images.githubusercontent.com/23094588/151550594-5908b705-aa51-45f6-a9b3-d7be2046f892.png)
+
+En el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151550703-98d8e36e-c88e-4988-bae3-60d5c431a9a2.png)
+
+Vemos que por cada caracter que ingresamos se invoca el el método **`cambiarNombre( $event )`**, y la salida aparece en la consola.
+
+Dentro de todas las propiedad que tiene **`event`** tenemos una que nos interesa **`target`**. 
+
+![image](https://user-images.githubusercontent.com/23094588/151551125-a317d686-d962-4f94-92cb-3edbe6b1ffa9.png)
+
+Dentro de **`target`** (hay que dar en **`...`** para ver más propiedades) tenemos **`value`** que contiene el valor del Input **`Trucks123`**
+
+![image](https://user-images.githubusercontent.com/23094588/151551497-563f6c45-08b2-43b4-ad51-e7527a271a0b.png)
+
+Por lo que podemos mostrar en la consola solo esta propiedad con:
+
+![image](https://user-images.githubusercontent.com/23094588/151551766-8e90c2d9-bf9c-4f5b-b099-cd0ccce49ad7.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151551872-d1458339-ec7d-413e-85a0-501321486180.png)
+
+Como podemos ver estamos recuperando el valor del Input de Nombre, si queremos recuperar el valor del Input de Valor, tendríamos que hacer algo similar, invocar y definir un método y si tuvieramos más Inputs lo mismo, lo que se vuelve tedioso.
+
+### Uso de **`ngModel`**
+
+Si usamos **`ngModel`** podemos elimanar las siguiente propiedades del Input
+
+```js
+  ...
+  [value]= "nuevo.nombre"
+  (input)="cambiarNombre( $event )"
+  ...
+```
+
+y sustituila por:
+
+```js
+  ...
+  [ngModel]= "nuevo.nombre"
+  ...
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    poder: 0*
+    poder: 0
 
 **``**
 
