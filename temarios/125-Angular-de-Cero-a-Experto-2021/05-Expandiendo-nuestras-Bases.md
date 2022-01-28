@@ -164,14 +164,101 @@ Si vemos el resultado en el navegador tendremos lo que estabamos buscando:
 
 ## Diseño de la pantalla a trabajar 04:39
 
-```sh
+En esta lección vamos a crear el diseño del punto inicial de nuestra APP. 
+
+Vamos a añadir el siguiente código en **`main-page.component.html`**.
+
+![image](https://user-images.githubusercontent.com/23094588/151508249-61fc64f3-656d-4fd4-b9cd-0b0fbf5201de.png)
+
+En el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151508416-6feff351-1a5b-4bc1-8f12-ac3e96a9b92d.png)
+
+Observemos como los espacios que pusimos en el código para alinear los números fueron ignorados.
+
+Vamos añadir otra columna y títulos en ambas:
+
+![image](https://user-images.githubusercontent.com/23094588/151510481-b1d7cace-1db2-4ec7-9d14-53bcbcb8cb69.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151510511-72139211-5e83-4766-b4a5-924f5a9fe669.png)
+
+Para que las columnas salgan una al lado de la otra vamos a introducir algún CSS en el archivo general **`styles.css`** (lo pudemos añadir solo en **`main-page.component.css`** para que solo afecte este componente)
+
+
+Al añadir solo el siguiente código:
+
+```css
+.row {
+  display: flex;
+}
 ```
 
-```sh
+En el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151511152-f17cffec-dbf8-455a-8d85-ad5875c4cca0.png)
+
+Vamos a añadir algún estilo para la columna:
+
+```css
+.col {
+  flex-grow: 1;
+}
 ```
 
-```sh
+En el navegador vemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151511472-9bfcddea-409d-4a26-8b63-a4b56cf2fd0c.png)
+
+Con la propiedad **`flex-grow`** estamos expandiendo las columnas lo más posible pero siguen pegadas, vamos a añadirle un margen derecho para separarlas
+
+```css
+.col {
+  flex-grow: 1;
+  margin-right: 10px;
+}
 ```
+
+![image](https://user-images.githubusercontent.com/23094588/151511776-cd94a7f8-d36a-4d3f-967e-02ced2967539.png)
+
+Observemos que las columnas ya estan separadas pero realmente la segunda columna no esta totalmente alineada con el título principal, por el momento lo vamos a dejar así.
+
+Ya que estamos aquí vamos a incluir un estilo para los **`inputs`**
+
+```css
+input {
+  display: block;
+  margin: 5px;
+}
+```
+
+Todo el código CSS incluido es:
+
+![image](https://user-images.githubusercontent.com/23094588/151512175-f73e8684-0398-4409-b24c-fb2c2849fddb.png)
+
+**NOTA: Todas los estilos de CSS que hemos ingresado son los estandar de CSS3 ya que aún no hemos incluido Bootstrap en el proyecto.**
+
+Ahora en **`main-page.component.html`** vamos a añadir un formulario.
+
+```html
+<form>
+  <input type="text" placeholder="Nombre" />
+  <input type="number" placeholder="Poder" />
+  <button>Agregar</button>
+</form>
+```
+
+![image](https://user-images.githubusercontent.com/23094588/151513533-44b69b92-357b-44ea-8b82-f999b781a058.png)
+
+
+Cuando nosotros pulsamos el botón de **`Agregar`** existe un **Full Page Refresh**  (observe la URL generada **`http://localhost:4200/?`**
+
+![image](https://user-images.githubusercontent.com/23094588/151514383-85a92bcd-053c-4e18-8a06-7b2f399dfe11.png)
+
+### GIT
+
+
+
+
 
 
 ## **`FormsModule`** 08:37
