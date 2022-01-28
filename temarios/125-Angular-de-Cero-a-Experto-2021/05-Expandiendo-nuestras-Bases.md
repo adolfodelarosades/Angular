@@ -555,9 +555,82 @@ El código final de nuestros archivos quedo así:
 
 ## Mostrar listado de personajes 06:54
 
-**``**
+Una vez que hemos visto como recuperar los valores introducidos en los Inputs, en esta lección vamos a añadir el Personaje introducido al listado de Personajes existentes.
+
+Lo primero que vamos a hacer es tener inicializado a nuestro nuevo personaje como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/151602391-84f0f1a1-5859-4116-ad99-bbefeae66e19.png)
+
+Ahora lo que vamos hacer es añadir una validación por medio de código (existen validaciones automáticas) para validar que lo introducido en el Input de Nombre tiene algún valor, el método **`agregar()`** nos va a quedar así:
+
+![image](https://user-images.githubusercontent.com/23094588/151603311-694cb67c-f10a-477d-af39-ec80a1ea5823.png)
+
+Estamos validando que si el Nombre no tenemos nada salga del método.
+
+Si en el navegador presionamos el botón Agregar sin colocar nada el nombre no pasa nada.
+
+![image](https://user-images.githubusercontent.com/23094588/151603572-a61440d9-4502-4c3c-9e6b-39d0e2099ea5.png)
+
+Pero si ingresamos algo en Nombre y presionamos el botón Agregar se imprime en la Consola lo que hayamos insertado.
+
+![image](https://user-images.githubusercontent.com/23094588/151603682-1def0a1d-4a97-4f4c-ac92-4f0060ba01e9.png)
+
+### Uso de Array de Personajes
+
+Actualmente en la pantalla tenemos en nuestro archivo **`main-page.component.html`**  "Harcodeados" los Personajes que se estan renderizando en la pantalla.
+
+![image](https://user-images.githubusercontent.com/23094588/151604151-fd6839c9-56aa-4d42-b375-212813b72dfa.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151604311-ec1d55ea-dbe5-498e-af70-b796e55be9c8.png)
+
+Vamos a hacer un cambio que va a consistir en declarar un array **`personajes`** de tipo **`Personaje`** (nuestra Interface) inicializado con los mismos personajes que tenemos "Harcodeados" en el HTML.
+
+![image](https://user-images.githubusercontent.com/23094588/151605107-d3d947e0-3b10-4f10-ab75-af8c4166ea47.png)
+
+Vamos a usar el array **`personajes`** para que renderice los Personajes en el **`main-page.component.html`** en lugar del código "Harcodeado":
+
+![image](https://user-images.githubusercontent.com/23094588/151605896-929c1568-a051-433e-8ccb-5a5f20474b13.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151605915-0e339d85-0db3-4a30-a747-fa25a49d6f4e.png)
+
+Si observamos los números ya no nos salen formateados, para conseguir el formateo vamos a usar un **Pipe** llamado **`number`**:
+
+![image](https://user-images.githubusercontent.com/23094588/151607985-1e724595-4858-4c8f-8758-80e3bafa8277.png)
+
+De esta manera nuestros números salen formateados:
+
+![image](https://user-images.githubusercontent.com/23094588/151608058-81d9e487-2eb2-4055-9176-f878a1a29a32.png)
+
+
+### Añadir Personaje al Listado de Personajes
+
+Ahora lo que necesitamos hacer es que al presionar el botón Agregar se añada el Personaje que vayamos ingresando y una vez hecho esto limpiar los Inputs para una futura alta.
+
+Una primer solución es la siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/151608216-8e90d1e0-2913-48ac-9467-0db1e9139018.png)
+
+Pero comparandola con la del profesor no es necesario crear un **`nuevoPersonaje`** ya que todo lo tenemos en **`nuevo`** por lo que la solución final es:
+
+![image](https://user-images.githubusercontent.com/23094588/151608480-7cfaf5cf-bf7f-4ce4-bfae-4f683957f53e.png)
+
+Probando la APP en el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151608579-5f0890e1-668b-455f-b85d-27dee9b354e8.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151608733-7b9b9799-a1ff-494e-bb6b-3aeea76989bf.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151608745-f16be7ed-bd9a-4dee-8cc0-e8ec106acce0.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/151609085-665e5af4-e6e6-49ef-bb4b-341f674095c7.png)
+
+
 
 ## Crear componentes hijos 05:47
+
+**``**
 ## **`@Input`** 06:55
 ## Tarea con inputs y módulos 12:46
 ## **`@Outputs`** y **`EventEmitter`** 10:38
