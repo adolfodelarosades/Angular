@@ -250,19 +250,117 @@ Ahora en **`main-page.component.html`** vamos a añadir un formulario.
 ![image](https://user-images.githubusercontent.com/23094588/151513533-44b69b92-357b-44ea-8b82-f999b781a058.png)
 
 
-Cuando nosotros pulsamos el botón de **`Agregar`** existe un **Full Page Refresh**  (observe la URL generada **`http://localhost:4200/?`**
+Cuando nosotros pulsamos el botón de **`Agregar`** existe un **Full Page Refresh**  (observe la URL generada **`http://localhost:4200/?`**) 
 
 ![image](https://user-images.githubusercontent.com/23094588/151514383-85a92bcd-053c-4e18-8a06-7b2f399dfe11.png)
 
+Normalmente cuando trabajamos con Angular no es necesario el **Full Page Refresh** ya veremos como evitarlo.
+
 ### GIT
 
-
-
-
+![image](https://user-images.githubusercontent.com/23094588/151518728-a6116ffa-e223-4132-abc4-3d2494b01428.png)
 
 
 ## **`FormsModule`** 08:37
+
+En la lección pasada creamos el diseño de nuestra pantalla, tenemos el problema de que cuando pulsamos el botón de **`Agregar`** existe un **Full Page Refresh** lo que no es optimo tener en la APP.
+
+¿Cómo podemos prevenir el refrescamiento de la pantalla y manejar el Submit del Formulario?
+
+Lo primero que vamos a hacer es que cuando pulsemos el botón Agregar muestre un mensaje en la consola para comprobar que lo estamos pulsando, esto lo hacemos añadiendo el evento **`(click)`** en el botón y que este invoque un método que va  a hacer el que pinte el mensaje en la pantalla.
+
+
+![image](https://user-images.githubusercontent.com/23094588/151524523-eea14299-1d96-435f-86f3-830c84aa18fa.png)
+
+Nos esta poniendo un error sobre **`agregar()`** ya que no lo hemos definido en **`main-page.component.ts`**, para hacerlo incluimos lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/151524977-17a9cc26-6138-44f3-8c06-d907df3d7aa2.png)
+
+En el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151525066-02cde6bc-60e1-47eb-9143-c09c557ccb78.png)
+
+Al presionar el botón Agregar aparece el mensaje **`Has presionado el botón Agregado`** pero de inmediato se refresca la pantalla y es dificil capturarlo en la imagen pero si ejecutamos la aplicación lo apreciamos.
+
+![image](https://user-images.githubusercontent.com/23094588/151525465-4ac006ff-10f2-4709-bde6-b46d867f9276.png)
+
+Si seguimos las buenas prácticas de programación el evento no lo debemos invocar en el botón sino en el Submit del Formulario, vamos a hacer los siguientes cambios.
+
+![image](https://user-images.githubusercontent.com/23094588/151526282-54a98212-506d-4523-95e8-32efdc968b55.png)
+
+Aquí lo que estamos haciendo es que al presionar el botón de tipo **`submit`** le indique al Formulario que Poste o haga el Submit del Formulario con **`(submit)="agregar()"`**, estamos invocando al mismo método. ***No es el botón el que dispare todo es el formulario***.
+
+En el navegador pasa lo mismo al presionar el botón Agregar pero lo hemos hecho con mejores prácticas de programación, aun que se sigue refrescando la pantalla y apenas alcanzamos a ver el mensaje **`Has presionado el botón Agregado`**  al ejecutar la aplicación.
+
+![image](https://user-images.githubusercontent.com/23094588/151527361-1ec09845-32ee-48af-8865-5a5af6522b27.png)
+
+El problema del refresco de la pantalla sigue, si tenemos conocimientos de JS podemos enviar como parámetro del método el "evento" que se usa al hacer el **`submit`** del formulario.
+
+Para mandar como parámetro el evento lo hacemos usando **`$event`**:
+
+![image](https://user-images.githubusercontent.com/23094588/151528408-d6d13349-ff98-44c2-96f3-3aefe18f3132.png)
+
+Ahora vamos a modificar el método **`agregar()`** del **`main-page.component.ts`** para que reciba el evento.
+
+![image](https://user-images.githubusercontent.com/23094588/151528772-1efe8d27-e955-423b-a654-88baa8064d40.png)
+
+Tenemos que declararlo explícitamente de tipo **`any`** para evitar que nos arque error.
+
+Dentro del **`event`** tenemos la propiedad **`event.preventDefault()`** que ***Prevee el comportamiento por defecto que tiene el submit de un formulario, que es básicamente hacer el submit o posteo*** por lo que al ponerlo en el método evitaremos el Refresh de la página.
+
+![image](https://user-images.githubusercontent.com/23094588/151529419-0344e26b-6be3-45e9-ac4d-e36c02573eaa.png)
+
+Al probar en el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151529531-d4c9f25a-5565-4454-9ac8-14fb9c5750b2.png)
+
+Ahora al presionar el botón Agregar ya no se refresca la pantalla por que no se esta realizando el Submit del Formulario y podemos apreciar en la consola el mensaje **`Has presionado el botón Agregado`**.
+
+**NOTA: La forma en que hemos evitado que se haga el Submit del formulario es la forma tradicional de JS, pero con Angular la podemos realizar de una forma diferente.**
+
+Podemos sacar en la consola el valor de **`event`**
+
+![image](https://user-images.githubusercontent.com/23094588/151530475-0d148530-c7a9-45c5-9e31-8ef441b2f991.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151530736-21614143-de43-4570-8762-6296077f8e0a.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/151530161-9447a9a2-8e2d-405d-944b-f79d921f2412.png)
+
+
+Gracias a que Angular es un Framework podemos hacer lo anterior de una forma más simplificada gracias a que cuenta con el módulo **`FormsModule`** que nos permite trabajar con Formularios (Formularios normales por que también existen los Formularios Reactivos).
+
+En el módulo de DBZ **`dbz.module.ts`** vamos a importar el módulo **`FormsModule`**.
+
+![image](https://user-images.githubusercontent.com/23094588/151531674-8dc8ef3f-5a52-46e0-9936-42f1e63d3303.png)
+
+En nuestro archivo **`main-page.component.html`** vamos a cambiar **`(submit)`** por el evento personalizado que nos ofrce el **`FormsModule`** llamado **`ngSubmit`**, además vamos a quitar el parámetro **`$event`**, esta es la ventaja de usar **`FormsModule`** que nos simplifica el código.
+
+![image](https://user-images.githubusercontent.com/23094588/151532220-e83aa53a-9623-40ea-bc06-4c1dd967d2da.png)
+
+Vamos a **`main-page.component.ts`** para eliminar del método **`agregar( event: any ) `** el parámetro **`event: any`** que ya no estamos enviando y la sentencia **`event.preventDefault();`**.
+
+![image](https://user-images.githubusercontent.com/23094588/151532888-a75dd168-3740-4e97-85fd-f096a867d2f8.png)
+
+Si vamos al navegador y presionamos el botón Agregar tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151533007-3ceca8f5-0121-4bea-9a98-d88e32584c17.png)
+
+No refresca la pantalla y tenemos un código bastante más simple gracias a usar **`FormsModule`**.
+
+**NOTA: Si por alguna razón el código no hace lo anterior, es posible que tengamos que reiniciar el Servidor ya que modificamos código en los módulos y cuando se hace esto algunas veces si no coge el nuevo código será necesario reiniciar el servidor.**
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/151533735-b269a4ec-45d4-4fa4-9c0c-d4cee509203f.png)
+
 ## **`ngModel`** 09:03
+
+**``**
+
+
+
 ## Mostrar listado de personajes 06:54
 ## Crear componentes hijos 05:47
 ## **`@Input`** 06:55
