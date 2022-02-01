@@ -702,9 +702,97 @@ En la próxima lección vamos a ver como pasar información del componente Padre
 
 ## **`@Input`** 06:55
 
-**``**
+En esta lección vamos a ver como pasar información del componente Padre al Hijo, especifícamente la lista de Personajes.
+
+Lo primero que vamos a hacer es que en **`personajes.component.ts`** vamos a añador el decorador **`@Input()`** a la propiedad **`personajes`**, puede ir en dos líneas o en la misma.
+
+![image](https://user-images.githubusercontent.com/23094588/151940360-e19c8ab7-26be-4523-a98b-31b87589477a.png)
+
+Con **`@Input()`** le estamos indicando a Angular que quien utilice la propiedad **`personajes`** puede a su vez enviarle valores que serán recibidos en la propiedad.
+
+Ahora en el archivo **`main-page.component.html`** que es donde estamos usando el componente **`personajes`** vamos a hacer el siguiente cambio.
+
+![image](https://user-images.githubusercontent.com/23094588/151940926-ea366903-a19d-426f-900a-15e17a9a712a.png)
+
+El **`[personajes]`** se refiere a la propiedad en el componente Hijo y **`"personajes"`** se refiere a la propiedad del componente Padre.
+
+Si vemos el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151941198-d6f4731c-c75d-4030-8723-6906711b2ffc.png)
+
+Podemos cambiar el nombre de la propiedad **`personajes`** en el Hijo para que no sea muy redundante (implíca cambiarlo tambien en el HTML) o podemos usar un nombre "virtual" como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/151941707-d6083d89-2146-4ec6-9b6e-a6f4f19097df.png)
+
+No es necesario cambiar el HTML.
+
+![image](https://user-images.githubusercontent.com/23094588/151941898-71290d3d-aa84-45bf-9c77-77099d50df37.png)
+
+Cuando asignamos el valor tenemos que usar **`data`**
+
+![image](https://user-images.githubusercontent.com/23094588/151941802-d3c443c1-ff7e-4a7c-80b9-06cd1ddfdfd0.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151942729-f4f716e7-bbd6-4d0a-84c9-a3abcefe3a15.png)
+
+Vamos a dejar el nombre **`personajes`**, incluso puedo ponerlo como sigue pero es redundante y no es neesario.
+
+![image](https://user-images.githubusercontent.com/23094588/151943021-4d4bb7b8-f964-49d7-9264-f9ee71dee336.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151943173-65784f54-a078-48a1-995b-79c6b2d3807c.png)
+
+Actualmente tenemos definida la propiedad **`personajes`** como un array de **`any`** con lo cual no se que propiedades tiene **`personajes`** sería bueno mantener el tipado.
+
+Una podible opción es quitarle el tipado y ya va a depender de los datos que reciba el tipo que va  a adoptar.
+
+![image](https://user-images.githubusercontent.com/23094588/151943563-16442976-33b6-4040-ab69-c3a4d0a4a45d.png)
+
+Aun que nos indica que es de tipo **`never`**, esta opción no es la mejor, lo ideal es usar nuestra Interface **`Personaje`** que actualmente tenemos definida en **`main-page.component.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/151956665-9c20657c-e63d-47d0-a6ba-7b010a0e74df.png)
+
+Lo que vamos a hacer es definir la Interface **`Personaje`** en un archivo independiente, dentro de la carpeta **`dbz`** vamos a crear la carpeta **`interfaces`** y dentro de esta carpeta vamos a crear el archivo **`dbz.interface.ts`**, en este archivo vamos a mover la Interface **`Personaje`** que tenemos en **`main-page.component.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/151957543-d6771550-f6e0-47e3-bf07-e47d86f9ef0a.png)
+
+Como vamos a utilizar esta Interface fuera del archivo **`dbz.interface.ts`** tenemos que ponerle **`export`**.
+
+![image](https://user-images.githubusercontent.com/23094588/151958686-f002f03d-b596-4028-9ea5-2c85fdd7565c.png)
+
+Como hemos quitado la Interface de **`main-page.component.ts`** debemos importarla del nuevo sitio para que no nos indique error.
+
+![image](https://user-images.githubusercontent.com/23094588/151959061-a62a4126-23b0-4b0f-a5aa-631de39fbb40.png)
+
+**Recuerden que las Interfaces no tienen una contraparte de JS por lo que lo que escribamos en las Interfaces no existira en el Boundel final de la aplicación. Tampoco se importan en ningún mmódulo solo se importa en el archivo donde se vaya a usar.**
+
+Ahora ya podemos tipar nuestro array **`personajes`** en **`personajes.component.ts`**:
+
+![image](https://user-images.githubusercontent.com/23094588/151960151-82d4426b-a6b3-4a2e-b283-f45f3f08c0ad.png)
+
+Y en el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151960205-4f59d8f0-88f3-4bfc-855c-1aaeca68608e.png)
+
+Incluso podemos insertar un nuevo personaje y este se listara en la lista.
+
+![image](https://user-images.githubusercontent.com/23094588/151960620-846405ed-cfc2-4a02-8751-301d95fde3b4.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151960655-45b7bbea-bf4a-4348-9eda-2a75ebf8e14f.png)
+
+Esto sigue funcionando como antes ¿Por qué?
+
+Cuando en el componente Padre tocamos el botón Agregar se dispara el Submit, que llama al método **`agregar()`** que añade el personaje al listado y el ciclo de vida de Angular detecta un cambio y desde el componente Padre se le vuelve a mandar al Hijo los valores de los **`personajes`**, el Hijo lo renderiza y por eso podemos ver como se añade a la lista. Estas son las ventajas de usar Angular.
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/151961896-7f1b9677-eb9c-48de-96df-5c94270de481.png)
+
 
 ## Tarea con inputs y módulos 12:46
+
+
+**``**
+
+
 ## **`@Outputs`** y **`EventEmitter`** 10:38
 ## Bonus: Depuración de aplicación 08:53
 ## Servicios 08:41
