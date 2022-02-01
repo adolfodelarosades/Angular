@@ -789,6 +789,26 @@ Cuando en el componente Padre tocamos el botón Agregar se dispara el Submit, qu
 
 ## Tarea con inputs y módulos 12:46
 
+En esta lección vamos a crear un nuevo componente que va a contener todo lo referente a Agregar un nuevo Personaje.
+
+Vamos a comenzar creando el nuevo componente con el siguiente comando:
+
+```sh
+ng g c dbz/agregar --skipTests
+```
+
+![image](https://user-images.githubusercontent.com/23094588/151963594-9700e4c0-98e6-46d1-a701-bb766d8f5947.png)
+
+Nos suguiere que usemos **`Use '--skip-tests' instead of '--skipTests'`**
+
+Vamos a mover el código referente a Agregar de **`main-page.component.html`** a **`agregar.component.html`**
+
+Nos marca una serie de errores ya que no tenemos el método **`agregar()`** ni la propiedad **`nuevo`** en este componente nuevo, debemos moverlo desde el **`main-page.component.ts`** a **`agregar.component.ts`**.
+
+
+
+
+
 
 **``**
 
