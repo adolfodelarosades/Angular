@@ -669,20 +669,41 @@ Vemos que se esta renderizando el contenido del componente **`personajes.compone
 
 ![image](https://user-images.githubusercontent.com/23094588/151935385-ab291041-b31f-434e-a0d3-8f07cd0b2965.png)
 
-Vamos a sustituir este código y vamos a mover el código que habíamos comentado en **`main-page.component.html`**, nos queda así:
+Vamos a sustituir este código moviendo el código que habíamos comentado en **`main-page.component.html`**, nos queda así:
 
 ![image](https://user-images.githubusercontent.com/23094588/151935637-df1395b4-cdf3-4df3-b726-a0336ce6fbf0.png)
 
+![image](https://user-images.githubusercontent.com/23094588/151936867-ef1bae32-cc82-4cfd-8d41-ba33c73d0eb9.png)
 
+Nos esta marcando un error en **`personajes`** ya que esto no existe en **`personajes.component.ts`**, existe en **`main-page.component.ts`** pero no en **`personajes.component.ts`**. Deberíamos pasar los **`personajes`** desde el **`main-page.component.ts`** al personaje "Hijo" **`personajes.component.ts`** pero eso lo vamos a hacer en la siguiente lección por ahora solo vamos a declarar una propiedad **`personajes`** en **`personajes.component.ts`** para evitar el error.
 
+Actualmente nuestra clase **`personajes.component.ts`** la tenemos así:
 
+![image](https://user-images.githubusercontent.com/23094588/151937007-ce0db7a1-50f9-4803-8f13-c90be1a00964.png)
 
+Cabe hacer notar que en la clase tenemos el método **`ngOnInit()`** que corresponde al ciclo de vida de las clases y también tenemos un **`constructor()`**, como esta clase es muy simple y no vamos a utilizarlos podemos quitar toda esta parte del código quedandonos así:
 
+![image](https://user-images.githubusercontent.com/23094588/151938609-449c723d-dc0a-4aec-87ae-30769494406e.png)
 
-**``**
+Ahora si añadimos la propiedad **`personajes`**.
+
+![image](https://user-images.githubusercontent.com/23094588/151938798-5c089d29-499c-42ee-ad5e-389a41897d6c.png)
+
+El error desaparece en **`personajes.component.html`** y podemos ver la pantalla no con el listado pero ya sin errores.
+
+![image](https://user-images.githubusercontent.com/23094588/151939081-cbc54e73-8fd6-4855-a6b1-858fd61be0eb.png)
+
+En la próxima lección vamos a ver como pasar información del componente Padre al Hijo, con eso resolveriamos el problema para que se renderice nuevamente el listado de Personajes.
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/151939459-74d31d14-762a-443d-abd9-3241521fb5fd.png)
 
 
 ## **`@Input`** 06:55
+
+**``**
+
 ## Tarea con inputs y módulos 12:46
 ## **`@Outputs`** y **`EventEmitter`** 10:38
 ## Bonus: Depuración de aplicación 08:53
