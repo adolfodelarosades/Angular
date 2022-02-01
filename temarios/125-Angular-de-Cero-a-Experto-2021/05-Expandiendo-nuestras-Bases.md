@@ -627,10 +627,61 @@ Probando la APP en el navegador tenemos:
 ![image](https://user-images.githubusercontent.com/23094588/151609085-665e5af4-e6e6-49ef-bb4b-341f674095c7.png)
 
 
-
 ## Crear componentes hijos 05:47
 
+Actualmente tenemos nuestra aplicación funcionando pero si vemos el archivo **`main-page.component.html`**:
+
+![image](https://user-images.githubusercontent.com/23094588/151932598-6fcad396-4999-4ff0-bd72-7769fe841186.png)
+
+Observamos que tenemos todo el código en este archivo, tanto el que pinta el listado de Personajes, como el código que permite añadir Personajes. El código podría seguir creciendo para que muestre más cosas.
+
+Se recomienda separar nuestra aplicación en pequeños bloques reutilizables, en este caso el listado y el añadir personajes podrían ser componentes independientes.
+
+### Crear componente Listado
+
+Dentro del módulo de DBZ vamos a crear el componente **`personajes`** con el comando:
+
+```sh
+ng g c dbz/personajes -skipTests
+```
+
+![image](https://user-images.githubusercontent.com/23094588/151933761-edcc21da-819c-41e7-89a3-c98df34cb096.png)
+
+![image](https://user-images.githubusercontent.com/23094588/151933962-6ad50d14-2593-4c7e-a6c2-49dbf71a7ba9.png)
+
+Observese que usamos la bandera **`-skipTests`** para no crear el archivo de pruebas que si se creo, lo que no se creo el archivo css.
+
+Si vemos el archivo **`dbz.module.ts`** tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151934345-e75061a9-1a32-4399-9774-2de4c305617f.png)
+
+Vemos como se añadido el componente **`PersonajesComponent`** en **`declarations`**, pero no en **`exports`** recordemos que lo que ponemos en **`exports`** para que sea posible usarlo en otros módulos, en este caso el listado solo lo vamos a usar dentro del módulo DBZ especificamente en la clase **`main-page.component.html`** por eso no lo vamos a incluir en **`exports`**.
+
+Ya tenemos nuestro componente **`personajes`** vamos a usarlo en **`main-page.component.html`** comentamos lo que renderizaba la lista y usamos el nuevo componente:
+
+![image](https://user-images.githubusercontent.com/23094588/151935127-d5d2c46c-ca7d-4050-8d4f-bcb47858e6ae.png)
+
+Al recargar el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/151935171-1a719e1a-667b-4ddd-9fa3-ae9f0b49bb25.png)
+
+Vemos que se esta renderizando el contenido del componente **`personajes.component.html`**
+
+![image](https://user-images.githubusercontent.com/23094588/151935385-ab291041-b31f-434e-a0d3-8f07cd0b2965.png)
+
+Vamos a sustituir este código y vamos a mover el código que habíamos comentado en **`main-page.component.html`**, nos queda así:
+
+![image](https://user-images.githubusercontent.com/23094588/151935637-df1395b4-cdf3-4df3-b726-a0336ce6fbf0.png)
+
+
+
+
+
+
+
 **``**
+
+
 ## **`@Input`** 06:55
 ## Tarea con inputs y módulos 12:46
 ## **`@Outputs`** y **`EventEmitter`** 10:38
