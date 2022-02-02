@@ -851,9 +851,118 @@ En la aplicación ya vemos como se pasa el valor de la propiedad **`nuevo`**.
 
 ## **`@Outputs`** y **`EventEmitter`** 10:38
 
-**``**
+En esta lección vamos a ver como desde el componente Agregar "Emita" el nuevo personaje pero no lo inserte, por lo cual en **`main-page.component.html`** no vamos a mandar a los **`personajes`** como lo estamos haciendo actualmente:
+
+![image](https://user-images.githubusercontent.com/23094588/152181768-8fe9b15a-da5d-4e61-af54-cac18d8888cc.png)
+
+Lo vamos a dejar así:
+
+![image](https://user-images.githubusercontent.com/23094588/152181843-a2341111-2c00-4859-9ee3-ab40e484a6b4.png)
+
+Como ya no enviamos los **`personajes`** tenemos que modificar **`agregar.component.ts`**
+
+![image](https://user-images.githubusercontent.com/23094588/152182328-3f3ed7c7-2f9c-4465-b497-3ebffa74ac6a.png)
+
+Vamos a quitar los **`personajes`** y que añada el Personaje al Array.
+
+![image](https://user-images.githubusercontent.com/23094588/152182572-d0f81236-96c6-4eba-8866-f7a0d42bbc39.png)
+
+En el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/152182792-03ae2c16-a055-4b3b-a9b5-43a94f25ac8b.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152182894-784a42ed-b130-42e1-94c5-1eb6857c2bd4.png)
+
+ya no se esta añadiendo el personaje al array.
+
+### **`@Output`**
+
+El decorador **`@Output`** es utilizado cuando tenemos un componente Hijo y necesita "Emitir" un valor al Padre. Se usa para emitir eventos 
+
+En el momento que yo ya tengo la información que quiero enviar es el momento en que yo necesito "Emitir" la información al Padre, es como cualquier otro evento, cuando suceda en el componente Hijo sea capaz de reaccionar en base a ese evento. En este caso cuando en el método **`agregar()`** después de comprobar que se cumplen las validaciones del elemento **`nuevo`** es un buen momento para "Emitir" el valor. Para hacerlo tenemos que crear una propiedad(evento) con el decorador **`@Output`** y que es del tipo especial **`EventEmitter`** lo que me genera un **`Observable`**.
+
+![image](https://user-images.githubusercontent.com/23094588/152185392-fcff7bb2-ddc8-4146-a998-76ed349b48a1.png)
+
+Pero si observamos bien nos esta marcando un error:
+
+![image](https://user-images.githubusercontent.com/23094588/152185521-2234f027-75c6-4335-b5c9-ab29cecd03ee.png)
+
+Nos indica que **`EventEmitter`** es un **Generico** lo que quiere decir que puede ser cualquier cosa que nosotros queramos. Por ejemplo si es un **`string`** lo puedo poner así:
+
+![image](https://user-images.githubusercontent.com/23094588/152185973-c9268a0c-fdc4-43bb-a40c-f68a930f16bd.png)
+
+O incluso para no ser tan redundantes así:
+
+![image](https://user-images.githubusercontent.com/23094588/152186084-ef97cb5c-7c0f-439d-b1ff-55fb4a253658.png)
+
+Pero en nuestro caso no estamos emitiendo un **`string`** vamos a emitir un **`Personaje`**.
+
+![image](https://user-images.githubusercontent.com/23094588/152186324-5716cfbd-fd6a-4d62-afcb-61445805551d.png)
+
+Ahora vamos a usar la propiedad en el lugar donde queremos emitir el valor. Esta propiedad tiene muchos métodos entre ellos el **`suscribe`** por que es un **`Observable`**, pero en este caso vamos a usar la método **`emit()`** que como parametro le vamos a mandar **`this.nuevo`**
+
+![image](https://user-images.githubusercontent.com/23094588/152187436-8634f41c-3e02-4822-9cf7-b9722ca876fb.png)
+
+Si yo intemto mandar como parámetro un **`string`** me va a marcar error por que no cumple con la Interface que indique en el Generico que iba a usar.
+
+Esto es todo por parte del componente Hijo.
+
+Vamos a regresar al componente Padre **`main-page.component.html`** y tenemos que hacer que en el componente **`<app-agregar>`** detecte el evento que se dispará.
+
+![image](https://user-images.githubusercontent.com/23094588/152188572-80266dc4-45c8-4940-b1c0-b87d0016c482.png)
+
+En **`main-page.component.ts`** debemos crearnos el método **`agregarNuevoPersonaje()`**
+
+![image](https://user-images.githubusercontent.com/23094588/152189409-2e71a295-8693-4be5-8453-29221628cf17.png)
+
+Si cargamos el Navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/152189609-6e02437c-a525-4c76-8a01-a7ab78a59d45.png)
+
+Al presionar el botón Agregar
+
+![image](https://user-images.githubusercontent.com/23094588/152189633-1314ef4b-cffd-4ff3-a1a5-4e437fefbce5.png)
+
+El evento se emitio del componente Hijo, lo recibio el Padre y el Padre lo interpreto.
+
+Ahora lo que nos interesa es recibir la información mutada por parte del componente Hijo. Cuando se emite un evento y necesitamos las características de donde se hizo click, los valores del target, etc., todo ese contenido lo tenemos en **`$event`** por lo que será necesario enviarlo como parámetro del método:
+
+![image](https://user-images.githubusercontent.com/23094588/152190369-f536927a-503f-4342-8052-1699fda6a6f1.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152190461-4f902194-e189-4bcf-95fe-57758f0055c0.png)
+
+**`$event`** es de tipo **`Personaje`** por que así lo definimos en el componente Hijo.
+
+En **`main-page.component.ts`** debemos recibir el argumento en el método **`agregarNuevoPersonaje()`**
+
+![image](https://user-images.githubusercontent.com/23094588/152190890-442fdf3f-42e5-4f69-9534-5cbd60de912b.png)
+
+En el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/152190955-8d3b5933-08ee-4100-8e12-b1235e044a6e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152191035-af519d89-97b0-44de-9126-a6785b86ae6f.png)
+
+Como podemos observar ya recibimos el Nuevo Personaje, por lo cual si ya lo recibimos lo podemos añadir en el array de los personajes.
+
+![image](https://user-images.githubusercontent.com/23094588/152191328-7a1c148c-d9a3-4c93-89b0-a62f031439fb.png)
+
+En el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/152191362-5be8358e-0c54-4c73-870b-ff7c10007005.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152191410-7786a3b6-33d6-45ab-b2c3-44e585a947de.png)
+
+Podemos observar como al añadirlo a la lista este ya se renderiza en la lista de Personajes.
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/152192079-df89e9fa-6f29-4789-b27f-0f41a48af347.png)
 
 ## Bonus: Depuración de aplicación 08:53
+
+**``**
+
 ## Servicios 08:41
 ## Centralizar el acceso de los personajes en el servicio 08:34
 ## Métodos en el servicio 05:33
