@@ -1035,8 +1035,33 @@ Aun que me sigue conservando los botones superiores.
 
 ## Servicios 08:41
 
+El concepto de los Servicios en Angular es una de las cosas más fuertes que tiene y ha hecho de que cuando estén trabajando en Angular, no sea tan necesario implementar patrones como **Redux**, **Blog**, entre otros.
+
+Porque el hecho es que los Servicios en Angular son manejados de una manera muy eficiente, muy parecido a trabajar con un **Singleton**. **Singleton** digamos que sería que ustedes tuvieran una clase que es instancia de manera global en su aplicación.
+
+Cuando ustedes quieran obtener información, se van al servicio y el servicio mantiene la información actualizada sin importar donde ustedes están.
+
+### Crear el Servicio de Forma Manual.
+
+Dentro de la carpeta **`dbz`** vamos a crear una carpeta llamada **`services`** por que vamos a hacer un servicio que solo se usara en el módulo de DBZ por eso lo colocamos en este sitio.
+
+Dentro de la carpeta **`services`** vamos a crear el archivo **`dbz.service.ts`**.
+
+Un Servicio también es una clase la diferencia con respecto a los Componentes es que el servicio se va a anotar con **`@Injectable()`** esto básicamente le esta diciendo a Angular que esta es una clase que se puede ***Inyectar***. Vamos a añadir el siguiente código:
+
+![image](https://user-images.githubusercontent.com/23094588/152205494-9a19b0a0-3ce3-4b72-833b-a57c01affe81.png)
+
+Hasta aquí solo hemos creado el Servicio pero no hemos indicado en ningún sitio que lo use.
+
+Los servicios se deben añadir dentro del módulo en un apartado adicional llamado **`providers`**, añadamoslo en el módulo **`dbz.module.ts`**.
+
+
+
+
+
 **``**
 
 ## Centralizar el acceso de los personajes en el servicio 08:34
 ## Métodos en el servicio 05:33
 ## Código fuente de la sección 00:12
+
