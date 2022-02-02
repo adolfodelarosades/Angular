@@ -961,9 +961,82 @@ Podemos observar como al añadirlo a la lista este ya se renderiza en la lista d
 
 ## Bonus: Depuración de aplicación 08:53
 
-**``**
+Hasta el momento lo que hemos utilizado para "Depurar" nuestra aplicación es usar los **`console.logs()`** 
+
+![image](https://user-images.githubusercontent.com/23094588/152192896-4fff43a9-7624-4356-b84a-5af4595c9f5c.png)
+
+Podemos abrir el Prototype del objeto y ver más características.
+
+Tambien podemos pinchar en el enlace que esta al lado **`main-page.component.ts:36`** y se abre lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/152193673-1c4feff4-a19e-4646-a245-da6523d1ffcb.png)
+
+Nos lleva al archivo fuente donde esta la sentencia que muestra el mensaje en la consola. En estos archivos fuentes podemos poner BreakPoints para que se vaya parando la aplicación y ver los valores de las variables que use.
+
+![image](https://user-images.githubusercontent.com/23094588/152194108-3dd1c98d-c47d-4ad1-8cbc-f5a339a2ef5f.png)
+
+Aquí podemos usar F5, F6, fecha Azul para ir recondiendo el código.
+
+Otra forma de establecer BreakPoints es directamente en el código escribir la palabra **`debugger`** 
+
+![image](https://user-images.githubusercontent.com/23094588/152194663-0bb89246-c994-48f2-89b3-74207adb68be.png)
+
+Y cuando en la ejecución se llegue en donde se localiza esa instrucción se va a detener la ejecución.
+
+![image](https://user-images.githubusercontent.com/23094588/152194774-6f6c0b00-ee30-4789-9c5e-14ca21d0e3a2.png)
+
+La forma más potente y util para depurar es hacerlo dentro del propio VSC, lo primero que vamos a hacer es presionar F5 en VSC para seleccionar el entorno.
+
+![image](https://user-images.githubusercontent.com/23094588/152195534-ceadb260-10b6-4ee7-bacd-4287f4b27f5f.png)
+
+Vamos a seleccionar **`Chrome`** y esto nos va a crear el archivo de configuración **`launch.json`**.
+
+![image](https://user-images.githubusercontent.com/23094588/152195843-4357337e-5de7-41d1-b078-649a73aed1e4.png)
+
+Esto nos crea la carpeta **`.vscode`** con el archivo **`launch.json`** dentro.
+
+![image](https://user-images.githubusercontent.com/23094588/152196139-d0058846-b0e1-4cd3-9322-9778cf05aa9b.png)
+
+Podemos borrar la carpeta **`.vscode`** para generarla en el mismo entorno u otro diferente.
+
+El único inconveniente que tenemos es que el URL creado lo hizo en **`http://localhost:8080`** lo podemos cambiar al **`http://localhost:4200`** que es el que nosotros estamos usando, una vez hecho el cambio salvamos y cerramos el archivo.
+
+Nosotros tenemos arrancado nuestra consola y levantado el servidor, si en VSC presiono F5 se va a abrir un nuevo navegador y la APP se va ejecutar en modo DEBUGGER.
+
+![image](https://user-images.githubusercontent.com/23094588/152199475-929bb3dc-8513-4d7e-8176-e3226775b4a5.png)
+
+Podemos poner BreakPoints en los archivos de VSC y la aplicación se irá deteniendo cada que se encuentre uno de ellos.
+
+![image](https://user-images.githubusercontent.com/23094588/152199997-ae419ceb-27bb-41dd-b135-f731403ec431.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152200120-2882424c-26ec-46c2-9baf-0b93c4b50f8d.png)
+
+Podemos usar los botones para ir avanzando en el código y colocarnos en las propiedades para ir viendo sus valores, pasar de unos métodos a otros, etc.
+
+Tenemos la sección de la izquiera donde podemos inspeccionar los valores de las variables.
+
+![image](https://user-images.githubusercontent.com/23094588/152201086-13006c5e-a352-4c84-9566-a275c34063b0.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152201257-105c29d4-ef13-40a0-8981-bc649660927a.png)
+
+Incluso podemos cambiar los valores en medio de la Ejecución
+
+![image](https://user-images.githubusercontent.com/23094588/152201553-07fa1787-f8ca-4535-ab04-b09980c90751.png)
+
+Y que los tome en cuenta.
+
+![image](https://user-images.githubusercontent.com/23094588/152201653-f43b0703-d93b-4fa9-9dfe-587abd262589.png)
+
+Para cerrar la Depuración es suficiente cerrar la ventana del navegador que abrio VSC. Incluso podemos borrar la carpeta **`.vscode`**.
+
+Aun que me sigue conservando los botones superiores.
+
+![image](https://user-images.githubusercontent.com/23094588/152202416-16a64033-e73b-4397-8a7f-1fe39798b3ee.png)
 
 ## Servicios 08:41
+
+**``**
+
 ## Centralizar el acceso de los personajes en el servicio 08:34
 ## Métodos en el servicio 05:33
 ## Código fuente de la sección 00:12
