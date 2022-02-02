@@ -805,15 +805,54 @@ Vamos a mover el código referente a Agregar de **`main-page.component.html`** a
 
 Nos marca una serie de errores ya que no tenemos el método **`agregar()`** ni la propiedad **`nuevo`** en este componente nuevo, debemos moverlo desde el **`main-page.component.ts`** a **`agregar.component.ts`**.
 
+![image](https://user-images.githubusercontent.com/23094588/152115214-d9850b72-ddbb-4bae-95f5-b1ce63208e88.png)
 
+Ahora lo que tenemos un error en **`this.personajes`** ya que hace referencia a una propiedad que no esta definida en esta clase, por lo que la tenemos que definir y además debemos anotarla con **`@Input`** para que reciba los valores en esta propiedad.
 
+![image](https://user-images.githubusercontent.com/23094588/152115512-2bfbcd39-54d9-4ea0-b016-19cfe6cef0bf.png)
 
+Lo siguiente es incluir en **`main-page.component.ts`** la etiqueta que hace referencia a **`agregar.component.ts`** y pasarle los **`personajes`**.
 
+![image](https://user-images.githubusercontent.com/23094588/152115697-db098fca-904a-4e1c-8064-864a33408af5.png)
+
+Ya no tenemos ningún fallo, si vemos el navegador podemos ver nuestra aplicación.
+
+![image](https://user-images.githubusercontent.com/23094588/152115835-f30866c9-32d9-4139-9cd5-08d3e8c42f19.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152115855-1be9319a-a166-450d-b62d-860dd0b2e1a3.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152115871-7ced6c88-4c19-4063-b043-29f334a43657.png)
+
+Aun que la APP funciona bien realmente el componente Agregar no debeía ser el encargado de insertar el Personaje sino que solo debería "Emitir" ese nuevo cambio, "Emitir" la información procesada del formulario, se inserta por que el Objeto **`personajes`** se esta pasando por ***referencia***, en la siguiente lección vamos a ver como evitar esto.
+
+Antes de terminar desde **`main-page.component.ts`** vamos a pasar un objeto **`nuevo`** con valores que va a recibir **`agregar`** por lo que el formulario se va a rellenar con dichos valores ya no  va a aparecer en blanco como hasta ahora.
+
+En **`main-page.component.ts`** añadimos el objeto **`nuevo`**.
+
+![image](https://user-images.githubusercontent.com/23094588/152118601-02cfe293-f333-4169-8ae2-43933def8803.png)
+
+En **`main-page.component.html`** mandamos también el valor del objeto **`nuevo`**.
+
+![image](https://user-images.githubusercontent.com/23094588/152119383-6d66bcf9-15d2-452a-9b44-865fbaa40ca3.png)
+
+Y en **`agregar.component.ts`** tenemos que apuntar a la propiedad **`nuevo`** con  **`@Input`**.
+
+![image](https://user-images.githubusercontent.com/23094588/152119663-6caf968c-44f9-45d3-affa-e44410a751c7.png)
+
+En la aplicación ya vemos como se pasa el valor de la propiedad **`nuevo`**.
+
+![image](https://user-images.githubusercontent.com/23094588/152119727-2949991d-ad49-402c-9697-ae58a495caf8.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152119769-c728cd13-948b-4eca-89d1-85a1f38df2e9.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/152120038-b8ce814a-b475-4c84-8f3b-dbe56161b31e.png)
+
+## **`@Outputs`** y **`EventEmitter`** 10:38
 
 **``**
 
-
-## **`@Outputs`** y **`EventEmitter`** 10:38
 ## Bonus: Depuración de aplicación 08:53
 ## Servicios 08:41
 ## Centralizar el acceso de los personajes en el servicio 08:34
