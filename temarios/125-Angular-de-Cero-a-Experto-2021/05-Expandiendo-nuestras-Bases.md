@@ -967,7 +967,7 @@ Hasta el momento lo que hemos utilizado para "Depurar" nuestra aplicación es us
 
 Podemos abrir el Prototype del objeto y ver más características.
 
-Tambien podemos pinchar en el enlace que esta al lado **`main-page.component.ts:36`** y se abre lo siguiente:
+Tambien podemos pinchar en el enlace que esta al lado **`main-page.component.ts`** y se abre lo siguiente:
 
 ![image](https://user-images.githubusercontent.com/23094588/152193673-1c4feff4-a19e-4646-a245-da6523d1ffcb.png)
 
@@ -1053,15 +1053,50 @@ Un Servicio también es una clase la diferencia con respecto a los Componentes e
 
 Hasta aquí solo hemos creado el Servicio pero no hemos indicado en ningún sitio que lo use.
 
-Los servicios se deben añadir dentro del módulo en un apartado adicional llamado **`providers`**, añadamoslo en el módulo **`dbz.module.ts`**.
+Los servicios se deben añadir dentro del módulo en un apartado adicional llamado **`providers`** donde se van añadiendo todos los servicios, añadamoslo en el módulo **`dbz.module.ts`**.
 
+Los servicios sirven como Singlentons, es decir una sola vamos a tener una solo instancia que sirva a todo el módulo.
 
+![image](https://user-images.githubusercontent.com/23094588/152304091-c4bacc54-a0f2-413c-8890-06f46774e725.png)
 
+El servicio se va a ejecutar hasta que alguien lo requiera, en este momento no esta creada la primera instancia del Servicio.
 
+Vamos al archivo **`main-page.component.ts`** donde tenemos lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/152305028-60632869-3ef7-4243-81d4-69f4b634328d.png)
+
+En el Constructor vamos a Inyectar el Servicio creado como un parámetro.
+
+![image](https://user-images.githubusercontent.com/23094588/152306045-eca378dc-fcc9-414b-8aa9-7a98a17b9768.png)
+
+Si cargamos el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/152307167-c8380aaa-fe02-471c-8d77-c0c316c2941d.png)
+
+Ya nos muestra en consola **`Servicio inicializado`** lo que significa que el servicio ya ha sido inicializado y esta listo para usarse.
+
+Este mismo servicio lo podemos Inyectar en otro componente por ejemplo **`personajes.component.ts`**
+
+![image](https://user-images.githubusercontent.com/23094588/152308466-21cf5dfc-61a7-41c1-8998-f123614d81bd.png)
+
+Y al cargar el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/152308557-6de39cf1-52ae-4c28-8298-43d662c4c586.png)
+
+Observece que el mensaje en consola **`Servicio inicializado`** solo aparece una vez a pesar de que estamos invocando el Servicio en dos Componentes diferentes, el servicio se crea primero en el **`main-page.component.ts`** y cuando se invoca en **`personajes.component.ts`** ya tenemos el Servicio inicializado y no crea una nueva instancia más bien usa la existente. 
+
+Si en el **`main-page.component.ts`** se hicieran modificaciones al servicio (la información) se reflejaria en los demás componentes que usen el servicio.
+
+Actualmente en el **`main-page.component.ts`** tenemos declarados todos los datos y el método para agregar un Personaje, esta lógica realmente no debería ir dentro del Componente, lo deberíamos tener en el Servicio esto lo hacemos para poderla centralizar la información y pueda ser usada por todos los componentes y no solo en donde se encuentra declarada la información como en este caso. Toda está lógica debería estar en el Servicio que es como una clase Abstracta donde vamos a poner toda la información y los métodos para interactuar con fuentes externas y poder manipular la información. **Esto es lo genial de los Servicios que tenemos la información centralizada donde tenemos la información.**
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/152310753-5e15247b-8091-4945-99b8-29fc97e1533b.png)
+
+## Centralizar el acceso de los personajes en el servicio 08:34
 
 **``**
 
-## Centralizar el acceso de los personajes en el servicio 08:34
 ## Métodos en el servicio 05:33
 ## Código fuente de la sección 00:12
 
