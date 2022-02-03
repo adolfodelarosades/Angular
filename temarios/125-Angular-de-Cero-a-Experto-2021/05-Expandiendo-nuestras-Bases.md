@@ -1095,6 +1095,109 @@ Actualmente en el **`main-page.component.ts`** tenemos declarados todos los dato
 
 ## Centralizar el acceso de los personajes en el servicio 08:34
 
+En esta lección vamos a centralizar la información de los Personajes en el Servicio, actualmente la información de los Personajes la tenemos en el **`main-page.component.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/152374961-dae1fecb-edcd-4c7b-857b-78efd9f0afe6.png)
+
+Vamos a cortar el array de **`personajes`** y lo vamos a mover a **`dbz.service.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/152375558-2c8b4ebd-2e79-423b-b9ae-06cb24a1653e.png)
+
+Al quitar los **`personajes`** de **`main-page.component.ts`** nos esta marcando un error.
+
+![image](https://user-images.githubusercontent.com/23094588/152375961-31442a7f-c726-4a9d-9d22-0ecb7c97af00.png)
+
+Vamos a crear nuevamente el arreglo de **`personajes`** y lo vamos a inicializar vacio.
+
+![image](https://user-images.githubusercontent.com/23094588/152376288-2042fe89-b2ee-4cb2-bc3a-d888dd884598.png)
+
+Si cargamos el navegador tenemos lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/152376753-84f91d06-ef15-4567-9133-f359f47931d8.png)
+
+Como hemos declarado un array vacio no tenemos lista de personajes, pero si empezamos a añadir Personajes estos aparecen en la lista.
+
+![image](https://user-images.githubusercontent.com/23094588/152377008-ee7c1718-96b0-4d87-a4ed-2c9771e14c2c.png)
+
+En **`main-page.component.ts`** podemos recuperar la lista de los Personajes y asignarlos a la propiedad **`personajes`** recien creada, esto lo vamos a realizar en el Constructor.
+
+![image](https://user-images.githubusercontent.com/23094588/152377597-c561701b-6d72-4137-ac0a-765b8ba855c2.png)
+
+Si recargamos el navegador ya tenemos nuevamente la lista de Personajes por que la estamos recuperando del Servicio.
+
+![image](https://user-images.githubusercontent.com/23094588/152377754-045cf26f-73b5-49f4-bf0c-6a8d0d611e53.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152377863-3c5f7039-5467-4632-bfde-2f9f6c4de532.png)
+
+La aplicación funciona correctamente pero de alguna manera dentro del componente estamos nuevamente procesando la lista de **`personajes`** al tener la propiedad **`personajes`** declarada dentro del componente y asignarle los valores desde el Servicio o añadiendo valores a la lista en el método **`agregarNuevoPersonaje( personaje: Personaje)`**. ***Toda la manipulación de los datos debería hacerse dentro del Servicio y no dentro de los Componentes***.
+
+Vamos a hacer una refactorización em el archivo **`main-page.component.ts`** eliminando la propiedad **`personajes`** y la asignación en el constructor.
+
+![image](https://user-images.githubusercontent.com/23094588/152379603-8071ea47-b9b3-4a2c-bd70-2dc882314af2.png)
+
+Vamos a incluir un **GETTER** para recuperar los datos desde el servicio.
+
+![image](https://user-images.githubusercontent.com/23094588/152380524-35b23459-075d-4b3a-af5e-c74feca1ddd0.png)
+
+Si cargamos la APP en el navegador sigue funcionando correctamente.
+
+![image](https://user-images.githubusercontent.com/23094588/152380647-224e6269-3c6a-48ad-8d00-a93da3e49bf3.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152380693-b6a85ee1-8882-4dfa-a19e-a6fca8e24399.png)
+
+Todo correcto hasta aquí.
+
+Pero si pensamos un poco en el componente **`main-page.component.ts`** este no debería usar para nada los personajes, solo debería renderizar los Componentes Hijos **`personajes.component`** y **`agregar.component`**, vamos a eliminar del **`main-page.component.ts`** todo rastro de los **`personajes`**.
+
+![image](https://user-images.githubusercontent.com/23094588/152394248-ec9ce7e2-cf02-43c0-9ed1-44440218057f.png)
+
+Si cargamos la APP en el navegador tenemos errores que se muestran en la consola de Angular:
+
+![image](https://user-images.githubusercontent.com/23094588/152394858-cb0749b7-7681-4313-92fa-389d3a75e600.png)
+
+Esto es por que en el **`main-page.component.html`** estamos haciendo referencia a cosas que ya eliminamos en el TS.
+
+![image](https://user-images.githubusercontent.com/23094588/152395078-d092c652-0fec-4ac6-83be-1729a14912d7.png)
+
+Eliminamos todo el código que hace referencia a las propiedades o métodos que hemos eliminado.
+
+![image](https://user-images.githubusercontent.com/23094588/152395287-eb9547ef-ea66-49f9-93f9-bef0f1ed052f.png)
+
+Si cargamos la APP tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/152395488-876edec6-15cf-4c98-b228-2b252bc7760b.png)
+
+Si presionamos el botón Agregar ya no pasa nada ya que hemos eliminado el evento al que se invocaba y que llamaba al método **`agregar()`** encargado de insertar un nuevo Personaje.
+
+### Encapsular los Personajes
+
+Una cosa que deberíamos hacer es hacer el acceso más seguro a los **`personajes`** que tenemos en el Servicio, es decir no debemos permitir que en ningún lado nos manipulen el array de **`personajes`**, **NO DEBEMOS PERMITIR ESA MANIPULACIÓN** el único lugar donde se debe modificar el array de **`personajes`** es dentro del Servicio. Actualmente en el servicio tenemos el array de **`personajes`** público:
+
+![image](https://user-images.githubusercontent.com/23094588/152396477-b35791cb-1eb3-4268-a0db-4cc78ffb0c50.png)
+
+Vamos a ponerlo como privado, cuando se hace esto se le suele poner un **`_`** al nombre de la propiedad como convención para indicar que es una propiedad privada, pero lo que hace que la propiedad realmente sea privada es la palabra **`private`** que ponemos antes de la declaración de la propiedad.
+
+![image](https://user-images.githubusercontent.com/23094588/152396980-bec5850d-27ad-4dee-8c57-9c4337e20d7e.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 **``**
 
 ## Métodos en el servicio 05:33
