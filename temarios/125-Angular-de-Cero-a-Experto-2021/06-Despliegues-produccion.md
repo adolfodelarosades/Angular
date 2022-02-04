@@ -39,7 +39,11 @@ Aquí aprenderemos como generar el build de producción de nuestra aplicación y
 
 ## Generar Build de Producción 05:25
 
-Antes de construir el Build de Producción debemos ejecutar el servidor y observar que no tengamos ningún Warning ni ningún Error. También deberiamos revisar nuestro código para eliminar dependencias que no estemos utilizando como por ejemplo en **`personajes.component.ts`** tenemos el **`Input`** y **`Personaje`** que no usamos, Angular nos lo muestra de un color más opaco, todo esto lo deberíamos eliminar del código, al igual que código comentantado que ya no se usa.
+Antes de construir el Build de Producción debemos ejecutar el servidor y observar que no tengamos ningún Warning ni ningún Error. También deberiamos revisar nuestro código para eliminar dependencias que no estemos utilizando como por ejemplo en **`personajes.component.ts`** 
+
+![image](https://user-images.githubusercontent.com/23094588/152525606-e613d4e3-76c2-4bb7-86e3-c3b3c8707829.png)
+
+Tenemos el **`Input`** y **`Personaje`** que no usamos, Angular nos lo muestra de un color más opaco, todo esto lo deberíamos eliminar del código, al igual que código comentantado que ya no se usa.
 
 Una vez que ya hemos hecho todo lo anterior con el servidor parado vamos a pulsar el comando:
 
@@ -47,12 +51,16 @@ Una vez que ya hemos hecho todo lo anterior con el servidor parado vamos a pulsa
 ng build --prod
 ```
 
+![image](https://user-images.githubusercontent.com/23094588/152526609-0cfb4e89-c504-4f35-916b-81350cda030f.png)
+
+Con este comando le estamos diciendo que nos cree la versión de Producción.
+
+El archivo **`main`** de nuestra aplicación pesa **`155.79 kB`** no es muy grande, aun que lo podemos compactar un poco más. Una optimización es que la aplicación la separemos en pequeños módulos y los carguemos mediante Lasy Load o Carga Perezosa
 
 
 
 
 
-![image](https://user-images.githubusercontent.com/23094588/152525606-e613d4e3-76c2-4bb7-86e3-c3b3c8707829.png)
 
 
 ## Desplegando en Netlify 02:37
