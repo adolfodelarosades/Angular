@@ -1226,6 +1226,43 @@ Lo que no funciona es agregar un Personaje al presionar el botón lo haremos en 
 
 ## Métodos en el servicio 05:33
 
+En esta lección vamos a añadir en el Servicio **`dbz.service.ts`** el método para agregar los personajes en la lista.
+
+![image](https://user-images.githubusercontent.com/23094588/152495459-591339a8-7ffd-47b6-b660-68efbf789a6a.png)
+
+Se agrega en **`_personajes`** y no en **`personajes`** para almacenarlo en la lista original de Personajes, de esta forma el GETTER también va a retornar los nuevos elementos añadidos en los Componentes que lo utilicen. 
+
+Vamos a **`agregar.component.ts`** que actualmente lo tenemos así:
+
+![image](https://user-images.githubusercontent.com/23094588/152496066-56299749-afdd-44de-b3c7-587a67545722.png)
+
+Tenemos cosas que ya no debemos utilizar como lo estabamos haciendo hasta ahora como por ejemplo ya no vamos a emitir el nuevo personaje, por lo que lo vamos a comentar. Y vamos a inyectar el Servicio para poder usar el método recien creado que agrega los personajes.
+
+![image](https://user-images.githubusercontent.com/23094588/152497187-f25946ac-37a5-4685-85e5-ff95dce87a61.png)
+
+Si cargamos el navegador:
+
+![image](https://user-images.githubusercontent.com/23094588/152497278-e38f5f2b-bbde-4f66-9033-93d14384cc7a.png)
+
+Al presionar el botón Agregar se añade el personaje.
+
+![image](https://user-images.githubusercontent.com/23094588/152497334-c0102d02-b07b-412b-b62e-45d5ec96f455.png)
+
+La ventaja de trabajar con Servicios es que los datos y la lógica para manipularlos esta en el Servicio, de esta manera los componentes pueden acceder al Servicio para recuperar los datos y manipular la información. 
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/152498386-f35d2016-523b-4500-8ae8-a952539e3698.png)
+
+
+
+
+
+
+
+
+
+
 **``**
 
 ## Código fuente de la sección 00:12
