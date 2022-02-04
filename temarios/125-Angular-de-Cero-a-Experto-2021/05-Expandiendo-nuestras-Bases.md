@@ -1256,14 +1256,94 @@ La ventaja de trabajar con Servicios es que los datos y la lógica para manipula
 
 
 
-
-
-
-
-
-
-
-**``**
-
 ## Código fuente de la sección 00:12
+
+En esta lección vamos a subir todo el código de la sección al repositorio GIT, actualmente lo tenemos así:
+
+![image](https://user-images.githubusercontent.com/23094588/152500000-25e920ee-c26e-494a-aefe-d250e85c4c46.png)
+
+Vamos a pulsar el siguiente comando para hacer un PUSH.
+
+```sh
+git push -u origin main
+```
+
+![image](https://user-images.githubusercontent.com/23094588/152500214-f9b65ef1-ced6-4e61-a6e4-c23bc1b3d3c1.png)
+
+Al actualizar GIT tenemos nuestro repositorio actualizado.
+
+![image](https://user-images.githubusercontent.com/23094588/152500405-cd6fbc1e-6e33-407a-a3d9-9fb44f81d8d4.png)
+
+### Creación de un Tag y Release
+
+Adicionalmente vamos a crear un **Release Tag** que nos permite tener una versión del código que esta en este momento y poder descargarlo. El comando **Git** que vamos a usar es:
+
+```sh
+git tag -a v0.1.0 -m "Fin sección 4"
+```
+
+Este comando crea un **Tag** el atributo **`-a`** significa que es "anotado" con el texto **`v0.1.0`** que es una forma de nombrar nuestras versiones y con **`-m`** le damos el título de **`Fin sección 4`**
+
+Si después de pulsar el comando anterior pulsamos:
+
+```sh
+git tag
+```
+
+vamos a tener:
+
+![image](https://user-images.githubusercontent.com/23094588/150819762-52dd80d3-103f-4a6c-acd6-b957151daf2d.png)
+
+Si retornamos al navegar en **GitHub** no vamos a ver ninguna diferencia.
+
+![image](https://user-images.githubusercontent.com/23094588/150819991-b9097fc0-4703-4f03-9d0f-dbb605e85939.png)
+
+Para subir el  **Tag** a **GitHub** lo hacemos con el comando:
+
+```sh
+git push --tags
+```
+
+![image](https://user-images.githubusercontent.com/23094588/150820305-d3179530-a3da-4088-8bcd-70f1c2966691.png)
+
+Esto simplemente nos sube un **Tag** a **GitHub** no un **Release Tag**.
+
+![image](https://user-images.githubusercontent.com/23094588/150820569-0647ad60-1450-4d49-aba5-0bcffaed259d.png)
+
+Ya podemos ver que nos sale 1 tag si pulsamos en **Releases** vemos los detalles:
+
+![image](https://user-images.githubusercontent.com/23094588/150820905-e3fe364e-cb22-4304-9c5e-b83bd43eeab5.png)
+
+Como podemos ver en **Releases** no tenemos nada y en **Tags** tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/150821099-2d66a7d9-2b09-4273-a6e6-e02249edf60c.png)
+
+Si pulsamos en el **Tag v0.1.0**  nos lleva a los detalles:
+
+![image](https://user-images.githubusercontent.com/23094588/150821401-efe6c50f-b486-462c-98ce-c2377e3dd5aa.png)
+
+En esta pantalla podemos crear un **Release** a partir de un **Tag** pulsando en el botón **`Create release from tag`**.
+
+![image](https://user-images.githubusercontent.com/23094588/150821786-643962bc-d936-460e-b945-85a41e7399b0.png)
+
+Metemos la información que nos solicita:
+
+![image](https://user-images.githubusercontent.com/23094588/150822068-b4dc1283-3551-4c7b-9983-3ada65d603d9.png)
+
+Y podemos pulsar en el botón verde **`Public release`**
+
+![image](https://user-images.githubusercontent.com/23094588/150822341-0f082087-1c4d-4810-9f03-e208633e88eb.png)
+
+Ahora si ya tenemos un **Release**
+
+Como podemos ver en el **Release** tenemos la sección **Assets** donde podemos descargar el código fuente, vamos a pulsar en **`Source code (zip)`** el código se descarga:
+
+![image](https://user-images.githubusercontent.com/23094588/150823290-1b0711c0-c86a-4a69-8639-4b5c33da1ad0.png)
+
+![image](https://user-images.githubusercontent.com/23094588/150823386-ef432452-2ada-4d79-bb9b-efbc0f5bb98a.png)
+
+
+
+
+
 
