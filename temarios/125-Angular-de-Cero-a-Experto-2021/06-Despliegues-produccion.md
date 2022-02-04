@@ -55,12 +55,49 @@ ng build --prod
 
 Con este comando le estamos diciendo que nos cree la versión de Producción.
 
-El archivo **`main`** de nuestra aplicación pesa **`155.79 kB`** no es muy grande, aun que lo podemos compactar un poco más. Una optimización es que la aplicación la separemos en pequeños módulos y los carguemos mediante Lasy Load o Carga Perezosa
+El archivo **`main`** es nuestra aplicación, pesa **`155.79 kB`** no es muy grande, aun que lo podemos compactar un poco más. Una optimización es que la aplicación la separemos en pequeños módulos y los carguemos mediante Lazy Load o Carga Perezosa, esto va a ayudar a reducir el tamaño del archivo **`main`**. El archivo **`polyfills`** son funciones para asegurar que mi aplicación funcione en cualquier navegador existente. El archivo **`styles`** se encuentra todo mi CSS usado en la APP.
 
+Toda esta información se encuentra en una carpeta **`dist`** que se creo al ejecutar el comando **`ng build --prod`** dentro de la carpeta de nuestro proyecto.
 
+![image](https://user-images.githubusercontent.com/23094588/152531659-4d0ccb77-b231-4d55-8d2b-1e5b7a3e7096.png)
 
+Podemos observar que también tenemos un archivo **`index.html`** y un **`favicon`**.
 
+Podemos observar que los archivos JS y CSS contienen un identificador algo extenso, que es un HASH que le esta poniendo Angular. Angular al hacer el Build de Producción también se encarga que los navegadores Web mantengan viejos archivos en Cache, cuando se modifica por ejemplo el CSS y se genera la nueva versión de Producción el HASH asociado al CSS cambiara con lo que los cambios se reflejaran en el navegador.
 
+Si tenemos la tentación de hacer doble click en **`index.html`** con la intención de abrirlo en el navegador vamos a tener lo siguiente:
 
+![image](https://user-images.githubusercontent.com/23094588/152532406-adf8ac83-0a5d-424d-bda7-39eb5bdce7e4.png)
+
+Tenemos errores por que esto se carga mediante el protocolo HTTP y aquí lo estamos haciendo mediante el protocolo FILE, por lo que no estamos queriendo abrir un sitio WEB estamos queriendo abrir el **`index.html`** el cual no tiene la información que esperamos que tenga, su contenido es el siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/152532856-bf9b2db0-a05b-4a09-90ba-cc0eea61e089.png)
+
+Para poder ver nuestra aplicación ejecutandose es necesario desplegarla en un Hosting.
 
 ## Desplegando en Netlify 02:37
+
+Vamos a desplegar nuestra APP en el [Netlify](https://www.netlify.com/) fácil y rapidamente. Debemos tener una cuenta para poder hacerlo, 
+
+![image](https://user-images.githubusercontent.com/23094588/152533676-edb4e522-a85d-47f4-8857-5eb6a72c5db2.png)
+
+Arrastramos la carpeta **`bases`** que esta dentro de **`dist`** y la dejamos caer en donde nos indica.
+
+![image](https://user-images.githubusercontent.com/23094588/152533728-031f5943-7d2c-4800-9768-de9ab267691d.png)
+
+El despliegue lo hace enseguida nos aparece esta imagen:
+
+![image](https://user-images.githubusercontent.com/23094588/152533921-ad95bc53-a144-4f0c-8980-277d942f2f38.png)
+
+y nos indica el URL donde esta desplegada la aplicación https://objective-poincare-fa651b.netlify.app/ donde podemos probar la aplicación.
+
+![image](https://user-images.githubusercontent.com/23094588/152534510-8e0c1ed3-b9d7-4146-beff-315db070902e.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152534531-4ae24e17-bebb-476e-aa1f-c218120c4cb5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152534576-5d1826f2-2b07-4513-9d90-120949398d2a.png)
+
+![image](https://user-images.githubusercontent.com/23094588/152534592-f5595499-5695-434f-b0af-8bc5121f8877.png)
+
+Todo funciona correctamente.
+
