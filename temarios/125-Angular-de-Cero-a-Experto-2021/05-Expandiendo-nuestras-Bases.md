@@ -1279,10 +1279,10 @@ Al actualizar GIT tenemos nuestro repositorio actualizado.
 Adicionalmente vamos a crear un **Release Tag** que nos permite tener una versión del código que esta en este momento y poder descargarlo. El comando **Git** que vamos a usar es:
 
 ```sh
-git tag -a v0.1.0 -m "Fin sección 4"
+git tag -a v0.2.0 -m "Fin sección 5"
 ```
 
-Este comando crea un **Tag** el atributo **`-a`** significa que es "anotado" con el texto **`v0.1.0`** que es una forma de nombrar nuestras versiones y con **`-m`** le damos el título de **`Fin sección 4`**
+Este comando crea un **Tag** el atributo **`-a`** significa que es "anotado" con el texto **`v0.2.0`** que es una forma de nombrar nuestras versiones y con **`-m`** le damos el título de **`Fin sección 5`**
 
 Si después de pulsar el comando anterior pulsamos:
 
@@ -1292,7 +1292,7 @@ git tag
 
 vamos a tener:
 
-![image](https://user-images.githubusercontent.com/23094588/150819762-52dd80d3-103f-4a6c-acd6-b957151daf2d.png)
+![image](https://user-images.githubusercontent.com/23094588/152501302-6cf18281-b88a-4b10-b15e-1da2e96be11e.png)
 
 Si retornamos al navegar en **GitHub** no vamos a ver ninguna diferencia.
 
