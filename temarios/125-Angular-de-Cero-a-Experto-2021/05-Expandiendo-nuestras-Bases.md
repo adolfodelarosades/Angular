@@ -1179,27 +1179,54 @@ Vamos a ponerlo como privado, cuando se hace esto se le suele poner un **`_`** a
 
 ![image](https://user-images.githubusercontent.com/23094588/152396980-bec5850d-27ad-4dee-8c57-9c4337e20d7e.png)
 
+Al tener la propiedad privada ya no se puede utilizar fuera de la clase donde se declaro, en este caso el servicio **`dbz.service.ts`**, si algún componente que utiliza el servicio intenta usar esta propiedad no le será posible acceder a ella que es el caso de **`personajes.component.ts`**:
+
+![image](https://user-images.githubusercontent.com/23094588/152489634-cad5a2e5-004d-4c2e-86cd-461f3b6ca58a.png)
+
+Si la propiedad fuera pública sin el **`private`** si podríamos acceder a la propiedad.
+
+Al ser **`private`** la propiedad **`_personajes`** no podremos manipular el array **`_personajes`** fuera de **`dbz.service.ts`**. Pero de alguna manera tengo que tener acceso a la lista de Personajes para poder renderizar la lista de personajes, en **`dbz.service.ts`** debemos crear un método que lo retorne, en este caso vamos a  hacer un GETTER.
+
+![image](https://user-images.githubusercontent.com/23094588/152490474-c6c4e70c-2f67-4108-b1d4-54133b82b3fd.png)
+
+```js
+get personajes() {
+   return this._personajes;
+}
+```
+
+Estoy mandando **`this._personajes`** por que dentro del **`dbz.service.ts`** si tenemos el acceso a la propiedad, pero nuestro GETTER tiene un inconveniente **por que en JS  todos los Objetos son mandados por Referencia** y entonces desde donde se reciba **`personajes`** podemos manipular la lista con lo que estaríamos manipulando nuestra lista **`_personajes`** que es lo que queríamos evitar. Para romper esta relación se debe hacer de la siguiente manera, vamos a usar es operador [Spread](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Spread_syntax) **`...`**, el cual separa los elementos individuales del array de una manera individual y vuelve a crear otro array, con esto rompemos la Referencia con el objeto original **`_personajes`**.
+
+**La sintaxis extendida o spread syntax** permite a un elemento iterable tal como un arreglo o cadena ser expandido en lugares donde cero o más argumentos (para llamadas de  función) o elementos (para Array literales) son esperados, o a un objeto ser expandido en lugares donde cero o más pares de valores clave (para literales Tipo Objeto) son esperados.
+
+![image](https://user-images.githubusercontent.com/23094588/152492374-d4e51c27-cd73-4eeb-8c75-ef41d5f5a707.png)
+
+Esto no es obligatorio de Angular es una ***buena práctica de JS***.
+
+Regresemos a **`personajes.component.ts`** que actualmente lo tenemos así:
+
+![image](https://user-images.githubusercontent.com/23094588/152492717-30394dff-c692-4f71-9ffd-712bed73adcf.png)
+
+Vamos a comentar la propiedad **`personajes`** por que ya no la vamos a recibir a través de **`@Input`**, y lo vamos a sustituir por un GETTER retornando los **`personajes`** del servicio.
+
+![image](https://user-images.githubusercontent.com/23094588/152493165-3cee5d0a-7b51-414d-a50b-bb29e2d706b5.png)
+
+Si vamos al navegador ya veremos la lista de Personajes.
+
+![image](https://user-images.githubusercontent.com/23094588/152493974-03feb7e4-5928-4b81-8802-92e1b73b2184.png)
+
+Lo que no funciona es agregar un Personaje al presionar el botón lo haremos en la siguiente lección.
+
+![image](https://user-images.githubusercontent.com/23094588/152494230-e6bf719d-335b-4b27-987c-2c856435f965.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/152494518-b42be2a3-3db3-4438-9166-27d28496c4bd.png)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Métodos en el servicio 05:33
 
 **``**
 
-## Métodos en el servicio 05:33
 ## Código fuente de la sección 00:12
 
