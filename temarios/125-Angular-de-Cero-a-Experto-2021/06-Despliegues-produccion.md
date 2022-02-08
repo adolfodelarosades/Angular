@@ -9,7 +9,7 @@
 
 Estamos a las puertas de la sección 6 donde vamos a ver una pequeña introducción a cómo hacer los despliegues de una aplicación de Angular.
 
-En pocas palabras, vamos a generar el Build de producción o la aplicación de producción y la vamos a subir a **Netlify**, después veremos como desplegarlo en otros lugares.
+En pocas palabras, vamos a generar el **Build de Producción** o la aplicación de producción y la vamos a subir a [Netlify](https://www.netlify.com/), después veremos como desplegarlo en otros lugares.
 
 ¿Entonces, cómo funciona esto?
 
