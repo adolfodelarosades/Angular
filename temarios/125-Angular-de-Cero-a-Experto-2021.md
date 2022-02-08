@@ -154,14 +154,14 @@ Este es un curso robusto y fuerte, que **contiene todo lo que necesitarás para 
 * Métodos en el servicio 05:33
 * Código fuente de la sección 00:12
 
-### [06 Despliegues rápidos a producción](https://github.com/adolfodelarosades/Angular/blob/main/temarios/125-Angular-de-Cero-a-Experto-2021/06-Despliegues-produccion.md) - • 4 clases • 11m
+### [06 Despliegues rápidos a producción](https://github.com/adolfodelarosades/Angular/blob/main/temarios/125-Angular-de-Cero-a-Experto-2021/06-Despliegues-produccion.md) - • 4 clases • 11m 👍
 
 * Introducción a la sección 02:53
 * Temas puntuales de la sección 00:17
 * Generar build de producción 05:25
 * Desplegando en Netlify 02:37
 
-### 07 GifsApp - Aplicación para buscar imágenes - • 20 clases • 2h 7m
+### [07 GifsApp - Aplicación para buscar imágenes](https://github.com/adolfodelarosades/Angular/blob/main/temarios/125-Angular-de-Cero-a-Experto-2021/07-GifsApp.md) - • 20 clases • 2h 7m
 
 * Introducción a la sección 02:58
 * Temas puntuales de la sección 00:17
