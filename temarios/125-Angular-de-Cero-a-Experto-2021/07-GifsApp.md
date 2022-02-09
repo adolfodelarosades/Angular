@@ -243,6 +243,10 @@ Este es el diseño que vamos a manejar en nuestra APP, es un diseño sencillo pe
 
 ### GIT
 
+![image](https://user-images.githubusercontent.com/23094588/153181860-f138497f-bb85-4903-a16f-30ed23add9b7.png)
+
+![image](https://user-images.githubusercontent.com/23094588/153181955-9528d382-8761-43ae-9046-af5d00f085f5.png)
+
 ![image](https://user-images.githubusercontent.com/23094588/153181521-0d9219f1-206f-4d1e-a5d9-6a509ef6ec7f.png)
 
 ## Módulo Shared 07:39
