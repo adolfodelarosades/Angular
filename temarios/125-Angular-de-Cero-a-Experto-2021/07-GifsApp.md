@@ -324,10 +324,127 @@ La aplicación luce exactamente igual que antes pero con la ventaja de que ya te
 
 ## GifsModule y sus componentes 07:17
 
+En esta lección vamos a crear el módulo que va a contener todo lo referente a los GIFs desde la búsqueda hasta su renderización. Vamos a pulsar el siguiente comando para crear el módulo **`gifs.module.ts`**.
+
+```sh
+ng g m gifs
+```
+
+![image](https://user-images.githubusercontent.com/23094588/153193256-3e620938-e018-4b3a-907d-aaa1a6de9501.png)
+
+![image](https://user-images.githubusercontent.com/23094588/153193330-6b63435e-c3d6-48d2-8bad-863ce56a621c.png)
+
+Para no olvidarlo vamos a importar este nuevo módulo en el **`app.module.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/153193569-6d43bfa5-12ac-4bbd-ab44-6271d4c0e7f7.png)
+
+Dentro del módulo **`gifs`** vamos a tener un primer componente que será el **`gifsPage`** el cual contendra todos los demás componentes que necesitemos como el Buscador y la sección donde se van a renderizar las imágenes. Para crear el componente vamos a pulsar el siguiente comando:
+
+```sh
+ng g c gifs/gifsPage --skipTests -is
+```
+
+![image](https://user-images.githubusercontent.com/23094588/153194336-35d14f3f-56b3-4534-8d8c-e73411ab26a4.png)
+
+![image](https://user-images.githubusercontent.com/23094588/153194426-1d81ac74-1c5e-41b2-bf6b-81081f503a3e.png)
+
+Como el componente **`gifs.component`** lo vamos a usar en el **`app.component.html`** es decir fuera del módulo **`gifs.module.ts`**, necesitamos incluirlo en los  **`exports`** del propio módulo **`gifs.module.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/153196071-9faed515-daba-4daf-8d62-8bfb8004873d.png)
+
+En el **`app.component.html`** vamos a cortar todo el código que pinta el contenedor 
+
+![image](https://user-images.githubusercontent.com/23094588/153196310-833c2338-fdc8-450d-8116-614a5c864bba.png)
+
+Y lo vamos a mover al **`gifs-page.component.html`**.
+
+![image](https://user-images.githubusercontent.com/23094588/153196665-56525235-700d-430e-9c72-ec25c183cc2d.png)
+
+En el **`app.component.html`** vamos a sustituir lo cortado por el uso del **`gifs-page.component`**.
+
+![image](https://user-images.githubusercontent.com/23094588/153196909-f67cdb26-dadb-4a3e-a2ca-ff5ef8d028f1.png)
+
+Si abrimos el navegador vemos el mismo resultado.
+
+![image](https://user-images.githubusercontent.com/23094588/153197060-72207174-0df9-440b-b7da-1a58258158ef.png)
+
+Si nos ponemos exigentes podemos abrir las Herramientas de Desarrollador en la pestaña **Elements**.
+
+![image](https://user-images.githubusercontent.com/23094588/153197426-47984f01-7368-48b4-b612-8e3faa0a0bcc.png)
+
+Podemos ver que el **`<div class="container">`** puede estar sobrando ya que tiene como padre el contenedor **`<app-gifs-page>`**.
+
+Vamos a **`gifs-page.component.html`**.
+
+![image](https://user-images.githubusercontent.com/23094588/153197788-9d16d025-13f1-4242-8b32-26651a96bc1d.png)
+
+Y vamos a eliminar el  **`<div class="container">`**.
+
+![image](https://user-images.githubusercontent.com/23094588/153197897-1e0afa24-b7db-4625-b985-6207018810c7.png)
+
+Al quitar la **`class="container"`** nuestra pantalla se ha descompuesto.
+
+![image](https://user-images.githubusercontent.com/23094588/153197960-a9c7370c-e388-4239-b349-e680dfbd82c2.png)
+
+Para mantener el diseño como lo teniamos podemos aplicarle la **`class="container"`** al **`<app-gifs-page>`** en el **`app.component.html`**.
+
+![image](https://user-images.githubusercontent.com/23094588/153198287-769c9f23-579c-4b57-8097-af6c66182ccc.png)
+
+![image](https://user-images.githubusercontent.com/23094588/153198405-4200fef8-5280-4fb1-8e61-4ade2407a57e.png)
+
+Y en la consola ya vemos que no esta el **`div`** que teniamos de más:
+
+![image](https://user-images.githubusercontent.com/23094588/153198726-f4e23513-02ce-4bb8-9697-5b1aebb7e0e5.png)
+
+### Crear los Componentes Busqueda y Resultados.
+
+Vamos a crear el componente **`busqueda`** dentro del módulo **`gifs`** con el siguiente comando:
+
+```sh
+ng g c gifs/busqueda --skipTests -is
+```
+
+![image](https://user-images.githubusercontent.com/23094588/153199163-8b0d6b1c-d3f7-485a-93de-f522286d3c99.png)
+
+![image](https://user-images.githubusercontent.com/23094588/153199202-97786ab3-691e-417b-a0a2-23847532b6d1.png)
+
+**NOTA: Como este componente no lo vamos a usar fuera de este módulo no lo debemos exportar en el **`gifs.module.ts`**.
+
+Vamos a crear el componente **`resultados`** dentro del módulo **`gifs`** con el siguiente comando:
+
+```sh
+ng g c gifs/resultados --skipTests -is
+```
+
+![image](https://user-images.githubusercontent.com/23094588/153199648-d35f7932-0dd9-4d73-bd64-c6188cf2f46d.png)
+
+![image](https://user-images.githubusercontent.com/23094588/153199712-f1ae687a-1c01-4d4e-8da2-28ec96bc8900.png)
+
+**NOTA: Como este componente no lo vamos a usar fuera de este módulo no lo debemos exportar en el **`gifs.module.ts`**.
+
+Vamos a mover el código de **`gifs-page.component.html`** a los componentes recien creados respectivamente y sustituirlo por el uso de los componentes.
+
+![image](https://user-images.githubusercontent.com/23094588/153199999-329db7d9-6ed7-4157-950f-dbce67f3293c.png)
+
+![image](https://user-images.githubusercontent.com/23094588/153200440-d0a31b89-1f4b-438a-80ec-9990816d4c72.png)
+
+![image](https://user-images.githubusercontent.com/23094588/153200512-aefc937b-ae30-4df3-b8a6-2a8f4b873fcb.png)
+
+![image](https://user-images.githubusercontent.com/23094588/153200587-6402ddbd-fbf1-4ad1-adbf-b2496ac32f24.png)
+
+La aplicación se ve exactamente igual pero ya la hemos implemnentado con dos módulos independientes y sus respectivos componentes, hemos cambiado un diseño HTML a una estructura Angular.
+
+![image](https://user-images.githubusercontent.com/23094588/153200941-9d7782ec-3df6-4816-8928-d7bd48015a8a.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/153201094-adcdfb32-0b24-4946-8034-ad5264ee5a42.png)
+
+
+## **`@ViewChild`** - Obtener referencias a objetos del HTML 11:57
 
 **``**
 
-## **`@ViewChild`** - Obtener referencias a objetos del HTML 11:57
 ## GifsService 11:09
 ## Controlar el historial de búsquedas 06:57
 ## Giphy Api Key - Giphy Developers 07:14
