@@ -251,9 +251,82 @@ Este es el diseño que vamos a manejar en nuestra APP, es un diseño sencillo pe
 
 ## Módulo Shared 07:39
 
-**``**
+En la lección anterior metimos todo nuestro diseño en el **`app.component.html`**, pero una aplicación Angular deberíamos tenerla segmentada en componentes que realicen pequeñas tareas, por ejemplo el SideBar que tiene como objetivo único mostrar el Historial de búsquedas, otra parte importante de nuestra aplicación puede ser el Buscador que va a recuperar las imágenes que se podrían mostrar en una tercera sección que se encuentra debajo del Buscador.
+
+Podríamos tener dos módulos, uno con todos aquellos Componentes que son compartidos por la APP usualmente llamado **`Shared`** o **`Compartido`** el cual puede contener un SideBar, un NavBar, un Footer, un contenido que se puede usar a través de toda la APP. El segundo módulo tendría todo lo referente a los GIFs.
+
+### Tarea
+
+Vamos a realizar las siguientes actividades.
+
+1. Crear el módulo **`shared.module.ts`**.
+2. Crear el Componente **`sidebar.component.ts`**.
+3. Exportar el Componente en el Módulo.
+4. Importar el **`shared.module`** dentro de **`app.module.ts`**.
+5. Usar el componente **`sidebar.component`** dentro del **`app.component.html`**.
+6. Mostrar resultado en el Navegador.
+
+1. Para crear el módulo **`shared.module.ts`**
+
+```sh
+ng g m shared
+```
+
+![image](https://user-images.githubusercontent.com/23094588/153188896-9c726431-101d-4181-a913-818c95dd58af.png)
+
+![image](https://user-images.githubusercontent.com/23094588/153189353-4b332db0-af0c-423b-a274-c179f7322bcc.png)
+
+
+2. Para crear el Componente **`sidebar.component.ts`**.
+
+```sh
+ng g c shared/sidebar
+```
+
+Con el siguiente comando no nos crea el archivo de pruebas y el CSS (is inline style).
+
+```sh
+ng g c shared/sidebar --skipTests -is
+```
+
+![image](https://user-images.githubusercontent.com/23094588/153189670-a5f223d9-e4c4-4fe4-a13e-ef4326f6ccc3.png)
+
+![image](https://user-images.githubusercontent.com/23094588/153189782-207c012c-282e-4cfe-b4b9-48aac7135973.png)
+
+
+3. Exportar el Componente **`sidebar.component.ts`** en el Módulo **`shared.module.ts`**.
+
+Exportamos el componente para poder usarlo fuera del Módulo **`shared.module.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/153190168-b9816fec-ac42-49a3-8c71-c4734d396b51.png)
+
+4. Importar el **`shared.module`** dentro de **`app.module.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/153190450-59fbfa82-bd0f-48de-bf9d-43acd317182a.png)
+
+5. Usar el componente **`sidebar.component`** dentro del **`app.component.html`**.
+
+En **`app.component.html`** vamos a mover el código que renderiza el SideBar a **`sidebar.component.html`** y lo reemplazaremos para usar el componente **`sidebar.component`**.
+
+![image](https://user-images.githubusercontent.com/23094588/153191134-2a3c76a0-adf7-495b-b285-d23ac5c53345.png)
+
+![image](https://user-images.githubusercontent.com/23094588/153191075-23786a2b-4d50-47f4-9402-12f7d6a48d28.png)
+
+6. Mostrar resultado en el Navegador.
+
+![image](https://user-images.githubusercontent.com/23094588/153191275-6bc4ef29-bb06-4c63-bbff-82ab71b314b3.png)
+
+La aplicación luce exactamente igual que antes pero con la ventaja de que ya tenemos un módulo independiente en el cual puedo colocar cualquier cosa que sea compartida en toda la APP.
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/153192357-9b217b9d-a5d3-4ab3-8b7b-50bbb9554a3b.png)
 
 ## GifsModule y sus componentes 07:17
+
+
+**``**
+
 ## **`@ViewChild`** - Obtener referencias a objetos del HTML 11:57
 ## GifsService 11:09
 ## Controlar el historial de búsquedas 06:57
