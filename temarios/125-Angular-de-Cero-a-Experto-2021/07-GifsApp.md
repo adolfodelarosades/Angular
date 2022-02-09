@@ -58,9 +58,11 @@ Nuestra APP va a quedar parecida a la siguiente pantalla.
 
 ![image](https://user-images.githubusercontent.com/23094588/153040244-4c1fce7a-f560-4d46-a079-b1fdff8bbeb8.png)
 
-
+Vemos que tenemos un Buscador y un Historial con las últimas 10 búsquedas, al recargar la página la información es persistente con la última búsqueda o el último historial seleccionado, tenemos limitado hasta 10 los resultados, nuestra APP aunque es sencilla va a ser modularizada con un módulo **`shared`** con un **`sidebar`**, un módulo **`gifs`** con nuestros componentes, servicios e interfaces, 
 
 ## Inicio de proyecto - GifsApp 04:59
+
+
 ## Diseño inicial de nuestra aplicación de Gifs 08:04
 ## Módulo Shared 07:39
 ## GifsModule y sus componentes 07:17
