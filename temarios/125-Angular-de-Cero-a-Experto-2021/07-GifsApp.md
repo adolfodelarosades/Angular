@@ -443,6 +443,14 @@ La aplicación se ve exactamente igual pero ya la hemos implemnentado con dos m�
 
 ## **`@ViewChild`** - Obtener referencias a objetos del HTML 11:57
 
+En esta lección nos vamos a dedicar a obtener la información de la caja de texto del Buscador, es decir cuando presionemos Enter podamos ver su valor en Consola y a su vez borrar su contenido.
+
+![image](https://user-images.githubusercontent.com/23094588/153839216-42b66daa-541e-4e81-ac34-59cb1d04f410.png)
+
+Hay muchas maneras de hacerlo una es usando el **`FormModule`** podríamos usar el **`NgModel`** y gracias al **Two wait DataBinding** poder establecer y borrar el contenido de la caja de texto facilmente. Pero no quiero importar el **`FormModule`** solo para una caja de texto aun que se puede hacer y es más sencillo usando el **`FormModule`**. 
+
+Vamos a usar otras técnicas para recuperar el valor de la caja de texto sin utilizar el **`FormModule`**  y **`NgModel`**, vamos a concentrarnos en el componente **`busqueda.component`**
+
 **``**
 
 ## GifsService 11:09
