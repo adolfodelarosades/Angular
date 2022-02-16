@@ -626,12 +626,86 @@ ng generate service gifs/services/gifs --skipTests
 
 ![image](https://user-images.githubusercontent.com/23094588/154264410-8f38ad18-bfa7-425b-9e19-f09737f00b13.png)
 
+![image](https://user-images.githubusercontent.com/23094588/154314315-c0b35069-7710-44f4-906a-3417d6c6182f.png)
 
+Observemos que solo se creo el archivo **`src/app/gifs/services/gifs.service.ts`** y no se ha actualizado ningún módulo ni algún otro archivo que indique que se va a utilizar este Servicio. Si abrimos el archivo tenemos:
 
+![image](https://user-images.githubusercontent.com/23094588/154314822-014f6cdf-e463-4900-b64d-b75ce2d4a019.png)
+
+A diferencia de Servicios que creamos anteriormente donde solo teniamos la anotación:
+
+```js
+@Injectable()
+```
+
+En este Servicio tenemos:
+
+```js
+@Injectable({
+  providedIn: 'root'
+})
+```
+
+El bloque de código **`providedIn: 'root'`** fue una característica añadido en Angular 4 lo cual permite que los Servicios puedan estar definidos en el momento que se construye el Bundle de la aplicación, al especificar el **`providedIn: 'root'`** en el decorador **`@Injectable()`** le dice a Angular que no importa en que parte de la aplicación estemos el Servicio va a estar disponible, esto es genial por que evita que yo tenga que especificar en **`gifs.module.ts`** en la sección de **`providers[]`** como se hacia en versiones anteriores de Angular. Si lo llegaramos a especificar en los **`providers[]`** de **`gifs.module.ts`** el Servicio solo estara disponible en este módulo. Pero al especificar el **`providedIn: 'root'`** en el decorador **`@Injectable()`** el Servicio esta disponible Globalmente, usualmente así usaremos los Servicio Globalmente.
+
+Hecho lo anterior vamos a manejar un listado que nos permita ir almacenando la información que vayamos introduciendo en el Buscador. Cada una de las entradas en el Buscador la vamos ir almacenando, estas entradas son **`strings`**, por lo que en el Servicio nos vamos a crear una propiedad privada para almacenar la lista de **`strings`** que llamaremos **`_historial`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154317914-54ef23e4-9a7e-4362-9c0d-8ba9fc16ea05.png)
+
+Vamos a querer exponer una propiedad para poder obtener el **`historial`** por lo que vamos a realizar un GETTER, donde vamos a romper la relación con el objeto original **`_historial`** para que no podamos manipularlo fuera del servicio, esto lo hacemos con:
+
+![image](https://user-images.githubusercontent.com/23094588/154318723-743f7cd5-26f2-44d6-82a3-567f0f447371.png)
+
+Recordar que rompemos la referencia con el operador spread **`...`** y regresando un nuevo arreglo, si simplemente retornamos **`this._historial`** estaríamos enviando el objeto original y podríamos modificarlo fuera del Servicio.
+
+Además de lo anterior vamos a crear un método para ir insertando los terminos que estemos buscando en el historial, el termino lo vamos a ir insertando al inicio del array esto lo logramos usando el método **`unshift()`**, el método es el siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/154319898-3e9229d0-52c9-4bb4-bfd7-048f8e34ed89.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154320044-708cdb20-0cd0-462a-a671-292a2a509fd0.png)
+
+Este método recien creado en el servicio debemos invocarlo en el componente **`busqueda.component`**, para usar el Servicio debemos inyectarlo en el **`constructor()`** y hecho esto ya tenemos acceso a todas las propiedades y métodos del Servicio inyectado, usemos el método **`buscarGifs`** para ir almacenando los terminos de busqueda.
+
+![image](https://user-images.githubusercontent.com/23094588/154320980-4ab78eb0-631d-4cac-b380-1028648b1fce.png)
+
+En el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/154321143-24bb8057-becc-496a-9135-35adeea2b099.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154321233-b92b4004-e121-4ab3-86e8-f01f13f320de.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154321455-9a7f2710-368c-4914-b710-1d3c823849f3.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154321506-7e601357-4f78-46a4-8e58-d02f0299de82.png)
+
+Ahora lo que necesitamos es consumir el **`historial`** para construir Items en el SideBar, por lo tanto en el componente **`sidebar.component`** en la parte del HTML vamos a usar la directiva **`*ngFor`** para repetir el Item por cada valor en el listado, y en el TS necesitamos recuperar el historial a partir del Servicio.
+
+![image](https://user-images.githubusercontent.com/23094588/154323850-8c00f026-e8ed-41a5-a050-4d1c4b85b93d.png)
+
+Observemos que el **`get historial()`** esta declarado antes del **`constructor`** ya que el **`get historial()`** no es un método sino una propiedad del Componente.
+
+![image](https://user-images.githubusercontent.com/23094588/154324158-37950929-938a-42b2-a4c6-7ed632f39633.png)
+
+En el HTML estamos usando la directiva  **`*ngFor`** para repetir el Item y estamos renderizando su valor.
+
+Una vez que ejecutamos la APP en el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/154324425-64d17be9-60c0-4462-96c6-349b44daa571.png)
+
+¿Qué pasa si metemos un valor ya introducido anteriormente?
+
+![image](https://user-images.githubusercontent.com/23094588/154324790-d4a152c5-f2ea-44b3-988c-87b474e8f8c0.png)
+
+Acepta valores repetidos, ya controlaremos esto en la siguiente lección.
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/154325054-5bd334df-5180-4a5d-a315-8cf446d61b05.png)
+
+## Controlar el historial de búsquedas 06:57
 
 **``**
 
-## Controlar el historial de búsquedas 06:57
 ## Giphy Api Key - Giphy Developers 07:14
 ## Realizar una petición HTTP 08:34
 ## Mostrar los resultados en pantalla 09:15
