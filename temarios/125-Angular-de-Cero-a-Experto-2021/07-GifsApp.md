@@ -449,7 +449,52 @@ En esta lección nos vamos a dedicar a obtener la información de la caja de tex
 
 Hay muchas maneras de hacerlo una es usando el **`FormModule`** podríamos usar el **`NgModel`** y gracias al **Two wait DataBinding** poder establecer y borrar el contenido de la caja de texto facilmente. Pero no quiero importar el **`FormModule`** solo para una caja de texto aun que se puede hacer y es más sencillo usando el **`FormModule`**. 
 
-Vamos a usar otras técnicas para recuperar el valor de la caja de texto sin utilizar el **`FormModule`**  y **`NgModel`**, vamos a concentrarnos en el componente **`busqueda.component`**
+Vamos a usar otras técnicas para recuperar el valor de la caja de texto sin utilizar el **`FormModule`**  y **`NgModel`**, vamos a concentrarnos en el componente **`busqueda.component`**, lo primero que vamos a hacer es en **`busqueda.component.html`** en el elemento **`input`** vamos a poner el evento **`keyup`** el cual se dispara cada que liberamos la presión en cualquier tecla y vamos a invocar al método **`buscar()`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154226172-30b46e95-bb9d-4df0-af79-f41fa1f1588f.png)
+
+Vamos a implementar el método **`buscar()`** en **`busqueda.component.ts`** simplemente para empezar y que no nos marque error vamos a mandar un mensaje a la consola.
+
+![image](https://user-images.githubusercontent.com/23094588/154226908-48547efa-d794-4094-94d4-ecc5fcfd55fa.png)
+
+Cada que pulsamos y liberamos una tecla se escribe el mensaje en la consola.
+
+![image](https://user-images.githubusercontent.com/23094588/154227021-e75138a1-42f7-4914-8620-c20e9a38cc4a.png)
+
+Podríamos no estar mandando el mensaje cada que se presione cualquier tecla, podríamos hacerlo hasta que se pulse la tecla **`Enter`** para lo cual vamos a pasar como parámetro el **`$event`** 
+
+![image](https://user-images.githubusercontent.com/23094588/154228300-01c1e4fd-2812-41d7-93f7-8aaa3f52bdf1.png)
+
+y que sea recibido por **`buscar(evento)`** tenemos que tipar el **`evento`** como no sabemos exactamente su tipo lo tipamos como **`any`** es decir **`buscar(evento: any)`** y podemos sacar a consola el valor de **`evento`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154229013-9a0e4626-3d2a-42a2-b298-1c4f660c4a82.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154229299-50b5e6c1-3155-4835-9063-47d0e64993d6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154229417-b268acdc-a7eb-4455-a6f9-38b753ae6411.png)
+
+Como podemos ver en la consola nos indica que se ha disparado el evento **`KeyboardEvent`** y podemos sustituir el tipo **`any`** por **`KeyboardEvent`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154230275-4eb5a851-e8f9-422d-9d0a-9a2c30dc6959.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154230406-ec3950c4-0495-4026-8a42-41cee228d646.png)
+
+Con esto ya podemos ver todos los métodos y propiedades de **`event`** gracias a que lo hemos tipado.
+
+En el navegador podemos presionar varias teclas y presionar un **`Enter`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154231331-ebc0251e-5501-49b3-a85d-643d71e72d56.png)
+
+En **`event`** tenemos la propiedad **`code`** que para la tecla **`e`** su valor es **`KeyE`** y para **`Enter`** su valor es **`NumpadEnter`**.
+
+
+
+
+
+
+
+
+
 
 **``**
 
