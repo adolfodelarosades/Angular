@@ -485,20 +485,129 @@ En el navegador podemos presionar varias teclas y presionar un **`Enter`**.
 
 ![image](https://user-images.githubusercontent.com/23094588/154231331-ebc0251e-5501-49b3-a85d-643d71e72d56.png)
 
-En **`event`** tenemos la propiedad **`code`** que para la tecla **`e`** su valor es **`KeyE`** y para **`Enter`** su valor es **`NumpadEnter`**.
+En **`event`** tenemos la propiedad **`code`** que para la tecla **`e`** su valor es **`KeyE`** y para **`Enter`** su valor es **`NumpadEnter`**. Pero realmente nada de esto nos interesa en este caso solo queremos conocer el valor de la caja de texto. Por lo que en el método **`buscar`** no vamos a recibir el **`evento`**. En **`busqueda.component.html`** vamos a hacer lo siguientes cambios, el evento que vamos a capturar es **`keyup.enter`** que detecta cuando pulsamos y liberamos el **`Enter`**, vamos a poner un identificador a la caja de texto con **`#txtBuscar`** y en **`buscar()`** vamos a mandar el valor de la caja de texto con **`buscar(txtBuscar.value)`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154246306-5041d55f-196d-4a2e-a892-83b1ea3b80a2.png)
+
+En **`busqueda.component.ts`** en el método **`buscar`** vamos a recibir el termino que queremos buscar.
+
+![image](https://user-images.githubusercontent.com/23094588/154246655-0959f34d-d9be-405f-9931-e8dd99cc3171.png)
+
+Lo que recibimos ya es una cadena de texto por eso la tipamos con **`string`**.
+
+Al buscar un texto en el navegador y pulsar **`Enter`** aparecera el texto en la consola.
+
+![image](https://user-images.githubusercontent.com/23094588/154247063-1dc6263e-6d17-4140-9fe6-8eaa59e3b52a.png)
+
+Todo perfecto, ya tenemos el valor de la caja de texto, pero todo esto tiene un posible inconveniente si queremos limpiar la caja de texto una vez recuperado su valor, cosa que sería sencilla si usaramos **`FormModule`** y **`NgForm`**. Podríamos pensar en asignar a **`termino`** un valor vacío.
+
+![image](https://user-images.githubusercontent.com/23094588/154247915-33e17c02-4a1f-46fc-a917-a7a3c64ac590.png)
+
+Si ejecutamos el navegador 
+
+![image](https://user-images.githubusercontent.com/23094588/154247978-03e36c1a-5029-474b-b52b-69be4b48c837.png)
+
+Vemos que se limpia el **`termino`** en la consola pero no la caja de texto en el navegador.
+
+**¿Cómo hacemos para tomar la caja de texto y mantener su referencia?**
+
+En JS clásico podemos recuperar la referencia al único **`input`** que tenemos con:
+
+![image](https://user-images.githubusercontent.com/23094588/154248505-47883fcc-0110-4943-b1d7-bd0b368bca76.png)
+
+Pero TypeScript me marca un error al ejecutarlo.
+
+![image](https://user-images.githubusercontent.com/23094588/154248938-81867fcb-593c-4a95-a438-4dca4cbf04a2.png)
+
+Vamos a ver como hacerlo con Angular para lo cual vamos a usar el decorador **`@ViewChild`** este decorador recibe un parámetro el cual se refiere al elemento que queremos hacer referencia en el HTML, podemos buscar por nombre del Tag, por clases pero en nuestro caso vamos a usar el identificador con el que nombramos a la caja de texto, es decir **`@ViewChild(txtBuscar)`** esto es como el tipo de la propiedad y ahora lo que tenemos que definir es el nombre de la propiedad  **`@ViewChild(txtBuscar) txtBuscar;`**
+
+![image](https://user-images.githubusercontent.com/23094588/154251019-30b4a503-8da4-4361-a87f-3fffab392cea.png)
+
+Esto nos marca un error por que tiene un tipo **`any`** implicito, 
+
+![image](https://user-images.githubusercontent.com/23094588/154251425-63318031-c41d-491d-aec9-c3dc8416c196.png)
+
+como no conocemos el tipo exacto vamos a poner el tipo **`any`** explicitamente.
+
+![image](https://user-images.githubusercontent.com/23094588/154251570-5fd43936-68a5-4ab0-abc7-892af9bbc6c4.png)
+
+Ahora vamos a imprimir en consola el valor de la propiedad **`txtBuscar`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154251917-4855a9cd-ac4d-4588-9bd9-90e7bee4da32.png)
+
+Lo que nos esta haciendo el **`@ViewChild`** es ir a buscar en el HTML el elemento que tenga la referencia que pasamos como parámetro y lo asigna a la propiedad definida, con esto ya podemos manipular ese elemento en nuestro archivo TS.
+
+En el navegador tenemos lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/154252627-ce4f3c18-670a-4280-ac0b-70256e9072dc.png)
+
+En la consola se imprime el **`nativeElement`** el cual es el elemento HTML el cual contiene muchas propiedades con mucha información para hacer referencia a el. Podemos ver también que el elemento **`input`** es de tipo **`ElementRef`** por lo que podemos cambiar el tipo de **`any`** a **`ElementRef`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154253425-973a22b3-29d0-45a4-a755-889877fd53cd.png)
+
+Pero nos esta mandando un error, de que el elemento no esta inicializado.
+
+![image](https://user-images.githubusercontent.com/23094588/154253495-ef055802-3d58-4a33-b904-84e5b5fc3908.png)
+
+**Esto es algo que esta apareciendo en las versiones nuevas de Angular por que estamos trabajando en un modo Super Estricto** lo cual esta bien, la cosa es que nosotros estamos 100% seguros que el elemento **`txtBuscar`** siempre va a existir, es parte del HTML. Lo que me dice VSC es que puede ser que **`txtBuscar`** no exista es decir que puede ser que sea **`null`** pero como nosotros sabemos que existe se lo hacemos saber a Angular poniendo el operador **`!`**, como sigue:
+
+```js
+@ViewChild('txtBuscar') txtBuscar!: ElementRef;
+```
+
+El operador **`!`** se conoce como [Non-null assertion operator](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator) u Operador para asegurarse de que el operador no es nulo. Este operador es propio de TypeScrip no de JavaScript. 
+
+Podemos entonces usar las propiedades del elemento **`txtBuscar`** dentro del TS para imprimir su valor en la consola.
+
+![image](https://user-images.githubusercontent.com/23094588/154255407-28c8d57b-c20d-48bb-a6b1-0018626d212b.png)
+
+Con esto podemos recuperar el valor de la caja de texto e imprimirlo en la consola.
+
+![image](https://user-images.githubusercontent.com/23094588/154255620-a89fb252-28f1-431d-a88e-a7ddc6a22346.png)
+
+Por lo tanto ya no necesitamos ni mandar ni recibir el **`termino`** a buscar por que ya podemos recuperar el valor directamente del elemento.
+
+![image](https://user-images.githubusercontent.com/23094588/154255921-7d50276a-a7dc-40d6-ac77-24db2da16542.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154256008-e5578377-7d3e-4a37-9a3d-d3fc46cdf817.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154256087-95cb45b4-8c9e-492b-add0-918971f3537e.png)
+
+Solo hay un detalle, VSC no nos muestra ayuda del **`nativeElement`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154256372-f8684108-553d-413d-a86e-c7d5348750fd.png)
+
+Y eso es por que como podemos observar **`ElementRef`** es de tipo Generico y por defecto su valor es **`any`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154256593-007c3f81-a5a6-4c8f-b3f7-0035d3df6425.png)
+
+Si queremos especificar que es del tipo **`Input`** ¿Cómo lo hacemos?.
+
+Usamos el tipo **`HTMLInputElement`**, no es necesario importarlo por que ya TS los incorpora automáticamente por que son cosas relacionadas con JS directamente. De esta manera ya tenemos todas las propiedades del elemnto en la ayuda del VSC para usarlas. Esto en el navegador no cambia nada, lo hicimos más para ayuda en la códificación.
+
+![image](https://user-images.githubusercontent.com/23094588/154257538-9b7e3bce-8947-4901-b58b-f99edba446fb.png)
+
+Como ya tenemos la referencia del elemento ya tenemos la posibilidad de borrar el contenido de la caja de texto asignandole una cadena vacia como valor.
+
+![image](https://user-images.githubusercontent.com/23094588/154257921-12de888f-f848-4e72-9208-3b8bb79513b2.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154258030-424d2496-f09e-419c-9e74-ea7c5bd07ae4.png)
+
+Al presionar **`Enter`** se imprime el valor de la caja de texto en la consola y se limpia la caja de texto que era nuestro objetivo.
+
+![image](https://user-images.githubusercontent.com/23094588/154257224-4f58373d-38de-4f28-86bc-ec0b29df1345.png)
+
+Gracias a usar **`@ViewChild`** tenemos acceso a todo el elemento HTML en este caso al **`Input`** y podemos manipularlo a nuestro antojo a diferencia de cuando usamos el **`NgModel`** que solo manipulo su valor, con **`@ViewChild`** puedo manipular todo lo que desee del elemento HTML. 
+
+### GIF
+
+![image](https://user-images.githubusercontent.com/23094588/154259112-f80aee79-b9ee-4339-bba8-7d7156055003.png)
 
 
-
-
-
-
-
-
-
+## GifsService 11:09
 
 **``**
 
-## GifsService 11:09
 ## Controlar el historial de búsquedas 06:57
 ## Giphy Api Key - Giphy Developers 07:14
 ## Realizar una petición HTTP 08:34
