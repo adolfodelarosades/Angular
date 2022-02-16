@@ -606,6 +606,29 @@ Gracias a usar **`@ViewChild`** tenemos acceso a todo el elemento HTML en este c
 
 ## GifsService 11:09
 
+En esta lección vamos a realizar un historial de las busquedas que vamos haciendo e ir pintando ese historial en forma de listado en el SideBar de la pantalla. Esto nos permite ver que necesitamos crear un Servicio centralizado para almacenar todo lo referente a los GIFs.
+
+Actualmente tenemos esta estructura en el proyecto.
+
+![image](https://user-images.githubusercontent.com/23094588/154261921-754d0b7b-7db0-4a9a-aa90-79e49790cb01.png)
+
+Dentro de la carpeta **`gifs`** vamos a tener otra carpeta llamada **`services`** y dentro vamos a tener nuestro **`GifsService`**. Vamos a crear el Servicio usando el Angular CLI, con el comando:
+
+```sh
+ng g s gifs/services/gifs --skipTests
+```
+
+o 
+
+```sh
+ng generate service gifs/services/gifs --skipTests
+```
+
+![image](https://user-images.githubusercontent.com/23094588/154264410-8f38ad18-bfa7-425b-9e19-f09737f00b13.png)
+
+
+
+
 **``**
 
 ## Controlar el historial de búsquedas 06:57
