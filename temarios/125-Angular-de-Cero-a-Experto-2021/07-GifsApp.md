@@ -748,15 +748,44 @@ Ahora vamos a ver que pasa si meto una búsqueda en mayúsculas y la misma en mi
 
 ![image](https://user-images.githubusercontent.com/23094588/154451768-3f24343c-ba69-4c6f-a376-85b51296907a.png)
 
-Acepta ambos valores, vamos a hacer algo para procesar la manera en que la grabamos, ya sea que en el historial alacenemos todo en mayúsculas o todo en minúsculas
+Acepta ambos valores, vamos a hacer algo para procesar la manera en que la grabamos, ya sea que en el historial alacenemos todo en mayúsculas o todo en minúsculas, vamos a almacenarlo en minúsculas.
+
+![image](https://user-images.githubusercontent.com/23094588/154472351-ee74034d-5dec-424c-aa31-4156aae1cc94.png)
+
+Podemos obligar a que siempre tenga un valor asignandolo en el parámetro que llega.
+
+![image](https://user-images.githubusercontent.com/23094588/154472636-481171d0-bea7-47a5-8d33-020f29b63f77.png)
+
+Vamos a meter el mismo valor en minúscula y mayúscula.
+
+![image](https://user-images.githubusercontent.com/23094588/154472846-2cdbf728-c4a5-46d6-870a-b5979b1f7295.png)
+
+Ya solo acepta un solo valor.
+
+Ahora lo que no nos gusta es que los Items salgan en minúscula, los podemos capitalizar para que se muestre la primer letra en mayúscula, aunque todo se este almacenando en minúsculas. Para hacer esto nos vamos al SideBar que es donde se estan reenderizando los Items y usaremos un PIPE para darle formato solo vizualmente, no cambia los datos almacenados.
+
+![image](https://user-images.githubusercontent.com/23094588/154473644-eae17fb5-fa5d-4671-868f-e6abf8ad9f60.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154473786-1b431600-e25b-489e-8eaf-ef07eb5b1bba.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154473881-919c79b6-c47e-4948-b757-3490b3c5b1b5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154474135-c54b437e-a733-4ee8-9d6e-2d5ad733bb03.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154474202-8cbcee51-047e-42a6-8f1c-1d71061effb6.png)
+
+No importa como introduzcamos la búsqueda se almacena en minúscula y se muestra capitalizado.
 
 
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/154474682-479709fc-3bce-4aa6-99c5-5d811b4dd73a.png)
 
 
+## Giphy Api Key - Giphy Developers 07:14
 
 **``**
 
-## Giphy Api Key - Giphy Developers 07:14
 ## Realizar una petición HTTP 08:34
 ## Mostrar los resultados en pantalla 09:15
 ## Colocando un tipado a las peticiones **`http`** 09:47
