@@ -704,6 +704,10 @@ Acepta valores repetidos, ya controlaremos esto en la siguiente lección.
 
 ## Controlar el historial de búsquedas 06:57
 
+En esta lección vamos a controlar dos cosas, la primera es la cantidad de elementos que se pueden insertar en el historial y el segundo no meter busquedas duplicadas.
+
+![image](https://user-images.githubusercontent.com/23094588/154434656-1b248e5f-f703-464d-a124-77bdf517538c.png)
+
 **``**
 
 ## Giphy Api Key - Giphy Developers 07:14
