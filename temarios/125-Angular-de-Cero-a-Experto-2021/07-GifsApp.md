@@ -704,9 +704,55 @@ Acepta valores repetidos, ya controlaremos esto en la siguiente lección.
 
 ## Controlar el historial de búsquedas 06:57
 
-En esta lección vamos a controlar dos cosas, la primera es la cantidad de elementos que se pueden insertar en el historial y el segundo no meter busquedas duplicadas.
+En esta lección vamos a controlar varias cosas, la primera es la cantidad de elementos que se pueden insertar en el historial, el segundo no meter busquedas duplicadas, el tercero es que no acepte valores vacios, el cuarto controlar mayúsculas y minúsculas.
 
 ![image](https://user-images.githubusercontent.com/23094588/154434656-1b248e5f-f703-464d-a124-77bdf517538c.png)
+
+Para validar que no acepte vacios lo podemos hacer desde el Componente aun que también lo podemos hacer en el Servicio, vamos a meter el siguiente código para validar que no acepte blancos en **`busqueda.component.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154443954-046cc6e4-188e-4f03-9cf8-19a2ed863104.png)
+
+Para limitar el número de inserciones que se pueden hacer en el historial existen varias formas de hacerlo, vamos a ver una forma sencilla en la cual más que limitar la inserción a 10 items en el historial vamos a recuperar las 10 primeras en la lista. Esto lo vamos a hacer en el GETTER del **`GifsService`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154445284-571d063a-666c-4d44-ab63-c136a22fa074.png)
+
+Con **`this._historial = this._historial.splice(0,10);`** lo que estamos haciendo es cortar el array para recuperar los primeros 10 elementos.
+
+Si lo dejamos aquí cuando recuperamos el historial se va a estar haciendo el corte del array
+
+![image](https://user-images.githubusercontent.com/23094588/154445943-6c3d3d9a-33be-4e4e-a58d-98a28b7c6aa3.png)
+
+Cada vez que pase por el GETTER se corta el array y se vuelve a redibujar, esto funciona pero tal vez no es el mejor sitio donde ponerlo. Vamos a cambiarlo a la siguiente posición:
+
+![image](https://user-images.githubusercontent.com/23094588/154446497-0fed4092-8020-489e-9611-69c760c124e5.png)
+
+Si lo ubicamos en este sitio lo que estamos haciendo es que primero insertamos la busqueda en el historial y luego lo cortamos, de esta manera evitamos que estar cortando el array cada vez que se recupera.
+
+![image](https://user-images.githubusercontent.com/23094588/154446839-92d2c323-43a8-4fe0-9867-5013a4a7dbea.png)
+
+Ahora lo que vamos a hacer es evitar valores duplicados, vamos a usar lógica de JS para hacerlo usando una función nueva **`includes`** incorporado en ES6 que nos indica si existe en el array lo que pasemos como parámetro, en este caso lo que vamos a hacer es que si el array no lo incluye lo insertamos.
+
+![image](https://user-images.githubusercontent.com/23094588/154447823-40e81f35-3843-4cad-bf33-a9bb87ab1365.png)
+
+En el navegador podemos ver que cuando pulsamos valores repetidos ya no se insertan.
+
+![image](https://user-images.githubusercontent.com/23094588/154448208-9e5cff7d-91a1-43bf-ae91-5529ccebab15.png)
+
+Incluso podemos hacer el corte del array solo si se inserta una nueva busqueda.
+
+![image](https://user-images.githubusercontent.com/23094588/154448566-6136d611-8665-4495-8b4e-be660202da50.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154448722-4cd44fbd-408b-4e62-8477-a51f0b4d716f.png)
+
+Ahora vamos a ver que pasa si meto una búsqueda en mayúsculas y la misma en minúsculas.
+
+![image](https://user-images.githubusercontent.com/23094588/154451768-3f24343c-ba69-4c6f-a376-85b51296907a.png)
+
+Acepta ambos valores, vamos a hacer algo para procesar la manera en que la grabamos, ya sea que en el historial alacenemos todo en mayúsculas o todo en minúsculas
+
+
+
+
 
 **``**
 
