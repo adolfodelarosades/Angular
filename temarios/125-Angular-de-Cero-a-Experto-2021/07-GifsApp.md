@@ -784,6 +784,93 @@ No importa como introduzcamos la búsqueda se almacena en minúscula y se muestr
 
 ## Giphy Api Key - Giphy Developers 07:14
 
+En esta lección vamos a acceder al API KEY de [GIPHY Developers](https://developers.giphy.com/).
+
+![image](https://user-images.githubusercontent.com/23094588/154682165-34143de0-ad53-4304-abc0-231c337e045b.png)
+
+Este es API que utilizan muchas compañias como Snapchat, Twitter, Facebook, etc. para acceder a diferentes GIFs y compartirlos en las Redes Sociales. 
+
+La idea es consumir esta API en su parte de consumo gratuito es excelente para practicar, vamos a recuperar las imágenes que coincidan con el termino de búsqueda.
+
+Para comenzar dentro de la página [GIPHY Developers](https://developers.giphy.com/) tenemos varias opciones a las que podemos acceder.
+
+![image](https://user-images.githubusercontent.com/23094588/154683138-ba3db598-0986-4585-9896-c7ee3a8f4df5.png)
+
+### Crear Cuenta
+
+Pero lo primero que debemos es crear una cuenta presionando el botón **Create Account**.
+
+![image](https://user-images.githubusercontent.com/23094588/154683376-f9e1396f-5646-4806-9b56-fc0ff95a2849.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154683457-f0ef1b1e-d41a-421e-9b3c-474a4f7e6de3.png)
+
+Vamos a meter nuestros datos para darnos de alta.
+
+Una vez que nos hemos dado de alta en la página podemos acceder a nuestra cuenta.
+
+![image](https://user-images.githubusercontent.com/23094588/154683988-fa9523c2-bc02-44e2-820e-39feb7eb1d27.png)
+
+Una vez logeados podemos ir a [API Quickstart Guide](https://developers.giphy.com/docs/api/#quick-start-guide).
+
+![image](https://user-images.githubusercontent.com/23094588/154685734-9c8c5917-f083-46d5-b5af-2eec078a75cc.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154685797-68b49960-711f-442d-aee4-dd888ba094df.png)
+
+Podemos presionar el botón **Create an APP**.
+
+![image](https://user-images.githubusercontent.com/23094588/154685993-5ce8f094-448a-4c66-a7d2-5a837ae91e5e.png)
+
+Nos muestra dos opciones el **SDK** que nos permite crear ya todo el componente pero nosotros vamos a seleccionar la opción **API** que es una opción más limitada pero que nos va a permitir crear lo que queremos.
+
+![image](https://user-images.githubusercontent.com/23094588/154686336-5b6d8452-b0ac-4287-abc0-d980439a0cf6.png)
+
+Precionamos en **Next Step**.
+
+![image](https://user-images.githubusercontent.com/23094588/154686564-886673fb-f243-4428-9b11-69db29821e21.png)
+
+Se nos pide un nombre de la APP y su descripción, vamos a insertar lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/154686833-07339c59-fed1-4389-bea8-681b7fb489cf.png)
+
+Presionamos en **Create App**.
+
+![image](https://user-images.githubusercontent.com/23094588/154686977-820f4e96-ee2c-4717-8d9a-7cda5e622e9a.png)
+
+Lo importante es el API Key que se genera y que vamos a usar dentro de nuestra aplicación Angular.
+
+**`3sZBfqeXrIArY6K1eq7xwISx6nb4B2V8`**
+
+Nos podemos ayudar de la documentación de GIPHY para ver como usar el [API Quickstart Guide](https://developers.giphy.com/docs/api/endpoint).
+
+![image](https://user-images.githubusercontent.com/23094588/154687822-1d16989d-eea6-4b12-b536-8fadf5a96e46.png)
+
+Especificamente nos vamos a la sección **Search Endpoint**.
+
+![image](https://user-images.githubusercontent.com/23094588/154688021-4b4dbf57-09f0-4950-815c-e901132e27c0.png)
+
+Tenemos varios enlaces, en particular el primero de ellos nos permite recuperar GIFs o Sticker(Una forma de personalizar los chats de Whatsapp de forma única es mediante los stickers, que son dibujos, ilustraciones y fotos que puedes añadir a tus mensajes. ) 
+
+![image](https://user-images.githubusercontent.com/23094588/154689411-3b20d424-6b15-41f4-b2dd-2004bec0f24f.png)
+
+**`api.giphy.com/v1/gifs/search`**	**`api.giphy.com/v1/stickers/search`**
+
+, tenemos el URL que necesitamos, y más abajo tenemos todos los argumentos que podemos mandar, por ejemplo el **api_key** es ***requerido*** por eso lo generamos en los pasos anteriores, otro argumento requerido es el **query (q)**, podemos tener un argumento para limitar los resultaddos **limit**, el **offset** nos permite tener una páginación, **rating** nos permite indicar que recuperemos solo GIFs de cierto rango, podemos mandar el idioma con **lang**, y otras más opciones.
+
+![image](https://user-images.githubusercontent.com/23094588/154689693-eab796c0-82fa-4efe-8e31-27c32073afec.png)
+
+Antes de códificar en Angular debemos tener claro como funciona el API y sus EndPoints. Podemos probar los EndPoints en PostMan.
+
+
+
+
+
+
+
+
+
+
+
+
 **``**
 
 ## Realizar una petición HTTP 08:34
