@@ -912,6 +912,27 @@ https://media4.giphy.com/media/977YesTjNfQC7vQiph/200w.webp?cid=94c348a7xcfl3awv
 
 Dependiendo de la imagen que queramos usar usaremos un valor u otro.
 
+Vamos a cambiar el URL para recuperar los STICKERS en lugar de los GIFs, tenemos lo siguiente:
+
+api.giphy.com/v1/stickers/search?api_key=3sZBfqeXrIArY6K1eq7xwISx6nb4B2V8&q=Dragon Ball Z&limit=10
+
+![image](https://user-images.githubusercontent.com/23094588/154696188-476bcbbf-3f81-4e42-9be2-66cc6aa43385.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154696327-78fc93c7-a8d2-4f1c-a69b-e2accfafb838.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154696428-6eaa60cc-b23f-48c9-a099-8873d230ed73.png)
+
+Con Postman podemos ir almacenando los Request que hagamos en una colección.
+
+![image](https://user-images.githubusercontent.com/23094588/154696583-b917e822-72a2-45ae-99b1-d77df6c65378.png)
+
+También podemos cargar la URL que estamos poniendo en Postman directamente en el Navegador.
+
+![image](https://user-images.githubusercontent.com/23094588/154696854-b5054df3-42d4-436b-b681-56d0517c6107.png)
+
+Una vez que ya tenemos idea de como trabaja el API podemos seguir con la codificación en Angular.
+
+
 ## Realizar una petición HTTP 08:34
 
 **``**
