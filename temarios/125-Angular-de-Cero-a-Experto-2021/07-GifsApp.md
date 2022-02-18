@@ -858,22 +858,64 @@ Tenemos varios enlaces, en particular el primero de ellos nos permite recuperar 
 
 ![image](https://user-images.githubusercontent.com/23094588/154689693-eab796c0-82fa-4efe-8e31-27c32073afec.png)
 
-Antes de códificar en Angular debemos tener claro como funciona el API y sus EndPoints. Podemos probar los EndPoints en PostMan.
+Antes de códificar en Angular debemos tener claro como funciona el API y sus EndPoints, podemos probar los EndPoints en PostMan.
 
+![image](https://user-images.githubusercontent.com/23094588/154690494-be9710df-67d3-4b0e-bcd4-fd15ad004a3e.png)
 
+Vamos a poner como URL el enlace del **GifURL**
 
+![image](https://user-images.githubusercontent.com/23094588/154690657-983e9801-c869-41cd-be25-87963d09ef14.png)
 
+Si lanzamos la petición nos muestra el mensaje **`No API key found in request`** que indica que no hemos introducido nuestra API KEY, podemos añadirlo en la URL de la siguiente forma:
 
+![image](https://user-images.githubusercontent.com/23094588/154691138-1e89a3d8-6d74-4788-b2ca-68e7312b8d00.png)
 
+Al lanzar esta petición ya obtenemos una respuesta, nos regresa **`data[]`** un array de resultados vacío que lo indica en **`"total_count": 0,`**, esto es porque no hemos mandado el **`query`** de busqueda, el cual lo podemos añadir en la URL al que hicimos con el **`api_key`** o usar la pestaña de **Params** para añadirlo de una forma más comoda.
 
+![image](https://user-images.githubusercontent.com/23094588/154691836-65f3cc9c-5c28-4420-9f7b-6a3cc2a11e1f.png)
 
+![image](https://user-images.githubusercontent.com/23094588/154691932-7afc37ae-e817-4dbd-848d-a87d0e93e561.png)
 
+Podemos ver que tenemos un resultado de **444*** Gifs localizados. Podemos limitar los resultados para solo recuperar 10 resultados usando el argumento **`limit`**.
 
+![image](https://user-images.githubusercontent.com/23094588/154692274-9c64b20b-eb90-4f4b-8e4a-d634c42f2886.png)
 
+Si vemos el detalle de **`data`** vamos a ver la información que retorna el API, entre ellas una URL que accede a GIPHY con los resultados encontrados.
+
+https://giphy.com/gifs/TOEIAnimationUK-dbz-dragon-ball-z-977YesTjNfQC7vQiph
+
+![image](https://user-images.githubusercontent.com/23094588/154693394-c9d95848-9915-4e53-bc6e-c1f4da41f5a4.png)
+
+![image](https://user-images.githubusercontent.com/23094588/154692612-14820cc0-cd72-46d4-8ef2-e782b1b79fe3.png)
+
+Si bajamos tenemos un objeto **`images`** con los diferentes tamaños de las imagenes que tenemos y las URLs donde se encuentran dichas imagenes:
+
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/giphy.gif?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=giphy.gif&ct=g
+
+![image](https://user-images.githubusercontent.com/23094588/154693137-d8dec90a-54e7-4f0f-9a8a-5fa2548e3c1a.png)
+
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/giphy.mp4?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=giphy.mp4&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/giphy.webp?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=giphy.webp&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/200.gif?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=200.gif&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/200.mp4?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=200.mp4&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/200.webp?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=200.webp&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/200_d.gif?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=200_d.gif&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/200_d.webp?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=200_d.webp&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/100.gif?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=100.gif&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/100.mp4?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=100.mp4&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/100.webp?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=100.webp&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/100_s.gif?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=100_s.gif&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/200_s.gif?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=200_s.gif&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/200w.gif?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=200w.gif&ct=g",
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/200w.mp4?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=200w.mp4&ct=g
+https://media4.giphy.com/media/977YesTjNfQC7vQiph/200w.webp?cid=94c348a7xcfl3awvr3ry7s3g7tnbqpomsltdxne5py0hd625&rid=200w.webp&ct=g
+
+Dependiendo de la imagen que queramos usar usaremos un valor u otro.
+
+## Realizar una petición HTTP 08:34
 
 **``**
 
-## Realizar una petición HTTP 08:34
 ## Mostrar los resultados en pantalla 09:15
 ## Colocando un tipado a las peticiones **`http`** 09:47
 ## **`LocalStorage`** 10:25
