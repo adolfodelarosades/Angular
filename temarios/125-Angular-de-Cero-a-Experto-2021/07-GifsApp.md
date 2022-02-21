@@ -935,7 +935,88 @@ Una vez que ya tenemos idea de como trabaja el API podemos seguir con la codific
 
 ## Realizar una petición HTTP 08:34
 
-**``**
+En esta lección vamos a ver como utilizar el URL que usamos en Postman y en el Navegador dentro de Angular.
+
+### Usando **`Promesas`**
+
+Vamos a nuestro servicio **`gifs.service.ts`** y vamos a ver una primera forma de usar el URL usando la forma tradicional de JS con Promesas.
+
+**`https://api.giphy.com/v1/stickers/search?api_key=3sZBfqeXrIArY6K1eq7xwISx6nb4B2V8&q=Dragon%20Ball%20Z&limit=10`**
+
+![image](https://user-images.githubusercontent.com/23094588/154913003-44e1edb1-654c-4def-b90c-5351c5fe9eb1.png)
+
+Si lo probamos en el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/154913086-907df010-7de0-4738-9b9c-658528332f18.png)
+
+### Usando **`async`**
+
+Nos devuelve los mismos datos que en Postman, podríamos hacerlo también usando el método como **`async`** como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/154913712-c6279beb-e5e3-4ee8-8954-b6ae32843015.png)
+
+En el navegador vamos a obtener el mismo resultado:
+
+![image](https://user-images.githubusercontent.com/23094588/154913984-604da8b0-a2d8-40f2-b725-9d8281c8ba7d.png)
+
+Esta última forma es más limpia pero seguimos usando la forma en la que trabaja JS.
+
+Pero al usar el **`fetch`** siempre se hace más "carpinteria" ya que si existe un error hay que encerrarlo en un **`try - catch`**, si ocupamos el tipado hay que especificarlo en otro lugar, etc.
+
+### Usando el módulo **`HttpClientModule`**
+
+Angular nos ofrece un objeto para hacer peticiones HTTP, para usar este objeto debemos importar un módulo lo vamos a hacer de una manera global por lo que lo vamos a importar en **`app.module.ts`** pero de igual modo lo podríamos importar en un módulo particular para que solo se use allí.
+
+Vamos a añadir lo siguiente en **`app.module.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154915409-30c5ab57-5eee-413f-ab85-96ede544ea47.png)
+
+Observese como en el **`imports`** colocamos primero los módulos creados por Angular y luego los módulos hecho por nosotros, si tuvieramos módulos de terceros irian en medio de ambos.
+
+**`HttpClientModule`** nos ofrece un monton de servicios entre ellos ***algo que puedo inyectar en mi propio servicio***.
+
+Vamos a inyectar en nuestro servicio **`gifs.service`** el servicio **`HttpClient`** en nuestro constructor.
+
+![image](https://user-images.githubusercontent.com/23094588/154916757-60318288-648f-4222-96cc-ecc960d1423f.png)
+
+Con este **`HttpClient`** ya podemos hacer peticiones HTTP GET, POST, PUT, etc. pero la diferencia es que vamos a trabajar en base a **`Observables`** los cuales son más poderosos que las **`Promesas`**. Ambos tienes sus usos pero el **`Observables`** tiene más control que las **`Promesas`**.
+
+Para usarlo vamos a utilizar el servicio inyectado como sigue:
+
+![image](https://user-images.githubusercontent.com/23094588/154920766-bc255f41-a14c-46a1-a16f-e679644f2fe9.png)
+
+En el navegador seguimos recuperando los mismos datos.
+
+![image](https://user-images.githubusercontent.com/23094588/154920944-12ae31a0-a602-4ec9-8fff-83af70c29bed.png)
+
+Tenemos toda la respuesta:
+
+![image](https://user-images.githubusercontent.com/23094588/154921230-349a00b7-4e1a-4ae9-8380-875ed023ea8e.png)
+
+La **`data`**, la **`meta`** y la **`pagination`** podemos recuperar solo la **`data`** con:
+
+![image](https://user-images.githubusercontent.com/23094588/154922364-fbabf5b2-a8ec-4c75-9b11-7a5db8108e63.png)
+
+Pero el **`data`** nos esta marcando un error.
+
+![image](https://user-images.githubusercontent.com/23094588/154922544-4f1a062a-ecc1-441a-b3e5-d13f7df079ab.png)
+
+Si dejamos el cursor encima nos indica que es de tipo **`any`**, lo que esta pasando que TS no es capaz de saber que es **`resp`** nos esta retornando lo que ya vimos en el navegador que son **`data`**, **`meta`** y **`pagination`**. Hasta que ejecuto la URL podemos saber el tipado, entonces de alguna manera necesitamos especificare a TS el tipado que viene en la respuesta **`resp`**. Una forma simple para salir del paso es especificar que **`resp`** es de tipo **`any`**.
+
+![image](https://user-images.githubusercontent.com/23094588/154923451-0d6e144b-782e-410b-b35d-1b949abc1c78.png)
+
+Y de esta manera se va el error, esto le dice a TS que nos vale camote el tipo que sea esa respuesta, yo se que en la respuesta tengo la **`data`** y eso es todo lo que me importa. Si vemos la salida en el navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/154923939-f4616540-1c89-47f0-ab07-7e1230e6bfa2.png)
+
+Ya solo estamos pintando la **`data`** en la consola que es lo que realmente nos interesa.
+
+La ventaja de utilizar el módulo **`HttpClientModule`** nos ofrece muchas cosas interesantes entre ellas son que las peticiones HTTP que hagamos nos retornan **`Observables`** a los cuales les puedo añadir funcionalidades a la hora de hacer la petición, puedo mapear la respuesta, puedo concatenar otras cosas, puedo hacer muchas manipulaciones en la petición, esto incluye también poder disparar otra petición simultaneamente, todo esto nos ofrese más ventajas sobre la forma en que trabaja JS.
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/154925154-17cf0690-8be1-4ea6-bb88-d7642d9feee7.png)
+
 
 ## Mostrar los resultados en pantalla 09:15
 ## Colocando un tipado a las peticiones **`http`** 09:47
