@@ -1237,6 +1237,66 @@ También nos marca los posibles errores que tengamos si escribimos mal una propi
 
 ## **`LocalStorage`** 10:25
 
+En esta lección vamos a hacer que el historial de búsquedas persista si nosotros refrescamos la página, actualmente podemos buscar varias terminos pero si refrescamos la página estos se pierden.
+
+![image](https://user-images.githubusercontent.com/23094588/155138335-b7194c7a-5dec-4653-80e1-e8c42932b30f.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155138372-6f17b3ac-1ce0-4e77-b1a8-9749db99c924.png)
+
+Al refrescar todo se pierde por que todo esta en memoria y al recargar se reinicia todo creando una nueva instancia del array donde teniamos el historial. 
+
+Para almacenar esta información nos vamos a apoyar en el **Storage** del navegador si abrimos las herramientas del desarrollador en la pestaña **Application** podemos ver los diferentes tipos de almacenamiento con los que contamos.
+
+![image](https://user-images.githubusercontent.com/23094588/155139027-f4f2bc2c-1821-4dcd-997d-479b2ee775ce.png)
+
+Básicamente tenemos el **Local Storage** y el **Session Storage** ambas nos sirven para almacenar información de forma persistente en el navegador Web, la diferencia es que mientras que en el **Session Storage** almacenemos información esta se perdera al cerrar el navegador mientras que en el **Local Storage**  la información se mantendra persistente la información aun cerrando el navegador. Aun que en ocaciones el navegador podría tomar la decisión de eliminarlo bajo algunas condiciones como falta de espacio, también nosotros podemos eliminar estos datos manualmente pulsando en la X que se muestra sobre la lista de Key/Value que se muestra.
+
+El **Local Storage** no es un sitio seguro para almacenar información sencible como tarjetas de crédito, password, etc., podemos almacenar información sin mucha importancia como podría ser el historial de la información que ha buscado en la APP.
+
+Para almacenar en el **Local Storage** lo vamos a hacer dentro de nuestro Servicio **`gifs.service.ts`** usando **`localStorage`** que es un objeto de JS por lo que no necesitamos importar nada, este objeto tiene el método **`setItem()`** el cual necesita dos parámetros una clave y un valor expresado estrictamente como un string.
+
+![image](https://user-images.githubusercontent.com/23094588/155141613-cde944ae-f872-48b4-aa4a-ba07769c9cbb.png)
+
+Si hago una busqueda ya se almacena en el **Local Storage** el termino usado.
+
+![image](https://user-images.githubusercontent.com/23094588/155141674-8923be68-cb49-47a8-8e6b-a24bc8135d4d.png)
+
+Si realizo otra busqueda tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/155141857-a140a032-0f7d-4c9e-b197-7440830624b8.png)
+
+El valor del **`historial`** almaceno solo la última búsqueda pero la primera se perdio.
+
+La idea que no solo almacenemos el termino buscado **`query`** sino todo el **`historial`** pero este es un array(objeto) y solo se pueden almacenar **`strings`**. Afortunadamente contamos con otro objeto de JS llamado **`JSON`** el cual tiene un método **`stringify`** el cual convirte a **`string`** cualquier objeto que se le pase como parámetro, por lo tanto podemos hacer lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/155142852-029ef8cc-19e5-4212-aaca-d6b101b96870.png)
+
+Realizamos dos búsquedas y estas ya se almacenan en el **Local Storage** 
+
+![image](https://user-images.githubusercontent.com/23094588/155143150-4b1ac009-23dc-4f99-9951-b623a557171e.png)
+![image](https://user-images.githubusercontent.com/23094588/155143276-729dd484-b13f-4344-86c5-6c43f51efd30.png)
+
+Si recargamos en navegador tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/155143409-90801be9-43e6-4bf4-b9f4-eeaa1fd1ab4a.png)
+
+la información renderizada se pierde pero la que almacenamos en el **Local Storage** sigue almacenada. 
+
+Para que la información se siga renderizando cuando se refresca el navegador se debería tomar la información del **Local Storage**, ¿Cómo lo hacemos?
+
+Podríamos usar el **`constructor`** del Servicio **`gifs.service.ts`** que ***se ejecuta solo una vez cuando el Servicio es creado***, por lo que es el lugar ideal para cargar la información del **Local Storage** por que solo se ejecuta una vez. Para recuperar la información del **Local Storage** nuevamente 
+
+
+
+
+
+
+
+
+
+
+
+
 **``**
 
 ## Cargar imágenes automáticamente 04:42
