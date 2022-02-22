@@ -1019,6 +1019,112 @@ La ventaja de utilizar el módulo **`HttpClientModule`** nos ofrece muchas cosas
 
 
 ## Mostrar los resultados en pantalla 09:15
+
+En esta lección vamos a mostrar las imágenes en nuestra aplicación, actualmente estamos usando el URL de los Stickers, vamos a seguir usandolos y en un futuro los cambiaremos por los GIFs. 
+
+
+Actualmente todas las busquedas que se hacen son de Dragon Ball Z ya que hemos pegado en el URL el parámetro **`q`** query que indica lo que queremos buscar,
+
+```js
+https://api.giphy.com/v1/stickers/search?api_key=3sZBfqeXrIArY6K1eq7xwISx6nb4B2V8&q=Dragon%20Ball%20Z&limit=10
+```
+
+vamos a hacer unos pequeños cambios para que la búsqueda sea dinamica en **`gifs.service.ts`**
+
+Cambiaremos 
+
+![image](https://user-images.githubusercontent.com/23094588/155114074-063315ea-f1e1-43ab-923a-da4d7dafdfc0.png)
+
+Por
+
+![image](https://user-images.githubusercontent.com/23094588/155114341-2b82cfef-6635-41dd-9998-649aa3c1c322.png)
+
+De esta manera lo que recibamos 
+
+![image](https://user-images.githubusercontent.com/23094588/155114533-da90876a-a78b-49dc-8ea1-1162a0096e3d.png)
+
+Ademas de hacer esto nosotros tenemos que almacenar el **`resp.data`** en algún lugar, vamos a crear una propiedad pública en el Servicio llamada **`resultados`** que será un array de **`any`**.
+
+![image](https://user-images.githubusercontent.com/23094588/155115385-123c03b1-47c5-4c58-a70f-610c9a24623a.png)
+
+Observeces que TS acepta asignar **`resp.data`** a **`resultados`** por que no sabe a ciencia cierta si la **`data`** es un arreglo, con ponerle **`any`** ya nos deja hacer la asignación confiando en que nosotros sepamos lo que estamos haciendo.
+
+Cuando se haga la petición del Servicio, los datos estan almacenados en **`resultados`**, vamos a inyectar nuestro Servicio en el componente **`resultados.component`** y vamos a crear un GETTER para retornar los resultados a partir del Servicio inyectado.
+
+![image](https://user-images.githubusercontent.com/23094588/155116598-186e3328-ea46-4d8a-849c-e95e7980d39e.png)
+
+Los GETTER facilitan mucho el acceso en la parte del HTML. También podríamos poner público el Servicio y acceder a el desde el HTML. Pero nosotros lo haremos a través del GETTER por que queda más limpio el código.
+
+En **`resultados.component.html`** vamos a poner el siguiente código.
+
+![image](https://user-images.githubusercontent.com/23094588/155117568-a85baa6e-53a1-4a45-bc45-63d910c1659f.png)
+
+La desventaja de haber declarado a **`resultados`** como **`any`** no tenemos la posibilidad de ver las propiedades de **`gif.`**, por el momento la única forma que tenemos para conocer las propiedades es que escribamos algo en el navegador y que en la consola veamos las propiedades, es como normalmente se trabaja en JS:
+
+![image](https://user-images.githubusercontent.com/23094588/155118502-053f7cea-5244-45b4-b3c5-23ef3f9dc4c6.png)
+
+Por ejemplo tenemos una propiedad llamada **`title`** y lo colocamos en el HTML.
+
+![image](https://user-images.githubusercontent.com/23094588/155118746-82dd4e81-a92f-48cc-aacc-791dfcce30a5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155118958-a07b5b3a-a70c-42f8-ac32-0b99b3d7caf1.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155119073-6e925bd9-06c3-4b6d-9d29-e8aef00d21a3.png)
+
+Ya vemos como estamos recuperando la información, vamos a darle un mejor diseño.
+
+![image](https://user-images.githubusercontent.com/23094588/155119974-20b4e709-0d7e-4c38-828a-347dd885cd15.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155120089-873f31e9-dbc2-4a57-94c8-c5fc546370db.png)
+
+Ahora vamos a pintar la imagen, usando la propiedad que esta dentro de las **`images`** y vamos a tomar la que se llama **`downsized_medium`** 
+
+![image](https://user-images.githubusercontent.com/23094588/155120440-e7409fdc-a0c7-4422-b8f6-b7bb20737a30.png)
+
+y a su vez tenemos que tomar la que se llama **`url`**.
+
+![image](https://user-images.githubusercontent.com/23094588/155120568-91a91a1d-8e1f-4b52-a6ce-1e94fb87f2ff.png)
+
+La desventaja de no tener el tipado es que tenemos que asegurarnos de ver las propiedades en la consola.
+
+Para mostrar la imagen vamos a usar la propiedad **`gif.images.downsized_medium.url`** que usaremos en un elemento **`img`**.
+
+![image](https://user-images.githubusercontent.com/23094588/155121488-d4db34c6-c4f8-482a-a387-160a4762e7dd.png)
+
+Observese que en el navegador vamos a tener un error
+
+![image](https://user-images.githubusercontent.com/23094588/155121618-1d1b7a4f-5ce9-474f-8c3c-3fbbac7fb126.png)
+
+Esto pasa por que en **`<img src="gif.images.downsized_medium.url" alt="gif.title">`** estamos asignando al **`src`** un string con el valor **`gif.images.downsized_medium.url`** que realmente no es ningún URL a ninguna imagen, tenemos que indicarle a Angular que realmente ese valor hace referencia a un valor de una propiedad que contiene el URL esto lo hacemos poniendo corchetes en **`src`** y **`alt`**.
+
+![image](https://user-images.githubusercontent.com/23094588/155122015-537cf7ad-452f-4429-bd8a-25137b07fa3a.png)
+
+En el navegador ahora se podran ver las imágenes.
+
+![image](https://user-images.githubusercontent.com/23094588/155122165-d6c1bce8-d2d8-4e0c-8f3c-e84488b8c8dc.png)
+
+Vamos añadir una clase al elemento **`img`**.
+
+![image](https://user-images.githubusercontent.com/23094588/155122819-54996e6f-b681-4214-a157-ee5a59ea1f88.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155122895-47ba246e-17c8-4841-a9fc-826afc7f416b.png)
+
+Hasta aquí con el diseño de nuestra APP, en donde estamos los Stickers, vamos a cambiar el URL en el servicio para recuperar los GIFs.
+
+![image](https://user-images.githubusercontent.com/23094588/155123203-b303cdba-643b-4669-ba9b-60eab34d4a6f.png)
+
+En el navegador tenemos.
+
+![image](https://user-images.githubusercontent.com/23094588/155123273-c80b43cb-1f5b-42e4-874a-a4678d2704d0.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155123410-b6d7c22e-0daa-4b1c-a454-c91a16094c51.png)
+
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/155123763-199d2a74-0b78-4c24-9bc0-5ec012fb1e53.png)
+
+
 ## Colocando un tipado a las peticiones **`http`** 09:47
 ## **`LocalStorage`** 10:25
 ## Cargar imágenes automáticamente 04:42
