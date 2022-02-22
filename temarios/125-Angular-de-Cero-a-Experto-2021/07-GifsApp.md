@@ -1126,7 +1126,119 @@ En el navegador tenemos.
 
 
 ## Colocando un tipado a las peticiones **`http`** 09:47
+
+En esta lección vamos a poner el tipado a la **`respuesta`** que obtengamos del Servicio. El poner un tipado no es algo obligatorio podríamos mantener el tipado **`any`** sin más, pero tiene la desventaja de que no conocemos los nombres de las propiedades, podemos poner propiedades con nombres equivocados sin darnos cuenta hasta que se ejecute la APP, por ejemplo si pusieramos **`daata`** en lugar de **`data`**, TS no nos indica ningun fallo.
+
+![image](https://user-images.githubusercontent.com/23094588/155124862-5781c338-05ca-410d-8b95-4fb807e250db.png)
+
+En el navegador si hacemos una búsqueda.
+
+![image](https://user-images.githubusercontent.com/23094588/155125019-31973e9b-d8b8-4332-b7ae-be5ba9f5f60b.png)
+
+Encuentra los resultados pero estos no son asignados a **`resultados`** por que estamos asignando **`daata`** y no **`data`** TS no tiene manera de saber que dentro de **`resp`** viene **`daata`** por eso no nos marca error, este tipo de errores son dificiles de detectar, por lo que no es buena práctica declarar a **`resp`** como **`any`**, debemos ponerle un tipado ¿pero cúal? Si nosotros analizamos la respuesta en POSTMAN de lo que nos esta retornando el API de GIPSY
+
+![image](https://user-images.githubusercontent.com/23094588/155126418-b259b432-264d-48c2-91fe-2373dad4b8b4.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155126200-73ed1269-859d-4e07-b5ef-68155e4019be.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155126786-ef413fdf-92b4-4347-92b3-e662dd11c6d2.png)
+
+esto nos puede sacar canas por que en primera instancia viene un **`data`**, **`pagination`** y **`meta`**, dentro de **`data`** tenemos varias propiedades y a su vez dentro de cada propiedad existen más valores como en **`imagenes`**. Podríamos crear un tipado que tenga **`data`**, **`pagination`** y **`meta`**, o crear un tipado que tenga solo la **`data`** con todas sus propiedades o por lo menos la información mínima necesario que usemos pero toda esta carpintería lleva tiempo hacerla.
+
+### Uso de [quicktype](https://quicktype.io/) para crear una Interfaz rápidamente.
+
+Vamos a usar una herramienta que nos va a permitir crear las Interfaces para el tipado de una forma casí instantanea, vamos a copiar la respuesta completa que nos esta retornando Postman.
+
+![image](https://user-images.githubusercontent.com/23094588/155127502-a7159f9c-48b1-4d53-af80-0d5d894eacb9.png)
+
+Y vamos a ir a [quicktype](https://quicktype.io/) 
+
+![image](https://user-images.githubusercontent.com/23094588/155127760-3544f581-ff3e-4f98-ab74-26aac7d3df93.png)
+
+[quicktype](https://quicktype.io/) tiene extensiones para incorporarlo dentro de VSC en este caso usaremos su Web, presionamos en el botón rosa **`OPEN QUICKTYPE`** 
+
+![image](https://user-images.githubusercontent.com/23094588/155128083-2a2fdf5f-e664-4579-996d-ca5d993211cb.png)
+
+En el estado izquierdo vamos a copiar lo que obtuvimos en POSTMAN, le vamos a poner el nombre **`SearchGifsResponse`**.
+
+![image](https://user-images.githubusercontent.com/23094588/155128469-c32f5fe7-c0fc-45b2-983b-491531d0fb3c.png)
+
+En **Options** vamos a cambiar el lenguaje a **TypeScript**.
+
+![image](https://user-images.githubusercontent.com/23094588/155128683-35521b95-8a5f-4611-a9ae-3faed17ddf25.png)
+
+Esto nos crea la Interfaz necesaria, incluso enumeraciones y todo el código necesario para mapear la respuesta del API de GIPSY, simplemente copiamos todo el código generado presionando el botón **COPY CODE**.
+
+Vamos a VSC y vamos a crear una Interface, en la carpeta **`gifs`** vamos a crear la carpeta **`interfaces`** y dentro de esta carpeta creamos el archivo **`gifs.interface.ts`** donde copiamos el código generado en [quicktype](https://quicktype.io/).
+
+![image](https://user-images.githubusercontent.com/23094588/155130223-68e2d040-c742-456d-947b-f538679eb748.png)
+
+Si observamos el código generado podemos ver que se han generado varias interfaces no solo una, si vemos la primer parte:
+
+![image](https://user-images.githubusercontent.com/23094588/155130774-cbd4554a-542f-44db-a1ca-9a531d60d7cd.png)
+
+Los datos se estar retornando en **`Datum`** vamos a cambiar este nombre por **`Gif`** para que tenga más sentido para nosotros.
+
+![image](https://user-images.githubusercontent.com/23094588/155131250-bbf692a6-8c32-4fa7-ba94-cba10e92f3c9.png)
+
+ya podemos trabajar con el **`SearchGifsResponse`**, vamos a regresar al **`gifs.service.ts`** y vamos a cambiar el **`any`** por esta Interfaz.
+
+![image](https://user-images.githubusercontent.com/23094588/155131795-ddf8b726-107c-41dc-803d-8a77d426d4a0.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155131973-acd3ed8a-90d4-434c-a559-94da265921dc.png)
+
+
+En teoría así debería funcionar pero ahora lo que se recomienda es que en logar de colocarlo donde lo pusimos se coloque en el método **`get`** ya que es de tipo GENERICO, esto significa que el **`get`** va a traerr una información y esa información tiene la forma de **`SearchGifsResponse`** luce de esta forma (no esta haciendo ningún mapeo).
+
+![image](https://user-images.githubusercontent.com/23094588/155132616-ecc887bb-e894-4bca-8d3e-ca2396f0c963.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155132890-efeff58e-74a6-4cd1-97f6-da9832a95ee3.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155133130-6f572c99-1e83-464e-8586-1d23c61e5738.png)
+
+De esta forma con la ayuda ya nos va poniendo las propiedades válidas que podemos usar gracias al tipado. Recordemos que la **`data`** es un arreglo por eso estamos indicando el acceso al primer elemento.
+
+Ya hemos tipado la respuesta del servicio, pero nuestra propiedad **`resultados`** sigue estando tipada como **`any`**.
+
+![image](https://user-images.githubusercontent.com/23094588/155133765-0ee458a4-8464-42c0-86de-0ddf222bfac0.png)
+
+Debemos cambiar su tipo, recordemos que en **`resultados`** solo estamos almacenando la **`data`** de **`SearchGifsResponse`** a la cual llamamos **`Gif`** en nuestro archivo **`**`SearchGifsResponse`**`** por lo que el tipado de **`resultados`** nos queda así:
+
+![image](https://user-images.githubusercontent.com/23094588/155134588-714da966-d136-4139-94e9-52fcd735a96e.png)
+
+Si retornamos al navegador todo sigue funcionando igual.
+
+![image](https://user-images.githubusercontent.com/23094588/155134770-773c03ac-ab32-44da-8847-92583d98660c.png)
+
+La Interfaz no a añadido ninguna funcionalidad a la aplicación, simplemente es para ayudarnos a la hora de la codificación y evitar posibles errores y agilizar la programación.
+
+Si vamos a **`resultados.component.ts`** podemos ver que en el GETTER ya infiere que **`resultados`** es de tipo **`Gif`**.
+
+![image](https://user-images.githubusercontent.com/23094588/155135510-9d6925a1-19eb-4bd4-a515-c4fa6e91eeeb.png)
+
+Incluso podríamos tiparla explicitamente:
+
+![image](https://user-images.githubusercontent.com/23094588/155135694-6556097f-a92f-4321-92d6-b095db500978.png)
+
+Aun que podríamos dejarla sin el tipo por que lo infiere.
+
+En la parte del **`resultados.component.html`** también ya nos va presentando las propiedades válidas, ya no tengo que memorizarlas ni buscarlas en la consola gracias a TS.
+
+![image](https://user-images.githubusercontent.com/23094588/155136115-0824e049-34fb-40c0-b93e-621d6535971e.png)
+
+También nos marca los posibles errores que tengamos si escribimos mal una propiedad.
+
+![image](https://user-images.githubusercontent.com/23094588/155136517-6e77d4c4-0104-4505-93ea-81f43bd5a953.png)
+
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/155136896-65beb110-29df-4af3-b993-3674f8f546cf.png)
+
 ## **`LocalStorage`** 10:25
+
+**``**
+
 ## Cargar imágenes automáticamente 04:42
 ## Obtener imágenes desde el sidebar 03:31
 ## **`HttpParams`** 06:40
