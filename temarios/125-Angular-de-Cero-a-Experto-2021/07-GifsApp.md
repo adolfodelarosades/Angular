@@ -1359,9 +1359,58 @@ Con esto ya sabemos como hacer persistente la información.
 
 ## Cargar imágenes automáticamente 04:42
 
-**``**
+Actualmente cuando recargamos nuestra APP se recupera del **`localStorage`** la lista que desplegamos en el SideBar pero las imágenes se estan perdiendo.
+
+![image](https://user-images.githubusercontent.com/23094588/155844197-66aceda4-9549-4567-b70c-9c3c21f231b6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155844207-1eb6ea30-658b-40f3-93bb-e1d9df77ee38.png)
+
+Podemos hacer que la última búsqueda la almacenemos también en el **`localStorage`** para posteriormente recuperarla para renderizar las imágenes.
+
+Lo primero que vamos a hacer es guardar los resultadoes en el **`localStorage`**, esto lo haremos después de que los recuperemos.
+
+![image](https://user-images.githubusercontent.com/23094588/155844377-92c555f0-2f82-419b-a0fc-0cb4a1a88f46.png)
+
+Vamos al navegador para ver si se esta almacenando:
+
+![image](https://user-images.githubusercontent.com/23094588/155844423-171b725a-5471-4525-b06d-2cbfba70dbe6.png)
+
+En el **`localStorage`** en especial en **`resultados`** se esta almacenando mucha información.
+
+![image](https://user-images.githubusercontent.com/23094588/155844461-47233045-5bbc-4b53-ae65-626226dda1e0.png)
+
+El **`localStorage`** tiene un límite, actualmente podemos almacenar desde 2 MB hasta 10 MB de tamaño de datos dependiendo del navegador que usemos. En PostMan podemos ver el peso de la respuesta:
+
+![image](https://user-images.githubusercontent.com/23094588/155844543-4e2f7013-257e-45f4-9cca-06d2a666bb20.png)
+
+En este caso es de 81.78KB que es muy poco en comparación a lo que disponemos. Pero aun así podríamos optimizar lo que almacenamos ya que de los resultados solo nos interesa el título y URL y con un operador de RXJS podríamos almacenar solo eso, otra forma serñía invocar la búsqueda con el último dato almacenado en el historial, existen varias opciones por el momento lo vamos a dejar así. 
+
+Ya tenemos los resultados, ahora como hacemos para que cuando se recargue se muestren en la pantalla, exactamente igual que con el historial.
+
+![image](https://user-images.githubusercontent.com/23094588/155844791-d83f42bd-8c5b-4376-ab55-47090b03e991.png)
+
+Si retornamos al navegador, cada vez que recarguemos los resultados se muestran en la pantalla.
+
+![image](https://user-images.githubusercontent.com/23094588/155844828-d0212fd3-b899-4633-b10c-c2e23f8d78c7.png)
+
+Si hacemos otra búsqueda los resultados se reemplazan con los últimos buscados.
+
+![image](https://user-images.githubusercontent.com/23094588/155844866-d92913cc-f990-4b60-96ea-6078785bcf54.png)
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/155844945-e69e0c54-de0c-443c-9926-1e8e85fc42b6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155844960-7941bc68-377a-4716-a4f5-26595f01152a.png)
+
 
 ## Obtener imágenes desde el sidebar 03:31
+
+**``**
+
+
+
+
 ## **`HttpParams`** 06:40
 ## Animate.style CSS 03:43
 ## Código fuente de la sección 00:07
