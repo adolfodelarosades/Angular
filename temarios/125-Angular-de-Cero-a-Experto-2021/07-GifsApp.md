@@ -1404,14 +1404,51 @@ Si hacemos otra búsqueda los resultados se reemplazan con los últimos buscados
 ![image](https://user-images.githubusercontent.com/23094588/155844960-7941bc68-377a-4716-a4f5-26595f01152a.png)
 
 
-## Obtener imágenes desde el sidebar 03:31
+## Obtener imágenes desde el SideBar 03:31
 
-**``**
+Actualmente en el SideBar tenemos dos opciones pero si tocamos en al de **`One Punch`** no se recargan las imágenes se quedan las de **`Overwatch`**.
 
+![image](https://user-images.githubusercontent.com/23094588/155845031-93f64c81-c497-4c0a-9ade-e7f6b94fe59a.png)
 
+Para que esto pase, tendríamos que hacer nuevamente la búsqueda de lo que pulsemos. Recordemos que tenemos el método **`buscarGifs(query)`** para realizar la búsqueda de los datos. Actualmente tenemos el componente **`sidebar.component.html`** así:
+
+![image](https://user-images.githubusercontent.com/23094588/155845136-bc22b28c-71e4-4468-8653-ab6c40cdb26a.png)
+
+Tenemos que hacer que cuando pulsemos algún elemento del SideBar invoque el método  **`buscarGifs(query)`**.
+
+![image](https://user-images.githubusercontent.com/23094588/155845198-aa33b68a-b5f6-4f3e-8c94-414524813557.png)
+
+No podemos desde aquí invocar directamente al método del servicio así que creamos un método **`buscar( item )`** que debemos implementar en **`sidebar.component.ts`**.
+
+![image](https://user-images.githubusercontent.com/23094588/155845262-08612c81-2621-4e0b-a7aa-0aa20be9fd0a.png)
+
+Vamos al navegador, cada que pulsamos en algún elemento se muestra en la consola su valor.
+
+![image](https://user-images.githubusercontent.com/23094588/155845281-315f7686-24b3-461e-b8fc-f386e489b618.png)
+
+Ahora en lugar de pintar en la consola invoquemos al método **`buscarGifs(query)`** del servicio para hacer la búsqueda del termino pulsado.
+
+![image](https://user-images.githubusercontent.com/23094588/155845368-1464693a-94f8-49ae-952c-9250dd693824.png)
+
+En el navegador al pulsar en cada termino del historial se refresca la pantalla con los resultados del valor pulsado.
+
+![image](https://user-images.githubusercontent.com/23094588/155845404-c15b893e-83f2-4e18-a3b8-cd4109f85c19.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155845407-e181649a-391f-4079-a2ad-f549ebd4e7b9.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155845416-9e9ac5e5-1f21-4a68-962c-5668d17654b9.png)
+
+**¿Qué pasaría si el servicio lo hiciera publico en mi componente SideBar? ¿Podría llamar al método `buscarGifs(query)` directamente desde el HTML sin necesidad de implementar el método `buscar(termino)`**.
+
+### GIF
+
+![image](https://user-images.githubusercontent.com/23094588/155845545-32c3b88a-3dae-4b2a-b714-113125338c63.png)
 
 
 ## **`HttpParams`** 06:40
+
+**``**
+
 ## Animate.style CSS 03:43
 ## Código fuente de la sección 00:07
 
