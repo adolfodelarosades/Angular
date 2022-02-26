@@ -1284,22 +1284,83 @@ la información renderizada se pierde pero la que almacenamos en el **Local Stor
 
 Para que la información se siga renderizando cuando se refresca el navegador se debería tomar la información del **Local Storage**, ¿Cómo lo hacemos?
 
-Podríamos usar el **`constructor`** del Servicio **`gifs.service.ts`** que ***se ejecuta solo una vez cuando el Servicio es creado***, por lo que es el lugar ideal para cargar la información del **Local Storage** por que solo se ejecuta una vez. Para recuperar la información del **Local Storage** nuevamente 
+Podríamos usar el **`constructor`** del Servicio **`gifs.service.ts`** que ***se ejecuta solo una vez cuando el Servicio es creado***, por lo que es el lugar ideal para cargar la información del **Local Storage** por que solo se ejecuta una vez. Para recuperar la información del **Local Storage** nuevamente usamos el objeto **`localStorage`** pero en este caso vamos a usar el método **`getItem`** al cual le tenemos que indicar como parámetro que es lo que queremos recuperar en este caso es el **`hitorial`**, por lo que la instrucción completa es **`localStorage.getItem('hitorial');`**, 
+
+![image](https://user-images.githubusercontent.com/23094588/155842584-c5e3d0c3-0d74-4133-a29e-5b1e0b890354.png)
+
+pero hay un pequeño detalle lo que se recupera es un **`string`** o un su defecto un nulo en caso de que lo que queramos recuperar en el **Local Storage** no exista.
+
+![image](https://user-images.githubusercontent.com/23094588/155842593-7d2e0a34-e7f7-43f1-be9b-b10cdd7c80bf.png)
+
+Si intentamos almacenar lo recuperado del **`localStorage`** con:
+
+![image](https://user-images.githubusercontent.com/23094588/155842692-1021b2b5-7ed1-41b2-ba9b-c01fcefbfe92.png)
+
+¿Cómo resolvemos este inconveniente? Hay varias maneras, vamos a ver una tradicional que es facil de comprender.
+
+Lo primero que vamos a hacer es validar que lo que se retorne del **`localStorage`** sea diferente de **`null`** y si esta condicion se cumple vamos a asignar a **`this._historial`** lo recuperado, recordemos que **`this._historial`** es un **`[] string`** arreglo de **`string`**, y lo que estamos recuperando del **`localStorage`** es un **`string`**,  pues contamos con el metodo **`JSON.parse()`** que es el inverso del **`JSON.stringify()`**, lo que hace **`JSON.parse()`** es convertir un **`string`** a dos posibles cosas ***un Objeto literal*** o un ***array de string o primitivos*** por lo que el código nos queda así:
+
+![image](https://user-images.githubusercontent.com/23094588/155843058-5de7fa96-01b2-495d-a477-2f28a978243d.png)
+
+Pero nos sigue marcando un error 
+
+![image](https://user-images.githubusercontent.com/23094588/155843091-924f8644-bcd4-473c-a8f4-2c941d363916.png)
+
+Ya que insiste que lo que se va a recuperar puede ser **`string`** o **`null`**, podríamos pensar en poner lo siguiente:
+
+![image](https://user-images.githubusercontent.com/23094588/155843299-3b654b50-0ff0-4638-b048-f70a8ea829f3.png)
+
+Pero esto no anula el error, pero hay una cosa interesante que podemos hacer, yo le puedo decir a TS que confie en mi por que se lo que estoy haciendo ya que acabamos de validar de que el valor retornado por **`localStorage`** no sea **`null`** por lo que podríamos hacer la línea dentro del **`if`** sin ningún problema, **ESTO ANTES NO DABA ERROR PERO AHORA SI POR QUE ESTAMOS EN EL MODO SUPER ESTRICTO, SIMPLEMENTE LE VAMOS A DECIR A TS QUE CONFIE EN MI USANDO EL OPERADOR ! AL FINAL**.
+
+![image](https://user-images.githubusercontent.com/23094588/155843323-cc4b4bbd-25cd-417d-bdad-2f0f44323f5f.png)
+
+Si regresamos al Navegador Web
+
+![image](https://user-images.githubusercontent.com/23094588/155843483-cecb8c52-5f0d-45ed-9891-d7c389ba38ea.png)
+
+Ya vemos que sin hacer nada, magicamente se han puesto los valores en el SideBar, si hacemos unas nuevas búsquedas estas se almacenan en el **`localStorage`**.
+
+![image](https://user-images.githubusercontent.com/23094588/155843544-34c46bce-1058-40b7-b2b4-065ff4887bde.png)
+
+Si refrescamos la pantalla:
+
+![image](https://user-images.githubusercontent.com/23094588/155843562-b3ac745b-0bdd-44d3-99d9-85b7c2cfb1f2.png)
+
+Recupera los cuatro valores del **`localStorage`** y los podemos ver en el SideBar.  Nuestro código funciona, pero si lo queremos tener un poco más condensado podemos escribirlo de la siguiente forma:
+
+![image](https://user-images.githubusercontent.com/23094588/155843757-3a44f06d-9967-4ab9-8617-73de9e974540.png)
+
+Si recargamos la aplicación tenemos nuestro listado
+
+![image](https://user-images.githubusercontent.com/23094588/155843871-69c8be8a-f30c-4299-a550-7b1fd7018ae7.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155843936-eba2fae2-3e5c-4a0e-a9af-d31611f5a56e.png)
+
+Y sigue funcionando correctamente.
+
+Si en el navegador borramos el **`localStorage`** 
+
+![image](https://user-images.githubusercontent.com/23094588/155843990-1d0fd05a-cf30-4865-b40b-d0b6999d743b.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155844004-edeb279b-49dc-4c84-b765-9bb2cde3f159.png)
+
+y recargamos la APP no revienta ya que le estamos colocando un arreglo vacío al **`_historial`**.
+
+![image](https://user-images.githubusercontent.com/23094588/155844014-059e1b23-b9b6-4c38-bc44-fd18bde24872.png)
+
+Con esto ya sabemos como hacer persistente la información.
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/155844090-4e742f4a-f2f3-4fae-ae8a-d169dbb9c177.png)
+
+![image](https://user-images.githubusercontent.com/23094588/155844101-2b3b5ef0-8a51-47fb-a356-ce78d71277c6.png)
 
 
-
-
-
-
-
-
-
-
-
+## Cargar imágenes automáticamente 04:42
 
 **``**
 
-## Cargar imágenes automáticamente 04:42
 ## Obtener imágenes desde el sidebar 03:31
 ## **`HttpParams`** 06:40
 ## Animate.style CSS 03:43
