@@ -949,4 +949,36 @@ Cuando Pierde, vemos también que desaparece el teclado:
 
 ## Códigos fuente de todo el curso 1 min
 
+## Repositorio Git
+
+![image](https://user-images.githubusercontent.com/23094588/157073621-edc5e8f4-efb2-413a-ba57-23d3f3b958d9.png)
+
+```sh
+…or create a new repository on the command line
+echo "# 110-Juego-de-Ahorcado" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/adolfodelarosades/110-Juego-de-Ahorcado.git
+git push -u origin main
+```
+
+```sh
+…or push an existing repository from the command line
+git remote add origin https://github.com/adolfodelarosades/110-Juego-de-Ahorcado.git
+git branch -M main
+git push -u origin main
+```
+
+```sh
+…or import code from another repository
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+```
+
+![image](https://user-images.githubusercontent.com/23094588/157073878-1abb0c4e-7d70-439e-927f-be0a13b2dac6.png)
+
+![image](https://user-images.githubusercontent.com/23094588/157074425-79d6eb62-5da8-4fbb-83f1-4f7eb2a50235.png)
+
+
 
