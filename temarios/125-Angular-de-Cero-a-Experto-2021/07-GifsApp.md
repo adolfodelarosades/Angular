@@ -1447,8 +1447,48 @@ En el navegador al pulsar en cada termino del historial se refresca la pantalla 
 
 ## **`HttpParams`** 06:40
 
-**``**
+Actualmente en nuestra clase **`gifs.service.ts`** estamos llamando al API de GIPSY de la siguiente forma:
+
+![image](https://user-images.githubusercontent.com/23094588/157008426-96ee0d2f-cca7-4f69-98e0-c4fc947ae925.png)
+
+![image](https://user-images.githubusercontent.com/23094588/157008553-56d51fde-ccbf-4609-aecd-e1cc7f7086ec.png)
+
+La forma en que escribimos el URL funciona pero podemos escribirlo de otra forma para poder parametrizar mejor en caso de que queramos cambiar algún valor que se envie como por ejemplo el límite. Podemos ver como lo hace Postman donde tiene una sección donde tenemos los **Query Params** los cuales se añaden a la URL despues del signo **`?`**.
+
+![image](https://user-images.githubusercontent.com/23094588/157011780-ba5ebc32-c529-4a7b-9a7e-9e5ffe4bbf29.png)
+
+Angular cuenta con un objeto que nos sirva para crear los parámetros similar a como lo hace Postman, vamos a crear una constante llamada **`params`** que va a ser de tipo **`HttpParams()`**, el cual nos permite crear los parámetros de una forma más sencilla. **`HttpParams()`** cuenta con el método **`set( string, string)`** donde ponemos el nombre del parámetro y su valor como **`string`**.
+
+![image](https://user-images.githubusercontent.com/23094588/157014265-5845556d-2ed0-4063-aa85-326861aff0e7.png)
+
+![image](https://user-images.githubusercontent.com/23094588/157014138-870611aa-a9e1-40e6-baeb-3ad9c5698ea5.png)
+
+Podemos ver en la consola los parámetros que hemos creado aunque aún no los estamos usando, antes de usarlo vamos a seguir creando propiedades privadas en este caso la que determina el URL general del API de GIPSY es decir **`private _servicioURL = 'https://api.giphy.com/v1/gifs';`**  y ya definida ahora si vamos a escribir el URL usando las propiedades privadas y los parámetros.
+
+```js
+this._http.get<SearchGifsResponse>(`${ this._servicioURL }/search`, {params: params})
+```
+
+Observese como se estan poniendo los parámetros, es un "parámetro" más del método **`get`**, cuando ambos valores son iguales podemos ponerlo simplemente así:
+
+```js
+this._http.get<SearchGifsResponse>(`${ this._servicioURL }/search`, {params})
+```
+
+![image](https://user-images.githubusercontent.com/23094588/157016469-f52d0cbc-5b96-41ad-aa0c-b0abedb63e3a.png)
+
+En el Navegador todo sigue funcionando igual con esta parametrización de la URL.
+
+![image](https://user-images.githubusercontent.com/23094588/157018546-6f536ab4-eb67-4c5e-b814-8f55fffde086.png)
+
+### GIF
+
+![image](https://user-images.githubusercontent.com/23094588/157018835-9c02fae2-9a94-4287-b079-96ba5df92d99.png)
+ 
 
 ## Animate.style CSS 03:43
+
+**``** 
+
 ## Código fuente de la sección 00:07
 
