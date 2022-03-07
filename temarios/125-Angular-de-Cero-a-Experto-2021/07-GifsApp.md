@@ -1488,7 +1488,33 @@ En el Navegador todo sigue funcionando igual con esta parametrización de la URL
 
 ## Animate.style CSS 03:43
 
-**``** 
+En esta lección vamos a añadir animaciones al cargar las imágenes para que estas no aparezcan de golpe y su aparición sea más suave, para lo cual nos vamos a apoyar el la librería de (Animate.css)[https://animate.style/].
+
+![image](https://user-images.githubusercontent.com/23094588/157019753-364f1fc1-71b3-4f1b-abc3-e58f77a24db8.png)
+
+![image](https://user-images.githubusercontent.com/23094588/157020021-03e0253b-1d48-441d-8442-865cfa372e0c.png)
+
+Vamos a añadir la librería poniendo el CDN en nuestro archivo **`index.html`**.
+
+![image](https://user-images.githubusercontent.com/23094588/157021272-8963040c-a250-4b83-9e3a-0852edc55af3.png)
+
+La animación la vamos a colocar en **`resultados.component.html`** como una clase más dentro del **`div`** donde tenemos el **`ngFor`**:
+
+![image](https://user-images.githubusercontent.com/23094588/157021720-e5b33dcf-d6b6-4cde-a022-dacf8d2e91c3.png)
+
+![image](https://user-images.githubusercontent.com/23094588/157021946-f0218c0b-222e-4fa6-bf22-f14f8965f04d.png)
+
+Para un efecto de entrada es bueno el **`fadeIn`** como podemos apreciar cuando cargamos los resultados.
+
+![image](https://user-images.githubusercontent.com/23094588/157022125-95782d18-c099-443a-a3f0-94b1ae530290.png)
+
+La animación esta puesto a un velocidad normal, pero también clases que podemos ponerlas para aumentarla o reducir la velocidad, vamos a poner **`animate__faster`** para aumentar la animación, ya es cuestión de gustos, en nuestro caso no lo vamos a poner.
+
+**Como fin de la aplicación podríamos quitar todos los `console.log()` que tengamos puestos.**
+
+### GIT
+
+![image](https://user-images.githubusercontent.com/23094588/157023223-9eb89473-7295-444a-b795-aef0eee041b8.png)
 
 ## Código fuente de la sección 00:07
 
