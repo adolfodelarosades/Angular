@@ -132,7 +132,7 @@ Como no deja que los nombres de los proyectos empiecen con números vamos a pone
 ng new Juego-de-Ahorcado
 ```
 
-Nos hace dos preguntas a las cuales respondemos con Enter para coger el valor por default(en la V6 no los hacia)
+Nos hace dos preguntas a las cuales respondemos con No y Enter para coger el valor por default(en la V6 no los hacia)
 
 ![image](https://user-images.githubusercontent.com/23094588/129443081-037e3c6c-7cf4-4a39-95bf-5068d93ba93f.png)
 
