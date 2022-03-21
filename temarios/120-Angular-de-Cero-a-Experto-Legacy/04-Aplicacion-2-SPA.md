@@ -90,28 +90,29 @@ para crear el nuevo proyeyecto llamado **spa**.
 
 ![image](https://user-images.githubusercontent.com/23094588/133235830-14515c05-7506-4ff5-ae05-608977f73de3.png)
 
-Una vez que termina vamos a renombrar la carpeta creada **`spa`** por **`02-spa`**.
+Una vez que termina vamos a renombrar la carpeta creada **`spa`** por **`120-02-spa`**.
 
-![image](https://user-images.githubusercontent.com/23094588/133236320-574ddd7c-e08c-456f-9c90-5271e66c2fb2.png)
+![image](https://user-images.githubusercontent.com/23094588/159328390-72bc7a78-59fa-468f-89ce-9a9bed15cd25.png)
 
-Vamos a meternos a la carpeta **`02-spa`** y levantamos el servidor con **`ng serve -o`**.
+Vamos a meternos a la carpeta **`120-02-spa`** y levantamos el servidor con **`ng serve -o`**.
 
-![image](https://user-images.githubusercontent.com/23094588/133236621-bb73b0fc-f090-4498-b56d-a136c9c80516.png)
+![image](https://user-images.githubusercontent.com/23094588/159328853-046d49cb-ffd2-4af8-a941-f1ac6a17fe97.png)
 
-![image](https://user-images.githubusercontent.com/23094588/133236978-6069ed3f-5a32-4c94-b253-2b440f27563f.png)
+![image](https://user-images.githubusercontent.com/23094588/159329006-9a3137bd-ae03-48a9-9692-ccc5818fa31a.png)
 
-![image](https://user-images.githubusercontent.com/23094588/133237088-b61dbeaa-478f-45cc-91c8-1a78ee286d4b.png)
+![image](https://user-images.githubusercontent.com/23094588/159329124-cbcd91e9-ef2f-4ad2-afb5-92c73c67bf71.png)
 
 
 ## Creando la estructura de nuestro proyecto 06:24
 
-Vamos a abrir el proyecto **`02-spa`** en VSC.
+Vamos a abrir el proyecto **`120-02-spa`** en VSC.
 
-![image](https://user-images.githubusercontent.com/23094588/133238023-82598a9f-5368-48df-acdc-68e1a2ff4b8d.png)
+![image](https://user-images.githubusercontent.com/23094588/159329545-e6c84fcc-a066-4299-bdf0-d1b83a7f8aa2.png)
 
 Dentro de la carpeta **`app`** vamos a crear las siguientes carpetas **`components/shared`** que va a ir conteniendo los nuevos componentes que vayamos creando.
 
-![image](https://user-images.githubusercontent.com/23094588/133238341-a6a819dc-d784-487d-9543-4405cab0ec40.png)
+![image](https://user-images.githubusercontent.com/23094588/159330094-bc59fa54-f1c3-4144-9d4b-c95f41b7d091.png)
+
 
 ### Crear el Componente `Navbar`
 
@@ -143,13 +144,13 @@ Observese que este componente no va dentro de la carpeta de compartidos **`share
 
 De igual manera vamos a eliminar **`home.component.css`** y **`home.component.spec.ts`** y hacemos los ajuestes en **`home.component.ts`**.
 
-![image](https://user-images.githubusercontent.com/23094588/133240966-828f49ae-d97f-4836-bb6e-769a0bacbbfd.png)
+![image](https://user-images.githubusercontent.com/23094588/159330613-2aafef1c-31b2-498c-80bd-cdc7eca74d9f.png)
 
 ![image](https://user-images.githubusercontent.com/23094588/133241096-c7cd2195-65f7-4630-9cda-6af1d0a21aaf.png)
 
 #### GIT
 
-![image](https://user-images.githubusercontent.com/23094588/133241241-e2591524-ae5d-4a3a-b97b-4052264f93af.png)
+![image](https://user-images.githubusercontent.com/23094588/159331060-5a171dc3-c8c0-43a1-97eb-15a86e219353.png)
 
 ## Instalando Bootstrap cuando usamos el Angular-CLI 14:58
 
