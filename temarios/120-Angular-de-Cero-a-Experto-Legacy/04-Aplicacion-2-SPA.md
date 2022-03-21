@@ -1,4 +1,4 @@
-# 04 Aplicación No. 2: Aplicación de una sola página (SPA) - 26 clases • 2h 24m
+# 04 Aplicación 2: Aplicación de una sola página (SPA) - 26 clases • 2h 24m
 
 * Introducción a la sección 00:55
 * ¿Qué veremos en esta sección? 00:30
