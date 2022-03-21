@@ -1,5 +1,6 @@
 # 110 Creación de un Juego de Ahorcado
 
+APLICACIÓN: https://angularocio.com/ahorcado/
 
 #### Tiempo: 1h 13min
 
@@ -1165,6 +1166,38 @@ Como podemos ver en el **Release** tenemos la sección **Assets** donde podemos 
 ## Código fuente de la sección 00:17
 
 https://github.com/adolfodelarosades/110-Juego-de-Ahorcado/releases/tag/v0.1.0
+
+## Despliegue a Producción
+
+![image](https://user-images.githubusercontent.com/23094588/159308586-6031d270-b5b2-46d2-af59-6381ab30ba61.png)
+
+![image](https://user-images.githubusercontent.com/23094588/159309184-b2321e21-d43b-4a79-98b2-f667f64520c8.png)
+
+Renombramos el directorio solo a **ahorcadp**.
+
+![image](https://user-images.githubusercontent.com/23094588/159311265-48f73f01-aa57-4016-a2ff-ea9ba7e9daed.png)
+
+Editamos el archivo **`index.html`** para poner en **`<base href="/ahorcado">`**
+
+![image](https://user-images.githubusercontent.com/23094588/159311448-05f72a0b-72c7-421a-9969-55fc33c4a401.png)
+
+Subimos la carpeta mediante Filezilla.
+
+![image](https://user-images.githubusercontent.com/23094588/159311905-727a17cf-365a-45b9-99a4-436bb6620f5a.png)
+
+La aplicación queda subida en el servidor en la siguiente URL: https://angularocio.com/ahorcado/
+
+![image](https://user-images.githubusercontent.com/23094588/159314625-239e46c9-467c-4c77-9255-c544c60472c5.png)
+
+![image](https://user-images.githubusercontent.com/23094588/159315708-ff2150c3-2638-4439-b4db-983d941899af.png)
+
+![image](https://user-images.githubusercontent.com/23094588/159316266-3bf91628-1981-48db-9a7d-5272da8256c8.png)
+
+
+
+
+
+
 
 
 
