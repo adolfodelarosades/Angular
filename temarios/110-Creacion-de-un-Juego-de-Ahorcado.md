@@ -1177,11 +1177,10 @@ Renombramos el directorio solo a **ahorcadp**.
 
 ![image](https://user-images.githubusercontent.com/23094588/159311265-48f73f01-aa57-4016-a2ff-ea9ba7e9daed.png)
 
-Editamos el archivo **`index.html`** para poner en **`<base href="/ahorcado">`**
+Editamos el archivo **`index.html`** para poner en **`<base href="/ahorcado/">`**
 
-![image](https://user-images.githubusercontent.com/23094588/159311448-05f72a0b-72c7-421a-9969-55fc33c4a401.png)
 
-Subimos la carpeta mediante Filezilla.
+### Subimos la carpeta mediante Filezilla.
 
 ![image](https://user-images.githubusercontent.com/23094588/159311905-727a17cf-365a-45b9-99a4-436bb6620f5a.png)
 
