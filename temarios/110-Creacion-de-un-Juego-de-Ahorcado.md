@@ -1074,3 +1074,98 @@ Como podemos ver en el **Release** tenemos la sección **Assets** donde podemos 
 ## Código fuente de la sección 00:17
 
 https://github.com/adolfodelarosades/110-Juego-de-Ahorcado/releases/tag/v0.1.0
+
+## 
+
+
+
+Ya tenemos todo nuestro código en el repositorio de **`GitHub`**.
+
+Es importante notar que la carpeta **`node_modules`** no se sube al repositorio, entre otras cosas, gracias a lo que tenemos incluido en el archivo **`.gitignore`** del proyecto.
+
+![image](https://user-images.githubusercontent.com/23094588/150824068-1b37f288-448e-4161-becc-e174e9742b1a.png)
+
+La carpeta **`node_modules`** es importante para nuestro proyecto pero ocupa mucho espacio para subirlo al repositorio y lo podemos recuperar gracias a lo que tenemos en el archivo **`package.json`**.
+
+![image](https://user-images.githubusercontent.com/23094588/150824767-d0bc9cf0-996e-47fc-9dc4-9535584a7bbb.png)
+
+Si nosotros tenemos la necesidad de pasar este proyecto a alguien más lo descargamos del repositorio y simplemente ejecutamos el comando 
+
+```sh
+npm install
+```
+
+para que reconstruya todos los módulos de Node, ya lo veremos al final de esta sección.
+
+### Creación de un Tag y Release
+
+Adicionalmente vamos a crear un **Release Tag** que nos permite tener una versión del código que esta en este momento y poder descargarlo. El comando **Git** que vamos a usar es:
+
+```sh
+git tag -a v0.1.0 -m "Fin Juego de Ahorcado"
+```
+
+Este comando crea un **Tag** el atributo **`-a`** significa que es "anotado" con el texto **`v0.1.0`** que es una forma de nombrar nuestras versiones y con **`-m`** le damos el título de **`Fin sección 4`**
+
+Si después de pulsar el comando anterior pulsamos:
+
+```sh
+git tag
+```
+
+vamos a tener:
+
+![image](https://user-images.githubusercontent.com/23094588/159297414-21ba0393-1572-49fa-8b4d-2933049d2fc2.png)
+
+Si retornamos al navegar en **GitHub** no vamos a ver ninguna diferencia.
+
+![image](https://user-images.githubusercontent.com/23094588/159297626-d8d3a58d-b047-4cc1-b671-8620dce6ad54.png)
+
+Para subir el  **Tag** a **GitHub** lo hacemos con el comando:
+
+```sh
+git push --tags
+```
+
+![image](https://user-images.githubusercontent.com/23094588/159297974-ca7f6e63-39be-4c69-bad9-02a2083b9ff0.png)
+
+Esto simplemente nos sube un **Tag** a **GitHub** no un **Release Tag**.
+
+![image](https://user-images.githubusercontent.com/23094588/159298228-d07885c2-6718-4185-8c5c-a2bac2b16801.png)
+
+Ya podemos ver que nos sale 1 tag si pulsamos en **Releases** vemos los detalles:
+
+![image](https://user-images.githubusercontent.com/23094588/159298483-4114c2cc-badd-4903-827a-063fe650d1a4.png)
+
+Como podemos ver en **Releases** no tenemos nada y en **Tags** tenemos:
+
+![image](https://user-images.githubusercontent.com/23094588/159298666-5f4cd234-18d7-4d27-a3e0-a97f41a246f6.png)
+
+Si pulsamos en el **Tag v0.1.0**  nos lleva a los detalles:
+
+![image](https://user-images.githubusercontent.com/23094588/159298791-bdd2fef1-8b6a-4004-84e2-cdea2ccb36b5.png)
+
+En esta pantalla podemos crear un **Release** a partir de un **Tag** pulsando en el botón **`Create release from tag`**.
+
+![image](https://user-images.githubusercontent.com/23094588/159299131-5cc9795b-67b2-4e85-8107-9efde3b64354.png)
+
+Metemos la información que nos solicita:
+
+![image](https://user-images.githubusercontent.com/23094588/159299474-187c280e-c766-48d3-a618-0f09322d54b2.png)
+
+Y podemos pulsar en el botón verde **`Public release`**
+
+![image](https://user-images.githubusercontent.com/23094588/159299598-688fff8b-073a-4dc9-a021-be6277bb7fae.png)
+
+Ahora si ya tenemos un **Release**
+
+Como podemos ver en el **Release** tenemos la sección **Assets** donde podemos descargar el código fuente, vamos a pulsar en **`Source code (zip)`** el código se descarga:
+
+
+## Código fuente de la sección 00:17
+
+https://github.com/adolfodelarosades/110-Juego-de-Ahorcado/releases/tag/v0.1.0
+
+
+
+TO-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-KEN
