@@ -1417,6 +1417,8 @@ Si es la primera vez que se ejecuta pide usuario y contraseña de **`GitHub`**, 
 
 ![image](https://user-images.githubusercontent.com/23094588/150818132-21276ef7-788e-46a6-8e7e-45bea391a479.png)
 
+----
+
 Ya tenemos todo nuestro código en el repositorio de **`GitHub`**.
 
 Es importante notar que la carpeta **`node_modules`** no se sube al repositorio, entre otras cosas, gracias a lo que tenemos incluido en el archivo **`.gitignore`** del proyecto.
@@ -1440,7 +1442,7 @@ para que reconstruya todos los módulos de Node, ya lo veremos al final de esta 
 Adicionalmente vamos a crear un **Release Tag** que nos permite tener una versión del código que esta en este momento y poder descargarlo. El comando **Git** que vamos a usar es:
 
 ```sh
-git tag -a v0.1.0 -m "Fin Juego de Ahorcado"
+git tag -a v0.1.0 -m "Fin sección 4"
 ```
 
 Este comando crea un **Tag** el atributo **`-a`** significa que es "anotado" con el texto **`v0.1.0`** que es una forma de nombrar nuestras versiones y con **`-m`** le damos el título de **`Fin sección 4`**
@@ -1453,11 +1455,11 @@ git tag
 
 vamos a tener:
 
-![image](https://user-images.githubusercontent.com/23094588/159297414-21ba0393-1572-49fa-8b4d-2933049d2fc2.png)
+![image](https://user-images.githubusercontent.com/23094588/150819762-52dd80d3-103f-4a6c-acd6-b957151daf2d.png)
 
 Si retornamos al navegar en **GitHub** no vamos a ver ninguna diferencia.
 
-![image](https://user-images.githubusercontent.com/23094588/159297626-d8d3a58d-b047-4cc1-b671-8620dce6ad54.png)
+![image](https://user-images.githubusercontent.com/23094588/150819991-b9097fc0-4703-4f03-9d0f-dbb605e85939.png)
 
 Para subir el  **Tag** a **GitHub** lo hacemos con el comando:
 
@@ -1465,41 +1467,91 @@ Para subir el  **Tag** a **GitHub** lo hacemos con el comando:
 git push --tags
 ```
 
-![image](https://user-images.githubusercontent.com/23094588/159297974-ca7f6e63-39be-4c69-bad9-02a2083b9ff0.png)
+![image](https://user-images.githubusercontent.com/23094588/150820305-d3179530-a3da-4088-8bcd-70f1c2966691.png)
 
 Esto simplemente nos sube un **Tag** a **GitHub** no un **Release Tag**.
 
-![image](https://user-images.githubusercontent.com/23094588/159298228-d07885c2-6718-4185-8c5c-a2bac2b16801.png)
+![image](https://user-images.githubusercontent.com/23094588/150820569-0647ad60-1450-4d49-aba5-0bcffaed259d.png)
 
 Ya podemos ver que nos sale 1 tag si pulsamos en **Releases** vemos los detalles:
 
-![image](https://user-images.githubusercontent.com/23094588/159298483-4114c2cc-badd-4903-827a-063fe650d1a4.png)
+![image](https://user-images.githubusercontent.com/23094588/150820905-e3fe364e-cb22-4304-9c5e-b83bd43eeab5.png)
 
 Como podemos ver en **Releases** no tenemos nada y en **Tags** tenemos:
 
-![image](https://user-images.githubusercontent.com/23094588/159298666-5f4cd234-18d7-4d27-a3e0-a97f41a246f6.png)
+![image](https://user-images.githubusercontent.com/23094588/150821099-2d66a7d9-2b09-4273-a6e6-e02249edf60c.png)
 
 Si pulsamos en el **Tag v0.1.0**  nos lleva a los detalles:
 
-![image](https://user-images.githubusercontent.com/23094588/159298791-bdd2fef1-8b6a-4004-84e2-cdea2ccb36b5.png)
+![image](https://user-images.githubusercontent.com/23094588/150821401-efe6c50f-b486-462c-98ce-c2377e3dd5aa.png)
 
 En esta pantalla podemos crear un **Release** a partir de un **Tag** pulsando en el botón **`Create release from tag`**.
 
-![image](https://user-images.githubusercontent.com/23094588/159299131-5cc9795b-67b2-4e85-8107-9efde3b64354.png)
+![image](https://user-images.githubusercontent.com/23094588/150821786-643962bc-d936-460e-b945-85a41e7399b0.png)
 
 Metemos la información que nos solicita:
 
-![image](https://user-images.githubusercontent.com/23094588/159299474-187c280e-c766-48d3-a618-0f09322d54b2.png)
+![image](https://user-images.githubusercontent.com/23094588/150822068-b4dc1283-3551-4c7b-9983-3ada65d603d9.png)
 
 Y podemos pulsar en el botón verde **`Public release`**
 
-![image](https://user-images.githubusercontent.com/23094588/159299598-688fff8b-073a-4dc9-a021-be6277bb7fae.png)
+![image](https://user-images.githubusercontent.com/23094588/150822341-0f082087-1c4d-4810-9f03-e208633e88eb.png)
 
 Ahora si ya tenemos un **Release**
 
 Como podemos ver en el **Release** tenemos la sección **Assets** donde podemos descargar el código fuente, vamos a pulsar en **`Source code (zip)`** el código se descarga:
 
+![image](https://user-images.githubusercontent.com/23094588/150823290-1b0711c0-c86a-4a69-8639-4b5c33da1ad0.png)
+
+![image](https://user-images.githubusercontent.com/23094588/150823386-ef432452-2ada-4d79-bb9b-efbc0f5bb98a.png)
+
+
+### Usar el proyecto Descargado
+
+Vamos a copiar el ZIP descargado dentro de nuestra carpeta de Proyectos Angular y lo descomprimimos.
+
+![image](https://user-images.githubusercontent.com/23094588/150835726-834f4a60-b282-4126-a275-ad60f77c01cd.png)
+
+Observamos que al contrario de nuestro proyecto orignal este no tiene el **`node_modules`**.
+
+![image](https://user-images.githubusercontent.com/23094588/150836031-b7e6fe95-de6b-4520-90d6-a64941f83eea.png)
+
+En la consola vamosa meternos a la carpeta del proyecto descargado y para reconstruir los modulos de Node bastaría pulsar el comando:
+
+```sh
+npm install
+```
+
+![image](https://user-images.githubusercontent.com/23094588/150836447-2ecdbd08-df81-499d-b3c9-45347667a60f.png)
+
+![image](https://user-images.githubusercontent.com/23094588/150838107-31ffd910-65e8-40ee-9a56-ada902f44726.png)
+
+Si listamos los archivos en la carpeta veremos que ya aparece el **`node_modules`**.
+
+![image](https://user-images.githubusercontent.com/23094588/150838560-34dd92cb-d961-4779-b3fb-1cf5fcb9e1c5.png)
+
+Vamos a levantar el servidor con:
+
+
+```sh
+ng serve -o
+```
+
+Como ya tenia el puerto **4200** ocupado me pregunta si quiero abrir la APP en un puerto diferente, respondo **Y** y carga la aplicación en un nuevo puerto.
+
+`http://localhost:64904/`
+
+![image](https://user-images.githubusercontent.com/23094588/150839565-bb5e444b-428e-4f85-add7-db5db7ca8790.png)
+
+La aplicación funciona con lo último que subimos al repositorio.
+
+![image](https://user-images.githubusercontent.com/23094588/150839913-8fc60f19-577c-4764-84ea-3f0122a201b4.png)
+
+
+Con esto hemos demostrado como descargar una APP del repositorio, la hemos generado o instalado y finalmente la hemos arrancado.
+
 
 ## Código fuente de la sección 00:17
 
-https://github.com/adolfodelarosades/110-Juego-de-Ahorcado/releases/tag/v0.1.0
+https://github.com/adolfodelarosades/125-01-bases/releases/tag/v0.1.0
+
