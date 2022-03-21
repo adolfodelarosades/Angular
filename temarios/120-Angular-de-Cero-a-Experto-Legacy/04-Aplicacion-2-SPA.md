@@ -152,6 +152,8 @@ De igual manera vamos a eliminar **`home.component.css`** y **`home.component.sp
 
 ![image](https://user-images.githubusercontent.com/23094588/159331060-5a171dc3-c8c0-43a1-97eb-15a86e219353.png)
 
+RE-REVISION - AQUIIIIIIIII
+
 ## Instalando Bootstrap cuando usamos el Angular-CLI 14:58
 
 En esta lección vamos a aprender a instalar **Bootstrap** de tres formas diferentes. Esto se aplica para todas las librerías de terceros para que funcionen en su aplicación de Angular.
