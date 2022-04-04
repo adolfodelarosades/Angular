@@ -152,7 +152,6 @@ De igual manera vamos a eliminar **`home.component.css`** y **`home.component.sp
 
 ![image](https://user-images.githubusercontent.com/23094588/159331060-5a171dc3-c8c0-43a1-97eb-15a86e219353.png)
 
-RE-REVISION - AQUIIIIIIIII
 
 ## Instalando Bootstrap cuando usamos el Angular-CLI 14:58
 
@@ -163,6 +162,8 @@ En esta lección vamos a aprender a instalar **Bootstrap** de tres formas difere
 ### 1er Forma de Usar Bootstrap con CDN
 
 Vamos a Instalar Bootstrap v4.1.1.
+
+https://getbootstrap.com/docs/4.1/getting-started/introduction/
 
 ![image](https://user-images.githubusercontent.com/23094588/133242455-16e440d7-c2b5-43ea-8ec5-caea3e330d9d.png)
 
@@ -180,15 +181,35 @@ Movemos el Script de Bootstrap también abajo del todo
 
 ![image](https://user-images.githubusercontent.com/23094588/133243733-f2072679-c648-4316-8d42-b7f0c0e78763.png)
 
+```js
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Spa</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+  <app-root></app-root>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
+```
+
 Al recargar la APP ya usa los estilos de Bootstrap.
 
 ![image](https://user-images.githubusercontent.com/23094588/133244697-932d536e-a550-4d05-abe7-f1eda42645a9.png)
 
-La una restricción de usar el CDN es que siempre debemos estar conectados a Internet.
+La única restricción de usar el CDN es que siempre debemos estar conectados a Internet.
 
 #### GIT 
 
-![image](https://user-images.githubusercontent.com/23094588/133247245-abd3424f-58b1-48f7-8654-bc0b112c2080.png)
+![image](https://user-images.githubusercontent.com/23094588/161579656-f79cba4f-422e-447e-9eca-fd95099686ec.png)
 
 ### 2da Forma de Usar Bootstrap Descargandolo.
 
