@@ -237,7 +237,7 @@ Para usar la librería localmente indicamos la ruta de los archivos descargados:
 
 #### GIT
 
-![image](https://user-images.githubusercontent.com/23094588/133248151-0e3590ec-dde8-4eab-9f9e-cc9cad07379c.png)
+![image](https://user-images.githubusercontent.com/23094588/161713541-5f03671c-2068-435f-a33f-aff11f64994d.png)
 
 
 ### 3ra Forma de Usar Bootstrap Instalarlo mediante el `npm`
